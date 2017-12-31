@@ -341,5 +341,13 @@ $(document).ready(function() {
         console.log(this);
     });
 
+    $(".cart-item .delete-item").on("click", function() {
+        $(this).closest(".cart-item").transition("slide", 200);
+    });
+
+    $(".delete-all").on("click", function() {
+        $(".cart-item").transition("slide", 200);
+    });
+
 
 });

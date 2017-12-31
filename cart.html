@@ -371,13 +371,7 @@
                 <div class="ui breadcrumb">
                     <a href="#" class="section">Home</a>
                     <div class="divider"> / </div>
-                    <a href="#" class="section">Products</a>
-                    <div class="divider"> / </div>
-                    <a href="#" class="section">Bags</a>
-                    <div class="divider"> / </div>
-                    <a href="#" class="section">Pouch Bags</a>
-                    <div class="divider"> / </div>
-                    <div class="active section">Interactive Knitted Bag Shot</div>
+                    <div class="active section">Cart</div>
                 </div>
 
                 <div class="ui cart-table stackable grid">
@@ -394,7 +388,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr class="cart-item">
                                     <td>
                                         <div class="item">
                                             <div class="ui tiny image">
@@ -424,7 +418,7 @@
                                     </td>
                                     <td class="collapsing"><a href="#" class="delete-item"><i class="trash icon"></i></a></td>
                                 </tr>
-                                <tr>
+                                <tr class="cart-item">
                                     <td>
                                         <div class="item">
                                             <div class="ui tiny image">
@@ -436,9 +430,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
-                                        Rp 275.000,00
-                                    </td>
+                                    <td>Rp 275.000,00</td>
                                     <td>
                                         <select class="ui compact dropdown qty-select" name="qty-select">
                                             <option value="">0</option>
@@ -449,16 +441,65 @@
                                             <option value="5">5</option>
                                         </select>
                                     </td>
-                                    <td>
-                                        Rp 275.000,00
-                                    </td>
+                                    <td>Rp 275.000,00</td>
                                     <td class="collapsing"><a href="#" class="delete-item"><i class="trash icon"></i></a></td>
                                 </tr>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>
+                                        <button type="button" class="ui black left floated button"><i class="angle left icon"></i> Lanjut belanja lagi</button>
+                                    </th>
+                                    <th colspan="4">
+                                        <button type="button" class="ui black delete-all button"><i class="trash icon"></i> Hapus semua item</button>
+                                        <button type="button" class="ui zz button">Checkout <i class="angle right icon"></i></button>
+                                    </th>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
 
                 </div> <!-- kelar div Cart-Table -->
+
+                <div class="ui cart-total grid">
+
+                    <div class="two column row">
+                        <div class="right floated column">
+                            <div class="content">
+                                <h3 class="header">Total belanja kamu</h3>
+                                <table class="ui very basic table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Subtotal: </td>
+                                            <td class="right aligned">Rp 1.450.000,00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Diskon: </td>
+                                            <td class="right aligned">-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>PPh/PPN: </td>
+                                            <td class="right aligned">0%</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="relaxed">
+                                            <th>Total: </th>
+                                            <th class="right aligned">Rp 1.450.000,00</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <a href="#" class="ui animated fade large black fluid checkout button" tabindex="0">
+                                    <div class="visible content">Lanjut Checkout</div>
+                                    <div class="hidden content">
+                                        <i class="shopping cart icon"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div> <!-- kelar div Two Column Row -->
+
+                </div> <!-- kelar div Cart-Total -->
 
 
             </div> <!-- kelar Main -->

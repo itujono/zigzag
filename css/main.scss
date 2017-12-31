@@ -41,6 +41,9 @@
 .zz.button {
     background-color: $tosca;
     color: #fff;
+    &:hover {
+        background-color: transparentize($tosca, .2);
+    }
 }
 
 .ui.simple.active.dropdown>.menu, .ui.simple.dropdown:hover>.menu {
@@ -695,9 +698,8 @@ a.ui.card:hover,
     }
     tfoot {
         th {
-            text-align: center !important;
-            &.nocenter {
-                text-align: initial !important;
+            &:last-of-type {
+                text-align: right;
             }
         }
     }
@@ -705,6 +707,21 @@ a.ui.card:hover,
 
 .cart-total {
     display: flex;
+    tfoot {
+        tr {
+            padding: 1rem;
+        }
+        th {
+            background-color: #f9f9f9 !important;
+            font-weight: bold !important;
+        }
+    }
+}
+
+.checkout.button {
+    &:hover {
+        background-color: $tosca !important;
+    }
 }
 
 

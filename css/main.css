@@ -15,6 +15,8 @@
 
 .zz.button { background-color: #58dcb9; color: #fff; }
 
+.zz.button:hover { background-color: rgba(88, 220, 185, 0.8); }
+
 .ui.simple.active.dropdown > .menu, .ui.simple.dropdown:hover > .menu { z-index: 101; }
 
 .ui.pointing.dropdown > .menu { margin-top: .3rem !important; z-index: 101 !important; }
@@ -269,11 +271,15 @@ a:hover { color: #24aa87; }
 
 .cart-table tbody .delete-item:hover { color: #58dcb9; }
 
-.cart-table tfoot th { text-align: center !important; }
-
-.cart-table tfoot th.nocenter { text-align: initial !important; }
+.cart-table tfoot th:last-of-type { text-align: right; }
 
 .cart-total { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.cart-total tfoot tr { padding: 1rem; }
+
+.cart-total tfoot th { background-color: #f9f9f9 !important; font-weight: bold !important; }
+
+.checkout.button:hover { background-color: #58dcb9 !important; }
 
 footer .ui.grid.footer { border-bottom: 1px solid rgba(0, 0, 0, 0.4); }
 
