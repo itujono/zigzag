@@ -273,6 +273,8 @@ a:hover { color: #24aa87; }
 
 .cart-table tfoot th:last-of-type { text-align: right; }
 
+.cart-table .cart-empty { display: none; }
+
 .cart-total { display: -webkit-box; display: -ms-flexbox; display: flex; }
 
 .cart-total tfoot tr { padding: 1rem; }

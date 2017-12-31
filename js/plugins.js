@@ -341,12 +341,32 @@ $(document).ready(function() {
         console.log(this);
     });
 
-    $(".cart-item .delete-item").on("click", function() {
-        $(this).closest(".cart-item").transition("slide", 200);
+
+    var $cartItem = $(".cart-item");
+    var $arrCartItem = $.makeArray($cartItem);
+    var $deleteButton = $(".cart-item .delete-item");
+    var value = 1;
+    var index = $.inArray(value, $arrCartItem);
+    // jQuery.isArray($arrCartItem);
+
+    $deleteButton.on("click", function() {
+        console.log("Popped!");
+        console.log(index);
+        $arrCartItem.splice(index, 1);
     });
 
+    // $(".cart-item .delete-item").on("click", function() {
+    //     $(this).closest(".cart-item").splice(0,1);
+    //     if (arrCartItem.length === -1) {
+    //         console.log("True deh");
+    //         $(".cart-empty").transition("slide", 200);
+    //     }
+    // });
+
     $(".delete-all").on("click", function() {
-        $(".cart-item").transition("slide", 200);
+        $(".cart-item").slideUp(200, function() {
+            $(".cart-empty").slideDown(400);
+        });
     });
 
 
