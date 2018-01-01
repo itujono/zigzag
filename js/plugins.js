@@ -127,16 +127,14 @@ $(document).ready(function() {
             autofocus: false,
             duration: 200,
             transition: "fade up",
-            onHidden: function() {
-                loginForm.form("clear");
-                console.log(loginForm);
-            }
+            onHidden: function() { loginForm.form("clear"); }
         }).modal('show');
 
         $(".ui.modal.register").modal({
             duration: 200,
             transition: "fade up",
-            blurring: true
+            blurring: true,
+            onHidden: function() { $(this).form("clear"); }
         }).modal("attach events", ".signup-link a");
 
         $(".ui.modal.login").modal("attach events", ".login-link a");
