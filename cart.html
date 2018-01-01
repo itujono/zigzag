@@ -461,11 +461,13 @@
                             <tfoot>
                                 <tr>
                                     <th>
-                                        <button type="button" class="ui black left floated button"><i class="angle left icon"></i> Lanjut belanja lagi</button>
+                                        <a href="products.html" class="ui black left floated button">
+                                            <i class="angle left icon"></i> Lanjut belanja lagi
+                                        </a>
                                     </th>
                                     <th colspan="4">
                                         <button type="button" class="ui black delete-all button"><i class="trash icon"></i> Hapus semua item</button>
-                                        <button type="button" class="ui zz button">Checkout <i class="angle right icon"></i></button>
+                                        <button type="button" class="ui zz checkout button">Checkout <i class="angle right icon"></i></button>
                                     </th>
                                 </tr>
                             </tfoot>
@@ -592,6 +594,17 @@
             <i class="close icon"></i>
             <h4 class="header">Oops!</h4>
             <p><i class="alarm icon"></i> Kamu telah membatalkan item di Cart kamu</p>
+        </div>
+
+        <div class="ui modal delete-cart">
+            <div class="header"> Hapus semua item? </div>
+            <div class="content">
+                Apa kamu yakin mau hapus semua item di cart? Ini nggak bisa di-undo, loh.
+            </div>
+            <div class="actions">
+                <div class="ui approve button"> Hapus </div>
+                <div class="ui cancel button"> Nggak jadi </div>
+            </div>
         </div>
 
 

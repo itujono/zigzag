@@ -275,6 +275,12 @@ a:hover { color: #24aa87; }
 
 .cart-table .cart-empty { display: none; }
 
+.cart-table .cart-empty td { padding: 4em 1em !important; }
+
+.cart-table .cart-empty .image { margin-top: 1.4em !important; }
+
+.cart-table .cart-empty .image .icon { font-size: 3em; }
+
 .cart-total { display: -webkit-box; display: -ms-flexbox; display: flex; }
 
 .cart-total tfoot tr { padding: 1rem; }

@@ -705,6 +705,15 @@ a.ui.card:hover,
     }
     .cart-empty {
         display: none;
+        td {
+            padding: 4em 1em !important;
+        }
+        .image {
+            margin-top: 1.4em !important;
+            .icon {
+                font-size: $defaultSize * 3;
+            }
+        }
     }
 }
 

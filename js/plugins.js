@@ -124,6 +124,9 @@ $(document).ready(function() {
         $(".ui.modal.login").modal({
             blurring: true,
             allowMultiple: false,
+            autofocus: false,
+            duration: 200,
+            transition: "fade up",
             onHidden: function() {
                 loginForm.form("clear");
                 console.log(loginForm);
@@ -131,6 +134,8 @@ $(document).ready(function() {
         }).modal('show');
 
         $(".ui.modal.register").modal({
+            duration: 200,
+            transition: "fade up",
             blurring: true
         }).modal("attach events", ".signup-link a");
 
@@ -364,9 +369,20 @@ $(document).ready(function() {
     // });
 
     $(".delete-all").on("click", function() {
-        $(".cart-item").slideUp(200, function() {
-            $(".cart-empty").slideDown(400);
-        });
+
+        $(".ui.modal.delete-cart").modal({
+            blurring: true,
+            duration: 200,
+            transition: "fade up",
+            onApprove: function() {
+                $(".cart-item").slideUp(200, function() {
+                    $(".cart-empty").slideDown(400);
+                    $(".cart-total").slideUp(200);
+                });
+                $(".delete-all").addClass("disabled");
+                $(".checkout.button").addClass("disabled");
+            }
+        }).modal("show");
     });
 
 
