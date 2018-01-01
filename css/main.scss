@@ -435,7 +435,7 @@ a.ui.card:hover,
     }
 }
 
-.ui.modal.login, .ui.modal.register {
+.ui.modal.login, .ui.modal.register, .ui.modal.delete-cart {
     background-color: #f9f9f9;
     .form {
         padding: 1em 3em;
@@ -468,6 +468,9 @@ a.ui.card:hover,
         label {
             font-size: 12px;
         }
+    }
+    .content {
+        padding: 1em 3em 3em 3em;
     }
 }
 

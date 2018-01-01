@@ -163,23 +163,25 @@ a:hover { color: #24aa87; }
 
 .ui.deposit .what-is-deposit .ui.avatar.image { margin-right: 0; margin-bottom: 1em; }
 
-.ui.modal.login, .ui.modal.register { background-color: #f9f9f9; }
+.ui.modal.login, .ui.modal.register, .ui.modal.delete-cart { background-color: #f9f9f9; }
 
-.ui.modal.login .form, .ui.modal.register .form { padding: 1em 3em; margin-bottom: 1.2em; }
+.ui.modal.login .form, .ui.modal.register .form, .ui.modal.delete-cart .form { padding: 1em 3em; margin-bottom: 1.2em; }
 
-.ui.modal.login .login.button, .ui.modal.register .login.button { background-color: #58dcb9; color: #fff; }
+.ui.modal.login .login.button, .ui.modal.register .login.button, .ui.modal.delete-cart .login.button { background-color: #58dcb9; color: #fff; }
 
-.ui.modal.login .login.button:hover, .ui.modal.register .login.button:hover { background-color: #2ed3a7; }
+.ui.modal.login .login.button:hover, .ui.modal.register .login.button:hover, .ui.modal.delete-cart .login.button:hover { background-color: #2ed3a7; }
 
-.ui.modal.login .header, .ui.modal.register .header { border-bottom: none; padding: 1em 2em; }
+.ui.modal.login .header, .ui.modal.register .header, .ui.modal.delete-cart .header { border-bottom: none; padding: 1em 2em; }
 
-.ui.modal.login .login-buttons, .ui.modal.register .login-buttons { text-align: center; margin: 0 auto; padding-bottom: 3em; }
+.ui.modal.login .login-buttons, .ui.modal.register .login-buttons, .ui.modal.delete-cart .login-buttons { text-align: center; margin: 0 auto; padding-bottom: 3em; }
 
-.ui.modal.login .forgot, .ui.modal.login .signup-link, .ui.modal.login .login-link, .ui.modal.register .forgot, .ui.modal.register .signup-link, .ui.modal.register .login-link { text-align: center; margin-bottom: 2.6em; }
+.ui.modal.login .forgot, .ui.modal.login .signup-link, .ui.modal.login .login-link, .ui.modal.register .forgot, .ui.modal.register .signup-link, .ui.modal.register .login-link, .ui.modal.delete-cart .forgot, .ui.modal.delete-cart .signup-link, .ui.modal.delete-cart .login-link { text-align: center; margin-bottom: 2.6em; }
 
-.ui.modal.login .login-link, .ui.modal.register .login-link { padding-bottom: 2.4em; }
+.ui.modal.login .login-link, .ui.modal.register .login-link, .ui.modal.delete-cart .login-link { padding-bottom: 2.4em; }
 
-.ui.modal.login .ui.checkbox label, .ui.modal.register .ui.checkbox label { font-size: 12px; }
+.ui.modal.login .ui.checkbox label, .ui.modal.register .ui.checkbox label, .ui.modal.delete-cart .ui.checkbox label { font-size: 12px; }
+
+.ui.modal.login .content, .ui.modal.register .content, .ui.modal.delete-cart .content { padding: 1em 3em 3em 3em; }
 
 .forgot .header { margin-bottom: 2em; color: #999; }
 

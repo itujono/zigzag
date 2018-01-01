@@ -371,6 +371,7 @@ $(document).ready(function() {
     $(".delete-all").on("click", function() {
 
         $(".ui.modal.delete-cart").modal({
+            closable: false,
             blurring: true,
             duration: 200,
             transition: "fade up",
