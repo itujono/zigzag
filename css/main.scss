@@ -32,6 +32,13 @@
             ". . m m m m m m m m . ."
             ". f f f f f f f f f f ."
     }
+    &.checkout {
+        grid-template-areas:
+            "h h h h h h h h h h h h"
+            ". . . m m m m m m . . ."
+            "f f f f f f f f f f f f";
+        background-color: #f9f9f9;
+    }
 }
 
 .taright {
@@ -53,6 +60,35 @@
 .ui.pointing.dropdown>.menu {
     margin-top: .3rem !important;
     z-index: 101 !important;
+}
+
+.ui.segment {
+    &.seamless {
+        border: none !important;
+        background-color: #eee;
+        margin-bottom: 3em;
+    }
+}
+
+.ui.slider.checkbox input:checked {
+    ~.box:before {
+        background-color: $tosca !important;
+    }
+    ~.box, ~label {
+        color: $tosca !important;
+    }
+}
+
+.ui.slider.checkbox input:checked {
+    ~label:before {
+        background-color: $tosca !important;
+    }
+}
+
+.ui.checkbox {
+    &.checked {
+        // background-color: $tosca;
+    }
 }
 
 a {
@@ -740,6 +776,67 @@ a.ui.card:hover,
 }
 
 
+
+
+
+
+
+
+
+// Bujuneng! Ini udah di Checkout aja hahahahah! Yeaaay!important
+
+.checkout {
+    .main {
+        .ui.grid {
+            padding: 3em 0;
+        }
+    }
+    .header {
+        margin-bottom: 5em;
+    }
+}
+
+#dropshipper-field {
+    display: none;
+    &.visible {
+        display: flex;
+    }
+}
+
+.login.button {
+    background-color: $tosca;
+    color: #fff;
+    &:hover {
+        background-color: darken($tosca, 10%);
+    }
+}
+
+.ekspedisi {
+    .field {
+        &:last-of-type {
+            padding-right: 0 !important;
+        }
+    }
+}
+
+.ui.steps {
+    margin-bottom: 3em;
+    border: none !important;
+    box-shadow: $boxShadow;
+    .step {
+        &.active {
+            .title {
+                color: $tosca;
+            }
+        }
+        .title {
+            color: $tosca;
+        }
+        .description {
+            color: #bbb;
+        }
+    }
+}
 
 
 
