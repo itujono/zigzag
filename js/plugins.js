@@ -113,6 +113,18 @@ $(document).ready(function() {
         });
     };
 
+    $('.loop').owlCarousel({
+        center: true,
+        items:2,
+        loop:true,
+        margin:25,
+        responsive:{
+            600:{
+                items:4
+            }
+        }
+    });
+
     $(".ui.deposit .learn-more").popup({
         inline: true,
         hoverable: false,
