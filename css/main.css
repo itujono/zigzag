@@ -241,7 +241,7 @@ a:hover { color: #24aa87; }
 
 .item-detail .owl-carousel { margin-bottom: 2em; }
 
-.item-detail .owl-carousel .image { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; margin-right: 2em; height: 300px; max-height: 100%; }
+.item-detail .owl-carousel .image { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; margin-right: 2em; height: 300px; width: 100%; max-height: 100%; }
 
 .item-detail .content { -webkit-box-flex: 2; -ms-flex: 2; flex: 2; }
 
