@@ -57,6 +57,8 @@ a:hover { color: #24aa87; }
 
 .sidebar .ui.vertical.menu .menu .item.active { color: #58dcb9; font-weight: initial; }
 
+.main > .ui.grid { margin-bottom: 2em; }
+
 .main > .ui.grid.main-ad { margin-bottom: initial; }
 
 .main .main-ad .ui.card { width: auto; }
