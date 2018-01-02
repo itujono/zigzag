@@ -171,7 +171,7 @@ a {
 
 .main {
     > .ui.grid {
-        margin-bottom: 2em;
+        // margin-bottom: 2em;
         &.main-ad {
             margin-bottom: initial;
         }
@@ -321,12 +321,32 @@ a {
     }
     .loop {
         .loopy {
+            position: relative;
             overflow: hidden;
             height: auto;
             min-height: 1px;
             padding-bottom: 2em;
             padding-top: .2em;
             cursor: move;
+            &:before {
+                content: "";
+                background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+                position: absolute;
+                left: -10px;
+                width: 5%;
+                height: 100%;
+                z-index: 1;
+            }
+            &:after {
+                content: "";
+                background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+                position: absolute;
+                right: -10px;
+                bottom: 0;
+                width: 5%;
+                height: 100%;
+                z-index: 1;
+            }
         }
     }
 }
