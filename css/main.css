@@ -235,6 +235,8 @@ a:hover { color: #24aa87; }
 
 .add-to-wishlist.disabled { color: #bbb; }
 
+.add-to-cart { white-space: nowrap; }
+
 .item-detail .share-to-social { text-align: center; }
 
 .item-detail .owl-carousel { margin-bottom: 2em; }
@@ -361,7 +363,7 @@ a:hover { color: #24aa87; }
 
 footer .ui.grid.footer { border-bottom: 1px solid rgba(0, 0, 0, 0.4); }
 
-footer .ui.grid.footer .column { padding: 2em 3.4em !important; border-right: 1px solid #ddd; }
+footer .ui.grid.footer .column { padding: 1em 3em !important; border-right: 1px solid #ddd; }
 
 footer .column.footer-logo { display: -webkit-box !important; display: -ms-flexbox !important; display: flex !important; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; background-color: #000; }
 

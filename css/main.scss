@@ -660,6 +660,10 @@ a.ui.card:hover,
     }
 }
 
+.add-to-cart {
+    white-space: nowrap;
+}
+
 .item-detail {
     .share-to-social {
         text-align: center;
@@ -938,7 +942,7 @@ footer {
     .ui.grid.footer {
         border-bottom: 1px solid rgba(0, 0, 0, .4);
         .column {
-            padding: 2em 3.4em !important;
+            padding: 1em 3em !important;
             border-right: 1px solid #ddd;
         }
     }
