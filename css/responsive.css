@@ -17,4 +17,5 @@
     -ms-flex-align: center;
     align-items: center; }
     .item-detail .quantity-select .field {
+      display: block;
       margin-bottom: 1em; } }

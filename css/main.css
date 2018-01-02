@@ -277,6 +277,8 @@ a:hover { color: #24aa87; }
 
 .item-detail .quantity-select .dropdown { margin-left: 1em; margin-right: 1em; }
 
+.item-detail .quantity-select .field { display: inline-block; }
+
 .owl-theme .owl-dots { margin-top: 10px; position: absolute; bottom: 10px; left: 50%; -webkit-transform: translateX(-50px); -ms-transform: translateX(-50px); transform: translateX(-50px); }
 
 .owl-theme .owl-dots .owl-dot span { background: #000; border-radius: 0 !important; }
