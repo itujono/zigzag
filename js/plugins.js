@@ -54,6 +54,11 @@ $(document).ready(function() {
 
     $(".ui.checkbox").checkbox();
 
+    $(".main a.ui.card").on("click", function(e) {
+        e.preventDefault();
+        console.log("Clicked pulak!");
+    });
+
     $(".additional-actions .add-to-wishlist").each(function() {
         $(this).on("click", function(e) {
             e.preventDefault();
@@ -115,7 +120,9 @@ $(document).ready(function() {
 
     $('.loop').owlCarousel({
         center: true,
-        items:2,
+        stageOuterClass: "loopy",
+        items:4,
+        dots: false,
         loop:true,
         margin:25,
         responsive:{

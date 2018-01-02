@@ -196,12 +196,6 @@ a {
     .best-seller, .promo, .new-arrival {
         .ui.card {
             width: auto;
-            box-shadow: $boxShadow;
-            transition: all .2s ease;
-            &:hover {
-                box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
-                transform: translateY(-3px);
-            }
             > .content {
                 padding: .7em;
                 > .header:not(.ui) {
@@ -269,6 +263,15 @@ a {
         margin-bottom: 6em;
     }
     .ui.card {
+        box-shadow: $boxShadow;
+        transition: all .2s ease;
+        &:hover {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            transform: translateY(-3px);
+        }
+        &:active {
+            transform: initial;
+        }
         .content {
             .meta {
                 font-size: $defaultSize - .2;
@@ -298,6 +301,7 @@ a {
             }
         }
         .one-item-carousel {
+            position: relative;
             cursor: move;
             .image {
                 display: flex;
@@ -310,9 +314,20 @@ a {
     .ui.floating.label {
         position: absolute;
         z-index: 100;
-        top: -.5em;
-        left: 85%;
+        left: initial;
+        top: 0;
+        right: 0;
         margin: 0 0 0 -1.5em!important;
+    }
+    .loop {
+        .loopy {
+            overflow: hidden;
+            height: auto;
+            min-height: 1px;
+            padding-bottom: 2em;
+            padding-top: .2em;
+            cursor: move;
+        }
     }
 }
 
@@ -676,13 +691,22 @@ a.ui.card:hover,
     }
 }
 
-.owl-theme .owl-dots .owl-dot {
-    span {
-        background: #000;
-        border-radius: 0 !important;
-    }
-    &.active span {
-        background: #ddd;
+.owl-theme {
+    .owl-dots {
+        margin-top: 10px;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50px);
+        .owl-dot {
+            span {
+                background: #000;
+                border-radius: 0 !important;
+            }
+            &.active span {
+                background: #ddd;
+            }
+        }
     }
 }
 
