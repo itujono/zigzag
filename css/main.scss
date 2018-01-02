@@ -756,15 +756,17 @@ a.ui.card:hover,
     }
 }
 
-.cart-total {
-    display: flex;
-    tfoot {
-        tr {
-            padding: 1rem;
-        }
-        th {
-            background-color: #f9f9f9 !important;
-            font-weight: bold !important;
+.cart {
+    .cart-total {
+        display: flex;
+        tfoot {
+            tr {
+                padding: 1rem;
+            }
+            th {
+                background-color: #f9f9f9 !important;
+                font-weight: bold !important;
+            }
         }
     }
 }
