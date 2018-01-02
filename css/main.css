@@ -91,7 +91,7 @@ a:hover { color: #24aa87; }
 
 .main .new-arrival { margin-bottom: 6em; }
 
-.main .ui.card { -webkit-box-shadow: 0px 8px 15px 0 rgba(0, 0, 0, 0.11), 0 8px 30px 0 rgba(0, 0, 0, 0.1); box-shadow: 0px 8px 15px 0 rgba(0, 0, 0, 0.11), 0 8px 30px 0 rgba(0, 0, 0, 0.1); -webkit-transition: all .2s ease; -o-transition: all .2s ease; transition: all .2s ease; }
+.main .ui.card { -webkit-box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); -webkit-transition: all .2s ease; -o-transition: all .2s ease; transition: all .2s ease; }
 
 .main .ui.card:hover { -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); -webkit-transform: translateY(-3px); -ms-transform: translateY(-3px); transform: translateY(-3px); }
 
@@ -159,7 +159,7 @@ a:hover { color: #24aa87; }
 
 .ui.cart-content.empty { display: -webkit-box !important; display: -ms-flexbox !important; display: flex !important; min-height: 160px; text-align: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
 
-.ui.message.added-to-wishlist, .ui.message.added-to-cart, .ui.message.removed-from-wishlist, .ui.message.removed-from-cart { display: none; position: fixed; top: 0; right: 20px; z-index: 99; -webkit-box-shadow: 0px 8px 15px 0 rgba(0, 0, 0, 0.11), 0 8px 30px 0 rgba(0, 0, 0, 0.1); box-shadow: 0px 8px 15px 0 rgba(0, 0, 0, 0.11), 0 8px 30px 0 rgba(0, 0, 0, 0.1); -webkit-transition: all .4s ease; -o-transition: all .4s ease; transition: all .4s ease; }
+.ui.message.added-to-wishlist, .ui.message.added-to-cart, .ui.message.removed-from-wishlist, .ui.message.removed-from-cart { display: none; position: fixed; top: 0; right: 20px; z-index: 99; -webkit-box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); -webkit-transition: all .4s ease; -o-transition: all .4s ease; transition: all .4s ease; }
 
 .ui.message.added-to-wishlist.visible, .ui.message.added-to-cart.visible, .ui.message.removed-from-wishlist.visible, .ui.message.removed-from-cart.visible { display: block; -webkit-transition: all .4s ease; -o-transition: all .4s ease; transition: all .4s ease; }
 
@@ -325,7 +325,7 @@ a:hover { color: #24aa87; }
 
 .ekspedisi .field:last-of-type { padding-right: 0 !important; }
 
-.ui.steps { margin-bottom: 3em; border: none !important; -webkit-box-shadow: 0px 8px 15px 0 rgba(0, 0, 0, 0.11), 0 8px 30px 0 rgba(0, 0, 0, 0.1); box-shadow: 0px 8px 15px 0 rgba(0, 0, 0, 0.11), 0 8px 30px 0 rgba(0, 0, 0, 0.1); }
+.ui.steps { margin-bottom: 3em; border: none !important; -webkit-box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); }
 
 .ui.steps .step.active .title { color: #58dcb9; }
 
