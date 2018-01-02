@@ -69,7 +69,9 @@ a:hover { color: #24aa87; }
 
 .main .main-ad .column { padding-left: .5rem; padding-right: .5rem; }
 
-.main .best-seller .ui.card, .main .promo .ui.card, .main .new-arrival .ui.card { width: auto; }
+.main .best-seller .ui.card, .main .promo .ui.card, .main .new-arrival .ui.card { width: auto; -webkit-box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.11), 0 17px 50px 0 rgba(0, 0, 0, 0.1); box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.11), 0 17px 50px 0 rgba(0, 0, 0, 0.1); -webkit-transition: all .2s ease; -o-transition: all .2s ease; transition: all .2s ease; }
+
+.main .best-seller .ui.card:hover, .main .promo .ui.card:hover, .main .new-arrival .ui.card:hover { -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); -webkit-transform: translateY(-3px); -ms-transform: translateY(-3px); transform: translateY(-3px); }
 
 .main .best-seller .ui.card > .content, .main .promo .ui.card > .content, .main .new-arrival .ui.card > .content { padding: .7em; }
 
