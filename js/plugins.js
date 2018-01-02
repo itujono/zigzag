@@ -118,19 +118,22 @@ $(document).ready(function() {
         });
     };
 
-    $('.loop').owlCarousel({
-        center: true,
-        stageOuterClass: "loopy",
-        items:4,
-        dots: false,
-        loop:true,
-        margin:25,
-        responsive:{
-            600:{
-                items:4
+    if ( $(".loop").length ) {
+        $('.loop').owlCarousel({
+            center: true,
+            stageOuterClass: "loopy",
+            items:4,
+            dots: false,
+            loop:true,
+            margin:25,
+            responsive:{
+                600:{
+                    items:4
+                }
             }
-        }
-    });
+        });
+    };
+
 
     $(".ui.deposit .learn-more").popup({
         inline: true,
@@ -550,6 +553,7 @@ $(document).ready(function() {
 
 
     $(".ui.dropshipper").on("click", function() {
+        console.log("Kok gak keluar?");
         $("#dropshipper-field").transition("slide", 200);
     });
 
