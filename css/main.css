@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700i,900i");
-#app { display: grid; padding: 1rem 3rem; grid-gap: 1.8em; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(3, minmax(50px, auto)); grid-template-areas: ". h h h h h h h h h h ." ". s s m m m m m m m m ." ". f f f f f f f f f f ."; }
+#app { display: grid; padding: 1rem 3rem; background-color: #fafafa; grid-gap: 1.8em; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(3, minmax(50px, auto)); grid-template-areas: ". h h h h h h h h h h ." ". s s m m m m m m m m ." ". f f f f f f f f f f ."; }
 
 #app header { grid-area: h; }
 
@@ -75,9 +75,9 @@ a:hover { color: #24aa87; }
 
 .main .best-seller .ui.card > .content, .main .promo .ui.card > .content, .main .new-arrival .ui.card > .content { padding: .7em; }
 
-.main .best-seller .ui.card > .content > .header:not(.ui), .main .promo .ui.card > .content > .header:not(.ui), .main .new-arrival .ui.card > .content > .header:not(.ui) { font-size: 1em; }
+.main .best-seller .ui.card > .content > .header:not(.ui), .main .promo .ui.card > .content > .header:not(.ui), .main .new-arrival .ui.card > .content > .header:not(.ui) { font-size: 0.85em; }
 
-.main .best-seller .ui.card > .image, .main .promo .ui.card > .image, .main .new-arrival .ui.card > .image { height: 180px; }
+.main .best-seller .ui.card > .image, .main .promo .ui.card > .image, .main .new-arrival .ui.card > .image { height: 160px; }
 
 .main .best-seller .ui.card .meta, .main .promo .ui.card .meta, .main .new-arrival .ui.card .meta { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }
 
@@ -87,7 +87,7 @@ a:hover { color: #24aa87; }
 
 .main .best-seller .blackish.nobefore:after, .main .promo .blackish.nobefore:after, .main .new-arrival .blackish.nobefore:after { content: initial; }
 
-.main .best-seller .blackish .card, .main .promo .blackish .card, .main .new-arrival .blackish .card { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; height: 100%; max-height: 250px; line-height: 1.6; border-radius: 5px; padding: 2rem; background-color: #000; color: #fff; font-size: 1.2rem; letter-spacing: 1.5px; }
+.main .best-seller .blackish .card, .main .promo .blackish .card, .main .new-arrival .blackish .card { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; height: 100%; max-height: 230px; line-height: 1.6; border-radius: 5px; padding: 2rem; background-color: #000; color: #fff; font-size: 1.2rem; letter-spacing: 1.5px; }
 
 .main .best-seller .blackish .card a, .main .promo .blackish .card a, .main .new-arrival .blackish .card a { font-size: 0.8em; }
 
@@ -103,7 +103,7 @@ a:hover { color: #24aa87; }
 
 .main .ui.card .content .header { white-space: nowrap; }
 
-.main .ui.card .additional-actions { position: absolute; display: none; bottom: -50px; left: 50%; z-index: 2; -webkit-transform: translate(-35px); -ms-transform: translate(-35px); transform: translate(-35px); -webkit-transition: all .2s ease; -o-transition: all .2s ease; transition: all .2s ease; }
+.main .ui.card .additional-actions { position: absolute; display: none; bottom: -50px; left: 50%; z-index: 2; -webkit-transform: translate(-5px); -ms-transform: translate(-5px); transform: translate(-5px); -webkit-transition: all .2s ease; -o-transition: all .2s ease; transition: all .2s ease; }
 
 .main .ui.card .image { position: relative; overflow-y: hidden; }
 
@@ -239,7 +239,7 @@ a:hover { color: #24aa87; }
 
 .item-detail .owl-carousel { margin-bottom: 2em; }
 
-.item-detail .owl-carousel .image { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; margin-right: 2em; height: 400px; max-height: 100%; }
+.item-detail .owl-carousel .image { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; margin-right: 2em; height: 300px; max-height: 100%; }
 
 .item-detail .content { -webkit-box-flex: 2; -ms-flex: 2; flex: 2; }
 

@@ -121,10 +121,10 @@ $(document).ready(function() {
         $('.loop').owlCarousel({
             center: true,
             stageOuterClass: "loopy",
-            items:4,
+            items:2,
             dots: false,
             loop:true,
-            margin:25,
+            margin:20,
             responsive:{
                 0: {
                     items: 1
