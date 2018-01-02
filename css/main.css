@@ -329,11 +329,15 @@ a:hover { color: #24aa87; }
 
 .ui.steps { margin-bottom: 3em; border: none !important; -webkit-box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); }
 
-.ui.steps .step.active { background-color: #58dcb9; }
+.ui.steps .step.active { background-color: #000; }
 
-.ui.steps .step.active:after { background-color: #58dcb9; }
+.ui.steps .step.active:after { background-color: #000; }
 
-.ui.steps .step.active .title, .ui.steps .step.active .description { color: #fff; }
+.ui.steps .step.active:before { color: #fff !important; }
+
+.ui.steps .step.active .title { color: #58dcb9; }
+
+.ui.steps .step.active .description { color: #fff; }
 
 .ui.steps .step .title { color: #58dcb9; }
 

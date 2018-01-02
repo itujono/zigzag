@@ -877,11 +877,17 @@ a.ui.card:hover,
     box-shadow: $boxShadow;
     .step {
         &.active {
-            background-color: $tosca;
+            background-color: #000;
             &:after {
-                background-color: $tosca;
+                background-color: #000;
             }
-            .title, .description {
+            &:before {
+                color: #fff !important;
+            }
+            .title {
+                color: $tosca;
+            }
+            .description {
                 color: #fff;
             }
         }
