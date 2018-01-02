@@ -471,7 +471,7 @@ $(document).ready(function() {
 
     });
 
-    $(".add-to-wishlist").on("click", function() {
+    $(".product-detail .add-to-wishlist").on("click", function() {
         $(".ui.message.added-to-wishlist").transition("slide", 200);
         $(this).addClass("disabled");
         $(this).text("Sudah berhasil ditambah");
