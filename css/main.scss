@@ -877,8 +877,12 @@ a.ui.card:hover,
     box-shadow: $boxShadow;
     .step {
         &.active {
-            .title {
-                color: $tosca;
+            background-color: $tosca;
+            &:after {
+                background-color: $tosca;
+            }
+            .title, .description {
+                color: #fff;
             }
         }
         .title {
