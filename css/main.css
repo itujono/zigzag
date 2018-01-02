@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700i,900i");
-#app { display: grid; padding: 1rem 3rem; grid-gap: 1.8em; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(3, minmax(50px, auto)); grid-template-areas: "h h h h h h h h h h h h" "s s m m m m m m m m m m" "f f f f f f f f f f f f"; }
+#app { display: grid; padding: 1rem 3rem; grid-gap: 1.8em; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(3, minmax(50px, auto)); grid-template-areas: ". h h h h h h h h h h ." ". s s m m m m m m m m ." ". f f f f f f f f f f ."; }
 
 #app header { grid-area: h; }
 
@@ -56,6 +56,8 @@ a:hover { color: #24aa87; }
 .right.menu .ui.input > input:focus { padding-right: 6em !important; }
 
 .sidebar .ui.vertical.menu .menu .item.active { color: #58dcb9; font-weight: initial; }
+
+.app .main > .ui.grid { margin-bottom: 0; }
 
 .main > .ui.grid { margin-bottom: 2em; }
 
@@ -211,7 +213,9 @@ a:hover { color: #24aa87; }
 
 .forgot .main .ui.grid { padding: 6em 0; }
 
-.forgot form.form { margin-bottom: 3em; }
+.forgot #forgot-password { margin-bottom: 3em; }
+
+.forgot #forgot-password .direct.button { display: none; }
 
 .ui.breadcrumb { margin-bottom: 2em; }
 
@@ -319,7 +323,7 @@ a:hover { color: #24aa87; }
 
 .checkout .header { margin-bottom: 5em; }
 
-#dropshipper-field { display: none; }
+#dropshipper-field { display: none; margin-bottom: 3em; }
 
 #dropshipper-field.visible { display: -webkit-box; display: -ms-flexbox; display: flex; }
 

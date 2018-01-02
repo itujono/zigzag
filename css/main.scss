@@ -11,9 +11,9 @@
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(3, minmax(50px, auto));
     grid-template-areas:
-        "h h h h h h h h h h h h"
-        "s s m m m m m m m m m m"
-        "f f f f f f f f f f f f";
+        ". h h h h h h h h h h ."
+        ". s s m m m m m m m m ."
+        ". f f f f f f f f f f .";
     header {
         grid-area: h;
     }
@@ -168,6 +168,14 @@ a {
 }
 
 
+
+.app {
+    .main {
+        > .ui.grid {
+            margin-bottom: 0;
+        }
+    }
+}
 
 .main {
     > .ui.grid {
@@ -575,8 +583,11 @@ a.ui.card:hover,
             padding: 6em 0;
         }
     }
-    form.form {
+    #forgot-password {
         margin-bottom: 3em;
+        .direct.button {
+            display: none;
+        }
     }
 }
 
@@ -850,6 +861,7 @@ a.ui.card:hover,
 
 #dropshipper-field {
     display: none;
+    margin-bottom: 3em;
     &.visible {
         display: flex;
     }

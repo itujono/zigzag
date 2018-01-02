@@ -13,7 +13,6 @@
     while (length--) {
         method = methods[length];
 
-        // Only stub undefined methods.
         if (!console[method]) {
             console[method] = noop;
         }
@@ -137,8 +136,7 @@ $(document).ready(function() {
 
     $(".ui.deposit .learn-more").popup({
         inline: true,
-        hoverable: false,
-        // position: 'center right'
+        hoverable: false
     });
 
     $(".login-trigger").on("click", function() {
@@ -207,8 +205,6 @@ $(document).ready(function() {
             ]
         },
     };
-
-
 
     $(".login .ui.form").form({
         inline: true,
@@ -464,17 +460,21 @@ $(document).ready(function() {
     });
 
 
-    $("#forgot-password .button").on("click", function(e) {
+    $("#forgot-password .forgot.button").on("click", function(e) {
         e.preventDefault();
         $(this).addClass("loading");
-        setTimeout(function() {
-            $(".ui.dimmer").dimmer("show").dimmer({
-                // onHide: function() {
-                //     alert("sempardak ugak!");
-                // }
-            });
-            $("#forgot-password .button").removeClass("loading");
-        }, 1500);
+        $(".ui.dimmer").dimmer("show").dimmer({
+            onChange: function() {
+                $("#forgot-password .forgot.button").removeClass("loading");
+            },
+            onHide: function() {
+                $("#emailForgot").slideUp(100);
+                $("#forgot-password label").slideUp(100);
+                $("#forgot-password .forgot.button").slideUp(100);
+                $("#forgot-password .direct").slideDown(200);
+                $(".ui.prompt").slideUp(100);
+            }
+        });
     });
 
 
@@ -522,14 +522,6 @@ $(document).ready(function() {
         console.log(index);
         $arrCartItem.splice(index, 1);
     });
-
-    // $(".cart-item .delete-item").on("click", function() {
-    //     $(this).closest(".cart-item").splice(0,1);
-    //     if (arrCartItem.length === -1) {
-    //         console.log("True deh");
-    //         $(".cart-empty").transition("slide", 200);
-    //     }
-    // });
 
     $(".delete-all").on("click", function() {
 
