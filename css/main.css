@@ -323,6 +323,8 @@ a:hover { color: #24aa87; }
 
 .checkout .header { margin-bottom: 5em; }
 
+.checkout #step-billing { display: none; }
+
 #dropshipper-field { display: none; margin-bottom: 3em; }
 
 #dropshipper-field.visible { display: -webkit-box; display: -ms-flexbox; display: flex; }
@@ -344,6 +346,14 @@ a:hover { color: #24aa87; }
 .ui.steps .step.active .title { color: #58dcb9; }
 
 .ui.steps .step.active .description { color: #fff; }
+
+.ui.steps .step.completed { background-color: #eee; }
+
+.ui.steps .step.completed:after { background-color: #eee; }
+
+.ui.steps .step.completed:before { color: #999 !important; }
+
+.ui.steps .step.completed .title { color: #999 !important; }
 
 .ui.steps .step .title { color: #58dcb9; }
 

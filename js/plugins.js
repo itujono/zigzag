@@ -126,6 +126,9 @@ $(document).ready(function() {
             loop:true,
             margin:25,
             responsive:{
+                0: {
+                    items: 1
+                },
                 600:{
                     items:4
                 }
@@ -364,100 +367,100 @@ $(document).ready(function() {
         }
     });
 
-    $("#shipping-address").form({
-        inline: true,
-        on: "submit",
-        fields: {
-            name: {
-                identifier: "nama",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Jangan dikosongin namanya ya"
-                    },
-                    {
-                        type: "minLength[5]",
-                        prompt: "Kurang panjang tuh namanya"
-                    },
-                    {
-                        type: "containsExactly[ ]",
-                        prompt: "Nama belakangnya udah belum?"
-                    }
-                ]
-            },
-            email: {
-                identifier: "email",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Jangan dikosongin emailnya ya"
-                    },
-                    {
-                        type: "regExp[/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/]",
-                        prompt: "Udah bener emangnya format emailnya tuh?"
-                    }
-                ]
-            },
-            handphone: {
-                identifier: "handphone",
-                on: "submit",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Hayooo, nomer handphone nya, mas!"
-                    },
-                    {
-                        type: "integer",
-                        prompt: "Nomer hape gak ada yang make huruf deh perasaan"
-                    },
-                    {
-                        type: "minLength[8]",
-                        prompt: "Nggak kurang tu nomernya? Dikit amat perasaan"
-                    }
-                ]
-            },
-            telepon: {
-                identifier: "telepon",
-                optional: true,
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Hayooo, nomer telepon nya, mas!"
-                    }
-                ]
-            },
-            kodepos: {
-                identifier: "kodepos",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "jangan sampe lupa juga ya kode pos nya"
-                    },
-                    {
-                        type: "maxLength[5]",
-                        prompt: "Emang ada kode pos lebih dari 5 digit ya?"
-                    },
-                    {
-                        type: "minLength[5]",
-                        prompt: "Perasaan gak ada deh kodepos di bawah 5 digit"
-                    }
-                ]
-            },
-            alamat: {
-                identifier: "alamat",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Yakali yang beginian juga kelupaan diisi"
-                    },
-                    {
-                        type: "minLength[8]",
-                        prompt: "Ni bener gak nih ngisi alamatnya? Pendek amat."
-                    }
-                ]
-            },
-        }
-    });
+    // $("#shipping-address").form({
+    //     inline: true,
+    //     on: "submit",
+    //     fields: {
+    //         name: {
+    //             identifier: "nama",
+    //             rules: [
+    //                 {
+    //                     type: "empty",
+    //                     prompt: "Jangan dikosongin namanya ya"
+    //                 },
+    //                 {
+    //                     type: "minLength[5]",
+    //                     prompt: "Kurang panjang tuh namanya"
+    //                 },
+    //                 {
+    //                     type: "containsExactly[ ]",
+    //                     prompt: "Nama belakangnya udah belum?"
+    //                 }
+    //             ]
+    //         },
+    //         email: {
+    //             identifier: "email",
+    //             rules: [
+    //                 {
+    //                     type: "empty",
+    //                     prompt: "Jangan dikosongin emailnya ya"
+    //                 },
+    //                 {
+    //                     type: "regExp[/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/]",
+    //                     prompt: "Udah bener emangnya format emailnya tuh?"
+    //                 }
+    //             ]
+    //         },
+    //         handphone: {
+    //             identifier: "handphone",
+    //             on: "submit",
+    //             rules: [
+    //                 {
+    //                     type: "empty",
+    //                     prompt: "Hayooo, nomer handphone nya, mas!"
+    //                 },
+    //                 {
+    //                     type: "integer",
+    //                     prompt: "Nomer hape gak ada yang make huruf deh perasaan"
+    //                 },
+    //                 {
+    //                     type: "minLength[8]",
+    //                     prompt: "Nggak kurang tu nomernya? Dikit amat perasaan"
+    //                 }
+    //             ]
+    //         },
+    //         telepon: {
+    //             identifier: "telepon",
+    //             optional: true,
+    //             rules: [
+    //                 {
+    //                     type: "empty",
+    //                     prompt: "Hayooo, nomer telepon nya, mas!"
+    //                 }
+    //             ]
+    //         },
+    //         kodepos: {
+    //             identifier: "kodepos",
+    //             rules: [
+    //                 {
+    //                     type: "empty",
+    //                     prompt: "jangan sampe lupa juga ya kode pos nya"
+    //                 },
+    //                 {
+    //                     type: "maxLength[5]",
+    //                     prompt: "Emang ada kode pos lebih dari 5 digit ya?"
+    //                 },
+    //                 {
+    //                     type: "minLength[5]",
+    //                     prompt: "Perasaan gak ada deh kodepos di bawah 5 digit"
+    //                 }
+    //             ]
+    //         },
+    //         alamat: {
+    //             identifier: "alamat",
+    //             rules: [
+    //                 {
+    //                     type: "empty",
+    //                     prompt: "Yakali yang beginian juga kelupaan diisi"
+    //                 },
+    //                 {
+    //                     type: "minLength[8]",
+    //                     prompt: "Ni bener gak nih ngisi alamatnya? Pendek amat."
+    //                 }
+    //             ]
+    //         },
+    //     }
+    // });
 
 
     $("#forgot-password .forgot.button").on("click", function(e) {
@@ -555,6 +558,15 @@ $(document).ready(function() {
             console.log(this);
         });
     });
+
+    $("#shipping-address #shipping").on("click", function(e) {
+        e.preventDefault();
+        $("#step-shipping").transition("fly right", 200);
+        $("#step-billing").transition("fly left", 200);
+    });
+
+
+
 
 
 });

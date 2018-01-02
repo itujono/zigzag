@@ -857,6 +857,9 @@ a.ui.card:hover,
     .header {
         margin-bottom: 5em;
     }
+    #step-billing {
+        display: none;
+    }
 }
 
 #dropshipper-field {
@@ -901,6 +904,18 @@ a.ui.card:hover,
             }
             .description {
                 color: #fff;
+            }
+        }
+        &.completed {
+            background-color: #eee;
+            &:after {
+                background-color: #eee;
+            }
+            &:before {
+                color: #999 !important;
+            }
+            .title {
+                color: #999 !important;
             }
         }
         .title {
