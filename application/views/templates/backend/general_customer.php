@@ -26,8 +26,8 @@ if(!empty($listusers)){
                     <i class="md-icon material-icons">&#xE5D4;</i>
                     <div class="uk-dropdown uk-dropdown-small">
                         <ul class="uk-nav">
-                            <!-- <li><a href="<?php //echo base_url();?>administrator/user/saveuser/<?php //echo encode($user->idUSER);?>">Edit</a></li> -->
-                            <li><a href="<?php echo base_url();?>administrator/users/actiondelete_users/<?php echo encode($user->idUSER);?>">Hapus</a></li>
+                            <!-- <li><a href="<?php //echo base_url();?>zigzagadmin/user/saveuser/<?php //echo encode($user->idUSER);?>">Edit</a></li> -->
+                            <li><a href="<?php echo base_url();?>zigzagadmin/users/actiondelete_users/<?php echo encode($user->idUSER);?>">Hapus</a></li>
                         </ul>
                     </div>
                 </div>

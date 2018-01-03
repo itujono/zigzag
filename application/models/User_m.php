@@ -72,7 +72,7 @@ class User_m extends MY_Model{
 			'passwordADMIN' => $this->hash($pass)
 		);
 
-		$Administrator = $this->db->get_where('nyat_users_admin',$datalog)->row();
+		$Administrator = $this->db->get_where('zigzag_users_admin',$datalog)->row();
 		if(count($Administrator)){
 			if($Administrator->statusADMIN == 1){
 				$data = array(

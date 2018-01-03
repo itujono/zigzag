@@ -11,14 +11,11 @@ class Dashboard extends Admin_Controller {
 	public function index_dashboard() {
 		$data['addONS'] = 'plugins_dashboard';
 
-		// $data['totalaspirasi'] = $this->Dashboard_m->jumlah_data('aspirasi');
-  //       $data['totalmember'] = $this->Dashboard_m->jumlah_data('users');
-  //       $data['totalpolling'] = $this->Dashboard_m->jumlah_data('polling');
-  //       $data['totalvisitor'] = $this->Dashboard_m->jumlah_data('visitor');
+		$data['totalaspirasi'] = 0;
+        $data['totalmember'] = 0;
+        $data['totalpolling'] = 0;
+        $data['totalvisitor'] = 0;
 
-  //       $data['listpolling'] = $this->Polling_m->selectall_polling('',1)->row();
-        
-		// $data['number_voting'] = $this->Polling_choice_m->getNumberVoting($data['listpolling']->idPOLLING);
 		
 		if(!empty($this->session->flashdata('message'))) {
             $data['message'] = $this->session->flashdata('message');

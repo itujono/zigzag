@@ -7,7 +7,7 @@ $controller = 'menu_admin';
 if($getmenu->idMENU != NULL){
  $title1 = 'Perbaharui Data Menu';
 }
-$url = base_url().'administrator/'.$controller.'/'.$actions;
+$url = base_url().'zigzagadmin/'.$controller.'/'.$actions;
 ?>
 <div class="uk-width-medium-1-1">
   <h4 class="heading_a uk-margin-bottom"><?php echo $title1;?></h4>
@@ -74,8 +74,8 @@ $url = base_url().'administrator/'.$controller.'/'.$actions;
                     $icndel = '&#xE16C;';
                     $msg1 = 'Are you sure want to delete this data ?';
                     $msg2 = 'Are you sure want to change this data ?';
-                    $url1 = 'administrator/'.$controller.'/delete_menu_admin/'.urlencode($id);
-                    $url2 = 'administrator/'.$controller.'/index_menu/'.urlencode($id);
+                    $url1 = 'zigzagadmin/'.$controller.'/delete_menu_admin/'.urlencode($id);
+                    $url2 = 'zigzagadmin/'.$controller.'/index_menu/'.urlencode($id);
                     ?>
                     <td class="">
                       <a href="#" onclick="UIkit.modal.confirm('<?php echo $msg1; ?>', function(){ document.location.href='<?php echo site_url($url1);?>'; });"><i class="md-icon material-icons"><?php echo $icndel; ?></i></a>

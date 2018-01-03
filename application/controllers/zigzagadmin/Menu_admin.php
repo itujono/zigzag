@@ -62,7 +62,7 @@ class Menu_admin extends Admin_Controller{
                 'type' => 'success'
           	);
 	    	$this->session->set_flashdata('message', $data);
-	  		redirect('administrator/menu_admin/index_menu');
+	  		redirect('zigzagadmin/menu_admin/index_menu');
 		} else {
 				$data = array(
 		            'title' => 'Terjadi Kesalahan',
@@ -84,7 +84,7 @@ class Menu_admin extends Admin_Controller{
                     'type' => 'success'
                 );
                 $this->session->set_flashdata('message',$data);
-                redirect('administrator/menu_admin/index_menu');
+                redirect('zigzagadmin/menu_admin/index_menu');
 		}else{
 			$data = array(
 	            'title' => 'Terjadi Kesalahan',

@@ -44,29 +44,3 @@
         </div>
     </div>
 </div>
-<div class="uk-grid" data-uk-grid-margin>
-    <div class="uk-width-large-1-1">
-        <div class="md-card">
-            <div class="md-card-content stats">
-                <h4 class="heading_c uk-margin-bottom">Grafik Pengunjung</h4>
-                <div id="chartist_line_area" class="chartist"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="uk-grid uk-grid-width-medium-1-2 uk-grid-width-large-1-1" data-uk-grid-margin>
-    <div>
-        <div class="md-card">
-            <div class="md-card-content stats">
-            <?php
-            	$question = 'Tidak ada polling yang aktif saat ini';
-            	if(!empty($listpolling)){
-            		$question = $listpolling->questionPOLLING;
-            	}
-            ?>
-                <h4 class="heading_c uk-margin-bottom"><?php echo $listpolling->questionPOLLING;?></h4>
-                <div id="chartist_pie_custom_labels" class="chartist"></div>
-            </div>
-        </div>
-    </div>
-</div>

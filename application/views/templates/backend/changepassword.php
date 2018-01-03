@@ -8,7 +8,7 @@
  <?php } ?>
     <h4 class="heading_a uk-margin-bottom">Pengaturan Akun</h4>
     <?php
-    $action = 'administrator/changepassword/';
+    $action = 'zigzagadmin/changepassword/';
     $naming = 'idADMIN';
     $value = encode($this->session->userdata('idADMIN'));
     ?>

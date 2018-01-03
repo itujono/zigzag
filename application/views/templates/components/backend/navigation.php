@@ -18,13 +18,13 @@
 
           <li><a href="#" id="full_screen_toggle" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light">&#xE5D0;</i></a></li>
 
-          <li><a href="#" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light">toys</i>&nbsp;Hello <?php echo $this->session->userdata('Email');?>!</a></li>
+          <li><a href="#" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light">toys</i>&nbsp;Hello <?php echo $this->session->userdata('Name');?>!</a></li>
 
           <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
             <a href="#" class="user_action_image"><img class="md-user-image" src="<?php echo base_url().$this->data['asback'];?>img/avatars/avatar_11_tn.png" alt=""/></a>
             <div class="uk-dropdown uk-dropdown-small">
               <ul class="uk-nav js-uk-prevent">
-                <li><a href="<?php echo base_url();?>Administrator/changepassword">Rubah kata sandi</a></li>
+                <li><a href="<?php echo base_url();?>zigzagadmin/changepassword">Rubah kata sandi</a></li>
                 <li><a href="<?php echo base_url(); ?>login/logout">Keluar</a></li>
               </ul>
             </div>
@@ -54,7 +54,7 @@
     <ul>
       <?php foreach ($menus as $key => $val1) { ?>
       <li title="<?php echo $val1->namaMENU;?>">
-        <a href="<?php echo base_url();?>administrator/<?php echo $val1->functionMENU; ?>">
+        <a href="<?php echo base_url();?>zigzagadmin/<?php echo $val1->functionMENU; ?>">
           <span class="menu_icon"><i class="material-icons"><?php echo $val1->iconMENU ?></i></span>
           <span class="menu_title"><?php echo $val1->namaMENU; ?></span>
         </a>
@@ -68,7 +68,7 @@
               }
         ?>
           <li class="<?php echo $class;?>">
-            <a href="<?php echo base_url();?>administrator/<?php echo $val1->functionMENU; ?>/<?php echo $val2->functionMENU; ?>"><?php echo $val2->namaMENU; ?>
+            <a href="<?php echo base_url();?>zigzagadmin/<?php echo $val1->functionMENU; ?>/<?php echo $val2->functionMENU; ?>"><?php echo $val2->namaMENU; ?>
             </a>
           </li>
             <?php } ?>

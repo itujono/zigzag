@@ -37,7 +37,7 @@ class Customer extends Admin_Controller {
                     'type' => 'success'
                 );
                 $this->session->set_flashdata('message',$data);
-                redirect('administrator/users/index_customer');
+                redirect('zigzagadmin/users/index_customer');
 		}else{
 			$data = array(
 	            'title' => 'Terjadi Kesalahan',

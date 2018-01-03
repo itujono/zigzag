@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="<?php echo base_url();?>assets/backend/templates/img/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="<?php echo base_url();?>assets/backend/templates/img/favicon-32x32.png" sizes="32x32">
 
-    <title>Login - NyatKadir.org</title>
+    <title>Login - Zigzag Online Shop</title>
 
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
 

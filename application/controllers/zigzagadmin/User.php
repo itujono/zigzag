@@ -84,7 +84,7 @@ class User extends Admin_Controller {
                 'type' => 'success'
           	);
 	    	$this->session->set_flashdata('message', $data);
-	  		redirect('administrator/user/index_user_admin');
+	  		redirect('zigzagadmin/user/index_user_admin');
 	  		
 		} else {
 				$data = array(
@@ -107,7 +107,7 @@ class User extends Admin_Controller {
                     'type' => 'success'
                 );
                 $this->session->set_flashdata('message',$data);
-                redirect('administrator/user/index_user_admin');
+                redirect('zigzagadmin/user/index_user_admin');
 		}else{
 			$data = array(
 	            'title' => 'Terjadi Kesalahan',
@@ -129,7 +129,7 @@ class User extends Admin_Controller {
                     'type' => 'success'
                 );
                 $this->session->set_flashdata('message',$data);
-                redirect('administrator/user/index_user_admin');
+                redirect('zigzagadmin/user/index_user_admin');
 		}else{
 			$data = array(
 	            'title' => 'Terjadi Kesalahan',
