@@ -565,7 +565,10 @@ $(document).ready(function() {
         $("#step-billing").transition("fly left", 200);
     });
 
-
+    $(".ui.sticky").sticky({
+        offset: 50,
+        // context: "#form-header"
+    });
 
 
 

@@ -859,15 +859,22 @@ a.ui.card:hover,
 
 .checkout {
     .main {
+        position: relative;
         .ui.grid {
             padding: 3em 0;
         }
     }
-    .header {
+    #form-header {
+        position: relative;
         margin-bottom: 5em;
     }
     #step-billing {
         display: none;
+    }
+    #step-shipping {
+        .sixteen.column {
+            padding-top: 0;
+        }
     }
 }
 

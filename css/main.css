@@ -323,11 +323,15 @@ a:hover { color: #24aa87; }
 
 .checkout.button:hover { background-color: #58dcb9 !important; }
 
+.checkout .main { position: relative; }
+
 .checkout .main .ui.grid { padding: 3em 0; }
 
-.checkout .header { margin-bottom: 5em; }
+.checkout #form-header { position: relative; margin-bottom: 5em; }
 
 .checkout #step-billing { display: none; }
+
+.checkout #step-shipping .sixteen.column { padding-top: 0; }
 
 #dropshipper-field { display: none; margin-bottom: 3em; }
 
