@@ -20,7 +20,7 @@
 }());
 
 
-const loginForm = $(".login .ui.form");
+var loginForm = $(".login .ui.form");
 
 
 $(document).ready(function() {
@@ -367,7 +367,100 @@ $(document).ready(function() {
         }
     });
 
-
+    // $("#shipping-address").form({
+    //     inline: true,
+    //     on: "submit",
+    //     fields: {
+    //         name: {
+    //             identifier: "nama",
+    //             rules: [
+    //                 {
+    //                     type: "empty",
+    //                     prompt: "Jangan dikosongin namanya ya"
+    //                 },
+    //                 {
+    //                     type: "minLength[5]",
+    //                     prompt: "Kurang panjang tuh namanya"
+    //                 },
+    //                 {
+    //                     type: "containsExactly[ ]",
+    //                     prompt: "Nama belakangnya udah belum?"
+    //                 }
+    //             ]
+    //         },
+    //         email: {
+    //             identifier: "email",
+    //             rules: [
+    //                 {
+    //                     type: "empty",
+    //                     prompt: "Jangan dikosongin emailnya ya"
+    //                 },
+    //                 {
+    //                     type: "regExp[/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/]",
+    //                     prompt: "Udah bener emangnya format emailnya tuh?"
+    //                 }
+    //             ]
+    //         },
+    //         handphone: {
+    //             identifier: "handphone",
+    //             on: "submit",
+    //             rules: [
+    //                 {
+    //                     type: "empty",
+    //                     prompt: "Hayooo, nomer handphone nya, mas!"
+    //                 },
+    //                 {
+    //                     type: "integer",
+    //                     prompt: "Nomer hape gak ada yang make huruf deh perasaan"
+    //                 },
+    //                 {
+    //                     type: "minLength[8]",
+    //                     prompt: "Nggak kurang tu nomernya? Dikit amat perasaan"
+    //                 }
+    //             ]
+    //         },
+    //         telepon: {
+    //             identifier: "telepon",
+    //             optional: true,
+    //             rules: [
+    //                 {
+    //                     type: "empty",
+    //                     prompt: "Hayooo, nomer telepon nya, mas!"
+    //                 }
+    //             ]
+    //         },
+    //         kodepos: {
+    //             identifier: "kodepos",
+    //             rules: [
+    //                 {
+    //                     type: "empty",
+    //                     prompt: "jangan sampe lupa juga ya kode pos nya"
+    //                 },
+    //                 {
+    //                     type: "maxLength[5]",
+    //                     prompt: "Emang ada kode pos lebih dari 5 digit ya?"
+    //                 },
+    //                 {
+    //                     type: "minLength[5]",
+    //                     prompt: "Perasaan gak ada deh kodepos di bawah 5 digit"
+    //                 }
+    //             ]
+    //         },
+    //         alamat: {
+    //             identifier: "alamat",
+    //             rules: [
+    //                 {
+    //                     type: "empty",
+    //                     prompt: "Yakali yang beginian juga kelupaan diisi"
+    //                 },
+    //                 {
+    //                     type: "minLength[8]",
+    //                     prompt: "Ni bener gak nih ngisi alamatnya? Pendek amat."
+    //                 }
+    //             ]
+    //         },
+    //     }
+    // });
 
 
     $("#forgot-password .forgot.button").on("click", function(e) {
@@ -389,7 +482,7 @@ $(document).ready(function() {
 
 
 
-    const toggleButton = document.querySelector(".add-to-cart.black.button");
+    var toggleButton = document.querySelector(".add-to-cart.black.button");
 
     $(".add-to-cart.black.button").on("click", function() {
         $(this).addClass("loading");
@@ -420,11 +513,11 @@ $(document).ready(function() {
     });
 
 
-    const $cartItem = $(".cart-item");
-    const $arrCartItem = $.makeArray($cartItem);
-    const $deleteButton = $(".cart-item .delete-item");
-    const value = 1;
-    const index = $.inArray(value, $arrCartItem);
+    var $cartItem = $(".cart-item");
+    var $arrCartItem = $.makeArray($cartItem);
+    var $deleteButton = $(".cart-item .delete-item");
+    var value = 1;
+    var index = $.inArray(value, $arrCartItem);
     // jQuery.isArray($arrCartItem);
 
     $deleteButton.on("click", function() {
@@ -466,114 +559,15 @@ $(document).ready(function() {
         });
     });
 
-    $("#shipping-address").form({
-        inline: true,
-        on: "submit",
-        fields: {
-            name: {
-                identifier: "nama",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Jangan dikosongin namanya ya"
-                    },
-                    {
-                        type: "minLength[5]",
-                        prompt: "Kurang panjang tuh namanya"
-                    },
-                    {
-                        type: "containsExactly[ ]",
-                        prompt: "Nama belakangnya udah belum?"
-                    }
-                ]
-            },
-            email: {
-                identifier: "email",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Jangan dikosongin emailnya ya"
-                    },
-                    {
-                        type: "regExp[/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/]",
-                        prompt: "Udah bener emangnya format emailnya tuh?"
-                    }
-                ]
-            },
-            handphone: {
-                identifier: "handphone",
-                on: "submit",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Hayooo, nomer handphone nya, mas!"
-                    },
-                    {
-                        type: "integer",
-                        prompt: "Nomer hape gak ada yang make huruf deh perasaan"
-                    },
-                    {
-                        type: "minLength[8]",
-                        prompt: "Nggak kurang tu nomernya? Dikit amat perasaan"
-                    }
-                ]
-            },
-            telepon: {
-                identifier: "telepon",
-                optional: true,
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Hayooo, nomer telepon nya, mas!"
-                    }
-                ]
-            },
-            kodepos: {
-                identifier: "kodepos",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "jangan sampe lupa juga ya kode pos nya"
-                    },
-                    {
-                        type: "maxLength[5]",
-                        prompt: "Emang ada kode pos lebih dari 5 digit ya?"
-                    },
-                    {
-                        type: "minLength[5]",
-                        prompt: "Perasaan gak ada deh kodepos di bawah 5 digit"
-                    }
-                ]
-            },
-            alamat: {
-                identifier: "alamat",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Yakali yang beginian juga kelupaan diisi"
-                    },
-                    {
-                        type: "minLength[8]",
-                        prompt: "Ni bener gak nih ngisi alamatnya? Pendek amat."
-                    }
-                ]
-            }
-        },
-        onSuccess: function(e) {
-            e.preventDefault();
-            $(this).closest("#step-shipping").transition("slide", 300);
-            $("#step-billing").transition("slide", 200);
-        }
+    $("#shipping-address #shipping").on("click", function(e) {
+        e.preventDefault();
+        $("#form-header").dimmer("show");
+        console.log("Oke coppp!");
     });
 
-    // $("#shipping-address").on("submit", function(e) {
-    //     // $("#shipping-address").closest("#step-shipping").transition("slide", 300);
-    //     console.log(this);
-    // });
-
-
     $(".ui.sticky").sticky({
-        offset: 50
+        offset: 50,
+        // context: "#form-header"
     });
 
 

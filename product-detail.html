@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Checkout - Zigzag Shop Batam - Official Shop</title>
+        <title>Bag - Zigzag Shop Batam</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,16 +11,18 @@
         <link rel="apple-touch-icon" href="icon.png">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+        <link rel="stylesheet" href="css/owl.css">
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/responsive.css">
     </head>
 
     <body>
 
-        <div class="checkout" id="app">
+        <div class="product-detail" id="app">
 
             <header>
-                <div class="ui pointing menu main">
+                <div class="ui pointing stackable menu main">
                     <a href="index.html" class="active item">Home</a>
                     <div class="ui pointing dropdown link category item">
                         <span class="text">Bags</span>
@@ -123,12 +125,14 @@
                                 <div class="hidden content">Checkout sekarang</div>
                             </a>
                         </div>
+
                         <!-- <div class="ui popup cart-content empty">
                             <div class="content">
                                 <h4>Kamu belum menambahkan item apapun di Cart</h4>
                                 <a href="#">Belanja dulu deh</a>
                             </div>
                         </div> --> <!-- TODO: Kalo Cart nya empty wak -->
+
                         <div class="ui top left pointing dropdown button item">
                             <img src="img/user.jpg" class="ui avatar image">
                             <span>Rusmanto </span>
@@ -208,7 +212,7 @@
                                                 </select>
                                             </div>
                                             <div class="field">
-                                                <label for="kota">Kota/Kab</label>
+                                                <label for="provinsi">Kota/Kab</label>
                                                 <select class="ui search dropdown" id="kota" name="kota">
                                                     <option value="" selected>Pilih kota kamu</option>
                                                     <option value="batam" data-chained="kepri">Batam</option>
@@ -265,345 +269,231 @@
                 </div> <!-- kelar Pointing Menu -->
             </header>
 
+            <aside class="sidebar">
+                <div class="ui vertical menu">
+                    <div class="item">
+                        <div class="header">Bags</div>
+                        <div class="menu">
+                            <a href="#" class="active item"><!--<i class="shopping bag icon"></i>--> All Bags</a>
+                            <a href="#" class="item">Pouch Bags</a>
+                            <a href="#" class="item">So Bags</a>
+                            <a href="#" class="item">Air Bags</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="header">Shoes</div>
+                        <div class="menu">
+                            <a href="#" class="item">All Shoes</a>
+                            <a href="#" class="item">Wedges</a>
+                            <a href="#" class="item">High Heels</a>
+                            <a href="#" class="item">Boots</a>
+                            <a href="#" class="item">Pantofel</a>
+                            <a href="#" class="item">Sneakers</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="header">Lingeries</div>
+                        <div class="menu">
+                            <a href="#" class="item">All Lingeries</a>
+                            <a href="#" class="item">Casual</a>
+                            <a href="#" class="item">Naughty</a>
+                            <a href="#" class="item">Formal</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui cards deposit">
+                    <div class="card">
+                        <div class="content">
+                            <div class="header">Coba deposit kami</div>
+                            <a href="#" class="learn-more">Apa itu deposit?</a>
+                            <div class="ui fluid popup what-is-deposit item center right">
+                                <div class="ui avatar image">
+                                    <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" alt="">
+                                </div>
+                                <div class="content">
+                                    <div class="header">Apa itu deposit?</div>
+                                    <div class="description">
+                                        Deposit Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="description">
+                                Dan dapatkan berbagai macam benefit menarik.
+                            </div>
+                            <form class="ui form">
+                                <div class="grouped fields">
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="nominal" class="hidden" tabindex="0" checked=""/>
+                                            <label>Pilih nominal: </label>
+                                            <div class="field">
+                                                <select class="ui dropdown">
+                                                    <option value="50000">Rp 50.000,00</option>
+                                                    <option value="100000">Rp 100.000,00</option>
+                                                    <option value="150000">Rp 150.000,00</option>
+                                                    <option value="500000">Rp 500.000,00</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui radio checkbox">
+                                            <input type="radio" name="nominal" class="hidden" tabindex="0" />
+                                            <label for="">Input nominal: </label>
+                                            <div class="field">
+                                                <input type="number" id="nominalSelect" name="nominalSelect" value="" placeholder="Masukkan angka...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form> <!-- kelar UI Form -->
+                        </div> <!-- kelar class Content di Deposit -->
+
+                        <button class="ui bottom attached right large labeled icon black button">
+                            <i class="right arrow icon"></i> Deposit
+                        </button>
+
+                    </div>
+                </div> <!-- kelar Deposit -->
+            </aside>
+
             <div class="main">
 
-                <div class="ui grid" id="step-shipping">
+                <div class="ui breadcrumb">
+                    <a href="#" class="section">Home</a>
+                    <div class="divider"> / </div>
+                    <a href="#" class="section">Products</a>
+                    <div class="divider"> / </div>
+                    <a href="#" class="section">Bags</a>
+                    <div class="divider"> / </div>
+                    <a href="#" class="section">Pouch Bags</a>
+                    <div class="divider"> / </div>
+                    <div class="active section">Interactive Knitted Bag Shot</div>
+                </div>
 
-
-                    <div class="sixteen wide column">
-
-                        <div class="ui three ordered steps">
-                            <div class="active step">
-                                <div class="content">
-                                    <div class="title">Shipping</div>
-                                    <div class="description">Isi form order untuk pengiriman</div>
-                                </div>
-                            </div>
-                            <div class="step">
-                                <div class="content">
-                                    <div class="title">Billing</div>
-                                    <div class="description">Pilih metode pembayaran</div>
-                                </div>
-                            </div>
-                            <div class="step">
-                                <div class="content">
-                                    <div class="title">Confirm Order</div>
-                                    <div class="description">Review semua sebelum place order</div>
-                                </div>
-                            </div>
-                            <div class="ui right rail">
-                                <div class="ui sticky">
-                                    <div class="ui negative message">
-                                        <i class="close icon"></i>
-                                        <div class="header">
-                                            Sedang sibuk
-                                        </div>
-                                        <p>Mohon maaf, saat ini di ekspedisi sedang dalam kesibukan yang yaampun banget. Jadi agak lelet kalo mau ngirim barang. Harap maklum.</p>
-                                        <p><strong>Management</strong></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- kelar div Three Steps -->
-
-                        <div class="header" id="form-header">
-                            <h3>Isi detail alamat</h3>
-                            Jangan takut. Semua orang pernah lupa. Silakan masukkan email kamu, dan kami akan mengirimkan email berisi instruksi untuk mereset password kamu.
+                <div class="ui item-detail stackable grid">
+                    <!-- <div class="six wide column">
                         </div>
+                    </div> -->
+                    <div class="two column row">
 
-                        <form class="ui form" action="" method="" id="shipping-address">
-                            <div class="two fields">
-                                <div class="required field">
-                                    <label for="nama">Nama lengkap penerima</label>
-                                    <input type="text" name="nama" placeholder="John Doe">
+                        <div class="five wide column">
+                            <div class="owl-carousel one-item-carousel owl-theme">
+                                <div class="image">
+                                    <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="" data-zoom-image="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" id="product-zoom">
                                 </div>
-                                <div class="required field">
-                                    <label for="email">Email penerima</label>
-                                    <input type="email" name="email" placeholder="emailku@email.com">
+                                <div class="image">
+                                    <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/9823/501/807/9823501807_2_1_2.jpg" alt="" data-zoom-image="https://static.pullandbear.net/2/photos/2018/V/0/2/p/9823/501/807/9823501807_2_1_2.jpg" id="product-zoom">
                                 </div>
-                            </div>
-                            <div class="two fields">
-                                <div class="required field">
-                                    <label for="handphone">Nomor handphone</label>
-                                    <input type="tel" name="handphone" placeholder="0812 34567890">
-                                </div>
-                                <div class="field">
-                                    <label for="telepon">Nomor telepon rumah/kantor</label>
-                                    <input type="tel" name="telepon" placeholder="021 2345678">
+                                <div class="image">
+                                    <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" alt="" data-zoom-image="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" id="product-zoom">
                                 </div>
                             </div>
-                            <div class="three fields">
-                                <div class="required field">
-                                    <label for="provinsi-checkout">Provinsi</label>
-                                    <select class="ui search dropdown" id="provinsi-checkout" name="provinsi-checkout">
-                                        <option value="" selected>Pilih provinsi kamu</option>
-                                        <option value="aceh">Aceh</option>
-                                        <option value="bali">Bali</option>
-                                        <option value="babel">Bangka Belitung</option>
-                                        <option value="banten">Banten</option>
-                                        <option value="kepri">Kepulauan Riau</option>
-                                    </select>
-                                </div>
-                                <div class="required field">
-                                    <label for="kota-checkout">Kota/Kabupaten</label>
-                                    <select class="ui search dropdown" id="kota-checkout" name="kota-checkout">
-                                        <option value="" selected>Pilih kota kamu</option>
-                                        <option value="batam" data-chained="kepri">Batam</option>
-                                        <option value="pinang" data-chained="kepri">Tanjung Pinang</option>
-                                        <option value="bintan" data-chained="kepri">Bintan</option>
-                                        <option value="kundur" data-chained="kepri">Kundur</option>
-                                        <option value="karimun" data-chained="kepri">Karimun</option>
-                                        <option value="denpasar" data-chained="bali">Denpasar</option>
-                                        <option value="bangli" data-chained="bali">Bangli</option>
-                                        <option value="badung" data-chained="bali">Badung</option>
-                                        <option value="buleleng" data-chained="bali">Buleleng</option>
-                                        <option value="serang" data-chained="banten">Serang</option>
-                                        <option value="tangerang" data-chained="banten">Tangerang</option>
-                                        <option value="cilegon" data-chained="banten">Cilegon</option>
-                                        <option value="bangka" data-chained="babel">Bangka</option>
-                                        <option value="belitung" data-chained="babel">Belitung</option>
-                                    </select>
-                                </div>
-                                <div class="required field">
-                                    <label for="kodepos">Kode Pos</label>
-                                    <input type="number" name="kodepos" placeholder="Misal: 29433">
-                                </div>
-                            </div>
-                            <div class="required field">
-                                <label for="alamat">Alamat pengiriman</label>
-                                <textarea name="alamat" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"></textarea>
-                            </div>
-                            <div class="inline three fields ekspedisi">
-                                <label>Ekspedisi apa?</label>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>JNE</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>TIKI</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>Si Cepat</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ui segment seamless">
-                                <div class="field">
-                                    <div class="ui slider checkbox dropshipper">
-                                        <input type="checkbox" tabindex="0" class="hidden">
-                                        <label>Saya mengirim barang ini kepada orang lain atas nama saya</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="two fields" id="dropshipper-field">
-                                <div class="field">
-                                    <label for="">Nama saya sebagai dropshipper</label>
-                                    <input type="text" name="" placeholder="John Doe">
-                                </div>
-                                <div class="field">
-                                    <label for="">Institusi/organisasi saya sebagai dropshipper</label>
-                                    <input type="text" name="" placeholder="CV Megah Jaya">
-                                </div>
-                            </div>
-                            <input type="submit" class="ui fluid zz button" id="shipping" value="Lanjut">
-                        </form>
-
-                    </div>
-
-
-                </div> <!-- kelar div Grid / Step-Shipping -->
-
-
-                <div class="ui grid" id="step-billing">
-
-                    <div class="sixteen wide column">
-
-                        <div class="ui three ordered steps">
-                            <div class="completed step">
-                                <div class="content">
-                                    <div class="title">Shipping</div>
-                                    <div class="description">Isi form order untuk pengiriman</div>
-                                </div>
-                            </div>
-                            <div class="active step">
-                                <div class="content">
-                                    <div class="title">Billing</div>
-                                    <div class="description">Pilih metode pembayaran</div>
-                                </div>
-                            </div>
-                            <div class="step">
-                                <div class="content">
-                                    <div class="title">Confirm Order</div>
-                                    <div class="description">Review semua sebelum place order</div>
+                            <div class="share-to-social">
+                                <h5 class="header">Share item ini ke teman-teman mu</h5>
+                                <div class="ui icon basic buttons">
+                                    <a href="#" class="ui button"><i class="facebook icon"></i></a>
+                                    <a href="#" class="ui button"><i class="twitter icon"></i></a>
+                                    <a href="#" class="ui button"><i class="whatsapp icon"></i></a>
+                                    <a href="#" class="ui button"><i class="google plus icon"></i></a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="ui segments">
-                            <div class="ui right dividing rail">
-                                <div class="ui negative message">
-                                    <i class="close icon"></i>
-                                    <div class="header">
-                                        Sedang sibuk
+                        <div class="eleven wide column">
+                            <div class="content">
+                                <h2 class="header">Interactive Knitted Bag Shot</h2>
+                                <div class="price">
+                                    Rp 550.000,00
+                                    <!-- <span class="ui label"><i class="mail icon"></i> Potongan 10K untuk VIP Member</span> -->
+                                </div>
+                                <div class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <br><br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </div>
+                                <div class="ui three column doubling grid features">
+                                    <div class="column">
+                                        <div class="ui list">
+                                            <div class="item">
+                                                <i class="copy icon"></i>
+                                                <div class="content">
+                                                    <div class="header">Material</div>
+                                                    Kulit jangek
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="cube icon"></i>
+                                                <div class="content">
+                                                    <div class="header">Dimensi</div>
+                                                    W20 x H45 x L15
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p>Mohon maaf, saat ini di ekspedisi sedang dalam kesibukan yang yaampun banget. Jadi agak lelet kalo mau ngirim barang. Harap maklum.</p>
-                                    <p><strong>Management</strong></p>
+                                    <div class="column">
+                                        <div class="ui list">
+                                            <div class="item">
+                                                <i class="file archive outline icon"></i>
+                                                <div class="content">
+                                                    <div class="header">Berat</div>
+                                                    4.6 tonage
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="checkmark icon"></i>
+                                                <div class="content">
+                                                    <div class="header">Stock</div>
+                                                    Tersedia
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="ui list">
+                                            <div class="item">
+                                                <i class="crosshairs icon"></i>
+                                                <div class="content">
+                                                    <div class="header">Kode</div>
+                                                    NY0899
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="snowflake icon"></i>
+                                                <div class="content">
+                                                    <div class="header">Warna</div>
+                                                    <div class="colors">
+                                                        <div class="blueviolet" title="Blue Violet"></div>
+                                                        <div class="darkslategray" title="Dark Slate Gray"></div>
+                                                        <div class="green" title="Green"></div>
+                                                        <div class="brown" title="Brown"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- kelar Grid Features -->
+                                <div class="quantity-select">
+                                    <div class="field">
+                                        <label for="qty-select">Qty </label>
+                                        <select class="ui compact dropdown" name="qty-select">
+                                            <option value="">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                    <button class="ui toggle fade add-to-cart black button" tabindex="0">
+                                        <i class="plus square outline icon"></i> Tambahkan ke Keranjang
+                                    </button> &nbsp; &nbsp;
+                                    <span>atau</span> &nbsp; &nbsp; <a href="#" class="button add-to-wishlist">Tambahkan ke Wishlist <i class="empty heart icon"></i></a>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="header">
-                            <h3>Pembayaran</h3>
-                            Pembayaran adalah hal yang bermakna bagi nusa dan bangsa orang Melayu di Pinang bagian selatan.
-                        </div>
-
-                        <form class="ui form" action="index.html" method="" id="billing-detail">
-
-                            <div class="inline three fields ekspedisi">
-                                <label>Pilih pembayaran</label>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>JNE</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>TIKI</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>Si Cepat</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="two fields">
-                                <div class="required field">
-                                    <label for="handphone">Nomor handphone</label>
-                                    <input type="tel" name="handphone" placeholder="0812 34567890">
-                                </div>
-                                <div class="field">
-                                    <label for="telepon">Nomor telepon rumah/kantor</label>
-                                    <input type="tel" name="telepon" placeholder="021 2345678">
-                                </div>
-                            </div>
-
-                            <div class="three fields">
-                                <div class="required field">
-                                    <label for="provinsi-checkout">Provinsi</label>
-                                    <select class="ui search dropdown" id="provinsi-checkout" name="provinsi-checkout">
-                                        <option value="" selected>Pilih provinsi kamu</option>
-                                        <option value="aceh">Aceh</option>
-                                        <option value="bali">Bali</option>
-                                        <option value="babel">Bangka Belitung</option>
-                                        <option value="banten">Banten</option>
-                                        <option value="kepri">Kepulauan Riau</option>
-                                    </select>
-                                </div>
-                                <div class="required field">
-                                    <label for="kota-checkout">Kota/Kabupaten</label>
-                                    <select class="ui search dropdown" id="kota-checkout" name="kota-checkout">
-                                        <option value="" selected>Pilih kota kamu</option>
-                                        <option value="batam" data-chained="kepri">Batam</option>
-                                        <option value="pinang" data-chained="kepri">Tanjung Pinang</option>
-                                        <option value="bintan" data-chained="kepri">Bintan</option>
-                                        <option value="kundur" data-chained="kepri">Kundur</option>
-                                        <option value="karimun" data-chained="kepri">Karimun</option>
-                                        <option value="denpasar" data-chained="bali">Denpasar</option>
-                                        <option value="bangli" data-chained="bali">Bangli</option>
-                                        <option value="badung" data-chained="bali">Badung</option>
-                                        <option value="buleleng" data-chained="bali">Buleleng</option>
-                                        <option value="serang" data-chained="banten">Serang</option>
-                                        <option value="tangerang" data-chained="banten">Tangerang</option>
-                                        <option value="cilegon" data-chained="banten">Cilegon</option>
-                                        <option value="bangka" data-chained="babel">Bangka</option>
-                                        <option value="belitung" data-chained="babel">Belitung</option>
-                                    </select>
-                                </div>
-                                <div class="required field">
-                                    <label for="kodepos">Kode Pos</label>
-                                    <input type="number" name="kodepos" placeholder="Misal: 29433">
-                                </div>
-                            </div>
-
-                            <div class="required field">
-                                <label for="alamat">Alamat pengiriman</label>
-                                <textarea name="alamat" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"></textarea>
-                            </div>
-
-                            <div class="inline three fields ekspedisi">
-                                <label>Ekspedisi apa?</label>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>JNE</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>TIKI</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>Si Cepat</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="ui segment seamless">
-                                <div class="field">
-                                    <div class="ui slider checkbox dropshipper">
-                                        <input type="checkbox" tabindex="0" class="hidden">
-                                        <label>Saya mengirim barang ini kepada orang lain atas nama saya</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="two fields" id="dropshipper-field">
-                                <div class="field">
-                                    <label for="">Nama saya sebagai dropshipper</label>
-                                    <input type="text" name="" placeholder="John Doe">
-                                </div>
-                                <div class="field">
-                                    <label for="">Institusi/organisasi saya sebagai dropshipper</label>
-                                    <input type="text" name="" placeholder="CV Megah Jaya">
-                                </div>
-                            </div>
-
-                            <input type="submit" class="ui fluid button" id="billing" value="Lanjut">
-                        </form>
-                    </div>
-                </div> <!-- kelar div Grid / Step-Billing -->
+                    </div> <!-- kelar div Item -->
+                </div> <!-- kelar Item-Detail -->
 
             </div> <!-- kelar Main -->
 
@@ -660,15 +550,46 @@
                     </div>
                 </div>
             </footer>
+
         </div>
+
+        <div class="ui compact teal message added-to-wishlist">
+            <i class="close icon"></i>
+            <h4 class="header">Great!</h4>
+            <p><i class="alarm icon"></i> Item berhasil ditambahkan ke Wishlist</p>
+        </div>
+        <div class="ui compact teal message added-to-cart">
+            <i class="close icon"></i>
+            <h4 class="header">Great!</h4>
+            <p><i class="alarm icon"></i> Item berhasil ditambahkan ke Cart</p>
+        </div>
+        <div class="ui compact red message removed-from-wishlist">
+            <i class="close icon"></i>
+            <h4 class="header">Oops!</h4>
+            <p><i class="alarm icon"></i> Kamu telah membatalkan item Wishlist kamu</p>
+        </div>
+        <div class="ui compact red message removed-from-cart">
+            <i class="close icon"></i>
+            <h4 class="header">Oops!</h4>
+            <p><i class="alarm icon"></i> Kamu telah membatalkan item di Cart kamu</p>
+        </div>
+
+
+
 
 
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+        <script src="js/owl.js"></script>
+        <script src="node_modules/jquery-chained/jquery.chained.js"></script>
+        <script src="js/cloud-zoom.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
+        <script>
+            $("#kota").chained("#provinsi");
+        </script>
 
         <script>
             window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
