@@ -576,6 +576,8 @@ $(document).ready(function() {
         offset: 50
     });
 
+    $(".ui.accordion.bank-transfer").accordion();
+
 
 
 });

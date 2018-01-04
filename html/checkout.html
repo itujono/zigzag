@@ -464,141 +464,92 @@
                             </div>
                         </div>
 
-                        <div class="header">
+                        <div class="header" id="form-header">
                             <h3>Pembayaran</h3>
                             Pembayaran adalah hal yang bermakna bagi nusa dan bangsa orang Melayu di Pinang bagian selatan.
                         </div>
 
+                        <div class="ui styled accordion bank-transfer">
+                            <div class="title active">
+                                <i class="dropdown icon"></i>
+                                Transfer Bank
+                            </div>
+                            <div class="content active">
+                                <div class="text">
+                                    <h3>Transfer Bank</h3>
+                                    Transfer bank mempunyai kelebihan yang mumpuni dibandingkan menabung di bank
+                                </div>
+                                <div class="ui form">
+                                    <div class="three fields transfer">
+                                        <div class="field">
+                                            <div class="ui segment">
+                                                <div class="ui radio checkbox">
+                                                    <input type="radio" name="bank" tabindex="0" class="hidden">
+                                                    <label>BCA</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="ui segment">
+                                                <div class="ui radio checkbox">
+                                                    <input type="radio" name="bank" tabindex="0" class="hidden">
+                                                    <label>Mandiri</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="ui segment">
+                                                <div class="ui radio checkbox">
+                                                    <input type="radio" name="bank" tabindex="0" class="hidden">
+                                                    <label>BNI</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="title">
+                                <i class="dropdown icon"></i>
+                                Deposit Dana
+                            </div>
+                            <div class="content">
+                                <div class="text">
+                                    <h3>Deposit Dana</h3>
+                                    Jika kamu memilih deposit dana, maka kamu harus mandi dulu pagi tadi
+                                </div>
+                                <div class="ui form">
+                                    <div class="three fields transfer">
+                                        <div class="field">
+                                            <div class="ui segment">
+                                                <div class="ui radio checkbox">
+                                                    <input type="radio" name="bank" tabindex="0" class="hidden">
+                                                    <label>BCA</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="ui segment">
+                                                <div class="ui radio checkbox">
+                                                    <input type="radio" name="bank" tabindex="0" class="hidden">
+                                                    <label>Mandiri</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <div class="ui segment">
+                                                <div class="ui radio checkbox">
+                                                    <input type="radio" name="bank" tabindex="0" class="hidden">
+                                                    <label>BNI</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <form class="ui form" action="index.html" method="" id="billing-detail">
 
-                            <div class="inline three fields ekspedisi">
-                                <label>Pilih pembayaran</label>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>JNE</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>TIKI</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>Si Cepat</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="two fields">
-                                <div class="required field">
-                                    <label for="handphone">Nomor handphone</label>
-                                    <input type="tel" name="handphone" placeholder="0812 34567890">
-                                </div>
-                                <div class="field">
-                                    <label for="telepon">Nomor telepon rumah/kantor</label>
-                                    <input type="tel" name="telepon" placeholder="021 2345678">
-                                </div>
-                            </div>
-
-                            <div class="three fields">
-                                <div class="required field">
-                                    <label for="provinsi-checkout">Provinsi</label>
-                                    <select class="ui search dropdown" id="provinsi-checkout" name="provinsi-checkout">
-                                        <option value="" selected>Pilih provinsi kamu</option>
-                                        <option value="aceh">Aceh</option>
-                                        <option value="bali">Bali</option>
-                                        <option value="babel">Bangka Belitung</option>
-                                        <option value="banten">Banten</option>
-                                        <option value="kepri">Kepulauan Riau</option>
-                                    </select>
-                                </div>
-                                <div class="required field">
-                                    <label for="kota-checkout">Kota/Kabupaten</label>
-                                    <select class="ui search dropdown" id="kota-checkout" name="kota-checkout">
-                                        <option value="" selected>Pilih kota kamu</option>
-                                        <option value="batam" data-chained="kepri">Batam</option>
-                                        <option value="pinang" data-chained="kepri">Tanjung Pinang</option>
-                                        <option value="bintan" data-chained="kepri">Bintan</option>
-                                        <option value="kundur" data-chained="kepri">Kundur</option>
-                                        <option value="karimun" data-chained="kepri">Karimun</option>
-                                        <option value="denpasar" data-chained="bali">Denpasar</option>
-                                        <option value="bangli" data-chained="bali">Bangli</option>
-                                        <option value="badung" data-chained="bali">Badung</option>
-                                        <option value="buleleng" data-chained="bali">Buleleng</option>
-                                        <option value="serang" data-chained="banten">Serang</option>
-                                        <option value="tangerang" data-chained="banten">Tangerang</option>
-                                        <option value="cilegon" data-chained="banten">Cilegon</option>
-                                        <option value="bangka" data-chained="babel">Bangka</option>
-                                        <option value="belitung" data-chained="babel">Belitung</option>
-                                    </select>
-                                </div>
-                                <div class="required field">
-                                    <label for="kodepos">Kode Pos</label>
-                                    <input type="number" name="kodepos" placeholder="Misal: 29433">
-                                </div>
-                            </div>
-
-                            <div class="required field">
-                                <label for="alamat">Alamat pengiriman</label>
-                                <textarea name="alamat" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"></textarea>
-                            </div>
-
-                            <div class="inline three fields ekspedisi">
-                                <label>Ekspedisi apa?</label>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>JNE</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>TIKI</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="fruit" tabindex="0" class="hidden">
-                                            <label>Si Cepat</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="ui segment seamless">
-                                <div class="field">
-                                    <div class="ui slider checkbox dropshipper">
-                                        <input type="checkbox" tabindex="0" class="hidden">
-                                        <label>Saya mengirim barang ini kepada orang lain atas nama saya</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="two fields" id="dropshipper-field">
-                                <div class="field">
-                                    <label for="">Nama saya sebagai dropshipper</label>
-                                    <input type="text" name="" placeholder="John Doe">
-                                </div>
-                                <div class="field">
-                                    <label for="">Institusi/organisasi saya sebagai dropshipper</label>
-                                    <input type="text" name="" placeholder="CV Megah Jaya">
-                                </div>
-                            </div>
 
                             <input type="submit" class="ui fluid button" id="billing" value="Lanjut">
                         </form>

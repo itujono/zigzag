@@ -35,9 +35,9 @@
     }
     &.checkout {
         grid-template-areas:
-            "h h h h h h h h h h h h"
+            ". h h h h h h h h h h ."
             ". . . m m m m m m . . ."
-            "f f f f f f f f f f f f";
+            ". f f f f f f f f f f .";
         background-color: #f9f9f9;
     }
 }
@@ -894,7 +894,7 @@ a.ui.card:hover,
     }
 }
 
-.ekspedisi {
+.fields.ekspedisi {
     .field {
         &:last-of-type {
             padding-right: 0 !important;
@@ -942,6 +942,20 @@ a.ui.card:hover,
         }
     }
 }
+
+.bank-transfer {
+    width: initial !important;
+    .content {
+        .text {
+            margin-bottom: 2em;
+        }
+    }
+    .transfer {
+        margin: 0;
+    }
+}
+
+
 
 
 
