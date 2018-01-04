@@ -14,6 +14,9 @@
                 } elseif (strpos($act, 'Berhasil Keluar') == true) {
                     $icon = 'exit_to_app';
                     $style = 'timeline_icon_danger';
+                } elseif (strpos($act, 'tidak berhasil') == true) {
+                    $icon = 'error';
+                    $style = 'timeline_icon_danger';
                 } else {
                     $icon = 'error';
                     $style = 'timeline_icon_warning';

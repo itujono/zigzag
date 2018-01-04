@@ -1,0 +1,25 @@
+@media (max-width: 768px) {
+    #app {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-template-rows: auto;
+        grid-template-areas: "h" "s" "m" "f";
+    }
+
+    .blackish.column {
+        &:before, &:after {
+            display: none;
+        }
+    }
+
+    .item-detail {
+        .quantity-select {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .field {
+                display: block;
+                margin-bottom: 1em;
+            }
+        }
+    }
+}

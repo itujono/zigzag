@@ -1,0 +1,16 @@
+// vars
+
+$tosca: #58dcb9;
+$red: #f92626;
+$yellow: #fed501;
+$boxShadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1);
+$goldBrown: #c3943c;
+$lightBlue: #f7fbff;
+$defaultSize: 1em;
+
+@mixin goldGradient {
+    color: $goldBrown;
+    background: linear-gradient(left,rgba(195,148,60,.5),#c3943c,#ffe09e,#c3943c,rgba(195,148,60,.5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
