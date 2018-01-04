@@ -37,7 +37,7 @@ class Login extends CI_Controller {
 			$countencrypt = strlen($this->User_m->hash($pass));
 
 			if($attemptslogin == true){
-
+				record_activity('Account Terkunci');
 				$data = array(
 					'title' => 'Error!',
 					'style' => 'is-warning',
@@ -48,6 +48,7 @@ class Login extends CI_Controller {
 			}
 
 			if ($countencrypt > 128 OR $countencrypt < 128) {
+				record_activity('Account Terkunci');
 				$data = array(
 					'title' => 'Error!',
 					'style' => 'is-warning',
@@ -67,16 +68,17 @@ class Login extends CI_Controller {
 				
 				$data['lastloginADMIN'] = date("Y-m-d H:i:s");
 				$this->User_m->save($data, $checkid->idADMIN);
+				record_activity('Berhasil login');
 				$data = array(
 		            'title' => 'Welcome!',
 		            'text' => 'Hallo, Selamat datang '. $this->session->userdata('Email').' !',
 		            'type' => 'success'
 		        );
 		        $this->session->set_flashdata('message',$data);
-				redirect('administrator/dashboard/index_dashboard');
+				redirect('zigzagadmin/dashboard/index_dashboard');
 
 			} elseif($this->User_m->login($email, $pass) == "NOT ACTIVE"){
-
+				record_activity('Account telah di Non-Aktifkan setelah mencoba login');
 				$data = array(
 					'title' => 'Maaf!',
 		            'text' => 'Akun anda telah di Non-Aktifkan',
@@ -93,7 +95,7 @@ class Login extends CI_Controller {
 				$data['idADMIN'] = $logindata_admin->idADMIN;
 				$data['timeATTEMPTS'] = time();
 				$this->Attempts_m->insertdatabrute_admin($data);
-
+				record_activity('Tidak berhasil login katasandi atau email salah');
 				$data = array(
 					'title' => 'Warning!',
 			  		'text' => 'email atau kata sandi yang anda masukkan salah',
@@ -104,6 +106,7 @@ class Login extends CI_Controller {
 			}
 			
 		} else {
+			record_activity('Tidak berhasil login format email atau katasandi salah');
 			$data = array(
 				'title' => 'Warning!',
 	            'text' => 'Silakan ulangi email anda kata sandi anda dibawah!',
@@ -115,6 +118,7 @@ class Login extends CI_Controller {
 	}
 
 	public function Logout (){
+		record_activity('Berhasil Keluar');
 		$this->User_m->logout();
 		$data = array(
 			'title' => 'Success',
@@ -132,6 +136,7 @@ class Login extends CI_Controller {
 	    $idlogin_admin = $this->User_m->checkuser($email)->row();
 
 	    if(empty($idlogin_admin)){
+	    	record_activity('Akun tidak terdaftar');
 	    	$data = array(
 	    		'title' => 'Error!',
 				'style' => 'is-warning',

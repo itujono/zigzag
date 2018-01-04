@@ -12,6 +12,7 @@ class Changepassword extends Admin_Controller {
 	    if(!empty($this->session->flashdata('message'))) {
             $data['message'] = $this->session->flashdata('message');
         }
+        record_activity('Mengunjungi Halaman Rubah Password');
 		$data['subview'] = $this->load->view($this->data['backendDIR'].'changepassword', $data, TRUE);
 		$this->load->view('templates/_layout_base',$data);
 	}
@@ -37,6 +38,7 @@ class Changepassword extends Admin_Controller {
 			$renewpassword = $this->User_m->hash($this->input->post('repassword'));
 
 			if($password != $renewpassword){
+				record_activity('Error katasandi baru tidak sama dengan form konfirmasi katasandi');
 				$data = array(
 		            'title' => 'Maaf!',
 		            'text' => 'password baru kamu tidak sama dengan form konfirmasi password baru, mohon ulangi',
@@ -53,7 +55,7 @@ class Changepassword extends Admin_Controller {
 				$data['passwordADMIN'] = $this->User_m->hash($this->input->post('password'));
 				$this->User_m->save($data, $ids);
 				if($this->sendemailnotifforgotpasswordadmin()){
-
+					record_activity('Rubah password sukses');
 					$data = array(
 						'title' => 'Sukses',
 						'text' => 'Perubahan kata sandi telah berhasil dilakukan, silakan masuk kembali untuk memulai',
@@ -64,7 +66,7 @@ class Changepassword extends Admin_Controller {
 				}
 
 			} else {
-
+				record_activity('Rubah password error kata sandi lama tidak sama dengan yang di masukkan sebelumnya');
 				$data = array(
 					'title' => 'Terjadi Kesalahan',
 					'text' => 'Maaf, kami tidak bisa merubah kata sandi anda, karena kata sandi lama anda tidak sama dengan yang anda masukkan sebelumnya, Mohon ulangi!.',
@@ -74,6 +76,7 @@ class Changepassword extends Admin_Controller {
 				redirect($_SERVER['HTTP_REFERER']);
 			}
 		} else {
+			record_activity('Rubah password format salah');
 			$data = array(
 	            'title' => 'Terjadi Kesalahan',
 	            'text' => 'Maaf, mohon ulangi inputan form anda dibawah.',
@@ -85,6 +88,7 @@ class Changepassword extends Admin_Controller {
 	}
 
 	public function sendemailnotifforgotpasswordadmin() {
+		record_activity('Email rubah password berhasil dikirim');
 		$emailADMIN = $this->data['emailadmin'];
 
 		$from_email = 'no-reply@hooplarentalmainan.com';

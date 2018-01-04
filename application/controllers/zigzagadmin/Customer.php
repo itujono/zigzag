@@ -22,7 +22,7 @@ class Customer extends Admin_Controller {
 		if(!empty($this->session->flashdata('message'))) {
             $data['message'] = $this->session->flashdata('message');
         }
-
+        record_activity('Mengunjungi halaman customer');
 		$data['subview'] = $this->load->view($this->data['backendDIR'].'general_customer', $data, TRUE);
 		$this->load->view('templates/_layout_base',$data);
 	}
@@ -31,6 +31,7 @@ class Customer extends Admin_Controller {
 		$id = decode(urldecode($id));
 		if($id != 0){
 			$this->Customer_m->delete($id);
+			record_activity('Hapus customer berhasil');
 			$data = array(
                     'title' => 'Sukses',
                     'text' => 'Penghapusan Data berhasil dilakukan',
@@ -39,10 +40,11 @@ class Customer extends Admin_Controller {
                 $this->session->set_flashdata('message',$data);
                 redirect('zigzagadmin/users/index_customer');
 		}else{
+			record_activity('Hapus customer error');
 			$data = array(
-	            'title' => 'Terjadi Kesalahan',
-	            'text' => 'Maaf, data tidak berhasil dihapus silakan coba beberapa saat kembali',
-	            'type' => 'error'
+		            'title' => 'Terjadi Kesalahan',
+		            'text' => 'Maaf, data tidak berhasil dihapus silakan coba beberapa saat kembali',
+		            'type' => 'error'
 		        );
 		        $this->session->set_flashdata('message',$data);
 		        $this->index_customer();

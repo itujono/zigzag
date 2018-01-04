@@ -44,41 +44,11 @@ function selectall_menu_active($parent=NULL, $child=NULL, $session=NULL){
     return $data;
 }
 
-function selectall_category_active(){
-    $CI =& get_instance();
-    $CI->db->select('namaCATEGORY, statusCATEGORY');
-    $CI->db->from('category_rental');
-    $CI->db->where('statusCATEGORY', 1);
-
-    $data = $CI->db->get()->result();
-    return $data;
-}
-
 function selectall_user_active(){
     $CI =& get_instance();
     $CI->db->select('*');
     $CI->db->from('users_admin');
     $CI->db->where('statusADMIN', 1);
-
-    $data = $CI->db->get()->result();
-    return $data;
-}
-
-function selectall_category_trivia_active(){
-    $CI =& get_instance();
-    $CI->db->select('namaCATTRIVIA, statusCATTRIVIA');
-    $CI->db->from('category_trivia');
-    $CI->db->where('statusCATTRIVIA', 1);
-
-    $data = $CI->db->get()->result();
-    return $data;
-}
-
-function selectall_category_sale_active(){
-    $CI =& get_instance();
-    $CI->db->select('namaCATSALE, statusCATSALE');
-    $CI->db->from('category_sale');
-    $CI->db->where('statusCATSALE', 1);
 
     $data = $CI->db->get()->result();
     return $data;
@@ -223,84 +193,6 @@ function encodingdata($json=0, $type=0, $diberikanaward_about=0, $tahunaward_abo
     return json_encode($jj);
 }
 
-function encodingdata_polling($json=0, $type=0){
-    
-    if($type == 0) {
-        $jj = array();
-        foreach ($json as $key => $value) {
-            $jj[]=array($value);
-        }
-    } else {
-        $jj = $json;
-    }
-    return json_encode($jj);
-}
-
-function select_row_about(){
-    $CI =& get_instance();
-    $CI->db->cache_on();
-    $CI->db->select('*');
-    $CI->db->from('about');
-    $CI->db->where('idABOUT', 1);
-    $CI->db->limit(1);
-    $CI->db->order_by('idABOUT', 'asc');
-    
-    $data = $CI->db->get()->row();
-    return $data;
-}
-
-function select_row_intro_news(){
-    $CI =& get_instance();
-    $CI->db->cache_on();
-    $CI->db->select('*');
-    $CI->db->from('intro_news');
-    $CI->db->where('idINTRONEWS', 1);
-    $CI->db->limit(1);
-    $CI->db->order_by('idINTRONEWS', 'asc');
-    
-    $data = $CI->db->get()->row();
-    return $data;
-}
-
-function get_thumbnail_from_youtube($link=NULL){
-    if($link != NULL){
-        // YouTube video url
-        $videoURL = $link;
-        $urlArr = explode("/",$videoURL);
-        $urlArrNum = count($urlArr);
-        // Youtube video ID
-        $youtubeVideoId = $urlArr[$urlArrNum - 1];
-        // Generate youtube thumbnail url
-        $youtubeVideoId = str_replace(['watch','?','v='], ['','',''], $youtubeVideoId);
-        $thumbURL = 'http://img.youtube.com/vi/'.$youtubeVideoId.'/hqdefault.jpg';
-        // Display thumbnail image
-        return $thumbURL;
-    } else {
-        return 'YOUTUBE VIDEO LINK - REQUIRED';
-        exit;
-    }
-}
-
-function counter_choice($id=NULL) {
-    $CI =& get_instance();
-
-    $CI->db->select('idUSER');
-    $CI->db->from('choice_polling');
-    $CI->db->where('idPOLLING', $id);
-
-    $data = $CI->db->get()->num_rows();
-    return $data;
-}
-
-function get_data_user_row($id){
-    $CI =& get_instance();
-
-    $CI->db->select('ageUSER');
-    $CI->db->from('users');
-    $CI->db->where('idUSER', $id);
-    $data = $CI->db->get()->row();
-    return $data;
-}
 
 function selectall_menu_name_row($id){
     $CI =& get_instance();
@@ -352,50 +244,32 @@ function find_menu_for_admin_user($admin, $menu){
     return $data;
 }
 
-function selectall_category_for_navigation_frontend(){
+function browseragent(){
     $CI =& get_instance();
-    $CI->db->select('idCAT, nameCAT');
-    $CI->db->from('category_article');
-
-    $data = $CI->db->get()->result();
-    return $data;
-}
-
-function getnumbervoting_for_admin($id=NULL) {
-    $CI =& get_instance();
-    if($id != NULL){
-        $where_id = 'WHERE idPOLLING = '.$id.'';
-    } else {
-        $where_id = '';
+    if ($CI->agent->is_browser()){
+    $agent = $CI->agent->browser();
+    }elseif ($CI->agent->is_mobile()){
+        $agent = $CI->agent->mobile();
+    }else{
+        $agent = 'Unindentified device';
     }
-    $result = $CI->db->query("SELECT nameCHOICE, idPOLLING, SUM(valueCHOICE) AS vote_value, (SELECT SUM(valueCHOICE) FROM nyat_choice_polling $where_id) AS total FROM nyat_choice_polling $where_id GROUP BY nameCHOICE");
-    $data = $result->result();
-    return $data;
+    return $agent;
+}
+
+function record_activity($activity){
+    $CI =& get_instance();
+    $time = indonesian_date(date("Y-m-d H:i:s"), 'l, j F Y | H:i','');
+    if(!empty($CI->session->userdata('Name'))){
+       $name = $CI->session->userdata('Name'); 
+    } else {
+        $name = 'Unknown user - using '.browseragent().' - ip:'.$CI->input->ip_address();
+    }
     
-}
-
-function getnumbervoting_for_chart_labels($id, $vote_value_total=NULL) {
-    $CI =& get_instance();
-    $where_id = 'WHERE idPOLLING = '.$id.'';
-
-    $result = $CI->db->query("SELECT nameCHOICE FROM nyat_choice_polling $where_id GROUP BY nameCHOICE");
-    $data = $result->result();
-    return json_encode($data);
-}
-
-function select_all_social_media(){
-    $CI =& get_instance();
-    $CI->db->select('nameSOCIAL, linkSOCIAL');
-    $CI->db->from('social_media');
-    $data = $CI->db->get()->result();
-    return $data;
-}
-
-function select_video_gallery_at_home(){
-    $CI =& get_instance();
-    $CI->db->select('ishomevideoGALLERY, titleGALLERY, linkvideoGALLERY');
-    $CI->db->from('gallery');
-    $CI->db->where('ishomevideoGALLERY', 1);
-    $data = $CI->db->get()->row();
-    return $data;
+    $data = $name . " - " . $activity . " - Pada waktu " . $time . "\r\n";
+    $ret = file_put_contents('assets/record/record_data.txt', $data, FILE_APPEND | LOCK_EX);
+    if($ret === false) {
+        die('There was an error writing this file');
+    } else {
+        return true;
+    }
 }
