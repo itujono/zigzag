@@ -20,7 +20,7 @@ class Dashboard extends Admin_Controller {
 		if(!empty($this->session->flashdata('message'))) {
             $data['message'] = $this->session->flashdata('message');
         }
-
+        record_activity('Mengunjungi halaman dashboard');
 		$data['subview'] = $this->load->view($this->data['backendDIR'].'dashboard', $data, TRUE);
 		$this->load->view('templates/_layout_base',$data);
 	}

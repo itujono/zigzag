@@ -35,7 +35,7 @@ class Menu_admin extends Admin_Controller{
 		if(!empty($this->session->flashdata('message'))) {
             $data['message'] = $this->session->flashdata('message');
         }
-
+        record_activity('Mengunjungi halaman menu admin');
 		$data['subview'] = $this->load->view($this->data['backendDIR'].'menu_admin', $data, TRUE);
 		$this->load->view('templates/_layout_base',$data);
 	}
@@ -55,7 +55,7 @@ class Menu_admin extends Admin_Controller{
 			
 			$data = $this->security->xss_clean($data);
 			$idsave = $this->Menu_m->save($data, $id);
-			
+			record_activity('Penyimpanan data menu berhasil');
 	  		$data = array(
             	'title' => 'Sukses',
                 'text' => 'Penyimpanan Data berhasil dilakukan',
@@ -64,6 +64,7 @@ class Menu_admin extends Admin_Controller{
 	    	$this->session->set_flashdata('message', $data);
 	  		redirect('zigzagadmin/menu_admin/index_menu');
 		} else {
+				record_activity('Penyimpanan data menu tidak berhasil format salah');
 				$data = array(
 		            'title' => 'Terjadi Kesalahan',
 		            'text' => 'mohon ulangi inputan form anda dibawah.',
@@ -78,6 +79,7 @@ class Menu_admin extends Admin_Controller{
 		$id = decode(urldecode($id));
 		if($id != 0){
 			$this->Menu_m->delete($id);
+			record_activity('Penghapusan data menu berhasil');
 			$data = array(
                     'title' => 'Sukses',
                     'text' => 'Penghapusan Data berhasil dilakukan',
@@ -86,6 +88,7 @@ class Menu_admin extends Admin_Controller{
                 $this->session->set_flashdata('message',$data);
                 redirect('zigzagadmin/menu_admin/index_menu');
 		}else{
+			record_activity('Penyimpanan data menu tidak berhasil');
 			$data = array(
 	            'title' => 'Terjadi Kesalahan',
 	            'text' => 'Maaf, data tidak berhasil dihapus silakan coba beberapa saat kembali',

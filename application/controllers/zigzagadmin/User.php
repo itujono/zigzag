@@ -34,7 +34,7 @@ class User extends Admin_Controller {
 		if(!empty($this->session->flashdata('message'))) {
             $data['message'] = $this->session->flashdata('message');
         }
-
+        record_activity('Mengunjungi halaman user admin');
 		$data['subview'] = $this->load->view($this->data['backendDIR'].'user', $data, TRUE);
 		$this->load->view('templates/_layout_base',$data);
 	}
@@ -78,6 +78,7 @@ class User extends Admin_Controller {
 				}
 				
 			}
+			record_activity('Penyimpanan user admin berhasil');
 			$data = array(
             	'title' => 'Sukses',
                 'text' => 'Penyimpanan Data berhasil dilakukan',
@@ -87,6 +88,7 @@ class User extends Admin_Controller {
 	  		redirect('zigzagadmin/user/index_user_admin');
 	  		
 		} else {
+			record_activity('Penyimpanan user admin tidak berhasil format salah');
 				$data = array(
 		            'title' => 'Terjadi Kesalahan',
 		            'text' => 'mohon ulangi inputan form anda.',
@@ -101,6 +103,7 @@ class User extends Admin_Controller {
 		$id = decode(urldecode($id));
 		if($id != 0){
 			$this->User_m->delete($id);
+			record_activity('Penghapusan user admin berhasil');
 			$data = array(
                     'title' => 'Sukses',
                     'text' => 'Penghapusan Data berhasil dilakukan',
@@ -109,6 +112,7 @@ class User extends Admin_Controller {
                 $this->session->set_flashdata('message',$data);
                 redirect('zigzagadmin/user/index_user_admin');
 		}else{
+			record_activity('Penghapusan user admin tidak berhasil');
 			$data = array(
 	            'title' => 'Terjadi Kesalahan',
 	            'text' => 'Maaf, data tidak berhasil dihapus silakan coba beberapa saat kembali',
@@ -123,6 +127,7 @@ class User extends Admin_Controller {
 		$id = decode(urldecode($id));
 		if($id != 0){
 			$this->Menu_join_admin_m->delete($id);
+			record_activity('Penghapusan menu terkait admin berhasil');
 			$data = array(
                     'title' => 'Sukses',
                     'text' => 'Penghapusan Data berhasil dilakukan',
@@ -131,6 +136,7 @@ class User extends Admin_Controller {
                 $this->session->set_flashdata('message',$data);
                 redirect('zigzagadmin/user/index_user_admin');
 		}else{
+				record_activity('Penghapusan menu terkait admin tidak berhasil');
 			$data = array(
 	            'title' => 'Terjadi Kesalahan',
 	            'text' => 'Maaf, data tidak berhasil dihapus silakan coba beberapa saat kembali',
