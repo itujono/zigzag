@@ -561,8 +561,8 @@ $(document).ready(function() {
 
     $("#shipping-address #shipping").on("click", function(e) {
         e.preventDefault();
-        $("#step-shipping").transition("fly right", 200);
-        $("#step-billing").transition("fly left", 200);
+        $("#form-header").dimmer("show");
+        console.log("Oke coppp!");
     });
 
     $(".ui.sticky").sticky({
