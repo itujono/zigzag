@@ -273,3 +273,26 @@ function record_activity($activity){
         return true;
     }
 }
+
+function selectall_category_name_row($id){
+    $CI =& get_instance();
+    $CI->db->select('nameCATEGORY');
+    $CI->db->from('category_barang');
+    $CI->db->where('idCATEGORY', $id);
+    $data = $CI->db->get()->row();
+    return $data;
+}
+
+function selectall_category_for_frontend($parent=NULL, $child=NULL){
+    $CI =& get_instance();
+    $CI->db->select('*');
+    $CI->db->from('category_barang');
+    if($parent != NULL){
+        $CI->db->where('parentCATEGORY', 0);
+    }
+    if($child != NULL){
+        $CI->db->where('parentCATEGORY !=', 0);
+    }
+    $data = $CI->db->get()->result();
+    return $data;
+}

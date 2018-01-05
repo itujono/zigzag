@@ -19,14 +19,29 @@
     <div class="app" id="app">
         <header>
             <div class="ui pointing menu main">
-                <a href="index.html" class="active item">Home</a>
+                <a href="<?php echo base_url();?>" class="active item">Home</a>
+                <?php
+                $category_parent = selectall_category_for_frontend(1);
+                $category_child = selectall_category_for_frontend(NULL,1);
+                if(!empty($category_parent)){
+                    foreach ($category_parent as $parent) {
+                ?>
                 <div class="ui pointing dropdown link category item">
-                    <span class="text">Bags</span>
+                    <span class="text"><?php echo $parent->nameCATEGORY;?></span>
+                    <?php
+                    foreach ($category_child as $child) {
+                        if($parent->idCATEGORY == $child->parentCATEGORY){
+                    ?>
                     <i class="dropdown icon"></i>
                     <div class="menu category-content">
-                        <a href="" class="item">Pouch Bag</a>
-                        <a href="" class="item">Pouch Bag</a>
-                        <div class="item">
+                        <?php
+                        foreach ($category_child as $child2) {
+                            if($child->idCATEGORY == $child2->parentCATEGORY){
+                        ?>
+                        <a href="" class="item"><?php echo $child->nameCATEGORY;?></a>
+                            <?php } ?>
+                        <?php } ?>
+                        <!-- <div class="item">
                             <i class="dropdown icon"></i>
                             <span class="text">Bag Keren</span>
                             <div class="menu">
@@ -35,45 +50,13 @@
                                 <a href="#" class="item">Bag Parah Keren</a>
                                 <a href="#" class="item">Bag Ren</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
+                        <?php } ?>
+                    <?php } ?>
                 </div>
-                <div class="ui pointing dropdown link category item">
-                    <span class="text">Shoes</span>
-                    <i class="dropdown icon"></i>
-                    <div class="menu category-content">
-                        <a href="" class="item">Pouch Shoes</a>
-                        <a href="" class="item">Pouch Shoes</a>
-                        <div class="item">
-                            <i class="dropdown icon"></i>
-                            <span class="text">Shoes Keren</span>
-                            <div class="menu">
-                                <a href="#" class="item">Shoes Lumayan Keren</a>
-                                <a href="#" class="item">Shoes Cukup Keren</a>
-                                <a href="#" class="item">Shoes Parah Keren</a>
-                                <a href="#" class="item">Shoes Ren</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui pointing dropdown link category item">
-                    <span class="text">Lingerie</span>
-                    <i class="dropdown icon"></i>
-                    <div class="menu category-content">
-                        <a href="" class="item">Pouch Lingerie</a>
-                        <div class="item">
-                            <i class="dropdown icon"></i>
-                            <span class="text">Lingerie Keren</span>
-                            <div class="menu">
-                                <a href="#" class="item">Lingerie Lumayan Keren</a>
-                                <a href="#" class="item">Lingerie Cukup Keren</a>
-                                <a href="#" class="item">Lingerie Parah Keren</a>
-                                <a href="#" class="item">Lingerie Ren</a>
-                            </div>
-                        </div>
-                        <a href="" class="item">Pouch Lingerie</a>
-                    </div>
-                </div>
+                    <?php } ?>
+                <?php } ?>
                 <!-- /////// -->
                 <div class="right menu">
                     <div class="item">

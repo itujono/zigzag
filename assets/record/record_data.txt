@@ -45,3 +45,67 @@ Superadmin ZIGZAG - Berhasil Keluar - Pada waktu Kamis, 4 Januari 2018 | 15:36
 Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/img/user.jpg - Pada waktu Kamis, 4 Januari 2018 | 15:36 
 Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/img/user.jpg - Pada waktu Kamis, 4 Januari 2018 | 15:38 
 Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/img/user.jpg - Pada waktu Kamis, 4 Januari 2018 | 15:38 
+Unknown user - using Chrome - ip:::1 - Tidak berhasil login katasandi atau email salah - Pada waktu Kamis, 4 Januari 2018 | 20:17 
+Superadmin ZIGZAG - Berhasil login - Pada waktu Kamis, 4 Januari 2018 | 20:17 
+Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Kamis, 4 Januari 2018 | 20:17 
+Superadmin ZIGZAG - Mengunjungi halaman menu admin - Pada waktu Kamis, 4 Januari 2018 | 20:47 
+Superadmin ZIGZAG - Penyimpanan data menu berhasil - Pada waktu Kamis, 4 Januari 2018 | 20:48 
+Superadmin ZIGZAG - Mengunjungi halaman menu admin - Pada waktu Kamis, 4 Januari 2018 | 20:48 
+Superadmin ZIGZAG - Penyimpanan data menu berhasil - Pada waktu Kamis, 4 Januari 2018 | 20:49 
+Superadmin ZIGZAG - Mengunjungi halaman menu admin - Pada waktu Kamis, 4 Januari 2018 | 20:49 
+Superadmin ZIGZAG - Penyimpanan data menu berhasil - Pada waktu Kamis, 4 Januari 2018 | 20:52 
+Superadmin ZIGZAG - Mengunjungi halaman menu admin - Pada waktu Kamis, 4 Januari 2018 | 20:52 
+Superadmin ZIGZAG - Mengunjungi halaman user admin - Pada waktu Kamis, 4 Januari 2018 | 20:52 
+Superadmin ZIGZAG - Mengunjungi halaman user admin - Pada waktu Kamis, 4 Januari 2018 | 20:52 
+Superadmin ZIGZAG - Penyimpanan user admin berhasil - Pada waktu Kamis, 4 Januari 2018 | 20:52 
+Superadmin ZIGZAG - Mengunjungi halaman user admin - Pada waktu Kamis, 4 Januari 2018 | 20:52 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 20:52 
+Superadmin ZIGZAG - Mengunjungi halaman Activity - Pada waktu Kamis, 4 Januari 2018 | 20:53 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 20:53 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 20:54 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 20:54 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 20:55 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 20:56 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 20:56 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 20:57 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 20:57 
+Superadmin ZIGZAG - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/zigzagadmin/category_barang/savecategorybarang - Pada waktu Kamis, 4 Januari 2018 | 20:58 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 20:58 
+Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 20:58 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 20:58 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 20:59 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:01 
+Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 21:02 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:02 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:02 
+Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 21:03 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:03 
+Superadmin ZIGZAG - Penghapusan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 21:03 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:03 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:08 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:31 
+Superadmin ZIGZAG - Penghapusan data kategori barang tidak berhasil data kategori masih terkait dengan data kategori yang lain - Pada waktu Kamis, 4 Januari 2018 | 21:31 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:31 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:31 
+Superadmin ZIGZAG - Penghapusan data kategori barang tidak berhasil data kategori masih terkait dengan data kategori yang lain - Pada waktu Kamis, 4 Januari 2018 | 21:31 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:31 
+Superadmin ZIGZAG - Penghapusan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 21:31 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:31 
+Superadmin ZIGZAG - Penghapusan data kategori barang tidak berhasil data kategori masih terkait dengan data kategori yang lain - Pada waktu Kamis, 4 Januari 2018 | 21:32 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:32 
+Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 21:32 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:32 
+Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 21:33 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:33 
+Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 21:33 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:33 
+Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 21:34 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:34 
+Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 21:34 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:34 
+Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 21:34 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:34 
+Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 21:35 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:35 
+Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 21:35 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:35 

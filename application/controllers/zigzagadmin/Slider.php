@@ -109,6 +109,7 @@ class Slider extends Admin_Controller {
 		$id = decode(urldecode($id));
 		if($id != 0){
 			$this->Slider_m->delete($id);
+			record_activity('Penghapusan data slider berhasil');
 			$data = array(
                     'title' => 'Sukses',
                     'text' => 'Penghapusan Data berhasil dilakukan',
@@ -117,6 +118,7 @@ class Slider extends Admin_Controller {
                 $this->session->set_flashdata('message',$data);
                 redirect('zigzagadmin/slider/index_slider');
 		}else{
+			record_activity('Penghapusan data slider tidak berhasil');
 			$data = array(
 	            'title' => 'Terjadi Kesalahan',
 	            'text' => 'Maaf, data tidak berhasil dihapus silakan coba beberapa saat kembali',
@@ -139,6 +141,7 @@ class Slider extends Admin_Controller {
 				rmdir($path);
 			}
 		}
+		record_activity('Penghapusan data gambar slider berhasil');
 		$data = array(
             'title' => 'Sukses',
             'text' => 'Penghapusan Gambar berhasil dilakukan',
