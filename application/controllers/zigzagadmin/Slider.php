@@ -12,7 +12,8 @@ class Slider extends Admin_Controller {
 		$data['addONS'] = 'plugins_datatables';
 		$id = decode(urldecode($id));
 		
-		$data['listslider'] = $this->Slider_m->selectall_slider()->result();
+		$data['listslider'] = $this->Slider_m->selectall_slider(NULL,NULL)->result();
+		
 		foreach ($data['listslider'] as $key => $value) {
 			$map = directory_map('assets/upload/slider/pic-slider-'.folenc($data['listslider'][$key]->idSLIDER), FALSE, TRUE);
 			if(!empty($map)){

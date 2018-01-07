@@ -8,21 +8,47 @@ $datatables = '
     <script src="'.base_url().$this->data['asback'].'js/custom/datatables/datatables.uikit.min.js"></script>
     <script src="'.base_url().$this->data['asback'].'js/pages/plugins_datatables.min.js"></script>
 ';
-$forms_advanced='<script src="'.base_url().$this->data['asback'].'js/pages/forms_advanced.js"></script>';
+$forms_advanced='<script src="'.base_url().$this->data['asback'].'js/pages/forms_advanced.min.js"></script>';
 $forms_validation='<script> altair_forms.parsley_validation_config();</script><script src="'.base_url().$this->data['asbackbower'].'parsleyjs/dist/parsley.min.js"></script>
     <script src="'.base_url().$this->data['asback'].'js/pages/forms_validation.min.js"></script>';
-
+$forms_mask='<script src="'.base_url().$this->data['asbackbower'].'jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>';
+$forms_rangeslider='<script src="'.base_url().$this->data['asbackbower'].'ion.rangeslider/js/ion.rangeSlider.min.js"></script>';
 ?>
 
 <?php
 if($plugins == 'plugins_datatables'){
 ?>
-        
 <?php echo $datatables;?>
-
 <?php echo $forms_advanced;?>
-
 <?php echo $forms_validation;?>
+<!-- tinymce -->
+<script src="<?php echo base_url().$this->data['asbackbower']; ?>tinymce/tinymce.min.js"></script>
+<script>
+    $(function() {
+    altair_wysiwyg._tinymce();
+});
+
+// wysiwyg editors
+altair_wysiwyg = {
+    _tinymce: function() {
+        var $tinymce = '#wysiwyg_tinymces';
+        if($($tinymce).length) {
+            tinymce.init({
+                skin_url: '<?php echo base_url().$this->data['asback']; ?>skins/tinymce/material_design',
+                selector: "#wysiwyg_tinymces",
+                plugins: [
+                    "advlist autolink lists link image charmap print preview anchor",
+                    "searchreplace visualblocks code fullscreen",
+                    "insertdatetime media table contextmenu paste"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+            });
+            
+        }
+    }
+};
+</script>
+
 
 <?php
 } elseif($plugins == 'plugins_dashboard') { 

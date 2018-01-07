@@ -36,12 +36,17 @@ class Category_barang_m extends MY_Model{
 		return $this->db->get();
 	}
 
-	public function select_category_barang_drop(){
+	public function select_category_barang_drop($only_child=NULL){
         $this->db->select('idCATEGORY, nameCATEGORY');
         $this->db->from('category_barang');
+        $parent = "Parent";
+        if ($only_child != NULL) {
+			$this->db->where('parentCATEGORY !=',0);
+			$parent = "";
+		}
         $ddown = array();
         foreach ($this->db->get()->result() as $value) {
-            $ddown[0] = "Parent";
+            $ddown[0] = $parent;
             $ddown[$value->idCATEGORY] = $value->nameCATEGORY;
         }
         return $ddown;

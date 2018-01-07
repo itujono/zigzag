@@ -26,12 +26,8 @@ class Slider_m extends MY_Model{
 		return $slider;
 	}
 
-	public function selectall_slider($id = NULL, $slider=NULL) {
-		if($slider = NULL){
-			$this->db->select('*');
-		} else {
-			$this->db->select('idSLIDER, titleSLIDER');
-		}
+	public function selectall_slider($id = NULL) {
+		$this->db->select('*');
 		$this->db->from('slider');
 		if ($id != NULL) {
 			$this->db->where('idSLIDER',$id);

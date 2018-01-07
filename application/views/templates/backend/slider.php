@@ -95,7 +95,7 @@ $url = base_url().'zigzagadmin/'.$controller.'/'.$actions;
                             <img src="<?php echo $getslider->imageSLIDER;?>" alt="<?php echo $getslider->titleSLIDER;?>" class="img_medium"/>
                         </div>
                         <?php } else { ?>
-                          <?php echo form_upload('imgSLIDER','','class="md-input" required'); ?>
+                          <?php echo form_upload('imgSLIDER','','class="md-input" required accept="image/png, image/jpg, image/jpeg"'); ?>
                         <?php } ?>
                       </div>
                     </div>
