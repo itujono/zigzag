@@ -109,3 +109,6 @@ Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Kamis
 Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:35 
 Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Kamis, 4 Januari 2018 | 21:35 
 Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Kamis, 4 Januari 2018 | 21:35 
+Superadmin ZIGZAG - Berhasil login - Pada waktu Minggu, 7 Januari 2018 | 10:06 
+Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Minggu, 7 Januari 2018 | 10:06 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Minggu, 7 Januari 2018 | 10:06 

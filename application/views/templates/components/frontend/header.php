@@ -28,32 +28,16 @@
                 ?>
                 <div class="ui pointing dropdown link category item">
                     <span class="text"><?php echo $parent->nameCATEGORY;?></span>
-                    <?php
-                    foreach ($category_child as $child) {
-                        if($parent->idCATEGORY == $child->parentCATEGORY){
-                    ?>
                     <i class="dropdown icon"></i>
                     <div class="menu category-content">
                         <?php
-                        foreach ($category_child as $child2) {
-                            if($child->idCATEGORY == $child2->parentCATEGORY){
+                        foreach ($category_child as $child) {
+                            if($parent->idCATEGORY == $child->parentCATEGORY){
                         ?>
-                        <a href="" class="item"><?php echo $child->nameCATEGORY;?></a>
+                        <a href="#" class="item"><?php echo $child->nameCATEGORY;?></a>
                             <?php } ?>
                         <?php } ?>
-                        <!-- <div class="item">
-                            <i class="dropdown icon"></i>
-                            <span class="text">Bag Keren</span>
-                            <div class="menu">
-                                <a href="#" class="item">Bag Lumayan Keren</a>
-                                <a href="#" class="item">Bag Cukup Keren</a>
-                                <a href="#" class="item">Bag Parah Keren</a>
-                                <a href="#" class="item">Bag Ren</a>
-                            </div>
-                        </div> -->
-                    </div>
-                        <?php } ?>
-                    <?php } ?>
+                    </div>  
                 </div>
                     <?php } ?>
                 <?php } ?>
