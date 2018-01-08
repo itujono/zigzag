@@ -96,9 +96,9 @@ class Barang extends Admin_Controller {
         $this->form_validation->set_message('numeric', 'Silakan masukan hanya berupa angka');
         
 		if ($this->form_validation->run() == TRUE) {
-			$data = $this->Barang_m->array_from_post(array('idCATEGORY','nameBARANG','priceBARANG','descBARANG','materialBARANG','dimensionBARANG','weightBARANG','stockBARANG','codeBARANG','colorBARANG'));
-
-			$data['priceBARANG'] = str_replace(['Rp.',' ',','], ['','',''], $data['priceBARANG']);
+			$data = $this->Barang_m->array_from_post(array('idCATEGORY','nameBARANG','priceBARANG','descBARANG','materialBARANG','dimensionBARANG','weightBARANG','stockBARANG','codeBARANG','colorBARANG','hotBARANG'));
+			if($data['hotBARANG'] == 'on')$data['hotBARANG']=1;
+			else $data['hotBARANG']=0;
 
 			$id = decode(urldecode($this->input->post('idBARANG')));
 			if(empty($id))$id=NULL;

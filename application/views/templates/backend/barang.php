@@ -18,11 +18,18 @@
 <?php
 if(!empty($listbarang)){
   foreach ($listbarang as $barang) {
+  if($barang->hotBARANG == 1){
+      $badge = "<span class='uk-badge uk-badge-danger'>HOT!</span>";
+  } else {
+      $badge = "";
+  }
 ?>
   <div data-product-name="<?php echo $barang->nameBARANG;?>">
     <div class="md-card md-card-hover-img">
       <div class="md-card-head uk-text-center uk-position-relative">
         <div class="uk-badge uk-badge-danger uk-position-absolute uk-position-top-left uk-margin-left uk-margin-top">Rp. <?php echo number_format($barang->priceBARANG, 0,',','.'); ?></div>
+        <br>
+        <div class="uk-badge uk-badge-danger uk-position-absolute uk-position-top-left uk-margin-left uk-margin-top">Rp. <?php echo $badge; ?></div>
         <img class="md-card-head-img" src="<?php echo $barang->imageBARANG;?>" alt="<?php echo $barang->nameBARANG;?>"/>
       </div>
       <div class="md-card-content">

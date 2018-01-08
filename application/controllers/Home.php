@@ -6,6 +6,7 @@ class Home extends Frontend_Controller {
 	public function __construct (){
 		parent::__construct();
 		$this->load->model('Slider_m');
+		$this->load->model('Barang_m');
 	}
 
 	public function index() {
@@ -20,6 +21,19 @@ class Home extends Frontend_Controller {
 			} else {
 				$data['listslider'][$key]->imageSLIDER = base_url() . 'assets/upload/no-image-available.png';
 			}
+		}
+		
+		$data['barangpromo'] = $this->Barang_m->select_barang_promo()->result();
+		foreach ($data['barangpromo'] as $key => $value) {
+			$map = directory_map('assets/upload/barang/pic-barang-'.folenc($data['barangpromo'][$key]->idBARANG), FALSE, TRUE);
+			if(!empty($map)){
+				$data['barangpromo'][$key]->imageBARANG = base_url() . 'assets/upload/barang/pic-barang-'.folenc($data['barangpromo'][$key]->idBARANG).'/'.$map[0];
+				$data['barangpromo'][$key]->imageBARANG2 = base_url() . 'assets/upload/barang/pic-barang-'.folenc($data['barangpromo'][$key]->idBARANG).'/'.$map[1];
+			} else {
+				$data['barangpromo'][$key]->imageBARANG = base_url() . 'assets/upload/no-image-available.png';
+				$data['barangpromo'][$key]->imageBARANG2 = base_url() . 'assets/upload/no-image-available.png';
+			}
+
 		}
 
 		if(!empty($this->session->flashdata('message'))) {

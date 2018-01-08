@@ -285,3 +285,45 @@ Superadmin ZIGZAG - Mengunjungi halaman Detail Barang/Product ("Tas Ibu-ibu Remp
 Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Minggu, 7 Januari 2018 | 14:23 
 Superadmin ZIGZAG - Mengunjungi halaman Detail Barang/Product ("Amazing Bag") - Pada waktu Minggu, 7 Januari 2018 | 14:23 
 Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Minggu, 7 Januari 2018 | 14:27 
+Superadmin ZIGZAG - Berhasil login - Pada waktu Senin, 8 Januari 2018 | 08:48 
+Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Senin, 8 Januari 2018 | 08:48 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Senin, 8 Januari 2018 | 08:48 
+Superadmin ZIGZAG - Mengunjungi halaman Detail Barang/Product ("Tas Ibu-ibu Rempong") - Pada waktu Senin, 8 Januari 2018 | 08:49 
+Superadmin ZIGZAG - Mengunjungi halaman Detail Barang/Product ("Tas Ibu-ibu Rempong") - Pada waktu Senin, 8 Januari 2018 | 09:01 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:03 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:03 
+Superadmin ZIGZAG - Penyimpanan data barang/produk berhasil - Pada waktu Senin, 8 Januari 2018 | 09:03 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:03 
+Superadmin ZIGZAG - Mengunjungi halaman Detail Barang/Product ("Amazing Bag") - Pada waktu Senin, 8 Januari 2018 | 09:03 
+Superadmin ZIGZAG - Mengunjungi halaman Detail Barang/Product ("Amazing Bag") - Pada waktu Senin, 8 Januari 2018 | 09:05 
+Superadmin ZIGZAG - Mengunjungi halaman Detail Barang/Product ("Amazing Bag") - Pada waktu Senin, 8 Januari 2018 | 09:05 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:05 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Senin, 8 Januari 2018 | 09:06 
+Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Senin, 8 Januari 2018 | 09:06 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Senin, 8 Januari 2018 | 09:06 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:20 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Senin, 8 Januari 2018 | 09:21 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Senin, 8 Januari 2018 | 09:22 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Senin, 8 Januari 2018 | 09:22 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:22 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Senin, 8 Januari 2018 | 09:23 
+Superadmin ZIGZAG - Penyimpanan data kategori barang tidak berhasil format salah - Pada waktu Senin, 8 Januari 2018 | 09:23 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Senin, 8 Januari 2018 | 09:23 
+Superadmin ZIGZAG - Penyimpanan data kategori barang berhasil - Pada waktu Senin, 8 Januari 2018 | 09:24 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Senin, 8 Januari 2018 | 09:24 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:24 
+Superadmin ZIGZAG - Penyimpanan data barang/produk berhasil - Pada waktu Senin, 8 Januari 2018 | 09:25 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:25 
+Superadmin ZIGZAG - Mengunjungi halaman Detail Barang/Product ("Tas Ibu Sosialita") - Pada waktu Senin, 8 Januari 2018 | 09:25 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:30 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:32 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:34 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:34 
+Superadmin ZIGZAG - Penyimpanan data barang/produk berhasil - Pada waktu Senin, 8 Januari 2018 | 09:34 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:34 
+Superadmin ZIGZAG - Mengunjungi halaman Detail Barang/Product ("Tas Ibu Sosialita") - Pada waktu Senin, 8 Januari 2018 | 09:34 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:36 
+Superadmin ZIGZAG - Mengunjungi halaman Detail Barang/Product ("Tas Ibu Sosialita") - Pada waktu Senin, 8 Januari 2018 | 09:36 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:36 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:37 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Senin, 8 Januari 2018 | 09:37 

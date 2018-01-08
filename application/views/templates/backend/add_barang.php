@@ -90,23 +90,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
             </div>
             <div class="uk-grid" data-uk-grid-margin>
-              <div class="uk-width-medium-1-3 uk-margin-top">
+              <div class="uk-width-medium-1-4 uk-margin-top">
                   <label>Stok Barang</label>
                   <br>
                   <input type="number" class="md-input label-fixed" name="stockBARANG" autocomplete value="<?php echo $getbarang->stockBARANG;?>"/>
                   <p class="text-red"><?php echo form_error('stockBARANG'); ?></p>
               </div>
-              <div class="uk-width-medium-1-3 uk-margin-top">
+              <div class="uk-width-medium-1-4 uk-margin-top">
                   <label>Kode Barang</label>
                   <br>
                   <input type="text" class="md-input label-fixed" name="codeBARANG" autocomplete value="<?php echo $getbarang->codeBARANG;?>"/>
                   <p class="text-red"><?php echo form_error('codeBARANG'); ?></p>
               </div>
-              <div class="uk-width-medium-1-3 uk-margin-top">
+              <div class="uk-width-medium-1-4 uk-margin-top">
                   <label>Warna Barang</label>
                   <br>
                   <input type="text" class="md-input label-fixed" name="colorBARANG" autocomplete value="<?php echo $getbarang->colorBARANG;?>"/>
                   <p class="text-red"><?php echo form_error('colorBARANG'); ?></p>
+              </div>
+              <div class="uk-width-medium-1-4 uk-margin-top">
+                  <?php
+                    $checkdis= '';
+                    if($getbarang->hotBARANG == 1) $checkdis = 'checked' ;
+                  ?>
+                  <input type="checkbox" data-switchery <?php echo $checkdis; ?> data-switchery-size="large" data-switchery-color="#d32f2f" name="hotBARANG" id="switch_demo_large">
+                  <label for="switch_demo_large" class="inline-label"><b>Hot Produk</b></label>
               </div>
             </div>
             <div class="uk-grid" data-uk-grid-margin>

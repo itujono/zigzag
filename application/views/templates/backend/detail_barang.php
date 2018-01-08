@@ -1,6 +1,12 @@
-
+<?php
+if($getbarang->hotBARANG == 1){
+    $badge = "<span class='uk-badge uk-badge-danger'>HOT!</span>";
+} else {
+    $badge = "";
+}
+?>
 <div id="page_heading" data-uk-sticky="{ top: 48, media: 960 }">
-    <h1><?php echo $getbarang->nameBARANG;?></h1>
+    <h1><?php echo $getbarang->nameBARANG;?> <?php echo $badge;?></h1>
     <span class="uk-text-muted uk-text-upper uk-text-small"><?php echo strtoupper($getbarang->codeBARANG);?></span>
 </div>
 
@@ -80,10 +86,19 @@
                     <div class="uk-width-large-1-2">
                         <div class="uk-grid uk-grid-small">
                             <div class="uk-width-large-1-3">
-                                <span class="uk-text-muted uk-text-small">Product Name</span>
+                                <span class="uk-text-muted uk-text-small">Nama Barang/Produk</span>
                             </div>
                             <div class="uk-width-large-2-3">
-                                <span class="uk-text-large uk-text-middle"><a href="#"><?php echo $getbarang->nameBARANG;?></a></span>
+                                <span class="uk-text-large uk-text-middle"><a href="<?php echo base_url();?>zigzagadmin/barang/add_barang/<?php echo encode(urlencode($getbarang->idBARANG));?>" data-uk-tooltip title="Edit Barang/Produk?"><?php echo $getbarang->nameBARANG;?></a></span>
+                            </div>
+                        </div>
+                        <hr class="uk-grid-divider">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-large-1-3">
+                                <span class="uk-text-muted uk-text-small">Kategori</span>
+                            </div>
+                            <div class="uk-width-large-2-3">
+                                <span class="uk-text-large uk-text-middle"><?php echo $getbarang->nameCATEGORY;?></span>
                             </div>
                         </div>
                         <hr class="uk-grid-divider">
