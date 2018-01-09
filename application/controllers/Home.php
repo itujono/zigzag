@@ -33,7 +33,18 @@ class Home extends Frontend_Controller {
 				$data['barangpromo'][$key]->imageBARANG = base_url() . 'assets/upload/no-image-available.png';
 				$data['barangpromo'][$key]->imageBARANG2 = base_url() . 'assets/upload/no-image-available.png';
 			}
+		}
 
+		$data['updatedbarang'] = $this->Barang_m->select_updated_barang()->result();
+		foreach ($data['updatedbarang'] as $key => $value) {
+			$map = directory_map('assets/upload/barang/pic-barang-'.folenc($data['updatedbarang'][$key]->idBARANG), FALSE, TRUE);
+			if(!empty($map)){
+				$data['updatedbarang'][$key]->imageBARANG = base_url() . 'assets/upload/barang/pic-barang-'.folenc($data['updatedbarang'][$key]->idBARANG).'/'.$map[0];
+				$data['updatedbarang'][$key]->imageBARANG2 = base_url() . 'assets/upload/barang/pic-barang-'.folenc($data['updatedbarang'][$key]->idBARANG).'/'.$map[1];
+			} else {
+				$data['updatedbarang'][$key]->imageBARANG = base_url() . 'assets/upload/no-image-available.png';
+				$data['updatedbarang'][$key]->imageBARANG2 = base_url() . 'assets/upload/no-image-available.png';
+			}
 		}
 
 		if(!empty($this->session->flashdata('message'))) {

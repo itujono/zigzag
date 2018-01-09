@@ -469,7 +469,7 @@ a.ui.card:hover,
 }
 
 .ui.message.added-to-wishlist, .ui.message.added-to-cart,
-.ui.message.removed-from-wishlist, .ui.message.removed-from-cart {
+.ui.message.not-login, .ui.message.removed-from-wishlist, .ui.message.removed-from-cart {
     display: none;
     position: fixed;
     top: 0;

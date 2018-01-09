@@ -19,7 +19,7 @@
 if(!empty($listbarang)){
   foreach ($listbarang as $barang) {
   if($barang->hotBARANG == 1){
-      $badge = "<span class='uk-badge uk-badge-danger'>HOT!</span>";
+      $badge = " <span class='uk-badge uk-badge-danger'>HOT!</span>";
   } else {
       $badge = "";
   }
@@ -28,14 +28,13 @@ if(!empty($listbarang)){
     <div class="md-card md-card-hover-img">
       <div class="md-card-head uk-text-center uk-position-relative">
         <div class="uk-badge uk-badge-danger uk-position-absolute uk-position-top-left uk-margin-left uk-margin-top">Rp. <?php echo number_format($barang->priceBARANG, 0,',','.'); ?></div>
-        <br>
-        <div class="uk-badge uk-badge-danger uk-position-absolute uk-position-top-left uk-margin-left uk-margin-top">Rp. <?php echo $badge; ?></div>
         <img class="md-card-head-img" src="<?php echo $barang->imageBARANG;?>" alt="<?php echo $barang->nameBARANG;?>"/>
       </div>
       <div class="md-card-content">
         <h4 class="heading_c uk-margin-bottom">
-          <?php echo $barang->nameBARANG;?>
+          <?php echo $barang->nameBARANG;?><?php echo $badge;?>
           <span class="sub-heading">KODE: <?php echo $barang->codeBARANG;?></span>
+          <span class="sub-heading">KATEGORI: <?php echo $barang->nameCATEGORY;?></span>
           <span class="sub-heading"><b>STOK: <?php echo $barang->stockBARANG;?> Barang</b></span>
         </h4>
         <p><?php echo word_limiter($barang->descBARANG,12); ?></p>

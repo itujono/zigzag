@@ -54,7 +54,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     </div>
 </footer>
 </div>
-
+<div class="ui compact teal message not-login">
+    <i class="close icon"></i>
+    <h4 class="header">Maaf!</h4>
+    <p><i class="alarm icon"></i> Kamu belum melakukan login</p>
+</div>
 <div class="ui compact teal message added-to-wishlist">
     <i class="close icon"></i>
     <h4 class="header">Great!</h4>

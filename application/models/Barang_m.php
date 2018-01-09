@@ -89,12 +89,21 @@ class Barang_m extends MY_Model{
 	}
 
 	public function select_barang_promo() {
-		$this->db->select('idBARANG, nameBARANG, priceBARANG');
+		$this->db->select('idBARANG, nameBARANG, priceBARANG, hotBARANG');
 		$this->db->select('nameCATEGORY');
 		$this->db->from('barang');
 		$this->db->join('category_barang', 'category_barang.idCATEGORY = barang.idCATEGORY');
 		$this->db->where('category_barang.idCATEGORY', 14);
 		$this->db->or_where('category_barang.nameCATEGORY', 'Promo Discount');
+		return $this->db->get();
+	}
+
+	public function select_updated_barang() {
+		$this->db->select('idBARANG, nameBARANG, priceBARANG, hotBARANG');
+		$this->db->select('nameCATEGORY');
+		$this->db->from('barang');
+		$this->db->join('category_barang', 'category_barang.idCATEGORY = barang.idCATEGORY');
+		$this->db->order_by('idBARANG', 'desc');
 		return $this->db->get();
 	}
 }

@@ -58,32 +58,6 @@ $(document).ready(function() {
         console.log("Clicked pulak!");
     });
 
-    $(".additional-actions .add-to-wishlist").each(function() {
-        $(this).on("click", function(e) {
-            e.preventDefault();
-            if ($(this).find(".empty.heart.icon").hasClass("empty")) {
-                setTimeout(function() {
-                    $(".ui.message.added-to-wishlist").transition("slide", function() {
-                        setTimeout(function() {
-                            $(".ui.message.added-to-wishlist").transition("slide");
-                        }, 4000);
-                    });
-                }, 1000);
-                $(this).find(".empty.heart.icon").transition("jiggle").removeClass("empty").css("color", "#f92626");
-            } else {
-                $(this).find(".heart.icon").transition("jiggle").addClass("empty").css("color", "#fff");
-                setTimeout(function() {
-                    $(".ui.message.removed-from-wishlist").transition("slide", function() {
-                        setTimeout(function() {
-                            $(".ui.message.removed-from-wishlist").transition("slide");
-                            console.log(this);
-                        }, 4000);
-                    });
-                }, 1000);
-            }
-        });
-    });
-
     $(".additional-actions .add-to-cart").each(function() {
         $(this).on("click", function(e) {
             e.preventDefault();

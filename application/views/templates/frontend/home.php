@@ -337,6 +337,11 @@
         <?php
         if(!empty($barangpromo)){
             foreach ($barangpromo as $promo) {
+            if($promo->hotBARANG == 1){
+                $badge = "<div class='floating ui red label'>HOT!</div>";
+            } else {
+                $badge = "";
+            }
         ?>
             <div class="three wide column">
                 <a href="#" class="ui card">
@@ -352,12 +357,12 @@
                             </button>
                         </div>
                     </div>
-                    <div class="floating ui red label">HOT!</div>
+                    <?php echo $badge;?>
                     <div class="content">
-                        <h4 class="header">Brick-shaped backpack</h4>
+                        <h4 class="header"><?php echo $promo->nameBARANG;?></h4>
                         <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
+                            <span class="price">IDR <?php echo number_format($promo->priceBARANG, 0,',','.'); ?></span>
+                            <span class="category"><?php echo $promo->nameCATEGORY;?></span>
                         </div>
                     </div>
                 </a>
@@ -380,11 +385,20 @@
             </div>
         </div>
         <div class="twelve wide column loop owl-theme owl-carousel">
+        <?php
+        if(!empty($updatedbarang)){
+            foreach ($updatedbarang as $updated) {
+            if($updated->hotBARANG == 1){
+                $badge = "<div class='floating ui red label'>HOT!</div>";
+            } else {
+                $badge = "";
+            }
+        ?>
             <div class="three wide column">
                 <a href="#" class="ui card">
                     <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
+                        <img src="<?php echo $updated->imageBARANG;?>" alt="<?php echo $updated->nameBARANG;?>" class="visible content">
+                        <img src="<?php echo $updated->imageBARANG2;?>" alt="<?php echo $updated->nameBARANG;?>" class="hidden content">
                         <div class="ui icon black buttons additional-actions">
                             <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
                                 <i class="empty heart icon"></i>
@@ -395,177 +409,16 @@
                         </div>
                     </div>
                     <div class="content">
-                        <h4 class="header">Brick-shaped backpack</h4>
+                        <h4 class="header"><?php echo $updated->nameBARANG;?></h4>
                         <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
+                            <span class="price">IDR <?php echo number_format($promo->priceBARANG, 0,',','.'); ?></span>
+                            <span class="category"><?php echo $promo->nameCATEGORY; ?></span>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="three wide column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4 class="header">Handbag-style backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="three wide column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/9823/501/807/9823501807_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4 class="header">Basic two-tone backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="three wide column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/502/015/5820502015_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="floating ui red label">HOT!</div>
-                    <div class="content">
-                        <h4 class="header">Faux leather backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="three wide column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4 class="header">Brick-shaped backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="three wide column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4 class="header">Handbag-style backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="three wide column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/9823/501/807/9823501807_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4 class="header">Basic two-tone backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="three wide column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/502/015/5820502015_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="floating ui red label">HOT!</div>
-                    <div class="content">
-                        <h4 class="header">Faux leather backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <?php } ?>
+        <?php } ?>
         </div> <!-- kelar div Loop / Owl-Carousel -->
     </div>
 </div> <!-- kelar Main -->
