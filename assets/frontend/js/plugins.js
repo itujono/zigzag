@@ -223,7 +223,7 @@ $(document).ready(function() {
         inline: true,
         on: "blur",
         fields: {
-            name: {
+            nameCUSTOMER: {
                 identifier: "nameCUSTOMER",
                 rules: [
                     {
@@ -240,7 +240,7 @@ $(document).ready(function() {
                     }
                 ]
             },
-            email: {
+            emailCUSTOMER: {
                 identifier: "emailCUSTOMER",
                 rules: [
                     {
@@ -253,7 +253,7 @@ $(document).ready(function() {
                     }
                 ]
             },
-            password: {
+            passwordCUSTOMER: {
                 identifier: "passwordCUSTOMER",
                 rules: [
                     {
@@ -266,7 +266,7 @@ $(document).ready(function() {
                     }
                 ]
             },
-            passwordRepeat: {
+            repasswordCUSTOMER: {
                 identifier: "repasswordCUSTOMER",
                 rules: [
                     {
@@ -274,12 +274,12 @@ $(document).ready(function() {
                         prompt: "Kelupaan lagi passwordnya ya?"
                     },
                     {
-                        type: "match[password]",
+                        type: "match[passwordCUSTOMER]",
                         prompt: "Kayaknya nggak sama deh sama yang diketik di atas"
                     }
                 ]
             },
-            kodepos: {
+            zipCUSTOMER: {
                 identifier: "zipCUSTOMER",
                 rules: [
                     {
@@ -296,7 +296,24 @@ $(document).ready(function() {
                     }
                 ]
             },
-            alamat: {
+            teleCUSTOMER: {
+                identifier: "teleCUSTOMER",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "jangan sampe lupa juga ya nomor telepon nya"
+                    },
+                    {
+                        type: "maxLength[14]",
+                        prompt: "Emang ada nomor telepon lebih dari 14 digit ya?"
+                    },
+                    {
+                        type: "minLength[10]",
+                        prompt: "Perasaan gak ada deh nomor telepon di bawah 10 digit"
+                    }
+                ]
+            },
+            addressCUSTOMER: {
                 identifier: "addressCUSTOMER",
                 rules: [
                     {
@@ -309,7 +326,7 @@ $(document).ready(function() {
                     }
                 ]
             },
-            sk: {
+            skCUSTOMER: {
                 identifier: "skCUSTOMER",
                 rules: [
                     {

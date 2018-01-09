@@ -101,9 +101,10 @@
                             <img src="<?php echo base_url().$this->data['asfront'];?>img/user.jpg" class="ui avatar image">
                             <span><?php echo $this->session->userdata('Name');?> </span>
                             <i class="dropdown icon"></i>
-                        <?php } ?>
+                        <?php } else { ?>
                             <img src="<?php echo base_url().$this->data['asfront'];?>img/user.jpg" class="ui avatar image">
                             <span>Guest </span>
+                        <?php } ?>
                             <div class="ui menu">
                             <?php 
                             if(!empty($this->session->userdata('idCUSTOMER'))){
@@ -117,12 +118,18 @@
                                     Profil
                                 </a>
                                 <a class="divider"></a>
-                                <a class="item" href="#">Logout</a>
-                            <?php } ?>
+                                <a class="item" href="<?php echo base_url();?>customer/logout" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Logout</a>
+                                <form id="logout-form" action="<?php echo base_url();?>customer/logout" method="POST" style="display: none;">
+                                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
+                                </form>
+                            <?php } else { ?>
                             <a class="item login-trigger" href="#">Login</a>
+                            <?php } ?>
                                 <div class="ui tiny modal login">
                                     <div class="header">Hi! Welcome back!</div>
-                                    <form class="ui form" action="index.html" method="">
+                                    <form class="ui form" action="<?php echo base_url();?>customer/process" method="POST">
+                                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
                                         <div class="field">
                                             <label for="emailLogin">Email kamu</label>
                                             <input type="email" name="emailLogin" placeholder="Ketik email kamu...">
@@ -152,7 +159,7 @@
 
                                 <div class="ui tiny modal register">
                                     <div class="header">Hi! Silakan Mendaftar</div>
-                                    <form class="ui form" action="index.html" method="">
+                                    <form class="ui form" action="<?php echo base_url();?>customer/register" method="POST">
                                         <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
                                         <div class="field">
                                             <label for="nama">Nama lengkap kamu</label>
@@ -174,7 +181,7 @@
                                             <div class="field">
                                                 <label for="provinsi">Provinsi</label>
                                                 <select class="ui search dropdown" id="provinsi" name="idPROVINCE">
-                                                    <option value="" selected>Pilih provinsi kamu</option>
+                                                    <option value="" selected disabled="disabled">Pilih provinsi kamu</option>
                                                     <?php
                                                     $listprovince = select_all_province();
                                                     if(!empty($listprovince)){
@@ -188,22 +195,26 @@
                                             </div>
                                             <div class="field">
                                                 <label for="provinsi">Kota/Kab</label>
-                                                <select class="ui search dropdown" id="city" name="idCITY">
-                                                    <option value="" selected>Pilih provinsi kamu</option>
+                                                <select class="ui search dropdown" id="city" name="cityCUSTOMER">
+                                                    <option value="" selected disabled="disabled">Pilih provinsi kamu</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="field">
                                             <label for="kodepos">Kode Pos</label>
-                                            <input type="number" name="kodepos" placeholder="Misal: 29433">
+                                            <input type="number" name="zipCUSTOMER" placeholder="Misal: 29433">
+                                        </div>
+                                        <div class="field">
+                                            <label for="kodepos">Nomor Telepon</label>
+                                            <input type="number" name="teleCUSTOMER" placeholder="Misal: +6282200000">
                                         </div>
                                         <div class="field">
                                             <label for="alamat">Alamat kamu</label>
-                                            <textarea name="alamat" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"></textarea>
+                                            <textarea name="addressCUSTOMER" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"></textarea>
                                         </div>
                                         <div class="field">
                                             <div class="ui checkbox">
-                                                <input type="checkbox" tabindex="0" class="hidden" name="sk">
+                                                <input type="checkbox" tabindex="0" class="hidden" name="skCUSTOMER" required="required">
                                                 <label>Saya telah menyetujui isi <a href="#">Syarat dan Ketentuan</a> Zigzag Online Shop</label>
                                             </div>
                                         </div>

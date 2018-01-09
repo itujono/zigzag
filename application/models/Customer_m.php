@@ -8,13 +8,13 @@ class Customer_m extends MY_Model{
 	protected $_primary_key = 'idCUSTOMER';
 
 	public $rules_login_customer = array(
-		'email' => array(
-			'field' => 'email',
+		'emailLogin' => array(
+			'field' => 'emailLogin',
 			'label' => 'Email',
 			'rules' => 'trim|required|valid_email'
 			),
-		'password' => array(
-			'field' => 'password',
+		'passwordLogin' => array(
+			'field' => 'passwordLogin',
 			'label' => 'Kata sandi',
 			'rules' => 'trim|required|min_length[8]'
 			),
@@ -29,7 +29,7 @@ class Customer_m extends MY_Model{
 		'emailCUSTOMER' => array(
 			'field' => 'emailCUSTOMER',
 			'label' => 'Email',
-			'rules' => 'trim|required|valid_email|is_unique[nyat_customer.emailCUSTOMER]'
+			'rules' => 'trim|required|valid_email|is_unique[zigzag_customer.emailCUSTOMER]'
 			),
 		'passwordCUSTOMER' => array(
 			'field' => 'passwordCUSTOMER',
@@ -39,7 +39,7 @@ class Customer_m extends MY_Model{
 		'addressCUSTOMER' => array(
 			'field' => 'addressCUSTOMER',
 			'label' => 'Domisili',
-			'rules' => 'trim|required'
+			'rules' => 'trim|required|min_length[8]'
 			),
 		'cityCUSTOMER' => array(
 			'field' => 'cityCUSTOMER',
@@ -49,7 +49,7 @@ class Customer_m extends MY_Model{
 		'zipCUSTOMER' => array(
 			'field' => 'zipCUSTOMER',
 			'label' => 'Kota',
-			'rules' => 'trim|required'
+			'rules' => 'trim|required|min_length[5]|max_length[5]'
 			),
 		'teleCUSTOMER' => array(
 			'field' => 'teleCUSTOMER',
@@ -96,7 +96,7 @@ class Customer_m extends MY_Model{
 					'loggedin' => TRUE
 				);
 				$this->session->set_userdata($data);
-				return "USER";
+				return "CUSTOMER";
 			} else {
 				return "NOT ACTIVE";
 			}

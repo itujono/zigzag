@@ -6,7 +6,7 @@ class Login extends CI_Controller {
 	public function __construct (){
 		parent::__construct();
 		$this->load->model('User_m');
-		$this->load->model('Attempts_m');
+		$this->load->model('Attempts_admin_m');
 	}
 
 	public function index() {
@@ -94,7 +94,7 @@ class Login extends CI_Controller {
 				$logindata_admin = $this->User_m->checkuser($mailing)->row();
 				$data['idADMIN'] = $logindata_admin->idADMIN;
 				$data['timeATTEMPTS'] = time();
-				$this->Attempts_m->insertdatabrute_admin($data);
+				$this->Attempts_admin_m->insertdatabrute_admin($data);
 				record_activity('Tidak berhasil login katasandi atau email salah');
 				$data = array(
 					'title' => 'Warning!',
@@ -146,7 +146,7 @@ class Login extends CI_Controller {
 			redirect('login');
 	    }
 
-	    $attempts = $this->Attempts_m->checkingbrute_admin($idlogin_admin->idADMIN,$valid_attempts);
+	    $attempts = $this->Attempts_admin_m->checkingbrute_admin($idlogin_admin->idADMIN,$valid_attempts);
 	    if($attempts  >= 4){
 	    	return true;
 	    } else {

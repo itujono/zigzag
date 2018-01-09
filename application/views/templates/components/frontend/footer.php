@@ -54,6 +54,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     </div>
 </footer>
 </div>
+<?php if (!empty($message)){ ?>
+    <div class="ui compact teal message">
+        <i class="close icon"></i>
+        <h4 class="header"><?php echo $message['title']; ?></h4>
+        <p><i class="alarm icon"></i><?php echo $message['text']; ?></p><br>
+        <?php if(!empty(form_error('emailCUSTOMER')) || !empty(form_error('zipCUSTOMER'))){ ?>
+        <p><i class="alarm icon"></i><?php echo form_error('nameCUSTOMER'); ?></p><br>
+        <p><i class="alarm icon"></i><?php echo form_error('emailCUSTOMER'); ?></p><br>
+        <p><i class="alarm icon"></i><?php echo form_error('passwordCUSTOMER'); ?></p><br>
+        <p><i class="alarm icon"></i><?php echo form_error('addressCUSTOMER'); ?></p><br>
+        <p><i class="alarm icon"></i><?php echo form_error('cityCUSTOMER'); ?></p><br>
+        <p><i class="alarm icon"></i><?php echo form_error('zipCUSTOMER'); ?></p><br>
+        <p><i class="alarm icon"></i><?php echo form_error('teleCUSTOMER'); ?></p><br>
+        <?php } ?>
+    </div>
+<?php } ?>
+
+
 <div class="ui compact teal message not-login">
     <i class="close icon"></i>
     <h4 class="header">Maaf!</h4>
