@@ -296,3 +296,11 @@ function selectall_category_for_frontend($parent=NULL, $child=NULL){
     $data = $CI->db->get()->result();
     return $data;
 }
+
+function select_all_province(){
+    $CI =& get_instance();
+    $CI->db->select('idPROVINCE, namePROVINCE');
+    $CI->db->from('province');
+    $data = $CI->db->get()->result();
+    return $data;
+}

@@ -48,5 +48,5 @@ if ($plugins == 'home') { ?>
 	    <?php } ?>
         });
     });
-	</script>
+</script>
 <?php } ?>

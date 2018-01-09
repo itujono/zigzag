@@ -173,33 +173,23 @@
                                         <div class="two fields">
                                             <div class="field">
                                                 <label for="provinsi">Provinsi</label>
-                                                <select class="ui search dropdown" id="provinsi" name="provinsi">
+                                                <select class="ui search dropdown" id="provinsi" name="idPROVINCE">
                                                     <option value="" selected>Pilih provinsi kamu</option>
-                                                    <option value="aceh">Aceh</option>
-                                                    <option value="bali">Bali</option>
-                                                    <option value="babel">Bangka Belitung</option>
-                                                    <option value="banten">Banten</option>
-                                                    <option value="kepri">Kepulauan Riau</option>
+                                                    <?php
+                                                    $listprovince = select_all_province();
+                                                    if(!empty($listprovince)){
+                                                        foreach ($listprovince as $key => $pro) {
+                                                            ?>
+                                                        <option value="<?php echo $pro->idPROVINCE;?>"><?php echo $pro->namePROVINCE;?>
+                                                        </option>
+                                                    <?php } ?>
+                                                    <?php } ?>
                                                 </select>
                                             </div>
                                             <div class="field">
                                                 <label for="provinsi">Kota/Kab</label>
-                                                <select class="ui search dropdown" id="kota" name="kota">
-                                                    <option value="" selected>Pilih kota kamu</option>
-                                                    <option value="batam" data-chained="kepri">Batam</option>
-                                                    <option value="pinang" data-chained="kepri">Tanjung Pinang</option>
-                                                    <option value="bintan" data-chained="kepri">Bintan</option>
-                                                    <option value="kundur" data-chained="kepri">Kundur</option>
-                                                    <option value="karimun" data-chained="kepri">Karimun</option>
-                                                    <option value="denpasar" data-chained="bali">Denpasar</option>
-                                                    <option value="bangli" data-chained="bali">Bangli</option>
-                                                    <option value="badung" data-chained="bali">Badung</option>
-                                                    <option value="buleleng" data-chained="bali">Buleleng</option>
-                                                    <option value="serang" data-chained="banten">Serang</option>
-                                                    <option value="tangerang" data-chained="banten">Tangerang</option>
-                                                    <option value="cilegon" data-chained="banten">Cilegon</option>
-                                                    <option value="bangka" data-chained="babel">Bangka</option>
-                                                    <option value="belitung" data-chained="babel">Belitung</option>
+                                                <select class="ui search dropdown" id="city" name="idCITY">
+                                                    <option value="" selected>Pilih provinsi kamu</option>
                                                 </select>
                                             </div>
                                         </div>

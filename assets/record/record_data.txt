@@ -341,3 +341,43 @@ Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Selas
 Superadmin ZIGZAG - Penyimpanan data barang/produk berhasil - Pada waktu Selasa, 9 Januari 2018 | 10:40 
 Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Selasa, 9 Januari 2018 | 10:40 
 Superadmin ZIGZAG - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/forgot.html - Pada waktu Selasa, 9 Januari 2018 | 11:54 
+Superadmin ZIGZAG - Berhasil login - Pada waktu Selasa, 9 Januari 2018 | 14:55 
+Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Selasa, 9 Januari 2018 | 14:55 
+Superadmin ZIGZAG - Mengunjungi halaman menu admin - Pada waktu Selasa, 9 Januari 2018 | 14:55 
+Superadmin ZIGZAG - Penyimpanan data menu berhasil - Pada waktu Selasa, 9 Januari 2018 | 14:57 
+Superadmin ZIGZAG - Mengunjungi halaman menu admin - Pada waktu Selasa, 9 Januari 2018 | 14:57 
+Superadmin ZIGZAG - Penyimpanan data menu berhasil - Pada waktu Selasa, 9 Januari 2018 | 14:57 
+Superadmin ZIGZAG - Mengunjungi halaman menu admin - Pada waktu Selasa, 9 Januari 2018 | 14:57 
+Superadmin ZIGZAG - Penyimpanan data menu berhasil - Pada waktu Selasa, 9 Januari 2018 | 14:58 
+Superadmin ZIGZAG - Mengunjungi halaman menu admin - Pada waktu Selasa, 9 Januari 2018 | 14:58 
+Superadmin ZIGZAG - Mengunjungi halaman user admin - Pada waktu Selasa, 9 Januari 2018 | 14:58 
+Superadmin ZIGZAG - Mengunjungi halaman user admin - Pada waktu Selasa, 9 Januari 2018 | 14:58 
+Superadmin ZIGZAG - Penyimpanan user admin berhasil - Pada waktu Selasa, 9 Januari 2018 | 14:58 
+Superadmin ZIGZAG - Mengunjungi halaman user admin - Pada waktu Selasa, 9 Januari 2018 | 14:58 
+Superadmin ZIGZAG - Mengunjungi halaman Province - Pada waktu Selasa, 9 Januari 2018 | 15:13 
+Superadmin ZIGZAG - Mengunjungi halaman Province - Pada waktu Selasa, 9 Januari 2018 | 15:13 
+Superadmin ZIGZAG - Penyimpanan data province berhasil - Pada waktu Selasa, 9 Januari 2018 | 15:13 
+Superadmin ZIGZAG - Mengunjungi halaman Province - Pada waktu Selasa, 9 Januari 2018 | 15:13 
+Superadmin ZIGZAG - Mengunjungi halaman Province - Pada waktu Selasa, 9 Januari 2018 | 15:13 
+Superadmin ZIGZAG - Penyimpanan data province berhasil - Pada waktu Selasa, 9 Januari 2018 | 15:14 
+Superadmin ZIGZAG - Mengunjungi halaman Province - Pada waktu Selasa, 9 Januari 2018 | 15:14 
+Superadmin ZIGZAG - Penyimpanan data province tidak berhasil format salah - Pada waktu Selasa, 9 Januari 2018 | 15:14 
+Superadmin ZIGZAG - Mengunjungi halaman Province - Pada waktu Selasa, 9 Januari 2018 | 15:14 
+Superadmin ZIGZAG - Mengunjungi halaman City - Pada waktu Selasa, 9 Januari 2018 | 15:23 
+Superadmin ZIGZAG - Mengunjungi halaman City - Pada waktu Selasa, 9 Januari 2018 | 15:26 
+Superadmin ZIGZAG - Mengunjungi halaman City - Pada waktu Selasa, 9 Januari 2018 | 15:27 
+Superadmin ZIGZAG - Mengunjungi halaman City - Pada waktu Selasa, 9 Januari 2018 | 15:28 
+Superadmin ZIGZAG - Mengunjungi halaman Province - Pada waktu Selasa, 9 Januari 2018 | 15:29 
+Superadmin ZIGZAG - Mengunjungi halaman Activity - Pada waktu Selasa, 9 Januari 2018 | 15:29 
+Superadmin ZIGZAG - Mengunjungi halaman Activity - Pada waktu Selasa, 9 Januari 2018 | 15:29 
+Superadmin ZIGZAG - Mengunjungi halaman Province - Pada waktu Selasa, 9 Januari 2018 | 15:30 
+Superadmin ZIGZAG - Mengunjungi halaman City - Pada waktu Selasa, 9 Januari 2018 | 15:30 
+Superadmin ZIGZAG - Mengunjungi halaman City - Pada waktu Selasa, 9 Januari 2018 | 15:31 
+Superadmin ZIGZAG - Penyimpanan data kota berhasil - Pada waktu Selasa, 9 Januari 2018 | 15:31 
+Superadmin ZIGZAG - Mengunjungi halaman City - Pada waktu Selasa, 9 Januari 2018 | 15:31 
+Superadmin ZIGZAG - Penghapusan data province berhasil - Pada waktu Selasa, 9 Januari 2018 | 15:31 
+Superadmin ZIGZAG - Mengunjungi halaman Province - Pada waktu Selasa, 9 Januari 2018 | 15:31 
+Superadmin ZIGZAG - Berhasil Keluar - Pada waktu Selasa, 9 Januari 2018 | 15:31 
+Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/forgot.html - Pada waktu Selasa, 9 Januari 2018 | 15:47 
+Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/1 - Pada waktu Selasa, 9 Januari 2018 | 15:49 
+Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/zigzagdamin/customer/load_city/1 - Pada waktu Selasa, 9 Januari 2018 | 15:50 

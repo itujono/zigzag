@@ -80,5 +80,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     <p><i class="alarm icon"></i> Kamu telah membatalkan item di Cart kamu</p>
 </div>
 <?php echo $plugins; ?>
+<script type="text/javascript">
+$("#provinsi").change(function (){
+    var url = "<?php echo base_url().'customer/load_city/';?>"+$(this).val();
+    $('#city').load(url);
+    return false;
+});
+</script>
 </body>
 </html>

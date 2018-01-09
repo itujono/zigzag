@@ -15,6 +15,7 @@ class Activity extends Admin_Controller{
 		$data['list_activity'] = $list_activity;
 		
         record_activity('Mengunjungi halaman Activity');
+        
 		$data['subview'] = $this->load->view($this->data['backendDIR'].'activity', $data, TRUE);
 		$this->load->view('templates/_layout_base',$data);
 	}
