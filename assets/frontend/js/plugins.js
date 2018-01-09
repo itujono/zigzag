@@ -224,7 +224,7 @@ $(document).ready(function() {
         on: "blur",
         fields: {
             name: {
-                identifier: "nama",
+                identifier: "nameCUSTOMER",
                 rules: [
                     {
                         type: "empty",
@@ -241,7 +241,7 @@ $(document).ready(function() {
                 ]
             },
             email: {
-                identifier: "email",
+                identifier: "emailCUSTOMER",
                 rules: [
                     {
                         type: "empty",
@@ -254,7 +254,7 @@ $(document).ready(function() {
                 ]
             },
             password: {
-                identifier: "password",
+                identifier: "passwordCUSTOMER",
                 rules: [
                     {
                         type: "empty",
@@ -267,7 +267,7 @@ $(document).ready(function() {
                 ]
             },
             passwordRepeat: {
-                identifier: "passwordRepeat",
+                identifier: "repasswordCUSTOMER",
                 rules: [
                     {
                         type: "empty",
@@ -280,7 +280,7 @@ $(document).ready(function() {
                 ]
             },
             kodepos: {
-                identifier: "kodepos",
+                identifier: "zipCUSTOMER",
                 rules: [
                     {
                         type: "empty",
@@ -297,7 +297,7 @@ $(document).ready(function() {
                 ]
             },
             alamat: {
-                identifier: "alamat",
+                identifier: "addressCUSTOMER",
                 rules: [
                     {
                         type: "empty",
@@ -310,7 +310,7 @@ $(document).ready(function() {
                 ]
             },
             sk: {
-                identifier: "sk",
+                identifier: "skCUSTOMER",
                 rules: [
                     {
                         type: "checked",

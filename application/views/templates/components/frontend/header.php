@@ -95,10 +95,19 @@
                             </div>
                         </div> --> <!-- TODO: Kalo Cart nya empty wak -->
                         <div class="ui top left pointing dropdown button item">
+                        <?php
+                            if(!empty($this->session->userdata('idCUSTOMER'))){
+                        ?>
                             <img src="<?php echo base_url().$this->data['asfront'];?>img/user.jpg" class="ui avatar image">
-                            <span>Rusmanto </span>
+                            <span><?php echo $this->session->userdata('Name');?> </span>
                             <i class="dropdown icon"></i>
+                        <?php } ?>
+                            <img src="<?php echo base_url().$this->data['asfront'];?>img/user.jpg" class="ui avatar image">
+                            <span>Guest </span>
                             <div class="ui menu">
+                            <?php 
+                            if(!empty($this->session->userdata('idCUSTOMER'))){
+                            ?>
                                 <a class="item">
                                     <i class="wrench icon"></i>
                                     Atur akun
@@ -109,8 +118,8 @@
                                 </a>
                                 <a class="divider"></a>
                                 <a class="item" href="#">Logout</a>
-                                <a class="item login-trigger" href="#">Login</a>
-
+                            <?php } ?>
+                            <a class="item login-trigger" href="#">Login</a>
                                 <div class="ui tiny modal login">
                                     <div class="header">Hi! Welcome back!</div>
                                     <form class="ui form" action="index.html" method="">
@@ -144,21 +153,22 @@
                                 <div class="ui tiny modal register">
                                     <div class="header">Hi! Silakan Mendaftar</div>
                                     <form class="ui form" action="index.html" method="">
+                                        <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
                                         <div class="field">
                                             <label for="nama">Nama lengkap kamu</label>
-                                            <input type="text" name="nama" placeholder="John Doe">
+                                            <input type="text" name="nameCUSTOMER" placeholder="John Doe">
                                         </div>
                                         <div class="field">
                                             <label for="email">Email kamu</label>
-                                            <input type="email" name="email" placeholder="emailku@email.com">
+                                            <input type="email" name="emailCUSTOMER" placeholder="emailku@email.com">
                                         </div>
                                         <div class="field">
                                             <label for="password">Password kamu</label>
-                                            <input type="password" name="password" placeholder="Minimal 8 karakter">
+                                            <input type="password" name="passwordCUSTOMER" placeholder="Minimal 8 karakter">
                                         </div>
                                         <div class="field">
                                             <label for="passwordRepeat">Ulangi password kamu</label>
-                                            <input type="password" name="passwordRepeat" placeholder="Minimal 8 karakter">
+                                            <input type="password" name="repasswordCUSTOMER" placeholder="Minimal 8 karakter">
                                         </div>
                                         <div class="two fields">
                                             <div class="field">

@@ -340,3 +340,4 @@ Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Selasa, 9 Ja
 Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Selasa, 9 Januari 2018 | 10:40 
 Superadmin ZIGZAG - Penyimpanan data barang/produk berhasil - Pada waktu Selasa, 9 Januari 2018 | 10:40 
 Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Selasa, 9 Januari 2018 | 10:40 
+Superadmin ZIGZAG - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/forgot.html - Pada waktu Selasa, 9 Januari 2018 | 11:54 
