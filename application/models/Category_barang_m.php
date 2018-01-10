@@ -53,9 +53,16 @@ class Category_barang_m extends MY_Model{
     }
 
     public function check_parent_category_barang($id = NULL) {
-		$this->db->select('parentCATEGORY, nameCATEGORY');
+		$this->db->select('nameCATEGORY');
 		$this->db->from('category_barang');
 		$this->db->where('parentCATEGORY',$id);
+		return $this->db->get();
+	}
+
+	public function select_parent_category_barang($id = NULL) {
+		$this->db->select('nameCATEGORY');
+		$this->db->from('category_barang');
+		$this->db->where('idCATEGORY',$id);
 		return $this->db->get();
 	}
 }

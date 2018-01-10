@@ -39,7 +39,8 @@ if(!empty($listbarang)){
         </h4>
         <p><?php echo word_limiter($barang->descBARANG,12); ?></p>
         <a class="md-btn md-btn-small md-btn-primary" href="<?php echo base_url();?>zigzagadmin/barang/detail_barang/<?php echo encode(urlencode($barang->idBARANG));?>">Detail</a>
-        <a class="md-btn md-btn-small md-btn-danger" href="<?php echo base_url();?>zigzagadmin/barang/add_barang/<?php echo encode(urlencode($barang->idBARANG));?>">Edit</a>
+        <a class="md-btn md-btn-small md-btn-primary" href="<?php echo base_url();?>zigzagadmin/barang/add_barang/<?php echo encode(urlencode($barang->idBARANG));?>">Edit</a>
+        <a class="md-btn md-btn-small md-btn-danger" href="#" onclick="UIkit.modal.confirm('Apakah kamu yakin akan menghapus data barang/produk ini?', function(){ document.location.href='<?php echo base_url();?>zigzagadmin/barang/actiondelete_barang/<?php echo encode(urlencode($barang->idBARANG));?>'; });">Hapus</a>
       </div>
     </div>
   </div>

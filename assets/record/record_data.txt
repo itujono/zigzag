@@ -381,3 +381,30 @@ Superadmin ZIGZAG - Berhasil Keluar - Pada waktu Selasa, 9 Januari 2018 | 15:31
 Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/forgot.html - Pada waktu Selasa, 9 Januari 2018 | 15:47 
 Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/1 - Pada waktu Selasa, 9 Januari 2018 | 15:49 
 Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/zigzagdamin/customer/load_city/1 - Pada waktu Selasa, 9 Januari 2018 | 15:50 
+Superadmin ZIGZAG - Berhasil login - Pada waktu Rabu, 10 Januari 2018 | 08:08 
+Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Rabu, 10 Januari 2018 | 08:08 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:08 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:08 
+Superadmin ZIGZAG - Penyimpanan data barang/produk berhasil - Pada waktu Rabu, 10 Januari 2018 | 08:08 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:08 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:08 
+Superadmin ZIGZAG - Penyimpanan data barang/produk berhasil - Pada waktu Rabu, 10 Januari 2018 | 08:09 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:09 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:09 
+Superadmin ZIGZAG - Penyimpanan data barang/produk berhasil - Pada waktu Rabu, 10 Januari 2018 | 08:09 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:09 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:09 
+Superadmin ZIGZAG - Penyimpanan data barang/produk berhasil - Pada waktu Rabu, 10 Januari 2018 | 08:09 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:09 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:09 
+Superadmin ZIGZAG - Penyimpanan data barang/produk berhasil - Pada waktu Rabu, 10 Januari 2018 | 08:09 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:09 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:12 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:13 
+Superadmin ZIGZAG - Penghapusan barang/produk berhasil - Pada waktu Rabu, 10 Januari 2018 | 08:13 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:13 
+Superadmin ZIGZAG - Berhasil Keluar - Pada waktu Rabu, 10 Januari 2018 | 08:13 
+Superadmin ZIGZAG - Berhasil login - Pada waktu Rabu, 10 Januari 2018 | 08:58 
+Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Rabu, 10 Januari 2018 | 08:58 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:59 
+Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Rabu, 10 Januari 2018 | 08:59 

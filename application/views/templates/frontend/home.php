@@ -344,7 +344,7 @@
             }
         ?>
             <div class="three wide column">
-                <a href="#" class="ui card">
+                <a href="<?php echo base_url();?>product/<?php echo $promo->slugBARANG;?>" class="ui card">
                     <div class="ui slide masked reveal image">
                         <img src="<?php echo $promo->imageBARANG;?>" class="visible content" alt="<?php echo $promo->nameBARANG;?>">
                         <img src="<?php echo $promo->imageBARANG2;?>" class="hidden content" alt="<?php echo $promo->nameBARANG;?>">
@@ -395,7 +395,7 @@
             }
         ?>
             <div class="three wide column">
-                <a href="#" class="ui card">
+                <a href="<?php echo base_url();?>product/<?php echo $updated->slugBARANG;?>" class="ui card">
                     <div class="ui slide masked reveal image">
                         <img src="<?php echo $updated->imageBARANG;?>" alt="<?php echo $updated->nameBARANG;?>" class="visible content">
                         <img src="<?php echo $updated->imageBARANG2;?>" alt="<?php echo $updated->nameBARANG;?>" class="hidden content">

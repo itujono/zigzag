@@ -65,31 +65,31 @@ function timeAgo($timestamp){
     $time = time() - $timestamp;
 
     if ($time < 60)
-    return ( $time > 1 ) ? $time . ' detik yang lalu' : 'satu detik';
+        return ( $time > 1 ) ? $time . ' detik yang lalu' : 'satu detik';
 
     elseif ($time < 3600) {
-    $tmp = floor($time / 60);
-    return ($tmp > 1) ? $tmp . ' menit yang lalu' : ' satu menit yang lalu';
+        $tmp = floor($time / 60);
+        return ($tmp > 1) ? $tmp . ' menit yang lalu' : ' satu menit yang lalu';
     }
 
     elseif ($time < 86400) {
-    $tmp = floor($time / 3600);
-    return ($tmp > 1) ? $tmp . ' jam yang lalu' : ' satu jam yang lalu';
+        $tmp = floor($time / 3600);
+        return ($tmp > 1) ? $tmp . ' jam yang lalu' : ' satu jam yang lalu';
     }
 
     elseif ($time < 2592000) {
-    $tmp = floor($time / 86400);
-    return ($tmp > 1) ? $tmp . ' hari lalu' : ' satu hari lalu';
+        $tmp = floor($time / 86400);
+        return ($tmp > 1) ? $tmp . ' hari lalu' : ' satu hari lalu';
     }
 
     elseif ($time < 946080000) {
-    $tmp = floor($time / 2592000);
-    return ($tmp > 1) ? $tmp . ' bulan lalu' : ' satu bulan lalu';
+        $tmp = floor($time / 2592000);
+        return ($tmp > 1) ? $tmp . ' bulan lalu' : ' satu bulan lalu';
     }
 
     else {
-    $tmp = floor($time / 946080000);
-    return ($tmp > 1) ? $tmp . ' years' : ' a year';
+        $tmp = floor($time / 946080000);
+        return ($tmp > 1) ? $tmp . ' years' : ' a year';
     }
 }
 
@@ -118,7 +118,7 @@ function cetak($str){
 function indonesian_date ($timestamp = '', $date_format = 'l, j F Y | H:i', $suffix = 'WIB') {
     if (trim ($timestamp) == '')
     {
-            $timestamp = time ();
+        $timestamp = time ();
     }
     elseif (!ctype_digit ($timestamp))
     {
@@ -181,7 +181,7 @@ function decoding_data($data=NULL){
 }
 
 function encodingdata($json=0, $type=0, $diberikanaward_about=0, $tahunaward_about=0){
-    
+
     if($type == 0) {
         $jj = array();
         foreach ($json as $key => $value) {
@@ -247,7 +247,7 @@ function find_menu_for_admin_user($admin, $menu){
 function browseragent(){
     $CI =& get_instance();
     if ($CI->agent->is_browser()){
-    $agent = $CI->agent->browser();
+        $agent = $CI->agent->browser();
     }elseif ($CI->agent->is_mobile()){
         $agent = $CI->agent->mobile();
     }else{
@@ -260,18 +260,18 @@ function record_activity($activity){
     $CI =& get_instance();
     $time = indonesian_date(date("Y-m-d H:i:s"), 'l, j F Y | H:i','');
     if(!empty($CI->session->userdata('Name'))){
-       $name = $CI->session->userdata('Name'); 
-    } else {
-        $name = 'Unknown user - using '.browseragent().' - ip:'.$CI->input->ip_address();
-    }
-    
-    $data = $name . " - " . $activity . " - Pada waktu " . $time . "\r\n";
-    $ret = file_put_contents('assets/record/record_data.txt', $data, FILE_APPEND | LOCK_EX);
-    if($ret === false) {
-        die('There was an error writing this file');
-    } else {
-        return true;
-    }
+     $name = $CI->session->userdata('Name'); 
+ } else {
+    $name = 'Unknown user - using '.browseragent().' - ip:'.$CI->input->ip_address();
+}
+
+$data = $name . " - " . $activity . " - Pada waktu " . $time . "\r\n";
+$ret = file_put_contents('assets/record/record_data.txt', $data, FILE_APPEND | LOCK_EX);
+if($ret === false) {
+    die('There was an error writing this file');
+} else {
+    return true;
+}
 }
 
 function selectall_category_name_row($id){
@@ -303,4 +303,24 @@ function select_all_province(){
     $CI->db->from('province');
     $data = $CI->db->get()->result();
     return $data;
+}
+
+function slugify($text){
+        // replace non letter or digits by -
+    $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+        // transliterate
+    $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        // remove unwanted characters
+    $text = preg_replace('~[^-\w]+~', '', $text);
+        // trim
+    $text = trim($text, '-');
+        // remove duplicate -
+    $text = preg_replace('~-+~', '-', $text);
+        // lowercase
+    $text = strtolower($text);
+    if (empty($text)) {
+        return 'n-a';
+    }
+    
+    return $text;
 }
