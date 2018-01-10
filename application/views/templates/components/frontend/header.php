@@ -56,44 +56,15 @@
                         <div class="cart-header">
                             <h4>Cart kamu</h4>
                         </div>
-                        <div class="ui divided items">
+                        <div class="ui divided items" id="hide_info">
                             <div class="item">
-                                <a href="#" class="ui mini image">
-                                    <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                                </a>
                                 <div class="content">
-                                    <h4 class="header">Bag with slingshot</h4>
-                                    <div class="description">
-                                        <p>1 x Rp 250.000</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <a href="#" class="ui mini image">
-                                    <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" alt="">
-                                </a>
-                                <div class="content">
-                                    <h4 class="header">Bag pouch for travelling</h4>
-                                    <div class="description">
-                                        <p>1 x Rp 250.000</p>
-                                    </div>
+                                    <h4 class="header">Kamu belum menambahkan item apapun di Cart</h4>
                                 </div>
                             </div>
                         </div>
-                        <div class="centered cart-total">
-                            <h4>Total: Rp 550.000,00</h4>
-                        </div>
-                        <a href="cart.html" class="ui animated bottom attached fade black button" tabindex="0">
-                            <div class="visible content"><i class="send icon"></i></div>
-                            <div class="hidden content">Checkout sekarang</div>
-                        </a>
+                        <div class="ui divided items" id="detail_cart"></div>
                     </div>
-                        <!-- <div class="ui popup cart-content empty">
-                            <div class="content">
-                                <h4>Kamu belum menambahkan item apapun di Cart</h4>
-                                <a href="#">Belanja dulu deh</a>
-                            </div>
-                        </div> --> <!-- TODO: Kalo Cart nya empty wak -->
                         <div class="ui top left pointing dropdown button item">
                         <?php
                             if(!empty($this->session->userdata('idCUSTOMER'))){

@@ -58,20 +58,6 @@ $(document).ready(function() {
         console.log("Clicked pulak!");
     });
 
-    $(".additional-actions .add-to-cart").each(function() {
-        $(this).on("click", function(e) {
-            e.preventDefault();
-            $(".additional-actions .add-to-cart .shopping.icon").transition("jiggle");
-            setTimeout(function() {
-                $(".ui.message.added-to-cart").transition({
-                    onComplete: setTimeout(function() {
-                        $(".ui.message.added-to-cart").transition("slide");
-                    }, 4000)
-                });
-            }, 1000);
-        });
-    });
-
     // $(".ui.message .close").on("click", function() {
     //     $(this).closest(".ui.message").transition("slide", 200);
     // });

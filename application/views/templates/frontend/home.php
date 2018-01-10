@@ -344,7 +344,7 @@
             }
         ?>
             <div class="three wide column">
-                <a href="<?php echo base_url();?>product/<?php echo $promo->slugBARANG;?>" class="ui card">
+                <a href="<?php echo base_url();?>detail/<?php echo $promo->slugBARANG;?>" class="ui card">
                     <div class="ui slide masked reveal image">
                         <img src="<?php echo $promo->imageBARANG;?>" class="visible content" alt="<?php echo $promo->nameBARANG;?>">
                         <img src="<?php echo $promo->imageBARANG2;?>" class="hidden content" alt="<?php echo $promo->nameBARANG;?>">
@@ -352,7 +352,7 @@
                             <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
                                 <i class="empty heart icon"></i>
                             </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
+                            <button class="add_cart ui button add-to-cart" title="Tambahkan ke Cart" data-barangid="<?php echo $promo->idBARANG;?>" data-barangnama="<?php echo $promo->nameBARANG;?>" data-barangharga="<?php echo $promo->priceBARANG;?>">
                                 <i class="shopping basket icon"></i>
                             </button>
                         </div>
@@ -362,7 +362,6 @@
                         <h4 class="header"><?php echo $promo->nameBARANG;?></h4>
                         <div class="meta">
                             <span class="price">IDR <?php echo number_format($promo->priceBARANG, 0,',','.'); ?></span>
-                            <span class="category"><?php echo $promo->nameCATEGORY;?></span>
                         </div>
                     </div>
                 </a>
@@ -395,7 +394,7 @@
             }
         ?>
             <div class="three wide column">
-                <a href="<?php echo base_url();?>product/<?php echo $updated->slugBARANG;?>" class="ui card">
+                <a href="<?php echo base_url();?>detail/<?php echo $updated->slugBARANG;?>" class="ui card">
                     <div class="ui slide masked reveal image">
                         <img src="<?php echo $updated->imageBARANG;?>" alt="<?php echo $updated->nameBARANG;?>" class="visible content">
                         <img src="<?php echo $updated->imageBARANG2;?>" alt="<?php echo $updated->nameBARANG;?>" class="hidden content">
@@ -403,7 +402,7 @@
                             <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
                                 <i class="empty heart icon"></i>
                             </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
+                            <button class="add_cart ui button add-to-cart" title="Tambahkan ke Cart" data-barangid="<?php echo $updated->idBARANG;?>" data-barangnama="<?php echo $updated->nameBARANG;?>" data-barangharga="<?php echo $updated->priceBARANG;?>">
                                 <i class="shopping basket icon"></i>
                             </button>
                         </div>
@@ -411,8 +410,8 @@
                     <div class="content">
                         <h4 class="header"><?php echo $updated->nameBARANG;?></h4>
                         <div class="meta">
-                            <span class="price">IDR <?php echo number_format($promo->priceBARANG, 0,',','.'); ?></span>
-                            <span class="category"><?php echo $promo->nameCATEGORY; ?></span>
+                            <span class="price">IDR <?php echo number_format($updated->priceBARANG, 0,',','.'); ?></span>
+                            <span class="category"><?php echo $updated->nameCATEGORY; ?></span>
                         </div>
                     </div>
                 </a>

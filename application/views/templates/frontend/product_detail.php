@@ -193,16 +193,15 @@
                     <div class="quantity-select">
                         <div class="field">
                             <label for="qty-select">Qty </label>
-                            <select class="ui compact dropdown" name="qty-select">
-                                <option value="">0</option>
-                                <option value="1">1</option>
+                            <select class="ui compact dropdown quantity" name="qtyBARANG" id="<?php echo $getbarang->idBARANG;?>">
+                                <option value="1" selected="selected">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                             </select>
                         </div>
-                        <button class="ui toggle fade add-to-cart black button" tabindex="0">
+                        <button class="add_cart ui toggle fade add-to-cart black button" tabindex="0" data-barangid="<?php echo $getbarang->idBARANG;?>" data-barangnama="<?php echo $getbarang->nameBARANG;?>" data-barangharga="<?php echo $getbarang->priceBARANG;?>">
                             <i class="plus square outline icon"></i> Tambahkan ke Keranjang
                         </button> &nbsp; &nbsp;
                         <span>atau</span> &nbsp; &nbsp; <a href="#" class="button add-to-wishlist">Tambahkan ke Wishlist <i class="empty heart icon"></i></a>

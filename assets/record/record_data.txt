@@ -408,3 +408,5 @@ Superadmin ZIGZAG - Berhasil login - Pada waktu Rabu, 10 Januari 2018 | 08:58
 Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Rabu, 10 Januari 2018 | 08:58 
 Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Rabu, 10 Januari 2018 | 08:59 
 Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Rabu, 10 Januari 2018 | 08:59 
+Unknown user - using Chrome - ip:::1 - Berhasil Keluar - Pada waktu Rabu, 10 Januari 2018 | 09:26 
+Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/forgot.html - Pada waktu Rabu, 10 Januari 2018 | 18:45 
