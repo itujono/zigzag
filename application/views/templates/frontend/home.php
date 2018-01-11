@@ -352,6 +352,7 @@
                             <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
                                 <i class="empty heart icon"></i>
                             </button>
+                            <input type="hidden" name="qtyBARANG" id="<?php echo $promo->idBARANG;?>" value="1" class="quantity">
                             <button class="add_cart ui button add-to-cart" title="Tambahkan ke Cart" data-barangid="<?php echo $promo->idBARANG;?>" data-barangnama="<?php echo $promo->nameBARANG;?>" data-barangharga="<?php echo $promo->priceBARANG;?>">
                                 <i class="shopping basket icon"></i>
                             </button>
@@ -402,6 +403,7 @@
                             <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
                                 <i class="empty heart icon"></i>
                             </button>
+                            <input type="hidden" name="qtyBARANG" id="<?php echo $updated->idBARANG;?>" value="1" class="quantity">
                             <button class="add_cart ui button add-to-cart" title="Tambahkan ke Cart" data-barangid="<?php echo $updated->idBARANG;?>" data-barangnama="<?php echo $updated->nameBARANG;?>" data-barangharga="<?php echo $updated->priceBARANG;?>">
                                 <i class="shopping basket icon"></i>
                             </button>

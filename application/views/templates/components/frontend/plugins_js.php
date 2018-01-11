@@ -47,25 +47,41 @@ if ($plugins == 'home') { ?>
 	    <?php } ?>
         });
     });
-	// $(".additional-actions .add-to-cart").each(function() {
- //        $(this).on("click", function(e) {
- //            e.preventDefault();
- //            $(".additional-actions .add-to-cart .shopping.icon").transition("jiggle");
- //            setTimeout(function() {
- //                $(".ui.message.added-to-cart").transition({
- //                    onComplete: setTimeout(function() {
- //                        $(".ui.message.added-to-cart").transition("slide");
- //                    }, 4000)
- //                });
- //            }, 1000);
- //        });
- //    });
+	$(".additional-actions .add-to-cart").each(function() {
+        $(this).on("click", function(e) {
+            e.preventDefault();
+            $(".additional-actions .add-to-cart .shopping.icon").transition("jiggle");
+            setTimeout(function() {
+                $(".ui.message.added-to-cart").transition({
+                    onComplete: setTimeout(function() {
+                        $(".ui.message.added-to-cart").transition("slide");
+                    }, 4000)
+                });
+            }, 1000);
+        });
+    });
+ 	$(document).ready(function(){
+		$('.add_cart').click(function(){
+			var idBARANG    = $(this).data("barangid");
+			var nameBARANG  = $(this).data("barangnama");
+			var priceBARANG = $(this).data("barangharga");
+			var qtyBARANG     = $('#' + idBARANG).val();
+			$.ajax({
+				url : "<?php echo base_url();?>product/add_to_cart",
+				method : "POST",
+				data : {idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG},
+				success: function(data){
+					$('#hide_info').hide();
+					$('#detail_cart').html(data);
+				}
+			});
+		});
+	});
 	</script>
 <?php } elseif ($plugins == 'product-detail') { ?>
 	<script src="<?php echo base_url().$this->data['asfront'];?>js/owl.js"></script>
 	<script src="<?php echo base_url().$this->data['asfront'];?>js/cloud-zoom.js"></script>
-<?php } ?>
-<script type="text/javascript">
+	<script type="text/javascript">
 	$(document).ready(function(){
 		$('.add_cart').click(function(){
 			var idBARANG    = $(this).data("barangid");
@@ -83,6 +99,9 @@ if ($plugins == 'home') { ?>
 			});
 		});
 	});
+	</script>
+<?php } ?>
+<script type="text/javascript">
 	$('#detail_cart').load("<?php echo base_url();?>product/load_cart");
 	//Hapus Item Cart
 	$(document).on('click','.hapus_cart',function(){
@@ -92,8 +111,8 @@ if ($plugins == 'home') { ?>
 			method : "POST",
 			data : {row_id : row_id},
 			success :function(data){
-				$('#hide_info').show();
 				$('#detail_cart').html(data);
+				$('#hide_info').show();
 			}
 		});
 	});
