@@ -269,9 +269,7 @@
 
                 <div class="ui grid" id="step-shipping">
 
-
                     <div class="sixteen wide column">
-
                         <div class="ui three ordered steps">
                             <div class="active step">
                                 <div class="content">
@@ -419,17 +417,15 @@
                             </div>
                             <input type="submit" class="ui fluid zz button" id="shipping" value="Lanjut">
                         </form>
-
                     </div>
 
-
                 </div> <!-- kelar div Grid / Step-Shipping -->
+
 
 
                 <div class="ui grid" id="step-billing">
 
                     <div class="sixteen wide column">
-
                         <div class="ui three ordered steps">
                             <div class="completed step">
                                 <div class="content">
@@ -469,7 +465,7 @@
                             Pembayaran adalah hal yang bermakna bagi nusa dan bangsa orang Melayu di Pinang bagian selatan.
                         </div>
 
-                        <form class="ui form" action="index.html" method="post">
+                        <form class="ui form" method="post" id="payment-option">
                             <div class="ui styled accordion payment-option">
                                 <div class="title active">
                                     <i class="dropdown icon"></i>
@@ -482,7 +478,7 @@
                                         Transfer bank mempunyai kelebihan yang mumpuni dibandingkan menabung di bank
                                     </div>
                                     <div class="ui form">
-                                        <div class="three fields transfer">
+                                        <div class="three required fields transfer">
                                             <div class="field">
                                                 <div class="ui segment">
                                                     <div class="ui radio checkbox">
@@ -509,6 +505,14 @@
                                             </div>
                                         </div>
                                     </div> <!-- kelar Ui Form -->
+
+                                    <div class="help-text">
+                                        <ol>
+                                            <li>Harap lakukan pembayaran paling lambat 3 jam, kalo nggak kami cancel nih,</li>
+                                            <li>Nomer rekening bakal dikasih tau pas di email nanti. Ini cuma pilihan bank yang diinginkan aja kok untuk transaksi.</li>
+                                        </ol>
+                                    </div>
+
                                 </div>
 
                                 <div class="title">
@@ -517,11 +521,14 @@
                                 </div>
 
                                 <div class="content">
+
                                     <div class="text">
                                         <h3>Deposit Dana</h3>
                                         Jika kamu memilih deposit dana, maka kamu harus mandi dulu pagi tadi
                                     </div>
+
                                     <div class="ui form">
+
                                         <div class="three fields transfer">
                                             <div class="field">
                                                 <div class="ui segment">
@@ -548,18 +555,185 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="field">
                                             <label for="customAmount">Atau pilih nominal kamu sendiri (masukkan hanya angka)</label>
                                             <input type="number" name="customAmount" placeholder="Misal: 350000">
                                         </div>
+
                                     </div>
                                 </div>
                             </div> <!-- kelar Accordion / Bank transfer -->
+
                             <input type="submit" class="ui fluid zz button" id="billing" value="Lanjut">
+
                         </form>
 
+                        <a href="#" class="back-to-previous"><i class="chevron left icon"></i> Kembali</a>
                     </div>
+
                 </div> <!-- kelar div Grid / Step-Billing -->
+
+
+                <div class="ui grid" id="step-confirm">
+
+                    <div class="sixteen wide column">
+                        <div class="ui three ordered steps">
+                            <div class="completed step">
+                                <div class="content">
+                                    <div class="title">Shipping</div>
+                                    <div class="description">Isi form order untuk pengiriman</div>
+                                </div>
+                            </div>
+                            <div class="completed step">
+                                <div class="content">
+                                    <div class="title">Billing</div>
+                                    <div class="description">Pilih metode pembayaran</div>
+                                </div>
+                            </div>
+                            <div class="active step">
+                                <div class="content">
+                                    <div class="title">Confirm Order</div>
+                                    <div class="description">Review semua sebelum place order</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sixteen wide column" id="cart-table">
+                        <table class="ui padded table">
+
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Harga</th>
+                                    <th>Qty</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr class="cart-item">
+                                    <td>
+                                        <div class="item">
+                                            <div class="ui tiny image">
+                                                <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
+                                            </div>
+                                            <div class="left aligned content">
+                                                Basic Knitted Pulljump Pouch Bag <br>
+                                                <strong>Kode: NY08909</strong>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        Rp 450.000,00
+                                    </td>
+                                    <td>2</td>
+                                    <td>
+                                        Rp 900.000,00
+                                    </td>
+                                </tr>
+                                <tr class="cart-item">
+                                    <td>
+                                        <div class="item">
+                                            <div class="ui tiny image">
+                                                <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" alt="">
+                                            </div>
+                                            <div class="left aligned content">
+                                                Hand-bag Washed Jeans Parachutes <br>
+                                                <strong>Kode: PX23498</strong>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Rp 275.000,00</td>
+                                    <td>1</td>
+                                    <td>Rp 275.000,00</td>
+                                </tr>
+                            </tbody>
+
+                            <tfoot class="full-width">
+                                <tr>
+                                    <th colspan="4">
+                                        <button type="button" class="ui zz checkout right floated button">Bayar sekarang <i class="angle right icon"></i></button>
+                                        <a href="checkout.html" class="ui black button">
+                                            <i class="angle left icon"></i> Nanti dulu
+                                        </a>
+                                    </th>
+                                </tr>
+                            </tfoot>
+
+                        </table>
+                    </div>
+
+                    <div class="sixteen wide column" id="cart-recap">
+                        <div class="content">
+                            <h3 class="header">Detail belanja kamu</h3>
+
+                            <table class="ui very basic table">
+                                <tbody>
+                                    <tr>
+                                        <td>Ekspedisi: </td>
+                                        <td class="right aligned">JNE</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Alamat: </td>
+                                        <td class="right aligned">
+                                            Jalan Kepodang Raya Blok X #33 <br>
+                                            Sukabumi, Kendari, Sulawesi Tenggara 20949
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pembayaran: </td>
+                                        <td class="right aligned">Transfer Bank - BCA</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div> <!-- kelar div Cart Recap Row -->
+
+                    <div class="sixteen wide column" id="cart-total">
+                        <div class="content">
+                            <h3 class="header">Total belanja kamu</h3>
+
+                            <table class="ui very basic table">
+                                <tbody>
+                                    <tr>
+                                        <td>Subtotal: </td>
+                                        <td class="right aligned">Rp 1.450.000,00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Diskon: </td>
+                                        <td class="right aligned">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PPh/PPN: </td>
+                                        <td class="right aligned">0%</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="relaxed">
+                                        <th>Total yang harus dibayar: </th>
+                                        <th class="right aligned">Rp 1.450.000,00</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                            <a href="#" class="ui animated fade large black fluid checkout button" tabindex="0">
+                                <div class="visible content">Bayar sekarang</div>
+                                <div class="hidden content">
+                                    <i class="shopping cart icon"></i>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div> <!-- kelar div Cart Total Row -->
+
+
+                </div>
+
+
+
 
             </div> <!-- kelar Main -->
 
@@ -616,6 +790,19 @@
                     </div>
                 </div>
             </footer>
+        </div>
+
+
+
+        <div class="ui tiny modal confirm-order">
+            <div class="header">Place order?</div>
+            <div class="content">
+                Kamu sudah yakin mau place order kamu ini?
+            </div>
+            <div class="actions">
+                <div class="ui teal approve button"> Yakin! </div>
+                <div class="ui cancel button"> Nggak jadi </div>
+            </div>
         </div>
 
 

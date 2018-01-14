@@ -566,6 +566,18 @@ $(document).ready(function() {
         }
     });
 
+    $(".back-to-previous").on("click", function(e) {
+        e.preventDefault();
+        $("#step-billing").transition("slide", 300);
+        $("#step-shipping").transition("slide", 200);
+    });
+
+    $("#payment-option").on("submit", function(e) {
+        e.preventDefault();
+        $("#step-billing").transition("slide", 300);
+        $("#step-confirm").transition("slide", 200);
+    });
+
     // $("#shipping-address").on("submit", function(e) {
     //     // $("#shipping-address").closest("#step-shipping").transition("slide", 300);
     //     console.log(this);
@@ -577,6 +589,20 @@ $(document).ready(function() {
     });
 
     $(".ui.accordion.payment-option").accordion();
+
+    $("#cart-total .checkout.button").on("click", function() {
+
+        $(".ui.modal.confirm-order").modal({
+            closable: false,
+            blurring: true,
+            duration: 200,
+            transition: "fade up",
+            onApprove: function(e) {
+                window.location = "order-done.html"
+            }
+        }).modal("show");
+
+    });
 
 
 

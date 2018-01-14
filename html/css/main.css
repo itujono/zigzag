@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700i,900i");
+body { background-color: #fafafa; }
+
 #app { display: grid; padding: 1rem 3rem; background-color: #fafafa; grid-gap: 1.8em; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(3, minmax(50px, auto)); grid-template-areas: "h h h h h h h h h h h h" "s s m m m m m m m m m m" "f f f f f f f f f f f f"; }
 
 #app header { grid-area: h; }
@@ -11,9 +13,15 @@
 
 #app.forgot { grid-template-areas: ". h h h h h h h h h h ." ". . m m m m m m m m . ." ". f f f f f f f f f f ."; }
 
-#app.checkout { grid-template-areas: ". h h h h h h h h h h ." ". . . m m m m m m . . ." ". f f f f f f f f f f ."; background-color: #f9f9f9; }
+#app.checkout, #app.order-done { grid-template-areas: "h h h h h h h h h h h h" ". . . m m m m m m . . ." "f f f f f f f f f f f f"; background-color: #f9f9f9; }
 
 .taright { text-align: right !important; }
+
+.mb2em { margin-bottom: 2em !important; }
+
+.ui.form { margin-bottom: 2em; }
+
+.centered.content { text-align: center; margin: 0 auto; }
 
 .zz.button { background-color: #58dcb9; color: #fff; }
 
@@ -187,25 +195,25 @@ a:hover { color: #24aa87; }
 
 .ui.deposit .what-is-deposit .ui.avatar.image { margin-right: 0; margin-bottom: 1em; }
 
-.ui.modal.login, .ui.modal.register, .ui.modal.delete-cart { background-color: #f9f9f9; }
+.ui.modal.login, .ui.modal.register, .ui.modal.delete-cart, .ui.modal.confirm-order { background-color: #f9f9f9; }
 
-.ui.modal.login .form, .ui.modal.register .form, .ui.modal.delete-cart .form { padding: 1em 3em; margin-bottom: 1.2em; }
+.ui.modal.login .form, .ui.modal.register .form, .ui.modal.delete-cart .form, .ui.modal.confirm-order .form { padding: 1em 3em; margin-bottom: 1.2em; }
 
-.ui.modal.login .login.button, .ui.modal.register .login.button, .ui.modal.delete-cart .login.button { background-color: #58dcb9; color: #fff; }
+.ui.modal.login .login.button, .ui.modal.register .login.button, .ui.modal.delete-cart .login.button, .ui.modal.confirm-order .login.button { background-color: #58dcb9; color: #fff; }
 
-.ui.modal.login .login.button:hover, .ui.modal.register .login.button:hover, .ui.modal.delete-cart .login.button:hover { background-color: #2ed3a7; }
+.ui.modal.login .login.button:hover, .ui.modal.register .login.button:hover, .ui.modal.delete-cart .login.button:hover, .ui.modal.confirm-order .login.button:hover { background-color: #2ed3a7; }
 
-.ui.modal.login .header, .ui.modal.register .header, .ui.modal.delete-cart .header { border-bottom: none; padding: 1em 2em; }
+.ui.modal.login .header, .ui.modal.register .header, .ui.modal.delete-cart .header, .ui.modal.confirm-order .header { border-bottom: none; padding: 1em 2em; }
 
-.ui.modal.login .login-buttons, .ui.modal.register .login-buttons, .ui.modal.delete-cart .login-buttons { text-align: center; margin: 0 auto; padding-bottom: 3em; }
+.ui.modal.login .login-buttons, .ui.modal.register .login-buttons, .ui.modal.delete-cart .login-buttons, .ui.modal.confirm-order .login-buttons { text-align: center; margin: 0 auto; padding-bottom: 3em; }
 
-.ui.modal.login .forgot, .ui.modal.login .signup-link, .ui.modal.login .login-link, .ui.modal.register .forgot, .ui.modal.register .signup-link, .ui.modal.register .login-link, .ui.modal.delete-cart .forgot, .ui.modal.delete-cart .signup-link, .ui.modal.delete-cart .login-link { text-align: center; margin-bottom: 2.6em; }
+.ui.modal.login .forgot, .ui.modal.login .signup-link, .ui.modal.login .login-link, .ui.modal.register .forgot, .ui.modal.register .signup-link, .ui.modal.register .login-link, .ui.modal.delete-cart .forgot, .ui.modal.delete-cart .signup-link, .ui.modal.delete-cart .login-link, .ui.modal.confirm-order .forgot, .ui.modal.confirm-order .signup-link, .ui.modal.confirm-order .login-link { text-align: center; margin-bottom: 2.6em; }
 
-.ui.modal.login .login-link, .ui.modal.register .login-link, .ui.modal.delete-cart .login-link { padding-bottom: 2.4em; }
+.ui.modal.login .login-link, .ui.modal.register .login-link, .ui.modal.delete-cart .login-link, .ui.modal.confirm-order .login-link { padding-bottom: 2.4em; }
 
-.ui.modal.login .ui.checkbox label, .ui.modal.register .ui.checkbox label, .ui.modal.delete-cart .ui.checkbox label { font-size: 12px; }
+.ui.modal.login .ui.checkbox label, .ui.modal.register .ui.checkbox label, .ui.modal.delete-cart .ui.checkbox label, .ui.modal.confirm-order .ui.checkbox label { font-size: 12px; }
 
-.ui.modal.login .content, .ui.modal.register .content, .ui.modal.delete-cart .content { padding: 1em 3em 3em 3em; }
+.ui.modal.login .content, .ui.modal.register .content, .ui.modal.delete-cart .content, .ui.modal.confirm-order .content { padding: 1em 3em 3em 3em; }
 
 .forgot .header { margin-bottom: 2em; color: #999; }
 
@@ -329,7 +337,7 @@ a:hover { color: #24aa87; }
 
 .checkout #form-header { position: relative; margin-bottom: 5em; }
 
-.checkout #step-billing { display: none; }
+.checkout #step-billing, .checkout #step-confirm { display: none; }
 
 .checkout #step-shipping .sixteen.column { padding-top: 0; }
 
@@ -374,6 +382,38 @@ a:hover { color: #24aa87; }
 .payment-option .content .text { margin-bottom: 2em; }
 
 .payment-option .transfer { margin: 0; }
+
+.back-to-previous { color: #999; }
+
+.help-text ol { padding: 1em; color: #999; }
+
+@-webkit-keyframes checkmark { 0% { stroke-dashoffset: 50px; }
+  100% { stroke-dashoffset: 0; } }
+
+@keyframes checkmark { 0% { stroke-dashoffset: 50px; }
+  100% { stroke-dashoffset: 0; } }
+
+@-webkit-keyframes checkmark-circle { 0% { stroke-dashoffset: 240px; }
+  100% { stroke-dashoffset: 480px; } }
+
+@keyframes checkmark-circle { 0% { stroke-dashoffset: 240px; }
+  100% { stroke-dashoffset: 480px; } }
+
+.inlinesvg .svg svg { display: inline; }
+
+.icon--order-success { margin-bottom: 2em; }
+
+.icon--order-success svg path { -webkit-animation: checkmark 0.25s ease-in-out 0.7s backwards; animation: checkmark 0.25s ease-in-out 0.7s backwards; -webkit-animation-delay: 2s; animation-delay: 2s; }
+
+.icon--order-success svg circle { -webkit-animation: checkmark-circle 0.6s ease-in-out backwards; animation: checkmark-circle 0.6s ease-in-out backwards; -webkit-animation-delay: 1s; animation-delay: 1s; }
+
+.success-text { margin-bottom: 2em; }
+
+.success-text h2 { margin-bottom: 0.5em; }
+
+.done-payment-link { color: #999; }
+
+.order-done #cart-table, .order-done #cart-recap, .order-done #cart-total { margin-bottom: 2em; }
 
 footer .ui.grid.footer { border-bottom: 1px solid rgba(0, 0, 0, 0.4); }
 
