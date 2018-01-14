@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700i,900i");
-#app { display: grid; padding: 1rem 3rem; background-color: #fafafa; grid-gap: 1.8em; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(3, minmax(50px, auto)); grid-template-areas: ". h h h h h h h h h h ." ". s s m m m m m m m m ." ". f f f f f f f f f f ."; }
+#app { display: grid; padding: 1rem 3rem; background-color: #fafafa; grid-gap: 1.8em; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(3, minmax(50px, auto)); grid-template-areas: "h h h h h h h h h h h h" "s s m m m m m m m m m m" "f f f f f f f f f f f f"; }
 
 #app header { grid-area: h; }
 
@@ -367,11 +367,13 @@ a:hover { color: #24aa87; }
 
 .ui.steps .step .description { color: #bbb; }
 
-.bank-transfer { width: initial !important; }
+.payment-option { width: initial !important; margin-bottom: 2em; }
 
-.bank-transfer .content .text { margin-bottom: 2em; }
+.payment-option .title.active { color: #58dcb9 !important; }
 
-.bank-transfer .transfer { margin: 0; }
+.payment-option .content .text { margin-bottom: 2em; }
+
+.payment-option .transfer { margin: 0; }
 
 footer .ui.grid.footer { border-bottom: 1px solid rgba(0, 0, 0, 0.4); }
 
