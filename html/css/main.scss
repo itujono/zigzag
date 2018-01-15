@@ -32,11 +32,11 @@ body {
     footer {
         grid-area: f;
     }
-    &.forgot {
+    &.forgot, &.search {
         grid-template-areas:
-            ". h h h h h h h h h h ."
+            "h h h h h h h h h h h h"
             ". . m m m m m m m m . ."
-            ". f f f f f f f f f f ."
+            "f f f f f f f f f f f f"
     }
     &.checkout, &.order-done, &.confirmation, &.retur {
         grid-template-areas:
@@ -1045,6 +1045,25 @@ a.ui.card:hover,
 
 .order-done {
     #cart-table, #cart-recap, #cart-total {
+        margin-bottom: 2em;
+    }
+}
+
+
+
+
+
+
+
+
+
+// Yippiiiieee! Udah masuk Search Results konooon!important
+
+.search-results {
+    .meta {
+        color: #999 !important;
+    }
+    .description {
         margin-bottom: 2em;
     }
 }

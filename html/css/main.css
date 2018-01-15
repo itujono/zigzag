@@ -11,7 +11,7 @@ body { background-color: #fafafa; }
 
 #app footer { grid-area: f; }
 
-#app.forgot { grid-template-areas: ". h h h h h h h h h h ." ". . m m m m m m m m . ." ". f f f f f f f f f f ."; }
+#app.forgot, #app.search { grid-template-areas: "h h h h h h h h h h h h" ". . m m m m m m m m . ." "f f f f f f f f f f f f"; }
 
 #app.checkout, #app.order-done, #app.confirmation, #app.retur { grid-template-areas: "h h h h h h h h h h h h" ". . . m m m m m m . . ." "f f f f f f f f f f f f"; background-color: #f9f9f9; }
 
@@ -418,6 +418,10 @@ a:hover { color: #24aa87; }
 .done-payment-link { color: #999; }
 
 .order-done #cart-table, .order-done #cart-recap, .order-done #cart-total { margin-bottom: 2em; }
+
+.search-results .meta { color: #999 !important; }
+
+.search-results .description { margin-bottom: 2em; }
 
 footer .ui.grid.footer { border-bottom: 1px solid rgba(0, 0, 0, 0.4); }
 
