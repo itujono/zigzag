@@ -692,5 +692,79 @@ $(document).ready(function() {
     });
 
 
+    $("#retur-form").form({
+        inline: true,
+        on: "submit",
+        fields: {
+            nomor: {
+                identifier: "nomorOrder",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Jangan dikosongin nomernya ya"
+                    },
+                    {
+                        type: "minLength[5]",
+                        prompt: "Kurang panjang tuh namanya"
+                    }
+                ]
+            },
+            merkBarang: {
+                identifier: "merkBarang",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Jangan dikosongin merk nya ya"
+                    }
+                ]
+            },
+            kodeBarang: {
+                identifier: "kodeBarang",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Kode barangnya juga penting nih, sis"
+                    }
+                ]
+            },
+            alasanRetur: {
+                identifier: "alasanRetur",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Kami perlu alasan logisnya, jangan bikin marah ya!"
+                    },
+                    {
+                        type: "minLength[10]",
+                        prompt: "Kurang panjang alasannya. Yang deskriptif dikit ngapa?"
+                    }
+                ]
+            },
+            persetujuan: {
+                identifier: "persetujuan",
+                rules: [
+                    {
+                        type: "checked",
+                        prompt: "Kamu harus centang dulu ya"
+                    }
+                ]
+            }
+        },
+        onSuccess: function(e) {
+            e.preventDefault();
+            $("#retur-form .zz.button").addClass("loading");
+            setTimeout(function() {
+                $(".ui.page.dimmer").dimmer("show").dimmer({
+                    onHide: function() {
+                        console.log(this);
+                        window.location = "/";
+                    }
+                });
+            }, 2000);
+            $(this).form("clear");
+        }
+    });
+
+
 
 });
