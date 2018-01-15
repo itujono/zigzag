@@ -604,6 +604,93 @@ $(document).ready(function() {
 
     });
 
+    $("#confirmation-form").form({
+        inline: true,
+        on: "submit",
+        fields: {
+            nomor: {
+                identifier: "nomorOrder",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Jangan dikosongin nomernya ya"
+                    },
+                    {
+                        type: "minLength[5]",
+                        prompt: "Kurang panjang tuh namanya"
+                    }
+                ]
+            },
+            namaRekeningPengirim: {
+                identifier: "namaRekeningPengirim",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Jangan dikosongin namanya ya"
+                    }
+                ]
+            },
+            nomorRekeningPengirim: {
+                identifier: "nomorRekeningPengirim",
+                on: "submit",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Hayooo, nomer rekeningnya nya, mas!"
+                    },
+                    {
+                        type: "integer",
+                        prompt: "Nomer rekening gak ada yang make huruf deh perasaan"
+                    },
+                    {
+                        type: "minLength[8]",
+                        prompt: "Nggak kurang tu nomernya? Dikit amat perasaan"
+                    }
+                ]
+            },
+            dropdown: {
+                identifier: "bankRekeningPengirim",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Pilih bank nya jangan lupa ya"
+                    }
+                ]
+            },
+            nominalTransfer: {
+                identifier: "nominalTransfer",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Hayooo, berapa yang ditransfer tadi, sis? Kok gak diisi?"
+                    }
+                ]
+            },
+            persetujuan: {
+                identifier: "persetujuan",
+                rules: [
+                    {
+                        type: "checked",
+                        prompt: "Kamu harus centang dulu ya"
+                    }
+                ]
+            }
+        },
+        onSuccess: function(e) {
+            e.preventDefault();
+            $("#confirmation-form .zz.button").addClass("loading");
+            setTimeout(function() {
+                $(".ui.page.dimmer").dimmer("show").dimmer({
+                    onHide: function() {
+                        console.log(this);
+                        window.location = "/";
+                    }
+                });
+            }, 2000);
+            $(this).form("clear");
+        }
+    });
+
 
 
 });

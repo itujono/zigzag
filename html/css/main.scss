@@ -38,7 +38,7 @@ body {
             ". . m m m m m m m m . ."
             ". f f f f f f f f f f ."
     }
-    &.checkout, &.order-done {
+    &.checkout, &.order-done, &.confirmation {
         grid-template-areas:
             "h h h h h h h h h h h h"
             ". . . m m m m m m . . ."
@@ -202,6 +202,9 @@ a {
         &.main-ad {
             margin-bottom: initial;
         }
+    }
+    .header {
+        margin-bottom:  2em;
     }
     .main-ad {
         .ui.card {
@@ -924,6 +927,9 @@ a.ui.card:hover,
     margin-bottom: 3em;
     border: none !important;
     box-shadow: $boxShadow;
+    &:last-child {
+        margin-bottom: 3em !important;
+    }
     .step {
         &.active {
             background-color: #000;

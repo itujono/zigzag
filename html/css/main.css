@@ -13,7 +13,7 @@ body { background-color: #fafafa; }
 
 #app.forgot { grid-template-areas: ". h h h h h h h h h h ." ". . m m m m m m m m . ." ". f f f f f f f f f f ."; }
 
-#app.checkout, #app.order-done { grid-template-areas: "h h h h h h h h h h h h" ". . . m m m m m m . . ." "f f f f f f f f f f f f"; background-color: #f9f9f9; }
+#app.checkout, #app.order-done, #app.confirmation { grid-template-areas: "h h h h h h h h h h h h" ". . . m m m m m m . . ." "f f f f f f f f f f f f"; background-color: #f9f9f9; }
 
 .taright { text-align: right !important; }
 
@@ -70,6 +70,8 @@ a:hover { color: #24aa87; }
 .main > .ui.grid { margin-bottom: 2em; }
 
 .main > .ui.grid.main-ad { margin-bottom: initial; }
+
+.main .header { margin-bottom: 2em; }
 
 .main .main-ad .ui.card { width: auto; }
 
@@ -352,6 +354,8 @@ a:hover { color: #24aa87; }
 .fields.ekspedisi .field:last-of-type { padding-right: 0 !important; }
 
 .ui.steps { margin-bottom: 3em; border: none !important; -webkit-box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); }
+
+.ui.steps:last-child { margin-bottom: 3em !important; }
 
 .ui.steps .step.active { background-color: #000; }
 
