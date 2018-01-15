@@ -1059,7 +1059,19 @@ a.ui.card:hover,
 
 // Yippiiiieee! Udah masuk Search Results konooon!important
 
-.search-results {
+.search {
+    .header {
+        margin-bottom: 5em;
+        strong {
+            color: $tosca;
+        }
+    }
+}
+
+.ui.divided.search-results {
+    .item {
+        padding: 2em 0;
+    }
     .meta {
         color: #999 !important;
     }

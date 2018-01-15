@@ -419,9 +419,15 @@ a:hover { color: #24aa87; }
 
 .order-done #cart-table, .order-done #cart-recap, .order-done #cart-total { margin-bottom: 2em; }
 
-.search-results .meta { color: #999 !important; }
+.search .header { margin-bottom: 5em; }
 
-.search-results .description { margin-bottom: 2em; }
+.search .header strong { color: #58dcb9; }
+
+.ui.divided.search-results .item { padding: 2em 0; }
+
+.ui.divided.search-results .meta { color: #999 !important; }
+
+.ui.divided.search-results .description { margin-bottom: 2em; }
 
 footer .ui.grid.footer { border-bottom: 1px solid rgba(0, 0, 0, 0.4); }
 
