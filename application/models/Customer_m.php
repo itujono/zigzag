@@ -56,6 +56,11 @@ class Customer_m extends MY_Model{
 			'label' => 'No. Telepon',
 			'rules' => 'trim|required|is_unique[zigzag_customer.teleCUSTOMER]|is_numeric'
 			),
+		'skCUSTOMER' => array(
+			'field' => 'skCUSTOMER',
+			'label' => 'Syarat & Ketentuan',
+			'rules' => 'required'
+			)
 	);
 
 	public $rules_changepassword_customer = array(

@@ -131,6 +131,10 @@
                                 <div class="ui tiny modal register">
                                     <div class="header">Hi! Silakan Mendaftar</div>
                                     <form class="ui form" action="<?php echo base_url();?>customer/register" method="POST">
+                                        <div class="ui compact red message print-error-msg" style="display:none">
+                                            <h4 class="header">Oops!</h4>
+
+                                        </div>
                                         <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
                                         <div class="field">
                                             <label for="nama">Nama lengkap kamu</label>
@@ -189,7 +193,7 @@
                                                 <label>Saya telah menyetujui isi <a href="#">Syarat dan Ketentuan</a> Zigzag Online Shop</label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="ui fluid login button">Register</button>
+                                        <button type="submit" class="ui fluid login button check-submit">Register</button>
                                     </form>
 
                                     <div class="ui horizontal divider">

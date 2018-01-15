@@ -16,7 +16,7 @@ class Customer extends Frontend_Controller {
 		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
         $this->form_validation->set_message('trim', 'Form %s adalah Trim');
         $this->form_validation->set_message('valid_email', 'Maaf, $s Anda tidak valid');
-        $this->form_validation->set_message('is_unique', 'Tampaknya inputan Anda sudah terdaftar');
+        $this->form_validation->set_message('is_unique', 'Tampaknya inputan %s anda sudah terdaftar');
         $this->form_validation->set_message('min_length', 'Minimal kata sandi 8 karakter');
         $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
@@ -36,13 +36,16 @@ class Customer extends Frontend_Controller {
                 $name = ucwords($this->input->post('nameCUSTOMER'));
 
 	                // if($this->sendemailconfirmation($name, $email, $saveid)){
-						$data = array(
-							'title' => 'Sukses',
-							'style' => 'is-success',
-		                    'text' => 'Terima kasih sudah mendaftar. Silakan cek kotak masuk ataupun kotak spam email Anda. Terima Kasih!'
-		                );
-		                $this->session->set_flashdata('message',$data);
-		                redirect('home');
+						// $data = array(
+						// 	'title' => 'Sukses',
+						// 	'style' => 'is-success',
+		    //                 'text' => 'Terima kasih sudah mendaftar. Silakan cek kotak masuk ataupun kotak spam email Anda. Terima Kasih!'
+		    //             );
+		    //             $this->session->set_flashdata('message',$data);
+		    //             redirect('home');
+                	$errors['status'] = 'success';
+					$errors['redirect'] = base_url();
+		            echo json_encode($errors);
 					// } else {
 					// 	$data = array(
 		   //                  'title' => 'Error',
@@ -63,13 +66,9 @@ class Customer extends Frontend_Controller {
 		        redirect('home');
 			}
 		} else {
-			$data = array(
-				'title' => 'Error!',
-				'style' => 'is-warning',
-	            'text' => 'Maaf, silakan cek inputan anda kembali.'
-	        );
-	        $this->session->set_flashdata('message',$data);
-	        redirect('home');
+			$errors['status'] = 'error';
+			$errors['message'] = validation_errors();
+            echo json_encode($errors);
 		}
 	}
 

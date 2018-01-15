@@ -77,6 +77,34 @@ if ($plugins == 'home') { ?>
 			});
 		});
 	});
+	$(document).ready(function() {
+	    $(".check-submit").click(function(e){
+	    	e.preventDefault();
+	    	var nameCUSTOMER = $("input[name='nameCUSTOMER']").val();
+	    	var emailCUSTOMER = $("input[name='emailCUSTOMER']").val();
+	    	var passwordCUSTOMER = $("input[name='passwordCUSTOMER']").val();
+	    	var addressCUSTOMER = $("textarea[name='addressCUSTOMER']").val();
+	    	var cityCUSTOMER = $("select[name='cityCUSTOMER']").val();
+	    	var zipCUSTOMER = $("input[name='zipCUSTOMER']").val();
+	    	var teleCUSTOMER = $("input[name='teleCUSTOMER']").val();
+	    	var skCUSTOMER = $("input[name='skCUSTOMER']").val();
+	        $.ajax({
+	            url: "<?php echo base_url();?>customer/register",
+	            type:'POST',
+	            dataType: "json",
+	            data: {nameCUSTOMER:nameCUSTOMER, emailCUSTOMER:emailCUSTOMER, passwordCUSTOMER:passwordCUSTOMER, addressCUSTOMER:addressCUSTOMER, cityCUSTOMER:cityCUSTOMER, zipCUSTOMER:zipCUSTOMER, teleCUSTOMER:teleCUSTOMER, skCUSTOMER:skCUSTOMER},
+	            success: function(data) {
+	            	if(data.status == "success"){
+	                	$(".print-error-msg").css('display','none');
+	                	window.location.href = data.redirect;
+	                }else{
+						$(".print-error-msg").css('display','block');
+	                	$(".print-error-msg").html(data.message);
+	                }
+	            }
+	        })
+	    });
+	});
 	</script>
 <?php } elseif ($plugins == 'product-detail') { ?>
 	<script src="<?php echo base_url().$this->data['asfront'];?>js/owl.js"></script>
