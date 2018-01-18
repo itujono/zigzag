@@ -64,6 +64,12 @@ body {
     margin: 0 auto;
 }
 
+a.header {
+    &:hover {
+        color: $tosca !important;
+    }
+}
+
 .zz.button {
     background-color: $tosca;
     color: #fff;
@@ -1058,14 +1064,26 @@ a.ui.card:hover,
 
 
 
-// Yippiiiieee! Udah masuk Search Results konooon!important
+// Yippiiiieee! Udah masuk Search Results konooon!
 
 .search {
     .header {
         margin-bottom: 5em;
+        color: #999;
+        h3 {
+            margin-bottom: .3em;
+            color: initial;
+        }
         strong {
             color: $tosca;
         }
+    }
+    .mug {
+        font-size: 3em;
+    }
+    .discounted {
+        text-decoration: line-through;
+        color: transparentize($red, .4);
     }
 }
 
