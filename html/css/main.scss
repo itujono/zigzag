@@ -1124,12 +1124,15 @@ a.ui.card:hover,
             }
         }
         .segment {
+            padding: 1em 0;
             > div {
-                padding-bottom: 2em;
-                padding-top: 2em;
+                padding: 2em;
                 border-bottom: 1px solid #ddd;
                 &:first-of-type {
                     padding-top: initial;
+                }
+                &:last-of-type {
+                    border-bottom: none;
                 }
                 > div {
                     display: flex;
