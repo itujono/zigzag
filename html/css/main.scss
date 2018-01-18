@@ -491,7 +491,8 @@ a.ui.card:hover,
 }
 
 .ui.message.added-to-wishlist, .ui.message.added-to-cart,
-.ui.message.removed-from-wishlist, .ui.message.removed-from-cart {
+.ui.message.removed-from-wishlist, .ui.message.removed-from-cart,
+.ui.message.error-wishlist {
     display: none;
     position: fixed;
     top: 0;
