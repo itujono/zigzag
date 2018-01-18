@@ -12,9 +12,9 @@
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(3, minmax(50px, auto));
     grid-template-areas:
-        ". h h h h h h h h h h ."
-        ". s s m m m m m m m m ."
-        ". f f f f f f f f f f .";
+        "h h h h h h h h h h h h"
+        "s s m m m m m m m m m m"
+        "f f f f f f f f f f f f";
     header {
         grid-area: h;
     }
