@@ -25,14 +25,36 @@ if ($plugins == 'home') { ?>
 	        <?php } else { ?>
 	            e.preventDefault();
 	            if ($(this).find(".empty.heart.icon").hasClass("empty")) {
-	                setTimeout(function() {
-	                    $(".ui.message.added-to-wishlist").transition("slide", function() {
-	                        setTimeout(function() {
-	                            $(".ui.message.added-to-wishlist").transition("slide");
-	                        }, 4000);
-	                    });
-	                }, 1000);
-	                $(this).find(".empty.heart.icon").transition("jiggle").removeClass("empty").css("color", "#f92626");
+						var idBARANG    = $(this).data("idbarang");
+						$.ajax({
+							url : "<?php echo base_url();?>product/wish",
+							method : "POST",
+							dataType: "json",
+							data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG},
+							success: function(data){
+								if(data.status == "success"){
+									setTimeout(function() {
+					                    $(".ui.message.added-to-wishlist").transition("slide", function() {
+					                        setTimeout(function() {
+					                            $(".ui.message.added-to-wishlist").transition("slide");
+					                        }, 4000);
+					                    });
+					                }, 1000);
+					                $(this).find(".empty.heart.icon").transition("jiggle").removeClass("empty").css("color", "#f92626");
+								} else {
+									$(this).find(".heart.icon").transition("jiggle").addClass("empty").css("color", "#fff");
+					                setTimeout(function() {
+					                    $(".ui.message.error-wishlist").transition("slide", function() {
+					                        setTimeout(function() {
+					                            $(".ui.message.error-wishlist").transition("slide");
+					                            console.log(this);
+					                        }, 4000);
+					                    });
+					                }, 1000);
+								}
+							}
+						});
+
 	            } else {
 	                $(this).find(".heart.icon").transition("jiggle").addClass("empty").css("color", "#fff");
 	                setTimeout(function() {

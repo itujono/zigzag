@@ -411,3 +411,4 @@ Superadmin ZIGZAG - Mengunjungi halaman Category barang - Pada waktu Rabu, 10 Ja
 Unknown user - using Chrome - ip:::1 - Berhasil Keluar - Pada waktu Rabu, 10 Januari 2018 | 09:26 
 Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/forgot.html - Pada waktu Rabu, 10 Januari 2018 | 18:45 
 Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/html/payment-confirmation.html - Pada waktu Senin, 15 Januari 2018 | 09:03 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/wish - Pada waktu Kamis, 18 Januari 2018 | 09:11 

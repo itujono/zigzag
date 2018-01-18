@@ -76,6 +76,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     <h4 class="header">Oops!</h4>
     <p><i class="alarm icon"></i> Kamu telah membatalkan item Wishlist kamu</p>
 </div>
+<div class="ui compact red message error-wishlist">
+    <i class="close icon"></i>
+    <h4 class="header">Oops!</h4>
+    <p><i class="alarm icon"></i> Maaf, kami tidak dapat menambahkan barang kamu ke wishlist!</p>
+</div>
 <div class="ui compact red message removed-from-cart">
     <i class="close icon"></i>
     <h4 class="header">Oops!</h4>

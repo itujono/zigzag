@@ -7,6 +7,7 @@ class Product extends Frontend_Controller {
 		parent::__construct();
 		$this->load->model('Category_barang_m');
 		$this->load->model('Barang_m');
+		$this->load->model('Wish_m');
 	}
 
 	public function detail($slug){
@@ -93,5 +94,31 @@ class Product extends Frontend_Controller {
 		);
 		$this->cart->update($data);
 		echo $this->show_cart();
+	}
+
+	public function wish(){
+
+		$data['idBARANG'] = decode(urldecode($this->input->post('idBARANG')));
+        $data['idCUSTOMER'] = $this->session->userdata('idCUSTOMER');
+
+        if($data['idCUSTOMER'] == 0  OR $data['idBARANG'] == 0) {
+        	$result['status'] = 'error';
+            echo json_encode($result);
+        }
+
+		$data = $this->security->xss_clean($data);
+		$saveid = $this->Wish_m->save($data);
+
+		if ($saveid) {
+             
+        	$result['status'] = 'success';
+            echo json_encode($result);
+            
+		} else {
+
+	        $result['status'] = 'error';
+            echo json_encode($result);
+
+		}
 	}
 }

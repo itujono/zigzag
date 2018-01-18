@@ -400,7 +400,7 @@
                         <img src="<?php echo $updated->imageBARANG;?>" alt="<?php echo $updated->nameBARANG;?>" class="visible content">
                         <img src="<?php echo $updated->imageBARANG2;?>" alt="<?php echo $updated->nameBARANG;?>" class="hidden content">
                         <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
+                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist" data-idbarang="<?php echo encode(urlencode($updated->idBARANG));?>">
                                 <i class="empty heart icon"></i>
                             </button>
                             <input type="hidden" name="qtyBARANG" id="<?php echo $updated->idBARANG;?>" value="1" class="quantity">
