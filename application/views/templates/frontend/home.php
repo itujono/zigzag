@@ -88,7 +88,7 @@
         <div class="twelve wide column">
             <div class="ui card">
                 <div class="one-item-carousel owl-carousel owl-theme">
-                    <?php 
+                    <?php
                     if(!empty($listslider)){
                         foreach ($listslider as $slider) {
                     ?>
@@ -113,7 +113,7 @@
 
         <div class="four wide doubling blackish column">
             <div class="card">
-                Best-selling minggu ini! Be inspired!
+                Best-selling minggu ini! Be inspired! &#9889;
                 <div>
                     <a href="#">
                         Lihat semua <i class="right long arrow icon"></i>
@@ -324,7 +324,7 @@
     <div class="ui promo stackable grid">
         <div class="four wide blackish column">
             <div class="card">
-                Promo keren minggu ini! You don't want to miss these.
+                Promo keren minggu ini! You don't want to miss these. &#9889;
                 <div>
                     <a href="#">
                         Lihat semua <i class="right long arrow icon"></i>
@@ -376,7 +376,7 @@
 
         <div class="four wide blackish column">
             <div class="card">
-                Barang baru minggu ini! Too fresh!
+                Barang baru minggu ini! Too fresh! &#9889;
                 <div>
                     <a href="#">
                         Lihat semua <i class="right long arrow icon"></i>
