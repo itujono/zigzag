@@ -808,6 +808,52 @@ a.ui.card:hover,
 .ui.divided.search-results .description {
   margin-bottom: 2em; }
 
+.account .user-information {
+  line-height: 1.6; }
+  .account .user-information .title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 1em; }
+  .account .user-information .name {
+    display: block !important;
+    text-align: center;
+    font-weight: bold; }
+    .account .user-information .name p {
+      font-weight: initial; }
+  .account .user-information .segment > div {
+    padding-bottom: 2em;
+    padding-top: 2em;
+    border-bottom: 1px solid #ddd; }
+    .account .user-information .segment > div:first-of-type {
+      padding-top: initial; }
+    .account .user-information .segment > div > div {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center; }
+      .account .user-information .segment > div > div svg {
+        margin-right: 1em; }
+  .account .user-information ul {
+    padding: 0;
+    margin: 0; }
+    .account .user-information ul li {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      list-style-type: none;
+      margin-bottom: 0.5em; }
+      .account .user-information ul li:last-of-type {
+        margin-bottom: 0; }
+  .account .user-information svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 1em; }
+
 footer .ui.grid.footer {
   border-bottom: 1px solid rgba(0, 0, 0, 0.4); }
   footer .ui.grid.footer .column {

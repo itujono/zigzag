@@ -1105,6 +1105,72 @@ a.ui.card:hover,
 
 
 
+// Woooow kok udah di User Profile ya?
+
+.account {
+    .user-information {
+        line-height: $lineHeight;
+        .title {
+            font-weight: bold;
+            font-size: $defaultSize * 1.2;
+            margin-bottom: 1em;
+        }
+        .name {
+            display: block !important;
+            text-align: center;
+            font-weight: bold;
+            p {
+                font-weight: initial
+            }
+        }
+        .segment {
+            > div {
+                padding-bottom: 2em;
+                padding-top: 2em;
+                border-bottom: 1px solid #ddd;
+                &:first-of-type {
+                    padding-top: initial;
+                }
+                > div {
+                    display: flex;
+                    align-items: center;
+                    svg {
+                        margin-right: $defaultSize;
+                    }
+                }
+            }
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            li {
+                display: flex;
+                align-items: center;
+                list-style-type: none;
+                margin-bottom: $defaultSize / 2;
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        svg {
+            width: 20px; height: 20px;
+            margin-right: $defaultSize;
+            // font-size: $defaultSize / 2;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 footer {
     .ui.grid.footer {

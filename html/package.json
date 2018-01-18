@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "feather-icons": "^4.5.0",
     "jquery-chained": "^2.0.0-beta.2"
-  }
+  },
+  "name": "Zigzag",
+  "version": "1.0.0",
+  "description": "A blazing-fast yet cool online shop based in Batam",
+  "main": "index.js",
+  "author": "Bejo Karmila (itujono@gmail.com)",
+  "license": "MIT"
 }
