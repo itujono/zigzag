@@ -311,16 +311,18 @@
                             <div>
                                 <div class="title"> Contact </div>
                                 <ul>
-                                    <li><i data-feather="mail"></i> rusmantocute@gkail.com</li>
-                                    <li><i data-feather="smartphone"></i> 0812 23462343</li>
+                                    <li></i> rusmantocute@gkail.com</li>
+                                    <li></i> 0812 23462343</li>
                                 </ul>
                             </div>
                             <div>
                                 <div class="title"> Shipping </div>
-                                <div class="address">
-                                    Jalan Kepodang Raya Blok XC #33 Sei Harapan <br>
-                                    Sekupang, Batam, Kepulauan Riau 29433
-                                </div>
+                                <ul class="address">
+                                    <li>
+                                        Jalan Kepodang Raya Blok XC #33 Sei Harapan <br>
+                                        Sekupang, Batam, Kepulauan Riau 29433
+                                    </li>
+                                </ul>
                             </div>
                             <div>
                                 <div class="title"> Socials </div>
@@ -334,9 +336,16 @@
 
                     </div> <!-- kelar Four Wide Column -->
 
-                    <div class="eight wide column">
-
-                    </div> <!-- kelar Eight Wide Column -->
+                    <div class="twelve wide column profile-content">
+                        <div class="ui menu">
+                            <a href="#" class="item">Wishlist</a>
+                            <a href="#" class="item">Histori Pembelian</a>
+                            <a href="#" class="item">Histori Retur</a>
+                            <div class="right menu">
+                                <a href="#" class="item"><i class="wrench icon"></i> Settings</a>
+                            </div>
+                        </div>
+                    </div> <!-- kelar Twelve Wide Column -->
 
                 </div>
 
@@ -407,7 +416,11 @@
 
         <script>
 
-            feather.replace();
+            feather.replace({
+                "stroke-width": 1.5,
+                "width": 24,
+                "height": 24
+            });
 
             window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
             ga('create','UA-XXXXX-Y','auto');ga('send','pageview')

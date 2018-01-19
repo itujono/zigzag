@@ -1109,11 +1109,14 @@ a.ui.card:hover,
 
 .account {
     .user-information {
+        padding-right: 0 !important;
         line-height: $lineHeight;
         .title {
             font-weight: bold;
-            font-size: $defaultSize * 1.2;
-            margin-bottom: 1em;
+            text-transform: uppercase;
+            font-size: $defaultSize;
+            letter-spacing: 2px;
+            margin-bottom: .5em;
         }
         .name {
             display: block !important;
@@ -1125,6 +1128,8 @@ a.ui.card:hover,
         }
         .segment {
             padding: 1em 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
             > div {
                 padding: 2em;
                 border-bottom: 1px solid #ddd;
@@ -1157,9 +1162,22 @@ a.ui.card:hover,
             }
         }
         svg {
-            width: 20px; height: 20px;
+            // width: 20px; height: 20px;
             margin-right: $defaultSize;
             // font-size: $defaultSize / 2;
+        }
+    }
+    .profile-content {
+        padding-left: 0 !important;
+        .menu {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            .item {
+                padding: 1.5em;
+                &:before {
+                    content: initial;
+                }
+            }
         }
     }
 }
