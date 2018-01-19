@@ -766,5 +766,8 @@ $(document).ready(function() {
     });
 
 
+    $(".profile-content .item").tab();
+
+
 
 });
