@@ -473,9 +473,13 @@ a:hover { color: #24aa87; }
 
 .account .profile-content .segment { padding: 2em; }
 
-.account .profile-content .header { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; margin-top: 0; margin-bottom: 5em; }
+.account .profile-content .header { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; -webkit-box-align: center; -ms-flex-align: center; align-items: center; font-size: 1em !important; margin-top: 0; margin-bottom: 5em; }
 
 .account .profile-content .header h3 { margin-bottom: 0; }
+
+#order-history ul { padding: 0 1em; margin: 0; }
+
+#order-history ul li { margin-bottom: 1em; }
 
 footer .ui.grid.footer { border-bottom: 1px solid rgba(0, 0, 0, 0.4); }
 
@@ -488,12 +492,7 @@ footer .column.footer-logo > div { text-align: center; }
 footer .column.footer-logo > div h2 { color: #fff; font-size: 4em; line-height: .8; margin: 0; text-transform: uppercase; }
 
 footer .footer { margin: 0 !important; }
-
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center; }
-        .account .user-information .segment > div > div svg {
+       .account .user-information .segment > div > div svg {
           margin-right: 1em; }
   .account .user-information ul {
     padding: 0;
@@ -530,10 +529,17 @@ footer .footer { margin: 0 !important; }
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    font-size: 1em !important;
     margin-top: 0;
     margin-bottom: 5em; }
     .account .profile-content .header h3 {
       margin-bottom: 0; }
+
+#order-history ul {
+  padding: 0 1em;
+  margin: 0; }
+  #order-history ul li {
+    margin-bottom: 1em; }
 
 footer .ui.grid.footer {
   border-bottom: 1px solid rgba(0, 0, 0, 0.4); }
