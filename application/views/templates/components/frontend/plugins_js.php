@@ -19,20 +19,22 @@ if ($plugins == 'home') { ?>
                     $(".ui.message.not-login").transition("slide", function() {
                     	setTimeout(function() {
                     		$(".ui.message.not-login").transition("slide");
-                        	console.log(this);
                     	}, 2000);
                     });
 	        <?php } else { ?>
 	            e.preventDefault();
-	            if ($(this).find(".empty.heart.icon").hasClass("empty")) {
+	            console.log(this);
+	            if ($(this).find(".heart.icon").hasClass("empty")) {
 						var idBARANG    = $(this).data("idbarang");
 						$.ajax({
 							url : "<?php echo base_url();?>product/wish",
 							method : "POST",
 							dataType: "json",
-							data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG},
+							data : {idBARANG: idBARANG},
 							success: function(data){
 								if(data.status == "success"){
+					                $(".add-to-wishlist").transition("jiggle").removeClass("empty").css("color", "#f92626");
+					                console.log(this);
 									setTimeout(function() {
 					                    $(".ui.message.added-to-wishlist").transition("slide", function() {
 					                        setTimeout(function() {
@@ -40,9 +42,9 @@ if ($plugins == 'home') { ?>
 					                        }, 4000);
 					                    });
 					                }, 1000);
-					                $(this).find(".empty.heart.icon").transition("jiggle").removeClass("empty").css("color", "#f92626");
 								} else {
-									$(this).find(".heart.icon").transition("jiggle").addClass("empty").css("color", "#fff");
+									console.log(this);
+									$(".add-to-wishlist").transition("jiggle").find(".heart.icon").addClass("empty").css("color", "#fff");
 					                setTimeout(function() {
 					                    $(".ui.message.error-wishlist").transition("slide", function() {
 					                        setTimeout(function() {
@@ -131,6 +133,95 @@ if ($plugins == 'home') { ?>
 <?php } elseif ($plugins == 'product-detail') { ?>
 	<script src="<?php echo base_url().$this->data['asfront'];?>js/owl.js"></script>
 	<script src="<?php echo base_url().$this->data['asfront'];?>js/cloud-zoom.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('.add_cart').click(function(){
+			var idBARANG    = $(this).data("barangid");
+			var nameBARANG  = $(this).data("barangnama");
+			var priceBARANG = $(this).data("barangharga");
+			var qtyBARANG     = $('#' + idBARANG).val();
+			$.ajax({
+				url : "<?php echo base_url();?>product/add_to_cart",
+				method : "POST",
+				data : {idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG},
+				success: function(data){
+					$('#hide_info').hide();
+					$('#detail_cart').html(data);
+				}
+			});
+		});
+	});
+	<?php 
+	$checkwishlist = checkwishlist($getbarang->idBARANG);
+	if(!empty($checkwishlist)){ ?>
+		$(".add-to-wishlist").transition("jiggle").removeClass("empty").css("color", "#f92626");
+	<?php } else { ?>
+		$(".add-to-wishlist").transition("jiggle").find(".heart.icon").addClass("empty").css("color", "#fff");
+	<?php } ?>
+	$(".add-to-wishlist").each(function() {
+	        $(this).on("click", function(e) {
+	        <?php if(empty($this->session->userdata('idCUSTOMER'))){ ?>
+	        		// todo: Bikin modal login aja kalo belum login!!!
+                	$(".add-to-wishlist").transition("jiggle");
+                	$(".add-to-wishlist").find('.empty.heart').addClass('empty');
+                	// Message belum login
+                    $(".ui.message.not-login").transition("slide", function() {
+                    	setTimeout(function() {
+                    		$(".ui.message.not-login").transition("slide");
+                    	}, 2000);
+                    });
+	        <?php } else { ?>
+	            e.preventDefault();
+	            if ($(this).find(".heart.icon").hasClass("empty")) {
+						var idBARANG    = $(this).data("idbarang");
+						$.ajax({
+							url : "<?php echo base_url();?>product/wish",
+							method : "POST",
+							dataType: "json",
+							data : {idBARANG: idBARANG},
+							success: function(data){
+								if(data.status == "success"){
+					                $(".add-to-wishlist").transition("jiggle").removeClass("empty").css("color", "#f92626");
+									setTimeout(function() {
+					                    $(".ui.message.added-to-wishlist").transition("slide", function() {
+					                        setTimeout(function() {
+					                            $(".ui.message.added-to-wishlist").transition("slide");
+					                        }, 4000);
+					                    });
+					                }, 1000);
+								} else {
+									$(".add-to-wishlist").transition("jiggle").find(".heart.icon").addClass("empty").css("color", "#fff");
+					                setTimeout(function() {
+					                    $(".ui.message.error-wishlist").transition("slide", function() {
+					                        setTimeout(function() {
+					                            $(".ui.message.error-wishlist").transition("slide");
+					                            console.log(this);
+					                        }, 4000);
+					                    });
+					                }, 1000);
+								}
+							}
+						});
+
+	            } else {
+	                $(this).find(".heart.icon").transition("jiggle").addClass("empty").css("color", "#fff");
+	                setTimeout(function() {
+	                    $(".ui.message.removed-from-wishlist").transition("slide", function() {
+	                        setTimeout(function() {
+	                            $(".ui.message.removed-from-wishlist").transition("slide");
+	                            console.log(this);
+	                        }, 4000);
+	                    });
+	                }, 1000);
+	            }
+	    <?php } ?>
+        });
+    });
+
+	</script>
+<?php
+} elseif ($plugins == 'search-product') {
+?>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('.add_cart').click(function(){

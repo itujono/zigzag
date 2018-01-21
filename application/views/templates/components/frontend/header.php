@@ -45,8 +45,11 @@
                 <div class="right menu">
                     <div class="item">
                         <div class="ui transparent icon input">
-                            <input type="text" placeholder="Search...">
-                            <i class="search link icon"></i>
+                            <form action="<?php echo base_url();?>product/search" method="GET">
+                                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
+                                <input type="text" name="product" placeholder="Search...">
+                                <i class="search link icon"></i>
+                            </form>
                         </div>
                     </div>
                     <a class="ui top dropdown button cart item">

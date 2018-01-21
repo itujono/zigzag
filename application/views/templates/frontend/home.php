@@ -349,7 +349,7 @@
                         <img src="<?php echo $promo->imageBARANG;?>" class="visible content" alt="<?php echo $promo->nameBARANG;?>">
                         <img src="<?php echo $promo->imageBARANG2;?>" class="hidden content" alt="<?php echo $promo->nameBARANG;?>">
                         <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
+                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist" data-idbarang="<?php echo encode(urlencode($promo->idBARANG));?>">
                                 <i class="empty heart icon"></i>
                             </button>
                             <input type="hidden" name="qtyBARANG" id="<?php echo $promo->idBARANG;?>" value="1" class="quantity">

@@ -204,7 +204,11 @@
                         <button class="add_cart ui toggle fade add-to-cart black button" tabindex="0" data-barangid="<?php echo $getbarang->idBARANG;?>" data-barangnama="<?php echo $getbarang->nameBARANG;?>" data-barangharga="<?php echo $getbarang->priceBARANG;?>">
                             <i class="plus square outline icon"></i> Tambahkan ke Keranjang
                         </button> &nbsp; &nbsp;
-                        <span>atau</span> &nbsp; &nbsp; <a href="#" class="button add-to-wishlist">Tambahkan ke Wishlist <i class="empty heart icon"></i></a>
+                        <span>atau</span> &nbsp; &nbsp; 
+                        <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist" data-idbarang="<?php echo encode(urlencode($getbarang->idBARANG));?>">
+                            Tambahkan ke Wishlist 
+                            &nbsp;<i class="empty heart icon"></i>
+                        </button>
                     </div>
                 </div>
             </div>

@@ -121,4 +121,51 @@ class Product extends Frontend_Controller {
 
 		}
 	}
+
+	public function search(){
+		$data['addONS'] = 'search-product';
+		$data['title'] = 'Zigzag Shop Batam - Official Shop';
+
+		$product = $this->input->get('product');
+		if(strlen($product) > 3){
+			$Searching = $this->Barang_m->searching_product($product)->result();
+	        if(!empty($Searching)){
+		        $data['searching'] = $Searching;
+
+		        foreach ($data['searching'] as $key => $value) {
+					$map = directory_map('assets/upload/barang/pic-barang-'.folenc($data['searching'][$key]->idBARANG), FALSE, TRUE);
+					if(!empty($map)){
+						$data['searching'][$key]->imageSEARCH = base_url() . 'assets/upload/barang/pic-barang-'.folenc($data['searching'][$key]->idBARANG).'/'.$map[0];
+					} else {
+						$data['searching'][$key]->imageSEARCH = base_url() . 'assets/upload/no-image-available.png';
+					}
+				}
+
+		        $data['countresult'] = count($Searching);
+		        $data['keyword'] = ucwords($product);
+		        
+				$data['subview'] = $this->load->view($this->data['frontendDIR'].'search', $data, TRUE);
+				$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
+			} else {
+				$data = array(
+					'title' => 'Gagal,',
+					'text' => 'Data product tidak ditemukan, coba cari dengan kata kunci lain.',
+					'type' => 'error'
+					);
+				$this->session->set_flashdata('message',$data);
+				redirect('home');
+			}
+		} else {
+			$data = array(
+				'title' => 'Gagal,',
+				'text' => 'Masukkan kata kunci nya minimal 3 karakter untuk dapat melakukan pencarian',
+				'type' => 'error'
+				);
+			$this->session->set_flashdata('message',$data);
+			redirect('home');
+		}
+		if(!empty($this->session->flashdata('message'))) {
+	        $data['message'] = $this->session->flashdata('message');
+	    }
+	}
 }

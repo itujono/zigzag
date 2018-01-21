@@ -324,3 +324,13 @@ function slugify($text){
     
     return $text;
 }
+
+function checkwishlist($id){
+    $CI =& get_instance();
+    $CI->db->select('idBARANG');
+    $CI->db->from('wish');
+    $CI->db->where('idBARANG', $id);
+
+    $data = $CI->db->get()->row();
+    return $data;
+}

@@ -54,8 +54,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     </div>
 </footer>
 </div>
-
-
+<?php if (!empty($message)){ ?>
+<div class="ui compact teal message">
+    <i class="close icon"></i>
+    <h4 class="header"><?php echo $message['title']; ?></h4>
+    <p><i class="alarm icon"></i> <?php echo $message['text']; ?></p>
+</div>
+<?php } ?>
 <div class="ui compact teal message not-login">
     <i class="close icon"></i>
     <h4 class="header">Maaf!</h4>

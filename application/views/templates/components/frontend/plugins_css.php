@@ -16,5 +16,9 @@ if ($plugins == 'home') {
     <link rel="stylesheet" href="<?php echo base_url().$this->data['asfront'];?>css/owl.theme.default.min.css">
     <link rel="stylesheet" href="<?php echo base_url().$this->data['asfront'];?>css/main.css">
     <link rel="stylesheet" href="<?php echo base_url().$this->data['asfront'];?>css/responsive.css">
-    
+<?php
+} elseif ($plugins == 'search-product') {
+?>
+	<link rel="stylesheet" href="<?php echo base_url().$this->data['asfront'];?>css/main.css">
+    <link rel="stylesheet" href="<?php echo base_url().$this->data['asfront'];?>css/responsive.css">
 <?php } ?>

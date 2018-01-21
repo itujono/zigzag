@@ -116,4 +116,21 @@ class Barang_m extends MY_Model{
 		$this->db->limit(1);
 		return $this->db->get();
 	}
+
+	public function searching_product($search){
+
+    	$this->db->cache_on();
+    	
+    	$this->db->select('idBARANG, nameBARANG, descBARANG, materialBARANG, colorBARANG, slugBARANG, priceBARANG');
+    	$this->db->select('category_barang.nameCATEGORY');
+		$this->db->from('barang');
+		$this->db->join('category_barang','barang.idCATEGORY = category_barang.idCATEGORY');
+		$this->db->like('nameBARANG', $search);
+		$this->db->or_like('descBARANG', $search);
+		$this->db->or_like('materialBARANG', $search);
+		$this->db->or_like('colorBARANG', $search);
+		$this->db->or_like('nameCATEGORY', $search);
+
+		return $this->db->get();
+    }
 }
