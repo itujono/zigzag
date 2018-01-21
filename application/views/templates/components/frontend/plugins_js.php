@@ -240,6 +240,78 @@ if ($plugins == 'home') { ?>
 			});
 		});
 	});
+
+	<?php
+	if(!empty($searching)){
+		foreach ($searching as $key => $val) {
+			$checkwishlist[$key] = checkwishlist($val->idBARANG);
+		}
+	}
+	if(!empty($checkwishlist)){ ?>
+		$(".add-to-wishlist").transition("jiggle").removeClass("empty").css("color", "#f92626");
+	<?php } else { ?>
+		$(".add-to-wishlist").transition("jiggle").find(".heart.icon").addClass("empty").css("color", "#fff");
+	<?php } ?>
+	$(".add-to-wishlist").each(function() {
+        $(this).on("click", function(e) {
+        <?php if(empty($this->session->userdata('idCUSTOMER'))){ ?>
+        		// todo: Bikin modal login aja kalo belum login!!!
+            	$(".add-to-wishlist").transition("jiggle");
+            	$(".add-to-wishlist").find('.empty.heart').addClass('empty');
+            	// Message belum login
+                $(".ui.message.not-login").transition("slide", function() {
+                	setTimeout(function() {
+                		$(".ui.message.not-login").transition("slide");
+                	}, 2000);
+                });
+        <?php } else { ?>
+            e.preventDefault();
+            if ($(this).find(".heart.icon").hasClass("empty")) {
+					var idBARANG    = $(this).data("idbarang");
+					$.ajax({
+						url : "<?php echo base_url();?>product/wish",
+						method : "POST",
+						dataType: "json",
+						data : {idBARANG: idBARANG},
+						success: function(data){
+							if(data.status == "success"){
+				                $(".add-to-wishlist").transition("jiggle").removeClass("empty").css("color", "#f92626");
+								setTimeout(function() {
+				                    $(".ui.message.added-to-wishlist").transition("slide", function() {
+				                        setTimeout(function() {
+				                            $(".ui.message.added-to-wishlist").transition("slide");
+				                        }, 4000);
+				                    });
+				                }, 1000);
+							} else {
+								$(".add-to-wishlist").transition("jiggle").find(".heart.icon").addClass("empty").css("color", "#fff");
+				                setTimeout(function() {
+				                    $(".ui.message.error-wishlist").transition("slide", function() {
+				                        setTimeout(function() {
+				                            $(".ui.message.error-wishlist").transition("slide");
+				                            console.log(this);
+				                        }, 4000);
+				                    });
+				                }, 1000);
+							}
+						}
+					});
+
+            } else {
+                $(this).find(".heart.icon").transition("jiggle").addClass("empty").css("color", "#fff");
+                setTimeout(function() {
+                    $(".ui.message.removed-from-wishlist").transition("slide", function() {
+                        setTimeout(function() {
+                            $(".ui.message.removed-from-wishlist").transition("slide");
+                            console.log(this);
+                        }, 4000);
+                    });
+                }, 1000);
+            }
+	    <?php } ?>
+        });
+    });
+
 	</script>
 <?php } ?>
 <script type="text/javascript">

@@ -12,6 +12,7 @@ class Product extends Frontend_Controller {
 
 	public function detail($slug){
 		$data['addONS'] = 'product-detail';
+		$data['class'] = 'product-detail';
 
 		$data['getbarang'] = $this->Barang_m->select_barang_by_slug($slug)->row();
 		$data['title'] = $data['getbarang']->nameBARANG.' - Zigzag Shop Batam - Official Shop';
@@ -125,7 +126,7 @@ class Product extends Frontend_Controller {
 	public function search(){
 		$data['addONS'] = 'search-product';
 		$data['title'] = 'Zigzag Shop Batam - Official Shop';
-
+		$data['class'] = 'search';
 		$product = $this->input->get('product');
 		if(strlen($product) > 3){
 			$Searching = $this->Barang_m->searching_product($product)->result();

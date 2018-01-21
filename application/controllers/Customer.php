@@ -250,4 +250,15 @@ class Customer extends Frontend_Controller {
         $this->session->set_flashdata('message',$data);
 		redirect('home');
 	}
+
+	public function return(){
+		$data['addONS'] = '';
+		$data['class'] = 'retur';
+		$data['title'] = 'Form Retur Barang - Zigzag Shop Batam - Official Shop';
+		if(empty($this->session->userdata('idCUSTOMER'))){
+			redirect('home');
+		}
+		$data['subview'] = $this->load->view($this->data['frontendDIR'].'return_barang', $data, TRUE);
+		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
+	}
 }

@@ -12,7 +12,7 @@ class Home extends Frontend_Controller {
 	public function index() {
 		$data['addONS'] = 'home';
 		$data['title'] = 'Zigzag Shop Batam - Official Shop';
-
+		$data['class'] = 'app';
 		$data['listslider'] = $this->Slider_m->selectall_slider(NULL,1)->result();
 		foreach ($data['listslider'] as $key => $value) {
 			$map = directory_map('assets/upload/slider/pic-slider-'.folenc($data['listslider'][$key]->idSLIDER), FALSE, TRUE);

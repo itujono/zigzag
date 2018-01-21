@@ -22,10 +22,10 @@
                             <span>Ada di dalam <a href="#"><?php echo $search->nameCATEGORY;?></a></span> &bull; &nbsp; <span>Rp <?php echo number_format($search->priceBARANG, 0,',','.'); ?></span>
                         </div>
                         <div class="description">
-                            <?php echo character_limiter($search->nameBARANG,133);?>
+                            <?php echo character_limiter($search->descBARANG,133);?>
                         </div>
                         <div class="extra">
-                            <button class="ui basic button">
+                            <button class="ui basic button add-to-wishlist" title="Tambahkan ke Wishlist" data-idbarang="<?php echo encode(urlencode($search->idBARANG));?>">
                                 <i class="empty heart icon"></i>
                                 Tambahkan ke wishlist
                             </button>
