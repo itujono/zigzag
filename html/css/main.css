@@ -481,15 +481,27 @@ a:hover { color: #24aa87; }
 
 #order-history ul li { margin-bottom: 1em; }
 
-.feed.details .summary { margin-bottom: 1em; }
+.feed.details .summary { margin-bottom: 1em !important; }
 
-.feed.details .item-list ul { display: -webkit-box; display: -ms-flexbox; display: flex; padding: 0 !important; }
+.feed.details .summary span { color: #58dcb9; }
+
+.feed.details .item-list ul { display: -webkit-box; display: -ms-flexbox; display: flex; padding: 0 !important; margin-bottom: 1em !important; }
 
 .feed.details .item-list ul li { -ms-flex-preferred-size: 20%; flex-basis: 20%; list-style-type: none; margin-right: .5em; margin-bottom: 0 !important; }
 
 .feed.details .item-list ul li img { width: 100%; -o-object-fit: cover; object-fit: cover; }
 
 .feed.details .item-list ul .more { -ms-flex-preferred-size: 20%; flex-basis: 20%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; border: 1px solid #58dcb9; margin-bottom: 0; }
+
+.feed.details .item-list .content-detail { display: none; }
+
+.feed.details .item-list .content-detail .footer-detail { display: -webkit-box; display: -ms-flexbox; display: flex; }
+
+.feed.details .item-list .content-detail .footer-detail address { margin-right: 2em; }
+
+.feed.details table td .image.header { margin: 0 !important; }
+
+.feed.details table tfoot th { font-weight: bold; }
 
 footer .ui.grid.footer { border-bottom: 1px solid rgba(0, 0, 0, 0.4); }
 

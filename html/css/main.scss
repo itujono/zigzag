@@ -1210,12 +1210,16 @@ a.ui.card:hover,
 
 .feed.details {
     .summary {
-        margin-bottom: 1em;
+        margin-bottom: 1em !important;
+        span {
+            color: $tosca;
+        }
     }
     .item-list {
         ul {
             display: flex;
             padding: 0 !important;
+            margin-bottom: 1em !important;
             li {
                 flex-basis: 20%;
                 list-style-type: none;
@@ -1233,6 +1237,30 @@ a.ui.card:hover,
                 justify-content: center;
                 border: 1px solid $tosca;
                 margin-bottom: 0;
+            }
+        }
+        .content-detail {
+            display: none;
+            .footer-detail {
+                display: flex;
+                address {
+                    margin-right: 2em;
+                }
+            }
+        }
+    }
+    table {
+        tr {
+
+        }
+        td {
+            .image.header {
+                margin: 0 !important;
+            }
+        }
+        tfoot {
+            th {
+                font-weight: bold;
             }
         }
     }

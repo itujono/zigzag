@@ -9,10 +9,10 @@
     ];
     var length = methods.length;
     var console = (window.console = window.console || {});
-
+    
     while (length--) {
         method = methods[length];
-
+        
         if (!console[method]) {
             console[method] = noop;
         }
@@ -24,40 +24,40 @@ const loginForm = $(".login .ui.form");
 
 
 $(document).ready(function() {
-
+    
     $(".additional-actions button").popup({
         variation: "mini"
     });
-
+    
     $(".view-style .button, .colors > div").popup({
         variation: "mini"
     });
-
+    
     $(".ui.dropdown.category").popup({
         inline: true,
         hoverable: true,
         position: 'bottom right'
     });
-
+    
     $(".ui.dropdown.cart").popup({
         inline: true,
         hoverable: true,
         position: 'bottom center'
     });
-
+    
     $(".ui.dropdown.item").dropdown();
-
+    
     $(".ui.dropdown").dropdown();
-
+    
     $(".ui.radio.checkbox").checkbox();
-
+    
     $(".ui.checkbox").checkbox();
-
+    
     $(".main a.ui.card").on("click", function(e) {
         e.preventDefault();
         console.log("Clicked pulak!");
     });
-
+    
     $(".additional-actions .add-to-wishlist").each(function() {
         $(this).on("click", function(e) {
             e.preventDefault();
@@ -83,7 +83,7 @@ $(document).ready(function() {
             }
         });
     });
-
+    
     $(".additional-actions .add-to-cart").each(function() {
         $(this).on("click", function(e) {
             e.preventDefault();
@@ -97,11 +97,11 @@ $(document).ready(function() {
             }, 1000);
         });
     });
-
+    
     // $(".ui.message .close").on("click", function() {
     //     $(this).closest(".ui.message").transition("slide", 200);
     // });
-
+    
     if ($('.one-item-carousel').length) {
         $('.one-item-carousel').owlCarousel({
             loop: true,
@@ -116,7 +116,7 @@ $(document).ready(function() {
             }
         });
     };
-
+    
     if ( $(".loop").length ) {
         $('.loop').owlCarousel({
             center: true,
@@ -135,13 +135,13 @@ $(document).ready(function() {
             }
         });
     };
-
-
+    
+    
     $(".ui.deposit .learn-more").popup({
         inline: true,
         hoverable: false
     });
-
+    
     $(".login-trigger").on("click", function() {
         $(".ui.modal.login").modal({
             blurring: true,
@@ -151,22 +151,22 @@ $(document).ready(function() {
             transition: "fade up",
             onHidden: function() { loginForm.form("clear"); }
         }).modal('show');
-
+        
         $(".ui.modal.register").modal({
             duration: 200,
             transition: "fade up",
             blurring: true,
             onHidden: function() { $(this).form("clear"); }
         }).modal("attach events", ".signup-link a");
-
+        
         $(".ui.modal.login").modal("attach events", ".login-link a");
     });
-
-
-
-
+    
+    
+    
+    
     // Default Settings
-
+    
     $.fn.form.settings.defaults = {
         email: {
             identifier: "email",
@@ -208,7 +208,7 @@ $(document).ready(function() {
             ]
         },
     };
-
+    
     $(".login .ui.form").form({
         inline: true,
         on: "blur",
@@ -244,7 +244,7 @@ $(document).ready(function() {
             $(this).form("clear");
         }
     });
-
+    
     $(".register .ui.form").form({
         inline: true,
         on: "blur",
@@ -346,7 +346,7 @@ $(document).ready(function() {
             }
         }
     });
-
+    
     $("#forgot-password").form({
         inline: true,
         on: "blur",
@@ -366,10 +366,10 @@ $(document).ready(function() {
             }
         }
     });
-
-
-
-
+    
+    
+    
+    
     $("#forgot-password .forgot.button").on("click", function(e) {
         e.preventDefault();
         $(this).addClass("loading");
@@ -386,55 +386,55 @@ $(document).ready(function() {
             }
         });
     });
-
-
-
+    
+    
+    
     const toggleButton = document.querySelector(".add-to-cart.black.button");
-
+    
     $(".add-to-cart.black.button").on("click", function() {
         $(this).addClass("loading");
-
+        
         setTimeout(function() {
             toggleButton.classList += " active";
             toggleButton.innerHTML = "<i class='heart icon'></i> Berhasil ditambah ke Keranjang";
             toggleButton.classList.remove("loading");
             $(".ui.message.added-to-cart").transition("slide", 200);
         }, 3000);
-
+        
     });
-
+    
     $(".product-detail .add-to-wishlist").on("click", function() {
         $(".ui.message.added-to-wishlist").transition("slide", 200);
         $(this).addClass("disabled");
         $(this).text("Sudah berhasil ditambah");
     });
-
+    
     $(".ui.message.added-to-cart .close").on("click", function() {
         $(this).closest(".ui.message.added-to-cart").transition("scale", 200);
         console.log(this);
     });
-
+    
     $(".ui.message.added-to-wishlist .close").on("click", function() {
         $(this).closest(".ui.message.added-to-wishlist").transition("scale", 200);
         console.log(this);
     });
-
-
+    
+    
     const $cartItem = $(".cart-item");
     const $arrCartItem = $.makeArray($cartItem);
     const $deleteButton = $(".cart-item .delete-item");
     const value = 1;
     const index = $.inArray(value, $arrCartItem);
     // jQuery.isArray($arrCartItem);
-
+    
     $deleteButton.on("click", function() {
         console.log("Popped!");
         console.log(index);
         $arrCartItem.splice(index, 1);
     });
-
+    
     $(".delete-all").on("click", function() {
-
+        
         $(".ui.modal.delete-cart").modal({
             closable: false,
             blurring: true,
@@ -449,23 +449,23 @@ $(document).ready(function() {
                 $(".checkout.button").addClass("disabled");
             }
         }).modal("show");
-
+        
     });
-
-
-
+    
+    
+    
     $(".ui.dropshipper").on("click", function() {
         console.log("Kok gak keluar?");
         $("#dropshipper-field").transition("slide", 200);
     });
-
+    
     $(".ui.checkbox").each(function() {
         $(this).on("click", function() {
             $(this).find(".checked").closest(".ui.segment").css("background-color", "#444");
             console.log(this);
         });
     });
-
+    
     $("#shipping-address").form({
         inline: true,
         on: "submit",
@@ -565,33 +565,33 @@ $(document).ready(function() {
             $("#step-billing").transition("slide", 200);
         }
     });
-
+    
     $(".back-to-previous").on("click", function(e) {
         e.preventDefault();
         $("#step-billing").transition("slide", 300);
         $("#step-shipping").transition("slide", 200);
     });
-
+    
     $("#payment-option").on("submit", function(e) {
         e.preventDefault();
         $("#step-billing").transition("slide", 300);
         $("#step-confirm").transition("slide", 200);
     });
-
+    
     // $("#shipping-address").on("submit", function(e) {
     //     // $("#shipping-address").closest("#step-shipping").transition("slide", 300);
     //     console.log(this);
     // });
-
-
+    
+    
     $(".ui.sticky").sticky({
         offset: 50
     });
-
+    
     $(".ui.accordion.payment-option").accordion();
-
+    
     $("#cart-total .checkout.button").on("click", function() {
-
+        
         $(".ui.modal.confirm-order").modal({
             closable: false,
             blurring: true,
@@ -601,9 +601,9 @@ $(document).ready(function() {
                 window.location = "order-done.html"
             }
         }).modal("show");
-
+        
     });
-
+    
     $("#confirmation-form").form({
         inline: true,
         on: "submit",
@@ -690,8 +690,8 @@ $(document).ready(function() {
             $(this).form("clear");
         }
     });
-
-
+    
+    
     $("#retur-form").form({
         inline: true,
         on: "submit",
@@ -764,10 +764,19 @@ $(document).ready(function() {
             $(this).form("clear");
         }
     });
-
-
+    
+    
     $(".profile-content .item").tab();
-
-
-
+    
+    $(".item-list .more").on("click", function(e) {
+        const el = $(this);
+        
+        e.preventDefault();
+        el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"));
+        
+        $(".item-list .content-detail").transition("slide", 150);
+    });
+    
+    
+    
 });
