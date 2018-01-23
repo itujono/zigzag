@@ -767,25 +767,32 @@ $(document).ready(function() {
     
     
     $(".profile-content .item").tab();
-    
-    $(".item-list .more").each(function() {
+   
+
+    // $(".item-list .ui.accordion").accordion({
+    //     selector: {
+    //         trigger: ".more.title"
+    //     }
+    // });
+
+
+    $(".item-list .more").on("click", function(e) {
         const el = $(this);
-        $(".item-list .more").on("click", function() {
-            e.preventDefault();
-            el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"));
-            
-            $(".item-list .content-detail").transition("slide", 150);
-        });
+        e.preventDefault();
+        el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"));
+        console.log("Eh tebukaaa!");
+        $(".item-list").find(".content-detail").transition("slide", 150);
     });
 
-
-    // $(".item-list .more").on("click", function(e) {
-        
-    //     e.preventDefault();
-    //     el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"));
-        
-    //     $(".item-list .content-detail").transition("slide", 150);
-    // });
+    $(".change-password").on("submit", function(e) {
+        e.preventDefault();
+        $(".ui.page.dimmer").dimmer({
+            onHide: function() {
+                // Taro function engko di sini ya Ndan!
+                console.log("Ketutup deh");
+            }
+        }).dimmer("show");
+    });
     
     
     

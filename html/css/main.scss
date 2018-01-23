@@ -1191,6 +1191,14 @@ a.ui.card:hover,
             font-size: $defaultSize !important;
             margin-top: 0;
             margin-bottom: $defaultSize * 5;
+            &.ui {
+                font-size: 1.7rem !important;
+                display: block;
+                margin-bottom: 2em;
+            }
+            &.sub {
+                font-size: 1.1rem !important;
+            }
             h3 {
                 margin-bottom: 0;
             }
