@@ -779,6 +779,11 @@ $(document).ready(function() {
         $(this).parents(".item").slideUp(150);
     });
 
+    $(".move-all-to-cart").on("click", function() {
+        $("#wishlist .items > .item").slideUp(150);
+        $(".ui.message.moved-to-cart").transition("fade", 150);
+    });
+
 
     $("#order-history .item-list .more").on("click", function(e) {
         const el = $(this);
