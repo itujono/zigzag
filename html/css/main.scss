@@ -1208,23 +1208,28 @@ a.ui.card:hover,
             }
         }
     }
-}
-
-#wishlist {
-    .moved-to-cart {
-        display: none;
+    #wishlist {
+        .moved-to-cart {
+            display: none;
+        }
     }
-}
-
-#order-history {
-    ul {
-        padding: 0 1em;
-        margin: 0;
-        li {
-            margin-bottom: 1em;
+    
+    #order-history {
+        ul {
+            padding: 0 1em;
+            margin: 0;
+            li {
+                margin-bottom: 1em;
+            }
+        }
+    }
+    #settings {
+        .password-changed {
+            display: none;
         }
     }
 }
+
 
 .feed.details {
     .summary {

@@ -327,8 +327,8 @@
                         <div>
                             <div class="title"> Socials </div>
                             <ul>
-                                <li><i data-feather="facebook"></i> rusmanto </li>
-                                <li><i data-feather="instagram"></i> rusmantorocute </li>
+                                <li><i data-feather="facebook"></i> <a href="http://facebook.com/rusmanto" target="_blank">rusmanto</a> </li>
+                                <li><i data-feather="instagram"></i> <a href="http://instagram.com/rusmantorocute" target="_blank">rusmantorocute</a> </li>
                             </ul>
                         </div>
                         
@@ -403,7 +403,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <!-- Ini message kalo semuanya udah berhasil dipindahin yaa -->
                             <div class="ui info message moved-to-cart">
                                 <div class="header"> Udah dipindahin semua </div>
@@ -981,27 +981,35 @@
                         <form class="ui form change-password">
                             <div class="field">
                                 <label>Password baru</label>
-                                <input type="text" name="first-name" placeholder="Masukkan password baru kamu">
+                                <input type="text" name="newPassword" placeholder="Masukkan password baru kamu">
                             </div>
                             <div class="field">
                                 <label>Ulangi</label>
-                                <input type="text" name="last-name" placeholder="Ulangi lagi password baru kamu">
+                                <input type="text" name="repeatNewPassword" placeholder="Ulangi lagi password baru kamu">
                             </div>
                             <div class="field">
                                 <label>Password lama</label>
-                                <input type="text" name="last-name" placeholder="Masukkan dulu password lama kamu">
+                                <input type="text" name="oldPassword" placeholder="Masukkan dulu password lama kamu">
                             </div>
                             <button class="ui zz button" type="submit">&#9889; &nbsp; Ubah password</button>
                         </form>
                         
-                        <div class="ui page dimmer">
+                        <div class="ui mini modal confirmation-change-password">
+                            <div class="header">Ubah password?</div>
                             <div class="content">
-                                <div class="center">
-                                    <h2 class="ui inverted icon header">
-                                        <i class="heart icon"></i>
-                                        Okay, silakan cek inbox email kamu ya. <br> Dan ikuti instruksi selanjutnya.
-                                    </h2>
-                                </div>
+                                <p>Yakin nih ya mau ubah password</p>
+                            </div>
+                            <div class="actions">
+                                <div class="ui approve zz button">Yakin</div>
+                                <div class="ui cancel button">Batal</div>
+                            </div>
+                        </div>
+
+                        <div class="ui info icon message password-changed">
+                            <i class="checkmark icon"></i>
+                            <div class="content">
+                                <div class="header"> Selamat! </div>
+                                Password kamu udah berhasil diubah. Cool!
                             </div>
                         </div>
                         

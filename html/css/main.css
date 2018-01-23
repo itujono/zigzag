@@ -483,11 +483,13 @@ a:hover { color: #24aa87; }
 
 .account .profile-content .header h3 { margin-bottom: 0; }
 
-#wishlist .moved-to-cart { display: none; }
+.account #wishlist .moved-to-cart { display: none; }
 
-#order-history ul { padding: 0 1em; margin: 0; }
+.account #order-history ul { padding: 0 1em; margin: 0; }
 
-#order-history ul li { margin-bottom: 1em; }
+.account #order-history ul li { margin-bottom: 1em; }
+
+.account #settings .password-changed { display: none; }
 
 .feed.details .summary { margin-bottom: 1em !important; }
 
