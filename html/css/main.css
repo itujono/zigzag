@@ -33,6 +33,8 @@ a.header:hover { color: #58dcb9 !important; }
 
 .ui.pointing.dropdown > .menu { margin-top: .3rem !important; z-index: 101 !important; }
 
+.ui.message .header { margin-bottom: initial !important; }
+
 .ui.segment.seamless { border: none !important; background-color: #eee; margin-bottom: 3em; }
 
 .ui.slider.checkbox input:checked ~ .box:before { background-color: #58dcb9 !important; }
@@ -514,6 +516,8 @@ a:hover { color: #24aa87; }
 .feed.details table td .image.header { margin: 0 !important; }
 
 .feed.details table tfoot th { font-weight: bold; }
+
+.feed.details table .ui.header { display: -webkit-box !important; display: -ms-flexbox !important; display: flex !important; font-size: 1em !important; }
 
 footer .ui.grid.footer { border-bottom: 1px solid rgba(0, 0, 0, 0.4); }
 

@@ -87,6 +87,10 @@ a.header {
     z-index: 101 !important;
 }
 
+.ui.message .header {
+    margin-bottom: initial !important;
+}
+
 .ui.segment {
     &.seamless {
         border: none !important;
@@ -1285,6 +1289,10 @@ a.ui.card:hover,
             th {
                 font-weight: bold;
             }
+        }
+        .ui.header {
+            display: flex !important;
+            font-size: $defaultSize !important;
         }
     }
 }

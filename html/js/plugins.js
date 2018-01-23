@@ -775,21 +775,36 @@ $(document).ready(function() {
     //     }
     // });
 
+    $(".move-to-cart").on("click", function() {
+        $(this).parents(".item").slideUp(150);
+    });
 
-    $(".item-list .more").on("click", function(e) {
+
+    $("#order-history .item-list .more").on("click", function(e) {
         const el = $(this);
         e.preventDefault();
         el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"));
         console.log("Eh tebukaaa!");
-        $(".item-list").find(".content-detail").transition("slide", 150);
+        $("#order-history .item-list").find(".content-detail").transition("slide", 150);
+    });
+
+    $("#retur-history .item-list .more").on("click", function(e) {
+        const el = $(this);
+        e.preventDefault();
+        el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"));
+        $("#retur-history .item-list").find(".content-detail").transition("slide", 150);
     });
 
     $(".change-password").on("submit", function(e) {
         e.preventDefault();
         $(".ui.page.dimmer").dimmer({
             onHide: function() {
+
+                // =======================
                 // Taro function engko di sini ya Ndan!
-                console.log("Ketutup deh");
+                // =======================
+
+                $(this).siblings(".change-password").form("clear");
             }
         }).dimmer("show");
     });
