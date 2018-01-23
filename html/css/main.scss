@@ -1215,6 +1215,24 @@ a.ui.card:hover,
             color: $tosca;
         }
     }
+    .event {
+        padding-bottom: $defaultSize * 2 !important;
+        padding-top: $defaultSize * 2;
+        border-bottom: 1px solid #eee;
+        &:first-of-type {
+            padding-top: 0 !important;
+        }
+        .label {
+            border-radius: 50%;
+            width: 40px; height: 40px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+    }
     .item-list {
         ul {
             display: flex;
@@ -1226,7 +1244,7 @@ a.ui.card:hover,
                 margin-right: .5em;
                 margin-bottom: 0 !important;
                 img {
-                    width: 100%;
+                    width: 100%; height: 100%;
                     object-fit: cover;
                 }
             }
@@ -1250,9 +1268,6 @@ a.ui.card:hover,
         }
     }
     table {
-        tr {
-
-        }
         td {
             .image.header {
                 margin: 0 !important;

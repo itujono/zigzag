@@ -768,14 +768,24 @@ $(document).ready(function() {
     
     $(".profile-content .item").tab();
     
-    $(".item-list .more").on("click", function(e) {
+    $(".item-list .more").each(function() {
         const el = $(this);
-        
-        e.preventDefault();
-        el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"));
-        
-        $(".item-list .content-detail").transition("slide", 150);
+        $(".item-list .more").on("click", function() {
+            e.preventDefault();
+            el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"));
+            
+            $(".item-list .content-detail").transition("slide", 150);
+        });
     });
+
+
+    // $(".item-list .more").on("click", function(e) {
+        
+    //     e.preventDefault();
+    //     el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"));
+        
+    //     $(".item-list .content-detail").transition("slide", 150);
+    // });
     
     
     
