@@ -1149,12 +1149,15 @@ a.ui.card:hover,
         }
         .segment {
             padding: 1em 0;
-            // border-right: none;
-            // border-top-right-radius: 0;
-            // border-bottom-right-radius: 0;
             > div {
+                position: relative;
                 padding: 2em;
                 border-bottom: 1px solid #ddd;
+                &:hover {
+                    .editable {
+                        display: inline-block;
+                    }
+                }
                 &:first-of-type {
                     padding-top: initial;
                 }
@@ -1168,6 +1171,20 @@ a.ui.card:hover,
                         margin-right: $defaultSize;
                     }
                 }
+                .editable {
+                    color: $tosca;
+                    border-radius: 50%;
+                    border: transparent;
+                    background-color: transparent;
+                    display: none;
+                    position: absolute;
+                    top: 20px;
+                    right: 5px;
+                }
+            }
+            .inline-editable.form {
+                display: none;
+                margin-bottom: initial;
             }
         }
         ul {

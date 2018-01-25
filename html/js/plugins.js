@@ -868,7 +868,25 @@ $(document).ready(function() {
             }).modal("show");
         }
     });
+
+    const editable = $(".editable");
+
+    editable.on("click", function(e) {
+        e.preventDefault();
+        $(this).addClass("disabled");
+        $(this).siblings("ul").transition("slide", 100, function() {
+            $(this).siblings("form").transition("slide", 100);
+        });
+    });
     
+    $(".button.cancel").on("click", function(e) {
+        e.preventDefault();
+        $(this).parents("form").siblings(".editable").removeClass("disabled");
+        $(this).parents("form").transition("slide", 100, function() {
+            console.log(this);
+            $(this).siblings("ul").transition("slide", 100);
+        });
+    });
     
     
 });

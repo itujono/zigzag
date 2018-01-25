@@ -457,7 +457,9 @@ a:hover { color: #24aa87; }
 
 .account .user-information .segment { padding: 1em 0; }
 
-.account .user-information .segment > div { padding: 2em; border-bottom: 1px solid #ddd; }
+.account .user-information .segment > div { position: relative; padding: 2em; border-bottom: 1px solid #ddd; }
+
+.account .user-information .segment > div:hover .editable { display: inline-block; }
 
 .account .user-information .segment > div:first-of-type { padding-top: initial; }
 
@@ -466,6 +468,10 @@ a:hover { color: #24aa87; }
 .account .user-information .segment > div > div { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
 
 .account .user-information .segment > div > div svg { margin-right: 1em; }
+
+.account .user-information .segment > div .editable { color: #58dcb9; border-radius: 50%; border: transparent; background-color: transparent; display: none; position: absolute; top: 20px; right: 5px; }
+
+.account .user-information .segment .inline-editable.form { display: none; margin-bottom: initial; }
 
 .account .user-information ul { padding: 0; margin: 0; }
 
