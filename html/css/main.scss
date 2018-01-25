@@ -894,7 +894,7 @@ a.ui.card:hover,
 
 
 
-// Bujuneng! Ini udah di Checkout aja hahahahah! Yeaaay!important
+// Bujuneng! Ini udah di Checkout aja hahahahah! Yeaaay!
 
 .checkout {
     .main {
@@ -914,6 +914,17 @@ a.ui.card:hover,
         .sixteen.column {
             padding-top: 0;
         }
+    }
+}
+
+#shipping-address {
+    color: #999;
+    .divider {
+        margin-top: 3em;
+        margin-bottom: 3em;
+    }
+    .search.dropdown, [name="kodepos"], [name="alamat"] {
+        display: none;
     }
 }
 

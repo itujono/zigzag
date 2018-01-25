@@ -349,6 +349,12 @@ a:hover { color: #24aa87; }
 
 .checkout #step-shipping .sixteen.column { padding-top: 0; }
 
+#shipping-address { color: #999; }
+
+#shipping-address .divider { margin-top: 3em; margin-bottom: 3em; }
+
+#shipping-address .search.dropdown, #shipping-address [name="kodepos"], #shipping-address [name="alamat"] { display: none; }
+
 #dropshipper-field { display: none; margin-bottom: 3em; }
 
 #dropshipper-field.visible { display: -webkit-box; display: -ms-flexbox; display: flex; }

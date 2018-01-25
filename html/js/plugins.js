@@ -411,12 +411,10 @@ $(document).ready(function() {
     
     $(".ui.message.added-to-cart .close").on("click", function() {
         $(this).closest(".ui.message.added-to-cart").transition("scale", 200);
-        console.log(this);
     });
     
     $(".ui.message.added-to-wishlist .close").on("click", function() {
         $(this).closest(".ui.message.added-to-wishlist").transition("scale", 200);
-        console.log(this);
     });
     
     
@@ -425,11 +423,22 @@ $(document).ready(function() {
     const $deleteButton = $(".cart-item .delete-item");
     const value = 1;
     const index = $.inArray(value, $arrCartItem);
+    const defaulty = $("#default-address [type='checkbox']");
+    const defaultAddress = defaulty.attr("checked");
+    const searchDropdown = $("#shipping-address .search.dropdown");
+    
+
+    defaulty.on("toggle", function() {
+        if (typeof defaultAddress !== undefined && defaultAddress !== false) {
+            console.log(searchDropdown);
+            searchDropdown.transition("slide", 100);
+        }
+    })
+
+
     // jQuery.isArray($arrCartItem);
     
     $deleteButton.on("click", function() {
-        console.log("Popped!");
-        console.log(index);
         $arrCartItem.splice(index, 1);
     });
     
