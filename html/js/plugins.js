@@ -422,19 +422,11 @@ $(document).ready(function() {
     const $deleteButton = $(".cart-item .delete-item");
     const value = 1;
     const index = $.inArray(value, $arrCartItem);
-    const defaulty = $("#default-address [type='checkbox']");
-    const defaultAddress = defaulty.attr("checked");
     const searchDropdown = $("#shipping-address .search.dropdown");
-    
-
-    defaulty.on("toggle", function() {
-        if (typeof defaultAddress !== undefined && defaultAddress !== false) {
-            searchDropdown.transition("slide", 100);
-        }
-    })
+	
+	
 
 
-    // jQuery.isArray($arrCartItem);
     
     $deleteButton.on("click", function() {
         $arrCartItem.splice(index, 1);
@@ -469,7 +461,15 @@ $(document).ready(function() {
         $(this).on("click", function() {
             $(this).find(".checked").closest(".ui.segment").css("background-color", "#444");
         });
-    });
+	});
+
+
+
+	const defaultAddress = $("#default-address")
+	
+	if (defaultAddress.hasClass("checked")) {
+		$(".fields.will-hidden").css("display", "none")
+	}
     
     $("#shipping-address").form({
         // inline: true,

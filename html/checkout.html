@@ -349,13 +349,13 @@
                         <div class="ui divider"></div>
                         <div class="inline field mb2em">
                             <div class="ui segment">
-                                <div class="ui slider checkbox" id="default-address">
+                                <div class="ui slider checkbox checked" id="default-address">
                                     <input type="checkbox" tabindex="0" class="hidden" checked>
                                     <label>Pake data alamat sesuai dari data Profile kamu? </label>
                                 </div>
                             </div>
                         </div>
-                        <div class="three fields mb2em">
+                        <div class="three fields mb2em will-hidden">
                             <div class="required field">
                                 <label for="provinsi-checkout">Provinsi</label>
                                 <select class="ui search dropdown" id="provinsi-checkout" name="provinsi-checkout">
@@ -392,6 +392,22 @@
                                 <input type="number" name="kodepos" placeholder="Misal: 29433">
                             </div>
                         </div>
+
+                        <div class="three fields will-show">
+                            <div class="field">
+                                <label for="hidden-provinsi">Provinsi</label>
+                                Kepulauan Riau
+                            </div>
+                            <div class="field">
+                                <label for="hidden-provinsi">Kota/Kabupaten</label>
+                                Tanjung Pinang
+                            </div>
+                            <div class="field">
+                                <label for="hidden-provinsi">Kode Pos</label>
+                                345432
+                            </div>
+                        </div>
+
                         <div class="required field mb2em">
                             <label for="alamat">Alamat pengiriman</label>
                             <textarea name="alamat" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"></textarea>

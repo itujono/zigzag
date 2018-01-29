@@ -39,6 +39,8 @@ a.header:hover { color: #58dcb9 !important; }
 
 .ui.segment.seamless { border: none !important; background-color: #eee; margin-bottom: 3em; }
 
+form .ui.slider.checkbox.checked label:before { background-color: #58dcb9 !important; }
+
 form .ui.slider.checkbox input:checked ~ .box:before { background-color: #58dcb9 !important; }
 
 form .ui.slider.checkbox input:checked ~ .box, form .ui.slider.checkbox input:checked ~ label { color: #58dcb9 !important; }
