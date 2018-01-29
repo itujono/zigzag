@@ -8,6 +8,7 @@ $goldBrown: #c3943c;
 $lightBlue: #f7fbff;
 $defaultSize: 1em;
 $lineHeight: 1.6;
+$transition: all .2s ease;
 
 @mixin goldGradient {
     color: $goldBrown;

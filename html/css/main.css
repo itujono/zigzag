@@ -475,6 +475,8 @@ a:hover { color: #24aa87; }
 
 .account .user-information .segment > div .editable.general-info { top: 0; }
 
+.account .user-information .segment > div .editable.disabled { display: none; }
+
 .account .user-information .segment .inline-editable.form { display: none; margin-bottom: initial; }
 
 .account .user-information ul { padding: 0; margin: 0; }
@@ -500,6 +502,14 @@ a:hover { color: #24aa87; }
 .account .profile-content .header.sub { font-size: 1.1rem !important; }
 
 .account .profile-content .header h3 { margin-bottom: 0; }
+
+.account #wishlist .item:hover .remove-from-wishlist { display: inline-block; visibility: visible; }
+
+.account #wishlist .item .remove-from-wishlist { float: right; display: none; visibility: hidden; color: #f92626; -webkit-transition: all 0.2s ease; -o-transition: all 0.2s ease; transition: all 0.2s ease; }
+
+.account #wishlist .item .remove-from-wishlist:hover { text-decoration: underline; }
+
+.account #wishlist .item .remove-from-wishlist:hover .icon { text-decoration: none; }
 
 .account #wishlist .moved-to-cart { display: none; }
 

@@ -1186,6 +1186,9 @@ a {
                             &.general-info {
                                 top: 0;
                             }
+                            &.disabled {
+                                display: none
+                            }
                         }
                     }
                     .inline-editable.form {
@@ -1249,6 +1252,27 @@ a {
                 }
             }
             #wishlist {
+                .item {
+                    &:hover {
+                        .remove-from-wishlist {
+                            display: inline-block;
+                            visibility: visible
+                        }
+                    }
+                    .remove-from-wishlist {
+                        float: right;
+                        display: none;
+                        visibility: hidden;
+                        color: $red;
+                        transition: $transition;
+                        &:hover {
+                            text-decoration: underline;
+                            .icon {
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
                 .moved-to-cart {
                     display: none;
                 }

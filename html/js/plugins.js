@@ -788,9 +788,14 @@ $(document).ready(function() {
         $(this).parents(".item").slideUp(150);
     });
 
+    $(".remove-from-wishlist").on("click", function(e) {
+        e.preventDefault();
+        $(this).parents(".item").slideUp(150);
+    });
+
     $(".move-all-to-cart").on("click", function() {
         $("#wishlist .items > .item").slideUp(150);
-        $(".ui.message.moved-to-cart").transition("fade", 150);
+        $(".ui.message.moved-to-cart").slideDown(150);
     });
 
 
