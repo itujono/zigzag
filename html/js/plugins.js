@@ -798,8 +798,7 @@ $(document).ready(function() {
         const el = $(this);
         e.preventDefault();
         el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"));
-        console.log("Eh tebukaaa!");
-        $("#order-history .item-list").find(".content-detail").transition("slide", 150);
+        el.parents("ul").siblings(".content-detail").transition("slide", 150);
     });
 
     $("#retur-history .item-list .more").on("click", function(e) {
