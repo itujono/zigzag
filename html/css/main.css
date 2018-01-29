@@ -469,7 +469,11 @@ a:hover { color: #24aa87; }
 
 .account .user-information .segment > div > div svg { margin-right: 1em; }
 
+.account .user-information .segment > div .will-edit { display: block; }
+
 .account .user-information .segment > div .editable { color: #58dcb9; border-radius: 50%; border: transparent; background-color: transparent; display: none; position: absolute; top: 20px; right: 5px; }
+
+.account .user-information .segment > div .editable.general-info { top: 0; }
 
 .account .user-information .segment .inline-editable.form { display: none; margin-bottom: initial; }
 

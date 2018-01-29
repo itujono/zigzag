@@ -285,31 +285,47 @@
                     <div class="ui segment">
 
                         <div>
-                            <figure class="ui circular image">
-                                <img src="img/user.jpg" alt="Avatar">
-                            </figure>
-                            <div class="name">
-                                Rusmanto Kiri
-                                <p>Batam, Indonesia</p>
+                            <div class="will-edit">
+                                <figure class="ui circular image">
+                                    <img src="img/user.jpg" alt="Avatar">
+                                </figure>
+                                <div class="name">
+                                    Rusmanto Kiri
+                                    <p>Batam, Kepulauan Riau</p>
+                                </div>
                             </div>
-                            <a href="#" class="editable">
-                                <i class="write icon"></i>
-                            </a>
+                            <form action="" class="ui form inline-editable general-info">
+                                <div class="field">
+                                    <label for="inline-photo">Ganti foto?</label>
+                                    <input type="file" name="inline-photo">
+                                </div>
+                                <div class="field">
+                                    <label for="inline-name">Nama kamu</label>
+                                    <input type="text" name="inline-name" placeholder="Andre Agassi">
+                                </div>
+                                <div class="field">
+                                    <label for="inline-location">Lokasi kamu (kota &amp; provinsi)</label>
+                                    <input type="text" name="inline-location" placeholder="Tanjung Pinang, Kepulauan Riau">
+                                </div>
+                                <button class="ui mini button submit" type="submit">Update</button>
+                                <button class="ui mini button basic cancel">Cancel</button>
+                            </form>
+                            <a href="#" class="ui icon editable button general-info"> <i class="write icon"></i> </a>
                         </div>
                         <div>
                             <div class="title"> Contact </div>
                             <ul>
-                                <li> rusmantocute@gkail.com</li>
+                                <li> rusmantocute@xmail.com</li>
                                 <li> 0812 23462343</li>
                             </ul>
                             <form action="" class="ui form inline-editable contact">
                                 <div class="field">
-                                    <label for="inline-email"></label>
-                                    <input type="text" name="inline-email" placeholder="Email kamu">
+                                    <label for="inline-email">Email kamu</label>
+                                    <input type="text" name="inline-email" placeholder="andre@gmail.com">
                                 </div>
                                 <div class="field">
-                                    <label for="inline-phone"></label>
-                                    <input type="number" name="inline-phone" placeholder="Hape kamu">
+                                    <label for="inline-phone">Hape kamu</label>
+                                    <input type="number" name="inline-phone" placeholder="08123456789">
                                 </div>
                                 <button class="ui mini button submit" type="submit">Update</button>
                                 <button class="ui mini button basic cancel">Cancel</button>
@@ -351,12 +367,12 @@
                             </ul>
                             <form action="" class="ui form inline-editable social">
                                 <div class="field">
-                                    <label for="facebook">Alamat Facebook</label>
-                                    <input type="text" name="facebook" placeholder="http://facebook.com/johndoe">
+                                    <label for="inline-facebook">Alamat Facebook</label>
+                                    <input type="text" name="inline-facebook" placeholder="http://facebook.com/johndoe">
                                 </div>
                                 <div class="field">
-                                    <label for="twitter">Alamat Twitter</label>
-                                    <input type="text" name="twitter" placeholder="http://twitter.com/johndoe">
+                                    <label for="inline-instagram">Alamat Instagram</label>
+                                    <input type="text" name="inline-instagram" placeholder="http://instagram.com/johndoe">
                                 </div>
                                 <button class="ui mini button submit" type="submit">Update</button>
                                 <button class="ui mini button basic cancel">Cancel</button>
@@ -387,9 +403,11 @@
                     <div class="ui tab active segment" id="wishlist" data-tab="wishlist">
                         <div class="header">
                             <h3>
-                                <i class="empty heart icon"></i> Wishlist</h3>
+                                <i class="empty heart icon"></i> Wishlist
+                            </h3>
                             <button class="ui basic teal button move-all-to-cart">
-                                <i class="plus icon"></i> Pindahkan semuanya ke Cart</button>
+                                <i class="plus icon"></i> Pindahkan semuanya ke Cart
+                            </button>
                         </div>
                         <div class="ui divided items">
 
@@ -409,7 +427,8 @@
                                     </div>
                                     <div class="extra">
                                         <button class="ui basic teal button move-to-cart">
-                                            <i class="plus icon"></i>Pindahkan ke Cart</button>
+                                            <i class="plus icon"></i>Pindahkan ke Cart
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -792,7 +811,8 @@
 
                     <div class="ui tab segment" id="retur-history" data-tab="retur-history">
                         <div class="header">
-                            <h3> <i class="moon icon"></i> Retur History</h3>
+                            <h3>
+                                <i class="moon icon"></i> Retur History</h3>
                         </div>
 
                         <div class="ui feed details">

@@ -868,23 +868,113 @@ $(document).ready(function() {
         }
     });
 
+
+
+
     const editable = $(".editable");
 
     editable.on("click", function(e) {
         e.preventDefault();
         $(this).addClass("disabled");
-        $(this).siblings("ul").transition("slide", 100, function() {
-            $(this).siblings("form").transition("slide", 100);
+        console.log($(this));
+        $(this).siblings("ul").transition("fade", 100, function() {
+            $(this).siblings("form").transition("fade", 100);
+        });
+        $(this).siblings(".will-edit").fadeOut(100, function() {
+            $(this).siblings("form").transition("fade", 100);
         });
     });
     
     $(".button.cancel").on("click", function(e) {
         e.preventDefault();
         $(this).parents("form").siblings(".editable").removeClass("disabled");
-        $(this).parents("form").transition("slide", 100, function() {
+        $(this).parents("form").transition("fade", 100, function() {
             console.log(this);
-            $(this).siblings("ul").transition("slide", 100);
+            $(this).siblings("ul").transition("fade", 100);
         });
+        $(this).parents("form").siblings(".will-edit").fadeIn(100);
+    });
+
+    $("form.inline-editable.general-info").form({
+        inline: true,
+        on: "submit",
+        fields: {
+            inlineName: {
+                identifier: "inline-name",
+                rules: [
+                    { type: "empty", prompt: "Wajid diisi" }
+                ]
+            },
+            inlineLocation: {
+                identifier: "inline-location",
+                rules: [
+                    { type: "empty", prompt: "Ini juga jangan kosong ya" }
+                ]
+            }
+        },
+        onSuccess: function() {
+            // Okay hajar di sini AJAX nya wak!
+        }
+    });
+
+    $("form.inline-editable.contact").form({
+        inline: true,
+        on: "submit",
+        fields: {
+            inlineEmail: {
+                identifier: "inline-email",
+                rules: [
+                    { type: "empty", prompt: "Wajid diisi" }
+                ]
+            },
+            inlinePhone: {
+                identifier: "inline-phone",
+                rules: [
+                    { type: "empty", prompt: "Ini juga jangan kosong ya" }
+                ]
+            }
+        },
+        onSuccess: function() {
+            // Okay hajar di sini AJAX nya wak!
+        }
+    });
+    
+    $("form.inline-editable.alamat").form({
+        inline: true,
+        on: "submit",
+        fields: {
+            inlineAddress: {
+                identifier: "inline-address",
+                rules: [
+                    { type: "empty", prompt: "Wajid diisi" }
+                ]
+            }
+        },
+        onSuccess: function() {
+            // Okay hajar di sini AJAX nya wak!
+        }
+    });
+    
+    $("form.inline-editable.social").form({
+        inline: true,
+        on: "submit",
+        fields: {
+            inlineFacebook: {
+                identifier: "inline-facebook",
+                rules: [
+                    { type: "empty", prompt: "Wajid diisi" }
+                ]
+            },
+            inlineInstagram: {
+                identifier: "inline-instagram",
+                rules: [
+                    { type: "empty", prompt: "Ini juga jangan kosong ya" }
+                ]
+            }
+        },
+        onSuccess: function() {
+            // Okay hajar di sini AJAX nya wak!
+        }
     });
     
     
