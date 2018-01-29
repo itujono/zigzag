@@ -55,7 +55,6 @@ $(document).ready(function() {
     
     $(".main a.ui.card").on("click", function(e) {
         e.preventDefault();
-        console.log("Clicked pulak!");
     });
     
     $(".additional-actions .add-to-wishlist").each(function() {
@@ -430,7 +429,6 @@ $(document).ready(function() {
 
     defaulty.on("toggle", function() {
         if (typeof defaultAddress !== undefined && defaultAddress !== false) {
-            console.log(searchDropdown);
             searchDropdown.transition("slide", 100);
         }
     })
@@ -464,154 +462,155 @@ $(document).ready(function() {
     
     
     $(".ui.dropshipper").on("click", function() {
-        console.log("Kok gak keluar?");
         $("#dropshipper-field").transition("slide", 200);
     });
     
     $(".ui.checkbox").each(function() {
         $(this).on("click", function() {
             $(this).find(".checked").closest(".ui.segment").css("background-color", "#444");
-            console.log(this);
         });
     });
     
     $("#shipping-address").form({
-        inline: true,
-        on: "submit",
-        fields: {
-            name: {
-                identifier: "nama",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Jangan dikosongin namanya ya"
-                    },
-                    {
-                        type: "minLength[5]",
-                        prompt: "Kurang panjang tuh namanya"
-                    },
-                    {
-                        type: "containsExactly[ ]",
-                        prompt: "Nama belakangnya udah belum?"
-                    }
-                ]
-            },
-            email: {
-                identifier: "email",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Jangan dikosongin emailnya ya"
-                    },
-                    {
-                        type: "regExp[/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/]",
-                        prompt: "Udah bener emangnya format emailnya tuh?"
-                    }
-                ]
-            },
-            handphone: {
-                identifier: "handphone",
-                on: "submit",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Hayooo, nomer handphone nya, mas!"
-                    },
-                    {
-                        type: "integer",
-                        prompt: "Nomer hape gak ada yang make huruf deh perasaan"
-                    },
-                    {
-                        type: "minLength[8]",
-                        prompt: "Nggak kurang tu nomernya? Dikit amat perasaan"
-                    }
-                ]
-            },
-            telepon: {
-                identifier: "telepon",
-                optional: true,
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Hayooo, nomer telepon nya, mas!"
-                    }
-                ]
-            },
-            kodepos: {
-                identifier: "kodepos",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "jangan sampe lupa juga ya kode pos nya"
-                    },
-                    {
-                        type: "maxLength[5]",
-                        prompt: "Emang ada kode pos lebih dari 5 digit ya?"
-                    },
-                    {
-                        type: "minLength[5]",
-                        prompt: "Perasaan gak ada deh kodepos di bawah 5 digit"
-                    }
-                ]
-            },
-            alamat: {
-                identifier: "alamat",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Yakali yang beginian juga kelupaan diisi"
-                    },
-                    {
-                        type: "minLength[8]",
-                        prompt: "Ni bener gak nih ngisi alamatnya? Pendek amat."
-                    }
-                ]
-            }
-        },
+        // inline: true,
+        // on: "submit",
+        // fields: {
+        //     name: {
+        //         identifier: "nama",
+        //         rules: [
+        //             {
+        //                 type: "empty",
+        //                 prompt: "Jangan dikosongin namanya ya"
+        //             },
+        //             {
+        //                 type: "minLength[5]",
+        //                 prompt: "Kurang panjang tuh namanya"
+        //             },
+        //             {
+        //                 type: "containsExactly[ ]",
+        //                 prompt: "Nama belakangnya udah belum?"
+        //             }
+        //         ]
+        //     },
+        //     email: {
+        //         identifier: "email",
+        //         rules: [
+        //             {
+        //                 type: "empty",
+        //                 prompt: "Jangan dikosongin emailnya ya"
+        //             },
+        //             {
+        //                 type: "regExp[/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/]",
+        //                 prompt: "Udah bener emangnya format emailnya tuh?"
+        //             }
+        //         ]
+        //     },
+        //     handphone: {
+        //         identifier: "handphone",
+        //         on: "submit",
+        //         rules: [
+        //             {
+        //                 type: "empty",
+        //                 prompt: "Hayooo, nomer handphone nya, mas!"
+        //             },
+        //             {
+        //                 type: "integer",
+        //                 prompt: "Nomer hape gak ada yang make huruf deh perasaan"
+        //             },
+        //             {
+        //                 type: "minLength[8]",
+        //                 prompt: "Nggak kurang tu nomernya? Dikit amat perasaan"
+        //             }
+        //         ]
+        //     },
+        //     telepon: {
+        //         identifier: "telepon",
+        //         optional: true,
+        //         rules: [
+        //             {
+        //                 type: "empty",
+        //                 prompt: "Hayooo, nomer telepon nya, mas!"
+        //             }
+        //         ]
+        //     },
+        //     kodepos: {
+        //         identifier: "kodepos",
+        //         rules: [
+        //             {
+        //                 type: "empty",
+        //                 prompt: "jangan sampe lupa juga ya kode pos nya"
+        //             },
+        //             {
+        //                 type: "maxLength[5]",
+        //                 prompt: "Emang ada kode pos lebih dari 5 digit ya?"
+        //             },
+        //             {
+        //                 type: "minLength[5]",
+        //                 prompt: "Perasaan gak ada deh kodepos di bawah 5 digit"
+        //             }
+        //         ]
+        //     },
+        //     alamat: {
+        //         identifier: "alamat",
+        //         rules: [
+        //             {
+        //                 type: "empty",
+        //                 prompt: "Yakali yang beginian juga kelupaan diisi"
+        //             },
+        //             {
+        //                 type: "minLength[8]",
+        //                 prompt: "Ni bener gak nih ngisi alamatnya? Pendek amat."
+        //             }
+        //         ]
+        //     }
+        // },
         onSuccess: function(e) {
             e.preventDefault();
-            $(this).closest("#step-shipping").transition("slide", 300);
-            $("#step-billing").transition("slide", 200);
+            $(this).closest("#step-shipping").transition("fade", 150, function() {
+                $("#step-billing").transition("fade", 150);
+            });
         }
     });
     
     $(".back-to-previous").on("click", function(e) {
-        e.preventDefault();
-        $("#step-billing").transition("slide", 300);
-        $("#step-shipping").transition("slide", 200);
-    });
+        e.preventDefault()
+        $(this).parents("#step-billing").transition("fade", 150, function() {
+            $(this).siblings("#step-shipping").transition("fade", 150)
+        })
+    })
+
+    $("#payment-option").form({
+        onSuccess: e => {
+            e.preventDefault()
+            $(this).find("#billing").addClass("loading")
+            setTimeout(() => {
+                $("#payment-option").find("#billing").removeClass("loading")
+                $("#payment-option").parents("#step-billing").transition("fade", 150, () => {
+                    $("#step-billing").siblings("#step-confirm").transition("fade", 150)
+                })
+            }, 1000)
+        }
+    })
     
-    $("#payment-option").on("submit", function(e) {
-        e.preventDefault();
-        $("#step-billing").transition("slide", 300);
-        $("#step-confirm").transition("slide", 200);
-    });
+    $("table .checkout.button").on("click", orderFinished)
     
-    // $("#shipping-address").on("submit", function(e) {
-    //     // $("#shipping-address").closest("#step-shipping").transition("slide", 300);
-    //     console.log(this);
-    // });
-    
+    $("#cart-total .checkout.button").on("click", orderFinished)
+	
+	function orderFinished() {
+		$(".ui.modal.confirm-order").modal({
+            closable: false, blurring: true, duration: 200,
+            transition: "fade up",
+            onApprove: e => { window.location = "order-done.html" }
+        }).modal("show")
+	}
+
     
     $(".ui.sticky").sticky({
         offset: 50
-    });
+    })
     
-    $(".ui.accordion.payment-option").accordion();
+    $(".ui.accordion.payment-option").accordion()
     
-    $("#cart-total .checkout.button").on("click", function() {
-        
-        $(".ui.modal.confirm-order").modal({
-            closable: false,
-            blurring: true,
-            duration: 200,
-            transition: "fade up",
-            onApprove: function(e) {
-                window.location = "order-done.html"
-            }
-        }).modal("show");
-        
-    });
     
     $("#confirmation-form").form({
         inline: true,
@@ -686,19 +685,19 @@ $(document).ready(function() {
             }
         },
         onSuccess: function(e) {
-            e.preventDefault();
-            $("#confirmation-form .zz.button").addClass("loading");
+            e.preventDefault()
+            $("#confirmation-form .zz.button").addClass("loading")
             setTimeout(function() {
                 $(".ui.page.dimmer").dimmer("show").dimmer({
                     onHide: function() {
-                        console.log(this);
-                        window.location = "/";
+                        console.log(this)
+                        window.location = "/"
                     }
-                });
-            }, 2000);
-            $(this).form("clear");
+                })
+            }, 2000)
+            $(this).form("clear")
         }
-    });
+    })
     
     
     $("#retur-form").form({
@@ -765,7 +764,6 @@ $(document).ready(function() {
             setTimeout(function() {
                 $(".ui.page.dimmer").dimmer("show").dimmer({
                     onHide: function() {
-                        console.log(this);
                         window.location = "/";
                     }
                 });
@@ -776,13 +774,7 @@ $(document).ready(function() {
     
     
     $(".profile-content .item").tab();
-   
 
-    // $(".item-list .ui.accordion").accordion({
-    //     selector: {
-    //         trigger: ".more.title"
-    //     }
-    // });
 
     $(".move-to-cart").on("click", function() {
         $(this).parents(".item").slideUp(150);

@@ -105,24 +105,19 @@ a.header {
     }
 }
 
-.ui.slider.checkbox input:checked {
-    ~.box:before {
-        background-color: $tosca !important;
-    }
-    ~.box, ~label {
-        color: $tosca !important;
-    }
-}
-
-.ui.slider.checkbox input:checked {
-    ~label:before {
-        background-color: $tosca !important;
-    }
-}
-
-.ui.checkbox {
-    &.checked {
-        // background-color: $tosca;
+form .ui.slider.checkbox {
+    input:checked {
+       ~.box:before {
+           background-color: $tosca !important;
+       }
+       ~.box, ~label {
+           color: $tosca !important;
+       }
+       ~label {
+            &:before {
+                background-color: $tosca !important;
+            }
+       }
     }
 }
 
@@ -222,6 +217,10 @@ a {
     .header {
         margin-bottom:  2em;
         margin-top:  2em;
+        color: #999;
+        h3 {
+            color: #000;
+        }
     }
     .main-ad {
         .ui.card {
@@ -923,9 +922,9 @@ a {
                 margin-top: 3em;
                 margin-bottom: 3em;
             }
-            .search.dropdown, [name="kodepos"], [name="alamat"] {
-                display: none;
-            }
+            // .search.dropdown, [name="kodepos"], [name="alamat"] {
+            //     display: none;
+            // }
         }
         
         #dropshipper-field {
@@ -953,12 +952,8 @@ a {
         }
         
         .ui.steps {
-            margin-bottom: 3em;
             border: none !important;
             box-shadow: $boxShadow;
-            &:last-child {
-                margin-bottom: 3em !important;
-            }
             .step {
                 &.active {
                     background-color: #000;
@@ -1074,6 +1069,13 @@ a {
         .order-done {
             #cart-table, #cart-recap, #cart-total {
                 margin-bottom: 2em;
+            }
+            #cart-recap, #cart-total {
+                tr {
+                    td:last-of-type, th:last-of-type {
+                        font-weight: bold;
+                    }
+                }
             }
         }
         

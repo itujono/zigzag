@@ -320,11 +320,10 @@
                     </div>
                     <!-- kelar div Three Steps -->
 
-                    <div class="header" id="form-header">
-                        <h3>Isi detail alamat</h3>
-                        Jangan takut. Semua orang pernah lupa. Silakan masukkan email kamu, dan kami akan mengirimkan email berisi instruksi untuk
-                        mereset password kamu.
-                    </div>
+                    <h3 class="ui header" id="form-header">
+                        Isi detail kamu
+                        <div class="sub header">Isi detail info dan detail pengiriman</div>
+                    </h3>
 
                     <form class="ui form" action="" method="" id="shipping-address">
                         <div class="two fields">
@@ -367,7 +366,6 @@
                                     <option value="banten">Banten</option>
                                     <option value="kepri">Kepulauan Riau</option>
                                 </select>
-                                Kepulauan Riau
                             </div>
                             <div class="required field">
                                 <label for="kota-checkout">Kota/Kabupaten</label>
@@ -388,18 +386,15 @@
                                     <option value="bangka" data-chained="babel">Bangka</option>
                                     <option value="belitung" data-chained="babel">Belitung</option>
                                 </select>
-                                Tanjung Pinang
                             </div>
                             <div class="required field">
                                 <label for="kodepos">Kode Pos</label>
                                 <input type="number" name="kodepos" placeholder="Misal: 29433">
-                                345899
                             </div>
                         </div>
                         <div class="required field mb2em">
                             <label for="alamat">Alamat pengiriman</label>
                             <textarea name="alamat" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"></textarea>
-                            Jalan Kepodang Raya Blok CV #989 Senggarang
                         </div>
                         <div class="inline three fields ekspedisi">
                             <label>Ekspedisi apa?</label>
@@ -450,8 +445,7 @@
                     </form>
                 </div>
 
-            </div>
-            <!-- kelar div Grid / Step-Shipping -->
+            </div> <!-- kelar div Grid / Step-Shipping -->
 
 
 
@@ -500,7 +494,7 @@
                         Pembayaran adalah hal yang bermakna bagi nusa dan bangsa orang Melayu di Pinang bagian selatan.
                     </div>
 
-                    <form class="ui form" method="post" id="payment-option">
+                    <form class="ui form" method="" id="payment-option">
                         <div class="ui styled accordion payment-option">
                             <div class="title active">
                                 <i class="dropdown icon"></i>
@@ -600,19 +594,17 @@
 
                                 </div>
                             </div>
-                        </div>
-                        <!-- kelar Accordion / Bank transfer -->
+                        </div> <!-- kelar Accordion / Bank transfer -->
 
-                        <input type="submit" class="ui fluid zz button" id="billing" value="Lanjut">
-
+                        <input type="submit" class="ui fluid teal button" id="billing" value="Lanjut">
                     </form>
 
                     <a href="#" class="back-to-previous">
-                        <i class="chevron left icon"></i> Kembali</a>
+                        <i class="chevron left icon"></i> Kembali
+                    </a>
                 </div>
 
-            </div>
-            <!-- kelar div Grid / Step-Billing -->
+            </div> <!-- kelar div Grid / Step-Billing -->
 
 
             <div class="ui grid" id="step-confirm">
@@ -784,8 +776,6 @@
             </div>
 
 
-
-
         </div>
         <!-- kelar Main -->
 
@@ -849,7 +839,7 @@
     <div class="ui tiny modal confirm-order">
         <div class="header">Place order?</div>
         <div class="content">
-            Kamu sudah yakin mau place order kamu ini?
+            Kamu sudah yakin mau place order kamu ini? Ini nggak bisa diundo loh ya
         </div>
         <div class="actions">
             <div class="ui teal approve button"> Yakin! </div>

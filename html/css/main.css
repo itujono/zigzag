@@ -39,11 +39,11 @@ a.header:hover { color: #58dcb9 !important; }
 
 .ui.segment.seamless { border: none !important; background-color: #eee; margin-bottom: 3em; }
 
-.ui.slider.checkbox input:checked ~ .box:before { background-color: #58dcb9 !important; }
+form .ui.slider.checkbox input:checked ~ .box:before { background-color: #58dcb9 !important; }
 
-.ui.slider.checkbox input:checked ~ .box, .ui.slider.checkbox input:checked ~ label { color: #58dcb9 !important; }
+form .ui.slider.checkbox input:checked ~ .box, form .ui.slider.checkbox input:checked ~ label { color: #58dcb9 !important; }
 
-.ui.slider.checkbox input:checked ~ label:before { background-color: #58dcb9 !important; }
+form .ui.slider.checkbox input:checked ~ label:before { background-color: #58dcb9 !important; }
 
 a { color: #58dcb9; text-decoration: none; }
 
@@ -77,7 +77,9 @@ a:hover { color: #24aa87; }
 
 .main > .ui.grid.main-ad { margin-bottom: initial; }
 
-.main .header { margin-bottom: 2em; margin-top: 2em; }
+.main .header { margin-bottom: 2em; margin-top: 2em; color: #999; }
+
+.main .header h3 { color: #000; }
 
 .main .main-ad .ui.card { width: auto; }
 
@@ -353,8 +355,6 @@ a:hover { color: #24aa87; }
 
 #shipping-address .divider { margin-top: 3em; margin-bottom: 3em; }
 
-#shipping-address .search.dropdown, #shipping-address [name="kodepos"], #shipping-address [name="alamat"] { display: none; }
-
 #dropshipper-field { display: none; margin-bottom: 3em; }
 
 #dropshipper-field.visible { display: -webkit-box; display: -ms-flexbox; display: flex; }
@@ -365,9 +365,7 @@ a:hover { color: #24aa87; }
 
 .fields.ekspedisi .field:last-of-type { padding-right: 0 !important; }
 
-.ui.steps { margin-bottom: 3em; border: none !important; -webkit-box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); }
-
-.ui.steps:last-child { margin-bottom: 3em !important; }
+.ui.steps { border: none !important; -webkit-box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); }
 
 .ui.steps .step.active { background-color: #000; }
 
@@ -430,6 +428,8 @@ a:hover { color: #24aa87; }
 .done-payment-link { color: #999; }
 
 .order-done #cart-table, .order-done #cart-recap, .order-done #cart-total { margin-bottom: 2em; }
+
+.order-done #cart-recap tr td:last-of-type, .order-done #cart-recap tr th:last-of-type, .order-done #cart-total tr td:last-of-type, .order-done #cart-total tr th:last-of-type { font-weight: bold; }
 
 .search .header { margin-bottom: 5em; color: #999; }
 
