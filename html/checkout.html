@@ -348,14 +348,14 @@
                         </div>
                         <div class="ui divider"></div>
                         <div class="inline field mb2em">
-                            <div class="ui segment">
-                                <div class="ui slider checkbox checked" id="default-address">
-                                    <input type="checkbox" tabindex="0" class="hidden" checked>
+                            <div class="ui segment seamless">
+                                <div class="ui slider checkbox" id="default-address">
+                                    <input type="checkbox" class="hidden">
                                     <label>Pake data alamat sesuai dari data Profile kamu? </label>
                                 </div>
                             </div>
                         </div>
-                        <div class="three fields mb2em will-hidden">
+                        <div class="three fields will-hidden">
                             <div class="required field">
                                 <label for="provinsi-checkout">Provinsi</label>
                                 <select class="ui search dropdown" id="provinsi-checkout" name="provinsi-checkout">
@@ -393,7 +393,7 @@
                             </div>
                         </div>
 
-                        <div class="three fields will-show">
+                        <div class="three fields will-show mb2em transition hidden">
                             <div class="field">
                                 <label for="hidden-provinsi">Provinsi</label>
                                 Kepulauan Riau
@@ -408,7 +408,12 @@
                             </div>
                         </div>
 
-                        <div class="required field mb2em">
+                        <div class="field will-show transition hidden mb2em">
+                            <label for="alamat">Alamat pengiriman</label>
+                            Jalan Kesturi Blok B No. 14, Sei Panas
+                        </div>
+
+                        <div class="required field mb2em will-hidden">
                             <label for="alamat">Alamat pengiriman</label>
                             <textarea name="alamat" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"></textarea>
                         </div>

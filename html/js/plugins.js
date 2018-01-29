@@ -465,11 +465,21 @@ $(document).ready(function() {
 
 
 
-	const defaultAddress = $("#default-address")
+	const defaultAddress = $("#default-address input")
 	
-	if (defaultAddress.hasClass("checked")) {
-		$(".fields.will-hidden").css("display", "none")
-	}
+	defaultAddress.on("focus", () => {
+        $(".will-hidden").css("opacity", .5)
+        setTimeout(() => {
+            $(".will-hidden").css("opacity", 1)
+            if (!$(".will-hidden").hasClass("transition hidden") && $(".will-show").hasClass("transition hidden")) {
+                $(".will-hidden").addClass("transition hidden")
+                $(".will-show").removeClass("transition hidden")
+            } else {
+                $(".will-hidden").removeClass("transition hidden")
+                $(".will-show").addClass("transition hidden")
+            }
+        }, 1000)
+    })
     
     $("#shipping-address").form({
         // inline: true,

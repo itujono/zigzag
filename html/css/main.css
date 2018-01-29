@@ -79,7 +79,7 @@ a:hover { color: #24aa87; }
 
 .main > .ui.grid.main-ad { margin-bottom: initial; }
 
-.main .header { margin-bottom: 2em; margin-top: 2em; color: #999; }
+.main .header { margin-bottom: 2em; margin-top: 2em; }
 
 .main .header h3 { color: #000; }
 
@@ -356,6 +356,8 @@ a:hover { color: #24aa87; }
 #shipping-address { color: #999; }
 
 #shipping-address .divider { margin-top: 3em; margin-bottom: 3em; }
+
+#shipping-address .will-show.transition.hidden, #shipping-address .will-hidden.transition.hidden { display: none; visibility: hidden; }
 
 #dropshipper-field { display: none; margin-bottom: 3em; }
 
