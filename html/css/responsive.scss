@@ -3,6 +3,10 @@
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         grid-template-rows: auto;
         grid-template-areas: "h" "s" "m" "f";
+        &.account {
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-areas: "h" "s" "m" "f";
+        }
     }
 
     .blackish.column {
@@ -22,4 +26,11 @@
             }
         }
     }
+
+    .account {
+        .will-edit {
+            display: flex !important;
+        }
+    }
+
 }

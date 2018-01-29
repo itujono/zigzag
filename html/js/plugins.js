@@ -876,7 +876,6 @@ $(document).ready(function() {
     editable.on("click", function(e) {
         e.preventDefault();
         $(this).addClass("disabled");
-        console.log($(this));
         $(this).siblings("ul").transition("fade", 100, function() {
             $(this).siblings("form").transition("fade", 100);
         });
@@ -887,9 +886,8 @@ $(document).ready(function() {
     
     $(".button.cancel").on("click", function(e) {
         e.preventDefault();
-        $(this).parents("form").siblings(".editable").removeClass("disabled");
+        $(this).parents("form").form("clear").siblings(".editable").removeClass("disabled");
         $(this).parents("form").transition("fade", 100, function() {
-            console.log(this);
             $(this).siblings("ul").transition("fade", 100);
         });
         $(this).parents("form").siblings(".will-edit").fadeIn(100);
@@ -946,7 +944,8 @@ $(document).ready(function() {
             inlineAddress: {
                 identifier: "inline-address",
                 rules: [
-                    { type: "empty", prompt: "Wajid diisi" }
+                    { type: "empty", prompt: "Wajid diisi" },
+                    { type: "minLength[8]", prompt: "Kependekan deh kayaknya" }
                 ]
             }
         },
