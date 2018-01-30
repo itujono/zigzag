@@ -807,9 +807,14 @@ $(document).ready(function() {
     })
 
     $(".move-all-to-cart").on("click", () => {
-        $("#wishlist .items > .item").slideUp(150, () => {
-            $(".ui.message.all-moved-to-cart").slideDown(150)            
-        })
+        $(".confirmation-delete-all-cart").modal({
+            closable: false, blurring: true, duration: 200, transition: "fade up",
+            onApprove: function() {
+                $("#wishlist .items > .item").slideUp(150, () => {
+                    $(".ui.message.all-moved-to-cart").slideDown(150)            
+                })
+            }
+        }).modal("show")
     })
 
 
