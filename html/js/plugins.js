@@ -798,6 +798,11 @@ $(document).ready(function() {
 
     $(".remove-from-wishlist").on("click", function(e) {
         e.preventDefault()
+        $(".removed-from-wishlist").transition("slide", 200, function() {
+            setTimeout(function() {
+                $(".removed-from-wishlist").transition("fade", 200)
+            }, 2000)
+        })
         $(this).parents(".item").slideUp(150)
     })
 
