@@ -209,13 +209,29 @@ a:hover { color: #24aa87; }
 
 .ui.modal.login, .ui.modal.register, .ui.modal.delete-cart, .ui.modal.confirm-order { background-color: #f9f9f9; }
 
+.ui.modal.login .header-login, .ui.modal.register .header-login, .ui.modal.delete-cart .header-login, .ui.modal.confirm-order .header-login { padding: 1.5em 3em; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
+
+.ui.modal.login .header-login .header-icon, .ui.modal.register .header-login .header-icon, .ui.modal.delete-cart .header-login .header-icon, .ui.modal.confirm-order .header-login .header-icon { color: #58dcb9; -webkit-animation: rotator 5s linear infinite; animation: rotator 5s linear infinite; }
+
+.ui.modal.login .header-login .ui.header, .ui.modal.register .header-login .ui.header, .ui.modal.delete-cart .header-login .ui.header, .ui.modal.confirm-order .header-login .ui.header { margin-top: 0; padding-left: .5em; }
+
+@-webkit-keyframes rotator { from { -webkit-transform: rotate(0); transform: rotate(0); }
+  to { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+
+@keyframes rotator { from { -webkit-transform: rotate(0); transform: rotate(0); }
+  to { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+
 .ui.modal.login .form, .ui.modal.register .form, .ui.modal.delete-cart .form, .ui.modal.confirm-order .form { padding: 1em 3em; margin-bottom: 1.2em; }
 
 .ui.modal.login .login.button, .ui.modal.register .login.button, .ui.modal.delete-cart .login.button, .ui.modal.confirm-order .login.button { background-color: #58dcb9; color: #fff; }
 
 .ui.modal.login .login.button:hover, .ui.modal.register .login.button:hover, .ui.modal.delete-cart .login.button:hover, .ui.modal.confirm-order .login.button:hover { background-color: #2ed3a7; }
 
+.ui.modal.login .login.button .content, .ui.modal.register .login.button .content, .ui.modal.delete-cart .login.button .content, .ui.modal.confirm-order .login.button .content { padding: initial; }
+
 .ui.modal.login .header, .ui.modal.register .header, .ui.modal.delete-cart .header, .ui.modal.confirm-order .header { border-bottom: none; padding: 1em 2em; }
+
+.ui.modal.login .header.sub, .ui.modal.register .header.sub, .ui.modal.delete-cart .header.sub, .ui.modal.confirm-order .header.sub { padding: 0; }
 
 .ui.modal.login .login-buttons, .ui.modal.register .login-buttons, .ui.modal.delete-cart .login-buttons, .ui.modal.confirm-order .login-buttons { text-align: center; margin: 0 auto; padding-bottom: 3em; }
 

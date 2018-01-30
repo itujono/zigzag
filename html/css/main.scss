@@ -567,6 +567,27 @@ a {
         
         .ui.modal.login, .ui.modal.register, .ui.modal.delete-cart, .ui.modal.confirm-order {
             background-color: #f9f9f9;
+            .header-login {
+                padding: 1.5em 3em;
+                display: flex;
+                align-items: center;
+                .header-icon {
+                    color: $tosca;
+                    animation: rotator 5s linear infinite;
+                }
+                .ui.header {
+                    margin-top: 0;
+                    padding-left: .5em;
+                }
+                @keyframes rotator {
+                    from {
+                        transform: rotate(0)
+                    }
+                    to {
+                        transform: rotate(360deg)
+                    }
+                }
+            }
             .form {
                 padding: 1em 3em;
                 margin-bottom: 1.2em;
@@ -577,10 +598,16 @@ a {
                 &:hover {
                     background-color: darken($tosca, 10%);
                 }
+                .content {
+                    padding: initial;
+                }
             }
             .header {
                 border-bottom: none;
                 padding: 1em 2em;
+                &.sub {
+                    padding: 0;
+                }
             }
             .login-buttons {
                 text-align: center;
