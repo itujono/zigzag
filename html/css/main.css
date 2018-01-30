@@ -185,9 +185,9 @@ a:hover { color: #24aa87; }
 
 .ui.cart-content.empty { display: -webkit-box !important; display: -ms-flexbox !important; display: flex !important; min-height: 160px; text-align: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; }
 
-.ui.message.added-to-wishlist, .ui.message.added-to-cart, .ui.message.removed-from-wishlist, .ui.message.removed-from-cart, .ui.message.error-wishlist { display: none; position: fixed; top: 0; right: 20px; z-index: 99; -webkit-box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); -webkit-transition: all .4s ease; -o-transition: all .4s ease; transition: all .4s ease; }
+.ui.message.added-to-wishlist, .ui.message.added-to-cart, .ui.message.removed-from-wishlist, .ui.message.removed-from-cart, .ui.message.error-wishlist, .ui.message.moved-to-cart { display: none; position: fixed; top: 0; right: 20px; z-index: 99; -webkit-box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1); -webkit-transition: all .4s ease; -o-transition: all .4s ease; transition: all .4s ease; }
 
-.ui.message.added-to-wishlist.visible, .ui.message.added-to-cart.visible, .ui.message.removed-from-wishlist.visible, .ui.message.removed-from-cart.visible, .ui.message.error-wishlist.visible { display: block; -webkit-transition: all .4s ease; -o-transition: all .4s ease; transition: all .4s ease; }
+.ui.message.added-to-wishlist.visible, .ui.message.added-to-cart.visible, .ui.message.removed-from-wishlist.visible, .ui.message.removed-from-cart.visible, .ui.message.error-wishlist.visible, .ui.message.moved-to-cart.visible { display: block; -webkit-transition: all .4s ease; -o-transition: all .4s ease; transition: all .4s ease; }
 
 .ui.deposit .card { background-color: #f7fbff; }
 

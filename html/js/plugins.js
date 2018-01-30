@@ -786,34 +786,41 @@ $(document).ready(function() {
     $(".profile-content .item").tab();
 
 
+
     $(".move-to-cart").on("click", function() {
-        $(this).parents(".item").slideUp(150);
-    });
+        $(".moved-to-cart").transition("slide", 200, function() {
+            setTimeout(function() {
+                $(".moved-to-cart").transition("fade", 200)
+            }, 2000)
+        })
+        $(this).parents(".item").slideUp(200)
+    })
 
     $(".remove-from-wishlist").on("click", function(e) {
-        e.preventDefault();
-        $(this).parents(".item").slideUp(150);
-    });
+        e.preventDefault()
+        $(this).parents(".item").slideUp(150)
+    })
 
-    $(".move-all-to-cart").on("click", function() {
-        $("#wishlist .items > .item").slideUp(150);
-        $(".ui.message.moved-to-cart").slideDown(150);
-    });
+    $(".move-all-to-cart").on("click", () => {
+        $("#wishlist .items > .item").slideUp(150, () => {
+            $(".ui.message.all-moved-to-cart").slideDown(150)            
+        })
+    })
 
 
     $("#order-history .item-list .more").on("click", function(e) {
-        const el = $(this);
-        e.preventDefault();
-        el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"));
-        el.parents("ul").siblings(".content-detail").transition("slide", 150);
-    });
+        const el = $(this)
+        e.preventDefault()
+        el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"))
+        el.parents("ul").siblings(".content-detail").transition("slide", 150)
+    })
 
     $("#retur-history .item-list .more").on("click", function(e) {
-        const el = $(this);
-        e.preventDefault();
-        el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"));
-        el.parents("ul").siblings(".content-detail").transition("slide", 150);
-    });
+        const el = $(this)
+        e.preventDefault()
+        el.text() == el.data("text-swap") ? el.text("Selengkapnya") : el.text(el.data("text-swap"))
+        el.parents("ul").siblings(".content-detail").transition("slide", 150)
+    })
 
 
 
