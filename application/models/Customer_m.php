@@ -63,6 +63,39 @@ class Customer_m extends MY_Model{
 			)
 	);
 
+	public $rules_save_profile_customer = array(
+		'nameCUSTOMER' => array(
+			'field' => 'nameCUSTOMER',
+			'label' => 'Nama',
+			'rules' => 'trim|required'
+			),
+		'emailCUSTOMER' => array(
+			'field' => 'emailCUSTOMER',
+			'label' => 'Email',
+			'rules' => 'trim|required|valid_email|is_unique[zigzag_customer.emailCUSTOMER]'
+			),
+		'addressCUSTOMER' => array(
+			'field' => 'addressCUSTOMER',
+			'label' => 'Domisili',
+			'rules' => 'trim|required|min_length[8]'
+			),
+		'cityCUSTOMER' => array(
+			'field' => 'cityCUSTOMER',
+			'label' => 'Kota',
+			'rules' => 'trim|required'
+			),
+		'zipCUSTOMER' => array(
+			'field' => 'zipCUSTOMER',
+			'label' => 'Kota',
+			'rules' => 'trim|required|min_length[5]|max_length[5]'
+			),
+		'teleCUSTOMER' => array(
+			'field' => 'teleCUSTOMER',
+			'label' => 'No. Telepon',
+			'rules' => 'trim|required|is_unique[zigzag_customer.teleCUSTOMER]|is_numeric'
+			)
+	);
+
 	public $rules_changepassword_customer = array(
 		'passwordCUSTOMER' => array(
 			'field' => 'passwordCUSTOMER',

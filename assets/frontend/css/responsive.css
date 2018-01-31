@@ -3,6 +3,9 @@
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-template-rows: auto;
     grid-template-areas: "h" "s" "m" "f"; }
+    #app.account {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-areas: "h" "s" "m" "f"; }
   .blackish.column:before, .blackish.column:after {
     display: none; }
   .item-detail .quantity-select {
@@ -18,4 +21,8 @@
     align-items: center; }
     .item-detail .quantity-select .field {
       display: block;
-      margin-bottom: 1em; } }
+      margin-bottom: 1em; }
+  .account .will-edit {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important; } }

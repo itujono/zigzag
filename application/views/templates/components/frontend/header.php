@@ -82,11 +82,7 @@
                             <?php 
                             if(!empty($this->session->userdata('idCUSTOMER'))){
                             ?>
-                                <a class="item">
-                                    <i class="wrench icon"></i>
-                                    Atur akun
-                                </a>
-                                <a class="item">
+                                <a class="item" href="<?php echo base_url();?>customer/account/<?php echo seo_url($this->session->userdata('Name'));?>">
                                     <i class="rocket icon"></i>
                                     Profil
                                 </a>

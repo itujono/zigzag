@@ -313,6 +313,15 @@ if ($plugins == 'home') { ?>
     });
 
 	</script>
+<?php } elseif ($plugins == 'account-customer') { ?>
+<script src="<?php echo base_url().$this->data['asfront'];?>node_modules/feather-icons/dist/feather.min.js"></script>
+<script type="text/javascript">
+	feather.replace({
+        "stroke-width": 1.5,
+        "width": 24,
+        "height": 24
+    });
+</script>
 <?php } ?>
 <script type="text/javascript">
 	$('#detail_cart').load("<?php echo base_url();?>product/load_cart");

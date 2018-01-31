@@ -261,4 +261,73 @@ class Customer extends Frontend_Controller {
 		$data['subview'] = $this->load->view($this->data['frontendDIR'].'return_barang', $data, TRUE);
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}
+
+	public function account(){
+		$data['addONS'] = 'account-customer';
+		$data['class'] = 'account';
+		$data['title'] = 'Akun '.$this->session->userdata('Name').' - Zigzag Shop Batam - Official Shop';
+
+		$data['data_customer'] = $this->Customer_m->selectall_customer($this->session->userdata('idCUSTOMER'))->row();
+
+		$map = directory_map('assets/upload/customer/pic-customer-'.seo_url($data['data_customer']->nameCUSTOMER), FALSE, TRUE);
+		if(!empty($map)){
+			$data['data_customer']->imageCUSTOMER = base_url() . 'assets/upload/customer/pic-customer-'.seo_url($data['data_customer']->nameCUSTOMER).'/'.$map[0];
+		} else {
+			$data['data_customer']->imageCUSTOMER = base_url() . 'assets/upload/user.jpg';
+		}
+
+		$data['data_customer_province_city'] = $this->City_m->selectall_city($data['data_customer']->cityCUSTOMER)->row();
+		if(empty($this->session->userdata('idCUSTOMER'))){
+			redirect('customer/logout');
+		}
+
+		$data['subview'] = $this->load->view($this->data['frontendDIR'].'account', $data, TRUE);
+		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
+	}
+
+	public function save_customer() {
+		$rules = $this->Customer_m->rules_save_profile_customer;
+		$this->form_validation->set_rules($rules);
+		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
+        $this->form_validation->set_message('trim', 'Form %s adalah Trim');
+        $this->form_validation->set_message('valid_email', 'Maaf, $s Anda tidak valid');
+        $this->form_validation->set_message('is_unique', 'Tampaknya inputan %s anda sudah terdaftar');
+        $this->form_validation->set_message('min_length', 'Minimal kata sandi 8 karakter');
+        $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
+        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+
+		if ($this->form_validation->run() == TRUE) {
+
+			$data = $this->Customer_m->array_from_post(array('nameCUSTOMER','emailCUSTOMER','addressCUSTOMER','cityCUSTOMER','zipCUSTOMER','teleCUSTOMER'));
+			$id = decode(urldecode($this->session->userdata('idCUSTOMER')));
+
+			$data = $this->security->xss_clean($data);
+			$idsave = $this->Customer_m->save($data, $id);
+
+			$subject = seo_url($this->session->userdata('Name'));
+			$filenamesubject = 'pic-customer-'.$subject;
+			
+			if(!empty($_FILES['imgCUSTOMER']['name'][0])){
+				$path = 'assets/upload/customer/'.$filenamesubject;
+				if (!file_exists($path)){
+	            	mkdir($path, 0777, true);
+	        	}
+				$config['upload_path']		= $path;
+	            $config['allowed_types']	= 'jpg|png|jpeg';
+	            $config['file_name']        = $this->security->sanitize_filename($filenamesubject);
+		        $this->upload->initialize($config);
+		        if ($this->upload->do_upload('imgCUSTOMER')){
+		        	$data['uploads'] = $this->upload->data();
+		        }
+  			}
+  			$errors['status'] = 'success';
+			$errors['redirect'] = base_url();
+            echo json_encode($errors);
+		} else {
+			$errors['status'] = 'error';
+			$errors['message'] = validation_errors();
+            echo json_encode($errors);
+		}
+	}
+
 }
