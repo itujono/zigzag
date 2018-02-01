@@ -4,6 +4,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 	<script src="<?php echo base_url().$this->data['asfront'];?>js/plugins.js"></script>
 	<script src="<?php echo base_url().$this->data['asfront'];?>js/main.js"></script>
+
 <?php
 if ($plugins == 'home') { ?>
 
@@ -151,13 +152,7 @@ if ($plugins == 'home') { ?>
 			});
 		});
 	});
-	<?php 
-	$checkwishlist = checkwishlist($getbarang->idBARANG);
-	if(!empty($checkwishlist)){ ?>
-		$(".add-to-wishlist").transition("jiggle").removeClass("empty").css("color", "#f92626");
-	<?php } else { ?>
-		$(".add-to-wishlist").transition("jiggle").find(".heart.icon").addClass("empty").css("color", "#fff");
-	<?php } ?>
+	
 	$(".add-to-wishlist").each(function() {
 	        $(this).on("click", function(e) {
 	        <?php if(empty($this->session->userdata('idCUSTOMER'))){ ?>
@@ -321,6 +316,164 @@ if ($plugins == 'home') { ?>
         "width": 24,
         "height": 24
     });
+
+    $(document).ready(function() {
+	    $(".upload_profile_picture_customer").click(function(e){
+	        e.preventDefault();
+         	var formData = new FormData($('#imgCUSTOMER')[0]);
+	        var inline_city = $(".inline_city").val();
+	        console.log(inline_city);
+	        $.ajax({
+	            url             : '<?php echo base_url();?>customer/save_profile_picture_customer',
+	            type 			: 'POST',
+	            processData 	: false,
+	            data 			: {formData, inline_city:inline_city},
+	            success : function (data) {
+
+	                if(data.status == 'success') {
+	                	$(".print-error-msg-profile").css('display','none');
+	                	$(".print-notsave-msg-profile").css('display','none');
+	                	$(".print-success-msg-profile").css('display','block');
+	                } else if(data.status == 'notsave') {
+	                	$(".print-notsave-msg-profile").css('display','block');
+	                	$(".print-error-msg-profile").css('display','none');
+	                	$(".print-success-msg-profile").css('display','none');
+	                } else {
+	                	$(".print-notsave-msg-profile").css('display','none');
+	                	$(".print-error-msg-profile").css('display','block');
+	                	$(".print-error-msg-profile").html(data.message);
+	                	$(".print-success-msg-profile").css('display','none');
+	                	
+	                }
+	            }
+	        });
+	        return false;
+	    });
+	});
+	$(document).ready(function() {
+	    $(".save-email-tele-customer").click(function(e){
+	    	e.preventDefault();
+	    	var emailCUSTOMER = $("#emailCUSTOMER").val();
+	    	var teleCUSTOMER = $("#teleCUSTOMER").val();
+	        $.ajax({
+	            url: "<?php echo base_url();?>customer/save_email_tele_customer",
+	            type:'POST',
+	            dataType: "json",
+	            data: {emailCUSTOMER:emailCUSTOMER, teleCUSTOMER:teleCUSTOMER},
+	            success: function(data) {
+	            	if(data.status == "success"){
+	                	$(".print-error-msg-profile").css('display','none');
+	                	$(".print-notsave-msg-profile").css('display','none');
+	                	$(".print-success-msg-profile").css('display','block');
+	                } else if(data.status == "notsave") {
+	                	$(".print-notsave-msg-profile").css('display','block');
+	                	$(".print-error-msg-profile").css('display','none');
+	                	$(".print-success-msg-profile").css('display','none');
+	                }else if(data.status == "error_validation"){
+	                	$(".print-notsave-msg-profile").css('display','none');
+						$(".print-error-msg-profile").css('display','block');
+	                	$(".print-success-msg-profile").css('display','none');
+	                	$(".print-error-msg-profile").html(data.message);
+	                }
+	            }
+	        })
+	    });
+	});
+	$(document).ready(function() {
+	    $(".save-address-zip-customer").click(function(e){
+	    	e.preventDefault();
+	    	var addressCUSTOMER = $("#addressCUSTOMER").val();
+	    	var zipCUSTOMER = $("#zipCUSTOMER").val();
+	        $.ajax({
+	            url: "<?php echo base_url();?>customer/save_address_zip_customer",
+	            type:'POST',
+	            dataType: "json",
+	            data: {addressCUSTOMER:addressCUSTOMER, zipCUSTOMER:zipCUSTOMER},
+	            success: function(data) {
+	            	if(data.status == "success"){
+	                	$(".print-error-msg-profile").css('display','none');
+	                	$(".print-notsave-msg-profile").css('display','none');
+	                	$(".print-success-msg-profile").css('display','block');
+	                } else if(data.status == "notsave") {
+	                	$(".print-notsave-msg-profile").css('display','block');
+	                	$(".print-error-msg-profile").css('display','none');
+	                	$(".print-success-msg-profile").css('display','none');
+	                }else if(data.status == "error_validation"){
+	                	$(".print-notsave-msg-profile").css('display','none');
+						$(".print-error-msg-profile").css('display','block');
+	                	$(".print-success-msg-profile").css('display','none');
+	                	$(".print-error-msg-profile").html(data.message);
+	                }
+	            }
+	        })
+	    });
+	});
+	$(document).ready(function() {
+	    $(".save-social-customer").click(function(e){
+	    	e.preventDefault();
+	    	var facebooknameSOCIAL = $("#facebooknameSOCIAL").val();
+	    	var instagramnameSOCIAL = $("#instagramnameSOCIAL").val();
+	        $.ajax({
+	            url: "<?php echo base_url();?>customer/save_social_customer",
+	            type:'POST',
+	            dataType: "json",
+	            data: {facebooknameSOCIAL:facebooknameSOCIAL, instagramnameSOCIAL:instagramnameSOCIAL},
+	            success: function(data) {
+	            	if(data.status == "success"){
+	                	$(".print-error-msg-profile").css('display','none');
+	                	$(".print-notsave-msg-profile").css('display','none');
+	                	$(".print-success-msg-profile").css('display','block');
+	                } else if(data.status == "notsave") {
+	                	$(".print-notsave-msg-profile").css('display','block');
+	                	$(".print-error-msg-profile").css('display','none');
+	                	$(".print-success-msg-profile").css('display','none');
+	                }else if(data.status == "error_validation"){
+	                	$(".print-notsave-msg-profile").css('display','none');
+						$(".print-error-msg-profile").css('display','block');
+	                	$(".print-success-msg-profile").css('display','none');
+	                	$(".print-error-msg-profile").html(data.message);
+	                }
+	            }
+	        })
+	    });
+	});
+	$(document).ready(function(){
+		$('.add_cart').click(function(){
+			var idBARANG    = $(this).data("barangid");
+			var nameBARANG  = $(this).data("barangnama");
+			var priceBARANG = $(this).data("barangharga");
+			var qtyBARANG     = $('#' + idBARANG).val();
+			var idWISH     = $('#idWISH').val();
+			$.ajax({
+				url : "<?php echo base_url();?>product/add_to_cart",
+				method : "POST",
+				data : {idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG},
+				success: function(data){
+					$('#wishlist_item').load("<?php echo base_url();?>customer/move_wish_list_to_cart/"+idWISH);
+					$('#hide_info').hide();
+					$('#detail_cart').html(data);
+				}
+			});
+		});
+	});
+	$(document).ready(function(){
+		$('.remove-wishlist').click(function(){
+			var idWISH    = $(this).data("wishid");
+			$.ajax({
+				url : "<?php echo base_url();?>customer/move_wish_list_to_cart/"+idWISH,
+				success: function(data){
+					setTimeout(function() {
+	                    $(".ui.message.removed-from-wishlist").transition("slide", function() {
+	                        setTimeout(function() {
+	                            $(".ui.message.removed-from-wishlist").transition("slide");
+	                            console.log(this);
+	                        }, 4000);
+	                    });
+	                }, 1000);
+				}
+			});
+		});
+	});
 </script>
 <?php } ?>
 <script type="text/javascript">

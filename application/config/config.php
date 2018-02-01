@@ -467,7 +467,7 @@ $config['csrf_token_name'] = 'secure_csrf_codewell_app_token';
 $config['csrf_cookie_name'] = 'secure_csrf_codewell_app_cookie';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
-$config['csrf_exclude_uris'] = array('product/add_to_cart','product/hapus_cart','customer/register','product/wish');
+$config['csrf_exclude_uris'] = array('product/add_to_cart','product/hapus_cart','customer/register','product/wish','customer/save_profile_picture_customer','customer/save_email_tele_customer','customer/save_address_zip_customer','customer/save_social_customer');
 
 /*
 |--------------------------------------------------------------------------

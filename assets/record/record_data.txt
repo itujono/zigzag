@@ -415,3 +415,5 @@ Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zi
 Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/html/retturhtml - Pada waktu Rabu, 24 Januari 2018 | 15:06 
 Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/htmkl - Pada waktu Selasa, 30 Januari 2018 | 13:01 
 Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/account/andhana-utama - Pada waktu Selasa, 30 Januari 2018 | 13:47 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/customer - Pada waktu Rabu, 31 Januari 2018 | 19:31 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/customer/move_wish_list_to_cart10 - Pada waktu Kamis, 1 Februari 2018 | 21:12 

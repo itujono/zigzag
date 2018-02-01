@@ -100,7 +100,7 @@ $("#provinsi").change(function (){
 });
 $("#inline-provinsi").change(function (){
     var url = "<?php echo base_url().'customer/load_city/';?>"+$(this).val();
-    $('#inline-city').load(url);
+    $('#inline_city').load(url);
     return false;
 });
 </script>

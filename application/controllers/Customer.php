@@ -8,6 +8,8 @@ class Customer extends Frontend_Controller {
 		$this->load->model('Customer_m');
 		$this->load->model('City_m');
 		$this->load->model('Attempts_customer_m');
+		$this->load->model('Social_customer_m');
+		$this->load->model('Wish_m');
 	}
 
 	public function register(){
@@ -72,12 +74,26 @@ class Customer extends Frontend_Controller {
 		}
 	}
 
+	// public function load_city($id){
+	//   $city = $this->City_m->get_city_by_province($id)->result();
+	//   if(!empty($city)){
+	//   	  $data = "";
+	//       foreach ($city as $value) {
+	//           $data .= "<option value='".$value->idCITY."'>".$value->nameCITY."</option>";
+	//       }
+	//       echo $data;
+	//   } else {
+	//   	  $data = "<option value='' selected disabled>Maaf, Lokasi anda belum tersedia</option>";
+	//       echo $data;
+	//   }
+	// }
+
 	public function load_city($id){
 	  $city = $this->City_m->get_city_by_province($id)->result();
 	  if(!empty($city)){
 	  	  $data = "";
 	      foreach ($city as $value) {
-	          $data .= "<option value='".$value->idCITY."'>".$value->nameCITY."</option>";
+        	$data .= "<option value='".$value->idCITY."'>".$value->nameCITY."</option>";
 	      }
 	      echo $data;
 	  } else {
@@ -251,6 +267,11 @@ class Customer extends Frontend_Controller {
 		redirect('home');
 	}
 
+	public function move_wish_list_to_cart($id){
+		$this->Wish_m->move_wish_list_to_cart($id);
+		return TRUE;
+	}
+
 	public function return(){
 		$data['addONS'] = '';
 		$data['class'] = 'retur';
@@ -277,6 +298,17 @@ class Customer extends Frontend_Controller {
 		}
 
 		$data['data_customer_province_city'] = $this->City_m->selectall_city($data['data_customer']->cityCUSTOMER)->row();
+		$data['data_customer_social'] = $this->Social_customer_m->selectall_social_customer($data['data_customer']->idCUSTOMER)->row();
+		$data['data_customer_wish'] = $this->Wish_m->selectall_wish_by_customer($data['data_customer']->idCUSTOMER)->result();
+		foreach ($data['data_customer_wish'] as $key => $value) {
+			$map = directory_map('assets/upload/barang/pic-barang-'.folenc($data['data_customer_wish'][$key]->idBARANG), FALSE, TRUE);
+			if(!empty($map)){
+				$data['data_customer_wish'][$key]->imageWISHBARANG = base_url() . 'assets/upload/barang/pic-barang-'.folenc($data['data_customer_wish'][$key]->idBARANG).'/'.$map[0];
+			} else {
+				$data['data_customer_wish'][$key]->imageWISHBARANG = base_url() . 'assets/upload/no-image-available.png';
+			}
+		}
+
 		if(empty($this->session->userdata('idCUSTOMER'))){
 			redirect('customer/logout');
 		}
@@ -285,20 +317,17 @@ class Customer extends Frontend_Controller {
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}
 
-	public function save_customer() {
-		$rules = $this->Customer_m->rules_save_profile_customer;
+	public function save_profile_picture_customer() {
+		$rules = $this->Customer_m->rules_save_profile_picture_customer;
 		$this->form_validation->set_rules($rules);
 		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
         $this->form_validation->set_message('trim', 'Form %s adalah Trim');
-        $this->form_validation->set_message('valid_email', 'Maaf, $s Anda tidak valid');
-        $this->form_validation->set_message('is_unique', 'Tampaknya inputan %s anda sudah terdaftar');
-        $this->form_validation->set_message('min_length', 'Minimal kata sandi 8 karakter');
-        $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 
 		if ($this->form_validation->run() == TRUE) {
 
-			$data = $this->Customer_m->array_from_post(array('nameCUSTOMER','emailCUSTOMER','addressCUSTOMER','cityCUSTOMER','zipCUSTOMER','teleCUSTOMER'));
+			$data['cityCUSTOMER'] = $this->input->post('inline_city');
+			
 			$id = decode(urldecode($this->session->userdata('idCUSTOMER')));
 
 			$data = $this->security->xss_clean($data);
@@ -315,18 +344,134 @@ class Customer extends Frontend_Controller {
 				$config['upload_path']		= $path;
 	            $config['allowed_types']	= 'jpg|png|jpeg';
 	            $config['file_name']        = $this->security->sanitize_filename($filenamesubject);
+	            $config['overwrite'] 		= TRUE;
 		        $this->upload->initialize($config);
 		        if ($this->upload->do_upload('imgCUSTOMER')){
 		        	$data['uploads'] = $this->upload->data();
+		        	$response['status'] = 'success';
+		  			$response['message'] = '';
+		            echo json_encode($response);
+		        } else {
+		        	$response['status'] = 'notsave';
+		  			$response['message'] = '';
+		            echo json_encode($response);
 		        }
   			}
-  			$errors['status'] = 'success';
-			$errors['redirect'] = base_url();
-            echo json_encode($errors);
+  			
 		} else {
-			$errors['status'] = 'error';
-			$errors['message'] = validation_errors();
-            echo json_encode($errors);
+			$response['status'] = 'error';
+			$response['message'] = validation_errors();
+            echo json_encode($response);
+		}
+	}
+
+	public function save_email_tele_customer() {
+		$rules = $this->Customer_m->rules_save_email_tele_customer;
+		$this->form_validation->set_rules($rules);
+		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
+        $this->form_validation->set_message('trim', 'Form %s adalah Trim');
+        $this->form_validation->set_message('valid_email', 'Maaf, $s Anda tidak valid');
+        $this->form_validation->set_message('is_unique', 'Tampaknya inputan %s anda sudah terdaftar');
+        // $this->form_validation->set_message('min_length', 'Minimal kata sandi 8 karakter');
+        $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
+        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+
+		if ($this->form_validation->run() == TRUE) {
+
+			$data = $this->Customer_m->array_from_post(array('emailCUSTOMER','teleCUSTOMER'));
+			$id = $this->session->userdata('idCUSTOMER');
+
+			$data = $this->security->xss_clean($data);
+			$idsave = $this->Customer_m->save($data, $id);
+
+			if($idsave){
+				$response['status'] = 'success';
+	  			$response['message'] = '';
+	            echo json_encode($response);
+			} else {
+				$response['status'] = 'notsave';
+	  			$response['message'] = '';
+	            echo json_encode($response);
+			}
+  			
+		} else {
+			$response['status'] = 'error_validation';
+			$response['message'] = validation_errors();
+            echo json_encode($response);
+		}
+	}
+
+	public function save_address_zip_customer() {
+		$rules = $this->Customer_m->rules_save_address_zip_customer;
+		$this->form_validation->set_rules($rules);
+		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
+        $this->form_validation->set_message('trim', 'Form %s adalah Trim');
+        $this->form_validation->set_message('min_length', 'Minimal kata sandi 8 karakter');
+        $this->form_validation->set_message('max_length', 'Maksimal Kode Pos 5 karakter');
+        $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
+        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+
+		if ($this->form_validation->run() == TRUE) {
+
+			$data = $this->Customer_m->array_from_post(array('addressCUSTOMER','zipCUSTOMER'));
+			$id = $this->session->userdata('idCUSTOMER');
+
+			$data = $this->security->xss_clean($data);
+			$idsave = $this->Customer_m->save($data, $id);
+
+			if($idsave){
+				$response['status'] = 'success';
+	  			$response['message'] = '';
+	            echo json_encode($response);
+			} else {
+				$response['status'] = 'notsave';
+	  			$response['message'] = '';
+	            echo json_encode($response);
+			}
+  			
+		} else {
+			$response['status'] = 'error_validation';
+			$response['message'] = validation_errors();
+            echo json_encode($response);
+		}
+	}
+
+	public function save_social_customer() {
+		$rules = $this->Social_customer_m->rules_social_customer;
+		$this->form_validation->set_rules($rules);
+		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
+        $this->form_validation->set_message('trim', 'Form %s adalah Trim');
+        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+
+		if ($this->form_validation->run() == TRUE) {
+
+			$data = $this->Social_customer_m->array_from_post(array('idCUSTOMER','facebooknameSOCIAL','instagramnameSOCIAL'));
+			$data['idCUSTOMER'] = $this->session->userdata('idCUSTOMER');
+			$id = $this->session->userdata('idCUSTOMER');
+
+			$data = $this->security->xss_clean($data);
+			$check_social_customer = $this->Social_customer_m->check_social_customer($id)->row();
+
+			if(empty($check_social_customer)){
+				$idsave = $this->Social_customer_m->save($data);
+			} else {
+				$idsave = $this->Social_customer_m->update_data_social($data, $id);
+			}
+
+			if($idsave){
+				$response['status'] = 'success';
+	  			$response['message'] = '';
+	            echo json_encode($response);
+			} else {
+				$response['status'] = 'notsave';
+	  			$response['message'] = '';
+	            echo json_encode($response);
+			}
+  			
+		} else {
+			$response['status'] = 'error_validation';
+			$response['message'] = validation_errors();
+            echo json_encode($response);
 		}
 	}
 

@@ -48,7 +48,7 @@ class Customer_m extends MY_Model{
 			),
 		'zipCUSTOMER' => array(
 			'field' => 'zipCUSTOMER',
-			'label' => 'Kota',
+			'label' => 'Kode Pos',
 			'rules' => 'trim|required|min_length[5]|max_length[5]'
 			),
 		'teleCUSTOMER' => array(
@@ -63,36 +63,37 @@ class Customer_m extends MY_Model{
 			)
 	);
 
-	public $rules_save_profile_customer = array(
-		'nameCUSTOMER' => array(
-			'field' => 'nameCUSTOMER',
-			'label' => 'Nama',
-			'rules' => 'trim|required'
-			),
+	public $rules_save_profile_picture_customer = array(
+		'inline_city' => array(
+			'field' => 'inline_city',
+			'label' => 'Kota',
+			'rules' => 'trim'
+			)
+	);
+
+	public $rules_save_email_tele_customer = array(
 		'emailCUSTOMER' => array(
 			'field' => 'emailCUSTOMER',
 			'label' => 'Email',
-			'rules' => 'trim|required|valid_email|is_unique[zigzag_customer.emailCUSTOMER]'
+			'rules' => 'trim|required|valid_email'
 			),
+		'teleCUSTOMER' => array(
+			'field' => 'teleCUSTOMER',
+			'label' => 'No. Telepon',
+			'rules' => 'trim|required|is_numeric'
+			)
+	);
+
+	public $rules_save_address_zip_customer = array(
 		'addressCUSTOMER' => array(
 			'field' => 'addressCUSTOMER',
 			'label' => 'Domisili',
 			'rules' => 'trim|required|min_length[8]'
 			),
-		'cityCUSTOMER' => array(
-			'field' => 'cityCUSTOMER',
-			'label' => 'Kota',
-			'rules' => 'trim|required'
-			),
 		'zipCUSTOMER' => array(
 			'field' => 'zipCUSTOMER',
-			'label' => 'Kota',
-			'rules' => 'trim|required|min_length[5]|max_length[5]'
-			),
-		'teleCUSTOMER' => array(
-			'field' => 'teleCUSTOMER',
-			'label' => 'No. Telepon',
-			'rules' => 'trim|required|is_unique[zigzag_customer.teleCUSTOMER]|is_numeric'
+			'label' => 'Kode Pos',
+			'rules' => 'trim|required|min_length[5]|max_length[5]|is_numeric'
 			)
 	);
 

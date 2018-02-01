@@ -18,21 +18,39 @@
                             <p><?php echo $data_customer_province_city->nameCITY;?>, <?php echo $data_customer_province_city->namePROVINCE;?></p>
                         </div>
                     </div>
-                    <form action="<?php echo base_url();?>customer/save_customer" method="POST" class="ui form inline-editable general-info">
+                    <form action="<?php echo base_url();?>customer/save_profile_picture_customer" method="POST" class="ui form inline-editable general-info" enctype="multipart/form-data">
+
+                        <div class="ui compact red message print-error-msg-profile" style="display:none">
+                            <h5 class="header">Oops!</h5>
+
+                        </div>
+                        <div class="ui compact red message print-success-msg-profile" style="display:none">
+                            <h5 class="header">Sukses!</h5>
+                            Data berhasil disimpan.
+                        </div>
+                        <div class="ui compact red message print-notsave-msg-profile" style="display:none">
+                            <h5 class="header">Oops!</h5>
+                            Kami tidak dapat menyimpan data anda, coba lagi nanti.
+                        </div>
                         <div class="field">
                             <label for="inline-photo">Ganti foto?</label>
-                            <input type="file" name="imgCUSTOMER">
+                            <input type="file" name="imgCUSTOMER" id="imgCUSTOMER" required="required">
                         </div>
                        <div class="field">
                             <label for="provinsi">Provinsi</label>
-                            <select class="ui search dropdown" id="inline-provinsi" name="idPROVINCE">
+                            <select class="ui search dropdown" id="inline-provinsi" name="idPROVINCE" required="required">
                                 <option value="" selected disabled="disabled">Pilih provinsi kamu</option>
                                 <?php
                                 $listprovince = select_all_province();
                                 if(!empty($listprovince)){
                                     foreach ($listprovince as $key => $pro) {
-                                        ?>
-                                    <option <?php if($pro->idPROVINCE == $data_customer->idPROVINCE)$idpro="selected"; ?> value="<?php echo $pro->idPROVINCE;?>"><?php echo $pro->namePROVINCE;?>
+                                    if($pro->idPROVINCE == $data_customer_province_city->idPROVINCE){
+                                        $idpro="selected";
+                                    } else {
+                                        $idpro="";
+                                    }
+                                ?>
+                                    <option <?php echo $idpro; ?> value="<?php echo $pro->idPROVINCE;?>"><?php echo $pro->namePROVINCE;?>
                                     </option>
                                 <?php } ?>
                                 <?php } ?>
@@ -40,11 +58,11 @@
                         </div>
                         <div class="field">
                             <label for="provinsi">Kota/Kab</label>
-                            <select class="ui search dropdown" id="inline-city" name="cityCUSTOMER">
+                            <select class="ui search dropdown inline_city" id="inline_city" name="inline_city" required="required">
                                 <option value="" selected disabled="disabled">Pilih provinsi kamu</option>
                             </select>
                         </div>
-                        <button class="ui mini button submit" type="submit">Update</button>
+                        <button class="ui mini button submit upload_profile_picture_customer" type="submit">Update</button>
                         <button class="ui mini button basic cancel">Cancel</button>
                     </form>
                     <a href="#" class="ui icon editable button general-info"> <i class="write icon"></i> </a>
@@ -52,19 +70,31 @@
                 <div>
                     <div class="title"> Contact </div>
                     <ul>
-                        <li> rusmantocute@xmail.com</li>
-                        <li> 0812 23462343</li>
+                        <li> <?php echo $data_customer->emailCUSTOMER;?></li>
+                        <li> <?php echo $data_customer->teleCUSTOMER;?></li>
                     </ul>
-                    <form action="" class="ui form inline-editable contact">
+                    <form action="<?php echo base_url();?>customer/save_email_tele_customer" class="ui form inline-editable contact" method="POST">
+                        <div class="ui compact red message print-error-msg-profile" style="display:none">
+                            <h5 class="header">Oops!</h5>
+
+                        </div>
+                        <div class="ui compact red message print-success-msg-profile" style="display:none">
+                            <h5 class="header">Sukses!</h5>
+                            Data berhasil disimpan.
+                        </div>
+                        <div class="ui compact red message print-notsave-msg-profile" style="display:none">
+                            <h5 class="header">Oops!</h5>
+                            Kami tidak dapat menyimpan data anda, coba lagi nanti.
+                        </div>
                         <div class="field">
                             <label for="inline-email">Email kamu</label>
-                            <input type="text" name="inline-email" placeholder="andre@gmail.com">
+                            <input type="email" name="emailCUSTOMER" id="emailCUSTOMER" value="<?php echo $data_customer->emailCUSTOMER;?>">
                         </div>
                         <div class="field">
                             <label for="inline-phone">Hape kamu</label>
-                            <input type="number" name="inline-phone" placeholder="08123456789">
+                            <input type="number" name="teleCUSTOMER" id="teleCUSTOMER" value="<?php echo $data_customer->teleCUSTOMER;?>">
                         </div>
-                        <button class="ui mini button submit" type="submit">Update</button>
+                        <button type="submit" class="ui mini button submit save-email-tele-customer">Update</button>
                         <button class="ui mini button basic cancel">Cancel</button>
                     </form>
                     <a href="#" class="ui icon button editable contact">
@@ -75,15 +105,31 @@
                     <div class="title"> Shipping </div>
                     <ul class="address">
                         <li>
-                            Jalan Kepodang Raya Blok XC #33 Sei Harapan
-                            <br> Sekupang, Batam, Kepulauan Riau 29433
+                            <?php echo $data_customer->addressCUSTOMER;?>
+                            <br><?php echo $data_customer_province_city->nameCITY;?>, <?php echo $data_customer_province_city->namePROVINCE;?> <?php echo $data_customer->zipCUSTOMER;?>
                         </li>
                     </ul>
-                    <form action="" class="ui form inline-editable alamat">
-                        <div class="field">
-                            <textarea name="inline-address" rows="5" placeholder="Update alamat kamu"></textarea>
+                    <form action="<?php echo base_url();?>customer/save_address_zip_customer" class="ui form inline-editable alamat" method="POST">
+                         <div class="ui compact red message print-error-msg-profile" style="display:none">
+                            <h5 class="header">Oops!</h5>
+
                         </div>
-                        <button class="ui mini button submit" type="submit">Update</button>
+                        <div class="ui compact red message print-success-msg-profile" style="display:none">
+                            <h5 class="header">Sukses!</h5>
+                            Data berhasil disimpan.
+                        </div>
+                        <div class="ui compact red message print-notsave-msg-profile" style="display:none">
+                            <h5 class="header">Oops!</h5>
+                            Kami tidak dapat menyimpan data anda, coba lagi nanti.
+                        </div>
+                        <div class="field">
+                            <textarea id="addressCUSTOMER" rows="5" name="addressCUSTOMER"><?php echo $data_customer->addressCUSTOMER;?></textarea>
+                        </div>
+                        <div class="field">
+                            <label for="inline-email">Kode Pos kamu</label>
+                            <input type="number" name="zipCUSTOMER" id="zipCUSTOMER" value="<?php echo $data_customer->zipCUSTOMER;?>">
+                        </div>
+                        <button class="ui mini button submit save-address-zip-customer" type="submit">Update</button>
                         <button class="ui mini button basic cancel">Cancel</button>
                     </form>
                     <a href="#" class="ui icon button editable alamat">
@@ -92,26 +138,47 @@
                 </div>
                 <div>
                     <div class="title"> Socials </div>
+                    <?php
+                        if(!empty($data_customer_social)){
+                            $facebook= $data_customer_social->facebooknameSOCIAL;
+                            $instagram = $data_customer_social->instagramnameSOCIAL;
+                        } else {
+                            $facebook='-';
+                            $instagram='-';
+                        } 
+                    ?>
                     <ul>
                         <li>
                             <i data-feather="facebook"></i>
-                            <a href="http://facebook.com/rusmanto" target="_blank">rusmanto</a>
+                            <a href="http://facebook.com/<?php echo $facebook;?>" target="_blank"><?php echo $facebook;?></a>
                         </li>
                         <li>
                             <i data-feather="instagram"></i>
-                            <a href="http://instagram.com/rusmantorocute" target="_blank">rusmantorocute</a>
+                            <a href="http://instagram.com/<?php echo $instagram;?>" target="_blank"><?php echo $instagram;?></a>
                         </li>
                     </ul>
-                    <form action="" class="ui form inline-editable social">
+                    <form action="<?php echo base_url();?>customer/save_social_customer" class="ui form inline-editable social" method="POST">
+                        <div class="ui compact red message print-error-msg-profile" style="display:none">
+                            <h5 class="header">Oops!</h5>
+
+                        </div>
+                        <div class="ui compact red message print-success-msg-profile" style="display:none">
+                            <h5 class="header">Sukses!</h5>
+                            Data berhasil disimpan.
+                        </div>
+                        <div class="ui compact red message print-notsave-msg-profile" style="display:none">
+                            <h5 class="header">Oops!</h5>
+                            Kami tidak dapat menyimpan data anda, coba lagi nanti.
+                        </div>
                         <div class="field">
                             <label for="inline-facebook">Alamat Facebook</label>
-                            <input type="text" name="inline-facebook" placeholder="http://facebook.com/johndoe">
+                            <input type="text" name="facebooknameSOCIAL" id="facebooknameSOCIAL" value="<?php echo $facebook;?>">
                         </div>
                         <div class="field">
                             <label for="inline-instagram">Alamat Instagram</label>
-                            <input type="text" name="inline-instagram" placeholder="http://instagram.com/johndoe">
+                            <input type="text" name="instagramnameSOCIAL" id="instagramnameSOCIAL" value="<?php echo $instagram;?>">
                         </div>
-                        <button class="ui mini button submit" type="submit">Update</button>
+                        <button class="ui mini button submit save-social-customer" type="submit">Update</button>
                         <button class="ui mini button basic cancel">Cancel</button>
                     </form>
                     <a href="#" class="ui icon button editable social">
@@ -142,85 +209,51 @@
                     <h3>
                         <i class="empty heart icon"></i> Wishlist
                     </h3>
-                    <button class="ui basic teal button move-all-to-cart">
+                    <!-- <button class="ui basic teal button move-all-to-cart">
                         <i class="plus icon"></i> Pindahkan semuanya ke Cart
-                    </button>
+                    </button> -->
                 </div>
                 <div class="ui divided items">
-
-                    <div class="item">
+                <?php
+                    if(!empty($data_customer_wish)){
+                        foreach ($data_customer_wish as $wish) {
+                ?>
+                    <div class="item" id="wishlist_item">
                         <figure class="ui tiny image">
-                            <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
+                            <img src="<?php echo $wish->imageWISHBARANG;?>" alt="<?php echo $wish->nameBARANG;?>">
                         </figure>
                         <div class="content">
-                            <a href="#" class="header">Mata Ikan Pancing</a>
+                            <a href="<?php echo base_url();?>detail/<?php echo $wish->slugBARANG;?>" class="header"><?php echo $wish->nameBARANG;?></a>
                             <div class="meta">
-                                Bags &bull;
-                                <span>Rp 350.000,00</span>
+                                <?php echo $wish->nameCATEGORY;?>
+                                <span><?php echo number_format($wish->priceBARANG, 0,',','.'); ?></span>
                             </div>
                             <div class="description">
-                                Berbahagia lahir batin di hari yang fitri sulaiman. Mudah-mudahan bisa menjadi generator masa depan RT 3. Semua bebas dimakan
-                                sampai kita bersua kembali.
+                                <?php echo character_limiter($wish->descBARANG, 153);?>
                             </div>
                             <div class="extra">
-                                <button class="ui basic teal tiny button move-to-cart">
+                                <input type="hidden" name="qtyBARANG" id="<?php echo $wish->idBARANG;?>" value="1" class="quantity">
+                                <input type="hidden" name="idWISH" id="idWISH" value="<?php echo $wish->idWISH;?>">
+                                <button class="ui basic teal tiny button move-to-cart add_cart" title="Tambahkan ke Cart" data-barangid="<?php echo $wish->idBARANG;?>" data-barangnama="<?php echo $wish->nameBARANG;?>" data-barangharga="<?php echo $wish->priceBARANG;?>">
                                     <i class="plus icon"></i>Pindahkan ke Cart
                                 </button>
-                                <a href="#" class="remove-from-wishlist"><i class="remove icon"></i>Hapus dari Wishlist</a>                                        
+                                <a href="#" class="remove-from-wishlist remove-wishlist" id="idWISH" data-wishid="<?php echo $wish->idWISH;?>"><i class="remove icon"></i>Hapus dari Wishlist</a>                                        
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <figure class="ui tiny image">
-                            <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                        </figure>
-                        <div class="content">
-                            <a href="#" class="header">Mata Ikan Pancing</a>
-                            <div class="meta">
-                                Bags &bull;
-                                <span>Rp 350.000,00</span>
-                            </div>
-                            <div class="description">
-                                Berbahagia lahir batin di hari yang fitri sulaiman. Mudah-mudahan bisa menjadi generator masa depan RT 3. Semua bebas dimakan
-                                sampai kita bersua kembali.
-                            </div>
-                            <div class="extra">
-                                <button class="ui basic teal tiny button move-to-cart">
-                                    <i class="plus icon"></i>Pindahkan ke Cart
-                                </button>
-                                <a href="#" class="remove-from-wishlist"><i class="remove icon"></i>Hapus dari Wishlist</a>                                        
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <figure class="ui tiny image">
-                            <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                        </figure>
-                        <div class="content">
-                            <a href="#" class="header">Mata Ikan Pancing</a>
-                            <div class="meta">
-                                Bags &bull;
-                                <span>Rp 350.000,00</span>
-                            </div>
-                            <div class="description">
-                                Berbahagia lahir batin di hari yang fitri sulaiman. Mudah-mudahan bisa menjadi generator masa depan RT 3. Semua bebas dimakan
-                                sampai kita bersua kembali.
-                            </div>
-                            <div class="extra">
-                                <button class="ui basic teal tiny button move-to-cart">
-                                    <i class="plus icon"></i>Pindahkan ke Cart
-                                </button>
-                                <a href="#" class="remove-from-wishlist"><i class="remove icon"></i>Hapus dari Wishlist</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Ini message kalo semuanya udah berhasil dipindahin yaa -->
+                    <?php } ?>
+                    <?php } else { ?>
                     <div class="ui info message all-moved-to-cart">
+                        <div class="header">Oops!</div>
+                        Daftar Wishlist kamu belum ada.
+                    </div>
+                    <?php } ?>
+                    <!-- Ini message kalo semuanya udah berhasil dipindahin yaa -->
+                    <!-- <div class="ui info message all-moved-to-cart">
                         <div class="header"> Udah dipindahin semua </div>
                         Yup! Semua wishlist kamu udah berhasil dipindahin ke Cart ya.
                         <a href="cart.html">Have a look!</a>
-                    </div>
+                    </div> -->
 
                     <div class="ui compact teal message moved-to-cart">
                         <i class="close icon"></i>
