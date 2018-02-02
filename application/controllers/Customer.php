@@ -269,7 +269,6 @@ class Customer extends Frontend_Controller {
 
 	public function move_wish_list_to_cart($id){
 		$this->Wish_m->move_wish_list_to_cart($id);
-		return TRUE;
 	}
 
 	public function return(){
