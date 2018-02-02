@@ -915,7 +915,6 @@ $(document).ready(function() {
             $(this).siblings("ul").transition("fade", 100);
         });
         $(this).parents("form").siblings(".will-edit").fadeIn(100)
-        $(this).parents(".ui.compact.message").fadeOut(100)
     });
 
     $("form.inline-editable.general-info").form({

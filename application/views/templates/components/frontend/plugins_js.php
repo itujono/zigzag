@@ -351,6 +351,10 @@ if ($plugins == 'home') { ?>
 	    });
 	});
 	$(document).ready(function() {
+
+		$("button.cancel").on("click", function() {
+			$(this).parents("form").siblings(".print-error-msg-profile").transition("fade", 100)
+		})
 		
 		$("form.inline-editable.contact").form({
 			inline: true,
