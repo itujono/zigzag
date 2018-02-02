@@ -385,11 +385,13 @@ class Customer extends Frontend_Controller {
 
 			if($idsave){
 				$response['status'] = 'success';
-	  			$response['message'] = '';
+				$response['message'] = 'Berhasil terkirim';
+				$response['dataEmail'] = $data['emailCUSTOMER'];
+				$response['dataTele'] = $data['teleCUSTOMER'];
 	            echo json_encode($response);
 			} else {
 				$response['status'] = 'notsave';
-	  			$response['message'] = '';
+	  			$response['message'] = 'Gak berhasil ya';
 	            echo json_encode($response);
 			}
   			

@@ -351,34 +351,75 @@ if ($plugins == 'home') { ?>
 	    });
 	});
 	$(document).ready(function() {
-	    $(".save-email-tele-customer").click(function(e){
-	    	e.preventDefault();
-	    	var emailCUSTOMER = $("#emailCUSTOMER").val();
-	    	var teleCUSTOMER = $("#teleCUSTOMER").val();
-	        $.ajax({
-	            url: "<?php echo base_url();?>customer/save_email_tele_customer",
-	            type:'POST',
-	            dataType: "json",
-	            data: {emailCUSTOMER:emailCUSTOMER, teleCUSTOMER:teleCUSTOMER},
-	            success: function(data) {
-	            	if(data.status == "success"){
-	                	$(".print-error-msg-profile").css('display','none');
-	                	$(".print-notsave-msg-profile").css('display','none');
-	                	$(".print-success-msg-profile").css('display','block');
-	                } else if(data.status == "notsave") {
-	                	$(".print-notsave-msg-profile").css('display','block');
-	                	$(".print-error-msg-profile").css('display','none');
-	                	$(".print-success-msg-profile").css('display','none');
-	                }else if(data.status == "error_validation"){
-	                	$(".print-notsave-msg-profile").css('display','none');
-						$(".print-error-msg-profile").css('display','block');
-	                	$(".print-success-msg-profile").css('display','none');
-	                	$(".print-error-msg-profile").html(data.message);
-	                }
-	            }
-	        })
-	    });
-	});
+		
+		$("form.inline-editable.contact").form({
+			inline: true,
+			on: "submit",
+			fields: {
+				inlineEmail: {
+					identifier: "inline-email",
+					rules: [
+						{ type: "empty", prompt: "Wajib diisi" }
+					]
+				},
+				inlinePhone: {
+					identifier: "inline-phone",
+					rules: [
+						{ type: "empty", prompt: "Ini juga jangan kosong ya" }
+					]
+				}
+			},
+			onSuccess: function(e) {
+				const emailCUSTOMER = $("#emailCUSTOMER").val()
+				const teleCUSTOMER = $("#teleCUSTOMER").val()
+				const formData = { emailCUSTOMER, teleCUSTOMER }
+
+				if (emailCUSTOMER == '') {
+					$(".print-error-msg-profile").transition("fade", 150).text("Email tidak boleh kosong")
+					return false			
+				}
+
+				if (teleCUSTOMER == '') {
+					$(".print-error-msg-profile").transition("fade", 150).text("Nomor telepon tidak boleh kosong")
+					return false					
+				}
+
+				$.ajax({
+					url: "<?php echo base_url();?>customer/save_email_tele_customer",
+					type:'POST',
+					dataType: "json",
+					data: formData,
+					success: response => {
+						$("form.inline-editable.contact").transition("slide", 100, () => {
+							$(".contact-data").transition("slide", 100)
+							$(".email-data").text(response.dataEmail)
+							$(".tele-data").text(response.dataTele)
+							$(".editable").removeClass("disabled")
+						})
+						$(".print-success-msg-profile").css("display", "block")
+						$(".print-error-msg-profile").css('display','none')
+						$(".print-notsave-msg-profile").css('display','none')
+
+						if (response.status == "error_validation") {
+							$(".print-notsave-msg-profile").css('display','none')
+							$(".print-error-msg-profile").css('display','block')
+							$(".print-success-msg-profile").css('display','none')
+							$(".print-error-msg-profile").html(response.message)
+							return false
+						}
+
+						if (response.status == "notsave") {
+							$(".print-notsave-msg-profile").css('display','block')
+							$(".print-error-msg-profile").css('display','none')
+							$(".print-success-msg-profile").css('display','none')
+							return false
+						}
+					}
+				})
+				e.preventDefault()
+			}
+		})
+	})
 	$(document).ready(function() {
 	    $(".save-address-zip-customer").click(function(e){
 	    	e.preventDefault();

@@ -69,23 +69,23 @@
                 </div>
                 <div>
                     <div class="title"> Contact </div>
-                    <ul>
-                        <li> <?php echo $data_customer->emailCUSTOMER;?></li>
-                        <li> <?php echo $data_customer->teleCUSTOMER;?></li>
+                    <div class="ui compact teal message print-success-msg-profile" style="display:none">
+                        <h5 class="header">Sukses!</h5>
+                        Data berhasil disimpan.
+                    </div>
+                    <div class="ui compact red message print-notsave-msg-profile" style="display:none">
+                        <h5 class="header">Oops!</h5>
+                        Kami tidak dapat menyimpan data anda, coba lagi nanti.
+                    </div>
+                    <div class="ui compact red message print-error-msg-profile" style="display:none">
+                        <h5 class="header">Oops!</h5>
+                        Ini apaan gak tau.
+                    </div>
+                    <ul class="contact-data">
+                        <li class="email-data"> <?php echo $data_customer->emailCUSTOMER;?></li>
+                        <li class="tele-data"> <?php echo $data_customer->teleCUSTOMER;?></li>
                     </ul>
                     <form action="<?php echo base_url();?>customer/save_email_tele_customer" class="ui form inline-editable contact" method="POST">
-                        <div class="ui compact red message print-error-msg-profile" style="display:none">
-                            <h5 class="header">Oops!</h5>
-
-                        </div>
-                        <div class="ui compact red message print-success-msg-profile" style="display:none">
-                            <h5 class="header">Sukses!</h5>
-                            Data berhasil disimpan.
-                        </div>
-                        <div class="ui compact red message print-notsave-msg-profile" style="display:none">
-                            <h5 class="header">Oops!</h5>
-                            Kami tidak dapat menyimpan data anda, coba lagi nanti.
-                        </div>
                         <div class="field">
                             <label for="inline-email">Email kamu</label>
                             <input type="email" name="emailCUSTOMER" id="emailCUSTOMER" value="<?php echo $data_customer->emailCUSTOMER;?>">

@@ -956,8 +956,7 @@ $(document).ready(function() {
                 ]
             }
         },
-        onSuccess: function() {
-            // Okay hajar di sini AJAX nya wak!
+        onSuccess: function(e) {
         }
     });
     
