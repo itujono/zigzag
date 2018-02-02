@@ -271,7 +271,7 @@ class Customer extends Frontend_Controller {
 		$this->Wish_m->move_wish_list_to_cart($id);
 	}
 
-	public function return_s(){
+	public function return_barang(){
 		$data['addONS'] = '';
 		$data['class'] = 'retur';
 		$data['title'] = 'Form Retur Barang - Zigzag Shop Batam - Official Shop';
