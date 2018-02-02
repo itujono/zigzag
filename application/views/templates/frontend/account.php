@@ -103,30 +103,35 @@
                 </div>
                 <div>
                     <div class="title"> Shipping </div>
+
+                    <div class="ui compact red message print-error-msg-profile" style="display:none">
+                        <h5 class="header">Oops!</h5>
+                        Ini apaan coba, Ndan?
+                    </div>
+                    <div class="ui compact teal message print-success-msg-profile" style="display:none">
+                        <h5 class="header">Sukses!</h5>
+                        Data berhasil disimpan.
+                    </div>
+                    <div class="ui compact red message print-notsave-msg-profile" style="display:none">
+                        <h5 class="header">Oops!</h5>
+                        Kami tidak dapat menyimpan data anda, coba lagi nanti.
+                    </div>
+
                     <ul class="address">
-                        <li>
+                        <li class="alamat-data">
                             <?php echo $data_customer->addressCUSTOMER;?>
-                            <br><?php echo $data_customer_province_city->nameCITY;?>, <?php echo $data_customer_province_city->namePROVINCE;?> <?php echo $data_customer->zipCUSTOMER;?>
+                            <br><?php echo $data_customer_province_city->nameCITY;?>, <?php echo $data_customer_province_city->namePROVINCE;?>
+                        </li>
+                        <li class="zip-data">
+                            <?php echo $data_customer->zipCUSTOMER;?>
                         </li>
                     </ul>
                     <form action="<?php echo base_url();?>customer/save_address_zip_customer" class="ui form inline-editable alamat" method="POST">
-                         <div class="ui compact red message print-error-msg-profile" style="display:none">
-                            <h5 class="header">Oops!</h5>
-
-                        </div>
-                        <div class="ui compact red message print-success-msg-profile" style="display:none">
-                            <h5 class="header">Sukses!</h5>
-                            Data berhasil disimpan.
-                        </div>
-                        <div class="ui compact red message print-notsave-msg-profile" style="display:none">
-                            <h5 class="header">Oops!</h5>
-                            Kami tidak dapat menyimpan data anda, coba lagi nanti.
-                        </div>
                         <div class="field">
                             <textarea id="addressCUSTOMER" rows="5" name="addressCUSTOMER"><?php echo $data_customer->addressCUSTOMER;?></textarea>
                         </div>
                         <div class="field">
-                            <label for="inline-email">Kode Pos kamu</label>
+                            <label for="zipCUSTOMER">Kode Pos kamu</label>
                             <input type="number" name="zipCUSTOMER" id="zipCUSTOMER" value="<?php echo $data_customer->zipCUSTOMER;?>">
                         </div>
                         <button class="ui mini button submit save-address-zip-customer" type="submit">Update</button>

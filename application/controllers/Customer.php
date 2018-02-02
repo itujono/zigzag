@@ -422,7 +422,9 @@ class Customer extends Frontend_Controller {
 
 			if($idsave){
 				$response['status'] = 'success';
-	  			$response['message'] = '';
+				$response['message'] = '';
+				$response['dataAddress'] = $data['addressCUSTOMER'];
+				$response['dataZip'] = $data['zipCUSTOMER'];
 	            echo json_encode($response);
 			} else {
 				$response['status'] = 'notsave';

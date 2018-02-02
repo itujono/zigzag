@@ -352,7 +352,7 @@ if ($plugins == 'home') { ?>
 	});
 	$(document).ready(function() {
 
-		$("button.cancel").on("click", function() {
+		$(".form.inline-editable.contact button.cancel").on("click", function() {
 			$(this).parents("form").siblings(".print-error-msg-profile").transition("fade", 100)
 		})
 		
@@ -378,6 +378,8 @@ if ($plugins == 'home') { ?>
 				const teleCUSTOMER = $("#teleCUSTOMER").val()
 				const formData = { emailCUSTOMER, teleCUSTOMER }
 
+				$(this).find("button.submit").addClass("loading")				
+
 				if (emailCUSTOMER == '') {
 					$(".print-error-msg-profile").transition("fade", 150).text("Email tidak boleh kosong")
 					return false			
@@ -394,28 +396,29 @@ if ($plugins == 'home') { ?>
 					dataType: "json",
 					data: formData,
 					success: response => {
-						$("form.inline-editable.contact").transition("slide", 100, () => {
-							$(".contact-data").transition("slide", 100)
-							$(".email-data").text(response.dataEmail)
+						$(this).find("button.submit").removeClass("loading")						
+						$(this).transition("fade", 100, () => {
+							$(".contact-data").transition("fade", 100)
+							$(".email-data").text(response.dataEmail).toLowerCase()
 							$(".tele-data").text(response.dataTele)
-							$(".editable").removeClass("disabled")
+							$(this).siblings(".editable").removeClass("disabled")
 						})
-						$(".print-success-msg-profile").css("display", "block")
-						$(".print-error-msg-profile").css('display','none')
-						$(".print-notsave-msg-profile").css('display','none')
+						$(this).siblings(".print-success-msg-profile").css("display", "block")
+						$(this).siblings(".print-error-msg-profile").css('display','none')
+						$(this).siblings(".print-notsave-msg-profile").css('display','none')
 
 						if (response.status == "error_validation") {
-							$(".print-notsave-msg-profile").css('display','none')
-							$(".print-error-msg-profile").css('display','block')
-							$(".print-success-msg-profile").css('display','none')
-							$(".print-error-msg-profile").html(response.message)
+							$(this).siblings(".print-notsave-msg-profile").css('display','none')
+							$(this).siblings(".print-error-msg-profile").css('display','block')
+							$(this).siblings(".print-success-msg-profile").css('display','none')
+							$(this).siblings(".print-error-msg-profile").html(response.message)
 							return false
 						}
 
 						if (response.status == "notsave") {
-							$(".print-notsave-msg-profile").css('display','block')
-							$(".print-error-msg-profile").css('display','none')
-							$(".print-success-msg-profile").css('display','none')
+							$(this).siblings(".print-notsave-msg-profile").css('display','block')
+							$(this).siblings(".print-error-msg-profile").css('display','none')
+							$(this).siblings(".print-success-msg-profile").css('display','none')
 							return false
 						}
 					}
@@ -424,35 +427,71 @@ if ($plugins == 'home') { ?>
 			}
 		})
 	})
+
 	$(document).ready(function() {
-	    $(".save-address-zip-customer").click(function(e){
-	    	e.preventDefault();
-	    	var addressCUSTOMER = $("#addressCUSTOMER").val();
-	    	var zipCUSTOMER = $("#zipCUSTOMER").val();
-	        $.ajax({
-	            url: "<?php echo base_url();?>customer/save_address_zip_customer",
-	            type:'POST',
-	            dataType: "json",
-	            data: {addressCUSTOMER:addressCUSTOMER, zipCUSTOMER:zipCUSTOMER},
-	            success: function(data) {
-	            	if(data.status == "success"){
-	                	$(".print-error-msg-profile").css('display','none');
-	                	$(".print-notsave-msg-profile").css('display','none');
-	                	$(".print-success-msg-profile").css('display','block');
-	                } else if(data.status == "notsave") {
-	                	$(".print-notsave-msg-profile").css('display','block');
-	                	$(".print-error-msg-profile").css('display','none');
-	                	$(".print-success-msg-profile").css('display','none');
-	                }else if(data.status == "error_validation"){
-	                	$(".print-notsave-msg-profile").css('display','none');
-						$(".print-error-msg-profile").css('display','block');
-	                	$(".print-success-msg-profile").css('display','none');
-	                	$(".print-error-msg-profile").html(data.message);
-	                }
-	            }
-	        })
-	    });
-	});
+
+		$("form.inline-editable.alamat button.cancel").on("click", function() {
+			$(this).parents("form").siblings(".print-error-msg-profile").transition("fade", 100)
+		})
+
+	    $("form.inline-editable.alamat").form({
+			inline: true,
+			on: "submit",
+			onSuccess: function(e) {
+				const addressCUSTOMER = $("#addressCUSTOMER").val()
+				const zipCUSTOMER = $("#zipCUSTOMER").val()
+				const formData = { addressCUSTOMER, zipCUSTOMER }
+
+				$(this).find("button.submit").addClass("loading")
+
+				if (addressCUSTOMER == '') {
+					$("form.inline-editable.alamat").siblings(".print-error-msg-profile").transition("fade", 150).text("Alamat tidak boleh kosong")
+					return false			
+				}
+
+				if (zipCUSTOMER == '') {
+					$("form.inline-editable.alamat").siblings(".print-error-msg-profile").transition("fade", 150).text("Kode pos tidak boleh kosong")
+					return false					
+				}
+				
+				$.ajax({
+					url: "<?php echo base_url();?>customer/save_address_zip_customer",
+					type:'POST',
+					dataType: "json",
+					data: formData,
+					success: response => {
+						$(this).find("button.submit").removeClass("loading")
+						$(this).transition("fade", 100, () => {
+							$(".address").transition("fade", 100)
+							$(".alamat-data").text(response.dataAddress)
+							$(".zip-data").text(response.dataZip)
+							$(".editable").removeClass("disabled")
+						})
+						$(this).siblings(".print-success-msg-profile").css("display", "block")
+						$(this).siblings(".print-error-msg-profile").css('display','none')
+						$(this).siblings(".print-notsave-msg-profile").css('display','none')
+	
+						if (response.status == "error_validation") {
+							$(this).siblings(".print-notsave-msg-profile").css('display','none')
+							$(this).siblings(".print-error-msg-profile").css('display','block')
+							$(this).siblings(".print-success-msg-profile").css('display','none')
+							$(this).siblings(".print-error-msg-profile").html(response.message)
+							return false
+						}
+	
+						if (response.status == "notsave") {
+							$("form.inline-editable.alamat").siblings(".print-notsave-msg-profile").css('display','block')
+							$("form.inline-editable.alamat").siblings(".print-error-msg-profile").css('display','none')
+							$("form.inline-editable.alamat").siblings(".print-success-msg-profile").css('display','none')
+							return false
+						}
+					}
+				})
+				e.preventDefault()				
+			}
+	    })
+	})
+
 	$(document).ready(function() {
 	    $(".save-social-customer").click(function(e){
 	    	e.preventDefault();
