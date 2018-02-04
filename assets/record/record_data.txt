@@ -418,3 +418,4 @@ Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zi
 Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/customer - Pada waktu Rabu, 31 Januari 2018 | 19:31 
 Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/customer/move_wish_list_to_cart10 - Pada waktu Kamis, 1 Februari 2018 | 21:12 
 Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/customer - Pada waktu Jumat, 2 Februari 2018 | 14:36 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/return_barang - Pada waktu Jumat, 2 Februari 2018 | 11:31

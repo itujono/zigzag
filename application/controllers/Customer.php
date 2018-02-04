@@ -369,9 +369,9 @@ class Customer extends Frontend_Controller {
 		$this->form_validation->set_rules($rules);
 		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
         $this->form_validation->set_message('trim', 'Form %s adalah Trim');
-        $this->form_validation->set_message('valid_email', 'Maaf, $s Anda tidak valid');
-        $this->form_validation->set_message('is_unique', 'Tampaknya inputan %s anda sudah terdaftar');
-        // $this->form_validation->set_message('min_length', 'Minimal kata sandi 8 karakter');
+        $this->form_validation->set_message('valid_email', 'Maaf, email Anda tidak valid');
+        $this->form_validation->set_message('is_unique', 'Tampaknya inputan email anda sudah terdaftar');
+
         $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 
@@ -464,6 +464,8 @@ class Customer extends Frontend_Controller {
 			if($idsave){
 				$response['status'] = 'success';
 	  			$response['message'] = '';
+	  			$response['dataFb'] = $data['facebooknameSOCIAL'];
+				$response['dataIg'] = $data['instagramnameSOCIAL'];
 	            echo json_encode($response);
 			} else {
 				$response['status'] = 'notsave';
@@ -474,6 +476,62 @@ class Customer extends Frontend_Controller {
 		} else {
 			$response['status'] = 'error_validation';
 			$response['message'] = validation_errors();
+            echo json_encode($response);
+		}
+	}
+
+	public function change_password_customer(){
+
+		$ids = $this->session->userdata('idCUSTOMER');
+
+		if(empty($ids)){
+			$this->Customer_m->logout();
+			redirect('home');
+		}
+
+		$rules = $this->Customer_m->rules_changepassword_customer;
+		$this->form_validation->set_rules($rules);
+		$this->form_validation->set_message('required', 'Form %s tidak boleh dikosongkan');
+        $this->form_validation->set_message('trim', 'Form %s adalah Trim');
+        $this->form_validation->set_message('min_length', 'Minimal 8 karakter');
+
+	    if($this->form_validation->run() == TRUE) {
+
+			$oldpassword = $this->Customer_m->hash($this->input->post('oldpassword'));
+			$password = $this->Customer_m->hash($this->input->post('password'));
+			$renewpassword = $this->Customer_m->hash($this->input->post('repassword'));
+
+			if($password != $renewpassword){
+				$response['status'] = 'error_validation_not_same';
+				$response['message'] = '';
+	            echo json_encode($response);
+			}
+
+			$checkoldpassword = $this->Customer_m->checkoldpassword($ids)->row();
+
+			if($oldpassword == $checkoldpassword->passwordCUSTOMER){
+
+				$data['passwordCUSTOMER'] = $this->Customer_m->hash($this->input->post('password'));
+				$this->Customer_m->save($data, $ids);
+				//if($this->sendemailnotifforgotpasswordadmin()){
+
+					$response['status'] = 'success';
+					$response['message'] = '';
+		            echo json_encode($response);
+				//}
+
+			} else {
+				$response['status'] = 'error';
+				$response['message'] = '';
+	            echo json_encode($response);
+			}
+		} else {
+			$response['status'] = 'error_validation';
+			$response['message'] = validation_errors();
+
+			print_r($response);
+			exit;
+
             echo json_encode($response);
 		}
 	}

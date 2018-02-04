@@ -143,6 +143,17 @@
                 </div>
                 <div>
                     <div class="title"> Socials </div>
+                    <div class="ui compact red message print-error-msg-profile" style="display:none">
+                        <h5 class="header">Oops!</h5>
+                    </div>
+                    <div class="ui compact red message print-success-msg-profile" style="display:none">
+                        <h5 class="header">Sukses!</h5>
+                        Data berhasil disimpan.
+                    </div>
+                    <div class="ui compact red message print-notsave-msg-profile" style="display:none">
+                        <h5 class="header">Oops!</h5>
+                        Kami tidak dapat menyimpan data anda, coba lagi nanti.
+                    </div>
                     <?php
                         if(!empty($data_customer_social)){
                             $facebook= $data_customer_social->facebooknameSOCIAL;
@@ -152,29 +163,17 @@
                             $instagram='-';
                         } 
                     ?>
-                    <ul>
+                    <ul class="social-media">
                         <li>
                             <i data-feather="facebook"></i>
-                            <a href="http://facebook.com/<?php echo $facebook;?>" target="_blank"><?php echo $facebook;?></a>
+                            <a href="http://facebook.com/<?php echo $facebook;?>" target="_blank" class="facebook-social"><?php echo $facebook;?></a>
                         </li>
                         <li>
                             <i data-feather="instagram"></i>
-                            <a href="http://instagram.com/<?php echo $instagram;?>" target="_blank"><?php echo $instagram;?></a>
+                            <a href="http://instagram.com/<?php echo $instagram;?>" target="_blank"  class="instagram-social"><?php echo $instagram;?></a>
                         </li>
                     </ul>
                     <form action="<?php echo base_url();?>customer/save_social_customer" class="ui form inline-editable social" method="POST">
-                        <div class="ui compact red message print-error-msg-profile" style="display:none">
-                            <h5 class="header">Oops!</h5>
-
-                        </div>
-                        <div class="ui compact red message print-success-msg-profile" style="display:none">
-                            <h5 class="header">Sukses!</h5>
-                            Data berhasil disimpan.
-                        </div>
-                        <div class="ui compact red message print-notsave-msg-profile" style="display:none">
-                            <h5 class="header">Oops!</h5>
-                            Kami tidak dapat menyimpan data anda, coba lagi nanti.
-                        </div>
                         <div class="field">
                             <label for="inline-facebook">Alamat Facebook</label>
                             <input type="text" name="facebooknameSOCIAL" id="facebooknameSOCIAL" value="<?php echo $facebook;?>">
@@ -895,20 +894,21 @@
 
                 <div class="ui grid">
                     <div class="eight wide column">
-                        <form class="ui form change-password">
+                        <form class="ui form change-password" method="POST" action="<?php echo base_url();?>customer/change_password_customer">
+                            
+                            <div class="field">
+                                <label>Password lama</label>
+                                <input type="password" name="oldpassword" id="oldpassword" placeholder="Masukkan dulu password lama kamu">
+                            </div>
                             <div class="field">
                                 <label>Password baru</label>
-                                <input type="text" name="newPassword" placeholder="Masukkan password baru kamu">
+                                <input type="password" name="password" id="password" placeholder="Masukkan password baru kamu">
                             </div>
                             <div class="field">
                                 <label>Ulangi</label>
-                                <input type="text" name="repeatNewPassword" placeholder="Ulangi lagi password baru kamu">
+                                <input type="password" name="repassword" id="repassword" placeholder="Ulangi lagi password baru kamu">
                             </div>
-                            <div class="field">
-                                <label>Password lama</label>
-                                <input type="text" name="oldPassword" placeholder="Masukkan dulu password lama kamu">
-                            </div>
-                            <button class="ui zz button" type="submit">&#9889; &nbsp; Ubah password</button>
+                            <button class="ui zz button change-password" type="submit">&#9889; &nbsp; Ubah password</button>
                         </form>
                     </div>
                 </div>
@@ -929,6 +929,27 @@
                     <div class="content">
                         <div class="header"> Selamat! </div>
                         Password kamu udah berhasil diubah. Cool!
+                    </div>
+                </div>
+                <div class="ui info icon message password-not-same" style="display: none">
+                    <i class="checkmark icon"></i>
+                    <div class="content">
+                        <div class="header"> Maaf! </div>
+                        Password baru kamu tidak sama dengan form konfirmasi password baru, mohon ulangi
+                    </div>
+                </div>
+                <div class="ui info icon message password-error" style="display: none">
+                    <i class="checkmark icon"></i>
+                    <div class="content">
+                        <div class="header"> Maaf! </div>
+                        Sistem tidak bisa merubah kata sandi anda, karena kata sandi lama anda tidak sama dengan yang anda masukkan sebelumnya, Mohon ulangi!.
+                    </div>
+                </div>
+                <div class="ui info icon message password-error-validation" style="display: none">
+                    <i class="checkmark icon"></i>
+                    <div class="content">
+                        <div class="header"> Maaf! </div>
+                        
                     </div>
                 </div>
 
