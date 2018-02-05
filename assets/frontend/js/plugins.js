@@ -241,6 +241,9 @@ $(document).ready(function() {
         },
         onFailure: function() {
             $(this).form("clear");
+        },
+        onSuccess: function() {
+            
         }
     });
     

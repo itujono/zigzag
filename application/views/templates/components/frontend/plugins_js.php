@@ -121,8 +121,9 @@ if ($plugins == 'home') { ?>
 	            data: {nameCUSTOMER:nameCUSTOMER, emailCUSTOMER:emailCUSTOMER, passwordCUSTOMER:passwordCUSTOMER, addressCUSTOMER:addressCUSTOMER, provinceCUSTOMER:provinceCUSTOMER, cityCUSTOMER:cityCUSTOMER, zipCUSTOMER:zipCUSTOMER, teleCUSTOMER:teleCUSTOMER, skCUSTOMER:skCUSTOMER},
 	            success: function(data) {
 	            	if(data.status == "success"){
-	                	$(".print-error-msg").css('display','none');
-	                	window.location.href = data.redirect;
+	                	window.location.href = data.redirect
+	                	$(".print-error-msg").css('display','none')
+	                	$(".ui.message.login-success").addClass("visible")
 	                }else{
 						$(".print-error-msg").css('display','block');
 	                	$(".print-error-msg").html(data.message);

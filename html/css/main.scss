@@ -989,6 +989,13 @@ a {
                 }
             }
         }
+
+        .ui.tab.horizontal.segments {
+            display: none;
+            &.active {
+                display: flex
+            }
+        }
         
         .ui.steps {
             border: none !important;

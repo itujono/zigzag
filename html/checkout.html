@@ -326,7 +326,18 @@
                     </h3>
 
                     <form class="ui form" action="" method="" id="shipping-address">
-                        <div class="two fields">
+
+                        <div class="inline field mb2em">
+                            <div class="ui segment seamless">
+                                <div class="ui slider checkbox" id="default-address">
+                                    <input type="checkbox" class="hidden">
+                                    <label>Pake data alamat sesuai dari data Profile kamu? </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ini section form kalo tak pilih data sesuai Profile -->
+                        <div class="two fields will-hidden">
                             <div class="required field">
                                 <label for="nama">Nama lengkap penerima</label>
                                 <input type="text" name="nama" placeholder="John Doe">
@@ -336,7 +347,7 @@
                                 <input type="email" name="email" placeholder="emailku@email.com">
                             </div>
                         </div>
-                        <div class="two fields mb2em">
+                        <div class="two fields mb2em will-hidden">
                             <div class="required field">
                                 <label for="handphone">Nomor handphone</label>
                                 <input type="tel" name="handphone" placeholder="0812 34567890">
@@ -346,15 +357,7 @@
                                 <input type="tel" name="telepon" placeholder="021 2345678">
                             </div>
                         </div>
-                        <div class="ui divider"></div>
-                        <div class="inline field mb2em">
-                            <div class="ui segment seamless">
-                                <div class="ui slider checkbox" id="default-address">
-                                    <input type="checkbox" class="hidden">
-                                    <label>Pake data alamat sesuai dari data Profile kamu? </label>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="three fields will-hidden">
                             <div class="required field">
                                 <label for="provinsi-checkout">Provinsi</label>
@@ -393,6 +396,30 @@
                             </div>
                         </div>
 
+
+                        <!-- Ini section form kalo pilih sesuai data dari Profile -->
+                        <div class="two fields will-show mb2em transition hidden">
+                            <div class="field">
+                                <label for="nama">Nama lengkap penerima</label>
+                                Madu Sulaiman
+                            </div>
+                            <div class="field">
+                                <label for="email">Email penerima</label>
+                                madu@gmail.net
+                            </div>
+                        </div>
+
+                        <div class="two fields will-show mb2em transition hidden">
+                            <div class="field">
+                                <label for="nama">Nomor telepon penerima</label>
+                                0812234239048
+                            </div>
+                            <div class="field">
+                                <label for="email">Nomor telepon kantor penerima</label>
+                                0214382399
+                            </div>
+                        </div>
+
                         <div class="three fields will-show mb2em transition hidden">
                             <div class="field">
                                 <label for="hidden-provinsi">Provinsi</label>
@@ -421,15 +448,15 @@
                             <label>Ekspedisi apa?</label>
                             <div class="field">
                                 <div class="ui segment">
-                                    <div class="ui radio checkbox">
-                                        <input type="radio" name="fruit" tabindex="0" class="hidden">
+                                    <div class="ui radio checkbox" data-tab="tab-jne">
+                                        <input type="radio" name="fruit" tabindex="0" class="hidden" selected>
                                         <label>JNE</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui segment">
-                                    <div class="ui radio checkbox">
+                                    <div class="ui radio checkbox" data-tab="tab-tiki">
                                         <input type="radio" name="fruit" tabindex="0" class="hidden">
                                         <label>TIKI</label>
                                     </div>
@@ -437,11 +464,53 @@
                             </div>
                             <div class="field">
                                 <div class="ui segment">
-                                    <div class="ui radio checkbox">
+                                    <div class="ui radio checkbox" data-tab="tab-sicepat">
                                         <input type="radio" name="fruit" tabindex="0" class="hidden">
                                         <label>Si Cepat</label>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="ui tab horizontal segments jne" data-tab="tab-jne">
+                            <div class="ui segment">
+                                <h4>Pengiriman</h4>
+                                Reguler
+                            </div>
+                            <div class="ui segment">
+                                <h4>Lama pengiriman</h4>
+                                4 hari
+                            </div>
+                            <div class="ui segment">
+                                <h4>Ongkos</h4>
+                                Rp 25.000,00
+                            </div>
+                        </div>
+                        <div class="ui tab horizontal segments tiki" data-tab="tab-tiki">
+                            <div class="ui segment">
+                                <h4>Pengiriman</h4>
+                                Express
+                            </div>
+                            <div class="ui segment">
+                                <h4>Lama pengiriman</h4>
+                                2 hari
+                            </div>
+                            <div class="ui segment">
+                                <h4>Ongkos</h4>
+                                Rp 20.000,00
+                            </div>
+                        </div>
+                        <div class="ui tab horizontal segments sicepat" data-tab="tab-sicepat">
+                            <div class="ui segment">
+                                <h4>Pengiriman</h4>
+                                Lemot
+                            </div>
+                            <div class="ui segment">
+                                <h4>Lama pengiriman</h4>
+                                9 hari
+                            </div>
+                            <div class="ui segment">
+                                <h4>Ongkos</h4>
+                                Rp 75.000,00
                             </div>
                         </div>
                         <div class="ui segment seamless">
@@ -466,7 +535,8 @@
                     </form>
                 </div>
 
-            </div> <!-- kelar div Grid / Step-Shipping -->
+            </div>
+            <!-- kelar div Grid / Step-Shipping -->
 
 
 
@@ -595,7 +665,8 @@
 
                                 </div>
                             </div>
-                        </div> <!-- kelar Accordion / Bank transfer -->
+                        </div>
+                        <!-- kelar Accordion / Bank transfer -->
 
                         <input type="submit" class="ui fluid teal button" id="billing" value="Lanjut">
                     </form>
@@ -605,7 +676,8 @@
                     </a>
                 </div>
 
-            </div> <!-- kelar div Grid / Step-Billing -->
+            </div>
+            <!-- kelar div Grid / Step-Billing -->
 
 
             <div class="ui grid" id="step-confirm">

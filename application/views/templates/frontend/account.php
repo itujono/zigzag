@@ -91,7 +91,7 @@ if(!empty($data_customer)){
                         <div class="field">
                             <label for="provinsi">Kota/Kab</label>
                             <select class="ui search dropdown inline_city" id="inline_city" name="inline_city" required="required">
-                                <option value="" selected disabled="disabled">Pilih provinsi kamu</option>
+                                <option value="" disabled="disabled">Pilih provinsi kamu</option>
                             </select>
                         </div>
                         <button class="ui mini button submit upload_profile_picture_customer" type="submit">Update</button>

@@ -420,3 +420,4 @@ Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zi
 Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/customer - Pada waktu Jumat, 2 Februari 2018 | 14:36 
 Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/return_barang - Pada waktu Jumat, 2 Februari 2018 | 11:31
 Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/account/andhana-utama - Pada waktu Senin, 5 Februari 2018 | 10:42 
+Bejo Karmila - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/cart.html - Pada waktu Senin, 5 Februari 2018 | 16:57 

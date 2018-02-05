@@ -55,11 +55,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 </footer>
 </div>
 <?php if (!empty($message)){ ?>
-<div class="ui compact teal message">
+
+<div class="ui compact teal message login-success <?php echo $message['addClass']; ?>">
     <i class="close icon"></i>
     <h4 class="header"><?php echo $message['title']; ?></h4>
     <p><i class="alarm icon"></i> <?php echo $message['text']; ?></p>
 </div>
+
+<script>
+    const loginSuccess = document.querySelector(".ui.message.login-success")
+
+    if (loginSuccess.classList.contains("visible")) {
+        setTimeout(function() {
+            loginSuccess.classList.remove("visible")
+        }, 3000)
+    }
+</script>
+
 <?php } ?>
 <div class="ui compact teal message not-login">
     <i class="close icon"></i>
@@ -70,11 +82,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     <i class="close icon"></i>
     <h4 class="header">Great!</h4>
     <p><i class="alarm icon"></i> Item berhasil ditambahkan ke Wishlist</p>
-</div>
-<div class="ui compact teal message login-success">
-    <i class="close icon"></i>
-    <h4 class="header">Great!</h4>
-    <p><i class="alarm icon"></i> Kamu berhasil login. Happy shopping!</p>
 </div>
 <div class="ui compact teal message added-to-cart">
     <i class="close icon"></i>

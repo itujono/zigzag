@@ -300,7 +300,8 @@ class Customer extends Frontend_Controller {
 				$data = array(
 					'title' => 'Sukses!',
 					'style' => 'is-success',
-		            'text' => 'Halo! Selamat datang, '. $this->session->userdata('Name')
+					'text' => 'Halo! Selamat datang, '. $this->session->userdata('Name'),
+					'addClass' => 'visible'
 		        );
 
 		        $this->session->set_flashdata('message',$data);
@@ -344,13 +345,14 @@ class Customer extends Frontend_Controller {
 	}
 
 	public function logout (){
-		$this->session->unset_userdata('message');
-		$this->facebook->destroy_session();
+		// $this->session->unset_userdata('message');
+		// $this->facebook->destroy_session();
 		$this->Customer_m->logout();
 		$data = array(
 			'title' => 'Sukses!',
 			'style' => 'is-success',
-            'text' => 'Anda sudah berhasil logout. Sampai jumpa lagi!'
+			'text' => 'Anda sudah berhasil logout. Sampai jumpa lagi!',
+			'addClass' => 'visible'
         	);
         $this->session->set_flashdata('message',$data);
 		redirect('home');
