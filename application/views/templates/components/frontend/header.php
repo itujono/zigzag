@@ -70,8 +70,17 @@
                         <div class="ui top left pointing dropdown button item">
                         <?php
                             if(!empty($this->session->userdata('idCUSTOMER'))){
+                                $map = directory_map('assets/upload/customer/pic-customer-'.seo_url($this->session->userdata('Name').''.folenc($this->session->userdata('idCUSTOMER'))), FALSE, TRUE);
+                                if(!empty($map)){
+                                    $image = base_url() . 'assets/upload/customer/pic-customer-'.seo_url($this->session->userdata('Name').''.folenc($this->session->userdata('idCUSTOMER'))).'/'.$map[0];
+                                } elseif ($this->session->userdata('profile_picture') != '') {
+                                    $image = $this->session->userdata('profile_picture');
+                                } else {
+                                    $image = base_url() . 'assets/upload/user.jpg';
+                                }
                         ?>
-                            <img src="<?php echo base_url().$this->data['asfront'];?>img/user.jpg" class="ui avatar image">
+
+                            <img src="<?php echo $image;?>" class="ui avatar image">
                             <span><?php echo $this->session->userdata('Name');?> </span>
                             <i class="dropdown icon"></i>
                         <?php } else { ?>
@@ -116,10 +125,10 @@
                                         Males isi form?
                                     </div>
                                     <div class="login-buttons">
-                                        <button class="ui facebook button">
+                                        <a href="<?php echo $this->facebook->login_url();?>" class="ui facebook button">
                                             <i class="facebook icon"></i>
                                             Login via Facebook
-                                        </button>
+                                        </a>
                                     </div>
                                     <div class="signup-link">
                                         Belum punya akun? <a href="#">Buat dulu di sini</a>

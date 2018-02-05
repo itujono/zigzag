@@ -352,9 +352,9 @@ if ($plugins == 'home') { ?>
 	});
 	$(document).ready(function() {
 
-		$(".form.inline-editable.contact button.cancel").on("click", function() {
-			$(this).parents("form").siblings(".print-error-msg-profile").transition("fade", 100)
-		})
+		// $(".form.inline-editable.contact button.cancel").on("click", function() {
+		// 	$(this).siblings(".print-error-msg-profile").css('display','none');
+		// })
 		
 		$("form.inline-editable.contact").form({
 			inline: true,
@@ -377,18 +377,17 @@ if ($plugins == 'home') { ?>
 				const emailCUSTOMER = $("#emailCUSTOMER").val()
 				const teleCUSTOMER = $("#teleCUSTOMER").val()
 				const formData = { emailCUSTOMER, teleCUSTOMER }
-
 				$(this).find("button.submit").addClass("loading")				
 
-				if (emailCUSTOMER == '') {
-					$(".print-error-msg-profile").transition("fade", 150).text("Email tidak boleh kosong")
-					return false			
-				}
+				// if (emailCUSTOMER == '') {
+				// 	$(".print-error-msg-profile").transition("fade", 150).text("Email tidak boleh kosong")
+				// 	return false			
+				// }
 
-				if (teleCUSTOMER == '') {
-					$(".print-error-msg-profile").transition("fade", 150).text("Nomor telepon tidak boleh kosong")
-					return false					
-				}
+				// if (teleCUSTOMER == '') {
+				// 	$(".print-error-msg-profile").transition("fade", 150).text("Nomor telepon tidak boleh kosong")
+				// 	return false					
+				// }
 
 				$.ajax({
 					url: "<?php echo base_url();?>customer/save_email_tele_customer",
@@ -401,13 +400,14 @@ if ($plugins == 'home') { ?>
 							$(".contact-data").transition("fade", 100)
 							$(".email-data").text(response.dataEmail).toLowerCase()
 							$(".tele-data").text(response.dataTele)
-							$(this).siblings(".editable").removeClass("disabled")
+							$(".editable").removeClass("disabled")
 						})
 						$(this).siblings(".print-success-msg-profile").css("display", "block")
 						$(this).siblings(".print-error-msg-profile").css('display','none')
 						$(this).siblings(".print-notsave-msg-profile").css('display','none')
 
 						if (response.status == "error_validation") {
+							$(".editable").removeClass("disabled")
 							$(this).siblings(".print-notsave-msg-profile").css('display','none')
 							$(this).siblings(".print-error-msg-profile").css('display','block')
 							$(this).siblings(".print-success-msg-profile").css('display','none')
@@ -416,6 +416,7 @@ if ($plugins == 'home') { ?>
 						}
 
 						if (response.status == "notsave") {
+							$(".editable").removeClass("disabled")
 							$(this).siblings(".print-notsave-msg-profile").css('display','block')
 							$(this).siblings(".print-error-msg-profile").css('display','none')
 							$(this).siblings(".print-success-msg-profile").css('display','none')
@@ -430,9 +431,9 @@ if ($plugins == 'home') { ?>
 
 	$(document).ready(function() {
 
-		$("form.inline-editable.alamat button.cancel").on("click", function() {
-			$(this).parents("form").siblings(".print-error-msg-profile").transition("fade", 100)
-		})
+		// $("form.inline-editable.alamat button.cancel").on("click", function() {
+		// 	$(this).parents("form").siblings(".print-error-msg-profile").transition("fade", 100)
+		// })
 
 		function errorMessage(el, text) {
 			return el.siblings(".print-error-msg-profile").transition("fade", 150).text(text)
@@ -478,6 +479,7 @@ if ($plugins == 'home') { ?>
 						$(this).siblings(".print-notsave-msg-profile").css('display','none')
 	
 						if (response.status == "error_validation") {
+							$(".editable").removeClass("disabled")
 							$(this).siblings(".print-notsave-msg-profile").css('display','none')
 							$(this).siblings(".print-error-msg-profile").css('display','block')
 							$(this).siblings(".print-success-msg-profile").css('display','none')
@@ -486,6 +488,7 @@ if ($plugins == 'home') { ?>
 						}
 	
 						if (response.status == "notsave") {
+							$(".editable").removeClass("disabled")
 							$("form.inline-editable.alamat").siblings(".print-notsave-msg-profile").css('display','block')
 							$("form.inline-editable.alamat").siblings(".print-error-msg-profile").css('display','none')
 							$("form.inline-editable.alamat").siblings(".print-success-msg-profile").css('display','none')
@@ -499,34 +502,71 @@ if ($plugins == 'home') { ?>
 	})
 
 	$(document).ready(function() {
-	    $(".save-social-customer").click(function(e){
-	    	e.preventDefault();
-	    	var facebooknameSOCIAL = $("#facebooknameSOCIAL").val();
-	    	var instagramnameSOCIAL = $("#instagramnameSOCIAL").val();
-	        $.ajax({
-	            url: "<?php echo base_url();?>customer/save_social_customer",
-	            type:'POST',
-	            dataType: "json",
-	            data: {facebooknameSOCIAL:facebooknameSOCIAL, instagramnameSOCIAL:instagramnameSOCIAL},
-	            success: function(data) {
-	            	if(data.status == "success"){
-	                	$(".print-error-msg-profile").css('display','none');
-	                	$(".print-notsave-msg-profile").css('display','none');
-	                	$(".print-success-msg-profile").css('display','block');
-	                } else if(data.status == "notsave") {
-	                	$(".print-notsave-msg-profile").css('display','block');
-	                	$(".print-error-msg-profile").css('display','none');
-	                	$(".print-success-msg-profile").css('display','none');
-	                }else if(data.status == "error_validation"){
-	                	$(".print-notsave-msg-profile").css('display','none');
-						$(".print-error-msg-profile").css('display','block');
-	                	$(".print-success-msg-profile").css('display','none');
-	                	$(".print-error-msg-profile").html(data.message);
-	                }
-	            }
-	        })
-	    });
-	});
+
+		// $("form.inline-editable.alamat button.cancel").on("click", function() {
+		// 	$(this).parents("form").siblings(".print-error-msg-profile").transition("fade", 100)
+		// })
+
+	    $("form.inline-editable.social").form({
+			inline: true,
+			on: "submit",
+			onSuccess: function(e) {
+				const facebooknameSOCIAL = $("#facebooknameSOCIAL").val()
+				const instagramnameSOCIAL = $("#instagramnameSOCIAL").val()
+				const formData = { facebooknameSOCIAL, instagramnameSOCIAL }
+
+				$(this).find("button.submit").addClass("loading")
+
+				if (facebooknameSOCIAL == '') {
+					$("form.inline-editable.social").siblings(".print-error-msg-profile").transition("fade", 150).text("username facebook kamu tidak boleh kosong")
+					return false			
+				}
+
+				if (instagramnameSOCIAL == '') {
+					$("form.inline-editable.social").siblings(".print-error-msg-profile").transition("fade", 150).text("Kode pos tidak boleh kosong")
+					return false					
+				}
+				
+				$.ajax({
+					url: "<?php echo base_url();?>customer/save_social_customer",
+					type:'POST',
+					dataType: "json",
+					data: formData,
+					success: response => {
+						$(this).find("button.submit").removeClass("loading")
+						$(this).transition("fade", 100, () => {
+							$(".social-media").transition("fade", 100)
+							$(".facebook-social").text(response.dataFb)
+							$(".instagram-social").text(response.dataIg)
+							$(".editable").removeClass("disabled")
+						})
+						$(this).siblings(".print-success-msg-profile").css("display", "block")
+						$(this).siblings(".print-error-msg-profile").css('display','none')
+						$(this).siblings(".print-notsave-msg-profile").css('display','none')
+	
+						if (response.status == "error_validation") {
+							$(".editable").removeClass("disabled")
+							$(this).siblings(".print-notsave-msg-profile").css('display','none')
+							$(this).siblings(".print-error-msg-profile").css('display','block')
+							$(this).siblings(".print-success-msg-profile").css('display','none')
+							$(this).siblings(".print-error-msg-profile").html(response.message)
+							return false
+						}
+	
+						if (response.status == "notsave") {
+							$(".editable").removeClass("disabled")
+							$("form.inline-editable.alamat").siblings(".print-notsave-msg-profile").css('display','block')
+							$("form.inline-editable.alamat").siblings(".print-error-msg-profile").css('display','none')
+							$("form.inline-editable.alamat").siblings(".print-success-msg-profile").css('display','none')
+							return false
+						}
+					}
+				})
+				e.preventDefault()				
+			}
+	    })
+	})
+	
 	$(document).ready(function(){
 		$('.add_cart').click(function(){
 			var idBARANG    = $(this).data("barangid");
@@ -564,6 +604,93 @@ if ($plugins == 'home') { ?>
 			});
 		});
 	});
+	$(document).ready(function() {
+		$(".form.change-password").form({
+	        inline: true,
+	        on: "submit",
+	        fields: {
+	            password: {
+	                identifier: "password",
+	                rules: [
+	                    {
+	                        type: "empty",
+	                        prompt: "Jangan dikosongin password nya ya"
+	                    },
+	                    {
+	                        type: "minLength[6]",
+	                        prompt: "Kurang panjang tuh password nya"
+	                    }
+	                ]
+	            },
+	            repassword: {
+	                identifier: "repassword",
+	                rules: [
+	                    {
+	                        type: "empty",
+	                        prompt: "Nah yang ini kok dikosongin juga?"
+	                    },
+	                    {
+	                        type: "match[password]",
+	                        prompt: "Kayaknya nggak sama deh sama yang diketik di atas"
+	                    }
+	                ]
+	            },
+	            oldpassword: {
+	                identifier: "oldpassword",
+	                rules: [
+	                    {
+	                        type: "empty",
+	                        prompt: "Nah yang ini kok dikosongin juga? Duh!"
+	                    }
+	                ]
+	            },
+	        },
+	        onSuccess: function(e) {
+	            const oldpassword = $("#oldpassword").val()
+	            const password = $("#password").val()
+	            const repassword = $("#repassword").val()
+	            const formData = { oldpassword, password, repassword }
+	            $.ajax({
+	                url: "<?php echo base_url();?>customer/change_password_customer",
+	                type:'POST',
+	                dataType: "json",
+	                data: formData,
+	                success: response => {
+	                    $(".change-password").form("clear");
+	                    $(".change-password").transition("slide", 150);
+	                    $(".password-changed").css("display", "flex");
+	                    $(".password-not-same").css("display", "none");
+	                    $(".password-error-validation").css('display','none');
+	                    setTimeout(function() {
+	                        $(".change-password").transition("slide", 200);
+	                        $(".password-changed").css("display", "none");
+	                    }, 3000);
+	                    if (response.status == "error_validation_not_same") {
+	                        $(".password-not-same").css("display", "block");
+	                        $(".password-changed").css("display", "none");
+	                        $(".password-error-validation").css('display','none');
+	                        return false
+	                    }
+	                    if (response.status == "error") {
+	                    	$(".password-not-same").css("display", "none");
+	                    	$(".password-error-validation").css('display','none');
+	                        $(".password-error").css("display", "block");
+	                        $(".password-changed").css("display", "none");
+	                        return false
+	                    }
+	                    if (response.status == "error_validation") {
+	                    	$(".password-changed").css("display", "none");
+	                    	$(".password-error").css("display", "none");
+	                        $(".password-error-validation").css('display','block')
+	                        $(".password-error-validation").html(response.message)
+	                        return false
+	                    }
+	                }
+	            })
+	            e.preventDefault();
+	        }
+    	})
+    });
 </script>
 <?php } ?>
 <script type="text/javascript">

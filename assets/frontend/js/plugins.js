@@ -832,69 +832,6 @@ $(document).ready(function() {
         el.parents("ul").siblings(".content-detail").transition("slide", 150)
     })
 
-
-
-    $(".change-password").form({
-        inline: true,
-        on: "submit",
-        fields: {
-            newPassword: {
-                identifier: "newPassword",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Jangan dikosongin password nya ya"
-                    },
-                    {
-                        type: "minLength[6]",
-                        prompt: "Kurang panjang tuh password nya"
-                    }
-                ]
-            },
-            repeatNewPassword: {
-                identifier: "repeatNewPassword",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Nah yang ini kok dikosongin juga?"
-                    },
-                    {
-                        type: "match[newPassword]",
-                        prompt: "Kayaknya nggak sama deh sama yang diketik di atas"
-                    }
-                ]
-            },
-            oldPassword: {
-                identifier: "oldPassword",
-                rules: [
-                    {
-                        type: "empty",
-                        prompt: "Nah yang ini kok dikosongin juga? Duh!"
-                    }
-                ]
-            },
-        },
-        onSuccess: function(e) {
-            e.preventDefault();
-            $(".confirmation-change-password").modal({
-                closable: false,
-                blurring: true,
-                onApprove: function() {
-                    $(".change-password").form("clear");
-                    $(".change-password").transition("slide", 150);
-                    $(".password-changed").css("display", "flex");
-                    setTimeout(function() {
-                        $(".change-password").transition("slide", 200)
-                        $(".password-changed").css("display", "none");
-                    }, 3000);
-                }
-            }).modal("show");
-        }
-    });
-
-
-
-
     const editable = $(".editable");
 
     editable.on("click", function(e) {

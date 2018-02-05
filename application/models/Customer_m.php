@@ -99,12 +99,12 @@ class Customer_m extends MY_Model{
 
 	public $rules_changepassword_customer = array(
 		'passwordCUSTOMER' => array(
-			'field' => 'passwordCUSTOMER',
+			'field' => 'password',
 			'label' => 'Kata sandi',
 			'rules' => 'trim|required|min_length[8]'
 			),
 		'repasswordCUSTOMER' => array(
-			'field' => 'repasswordCUSTOMER',
+			'field' => 'repassword',
 			'label' => 'Ulangi kata sandi',
 			'rules' => 'trim|required|min_length[8]'
 			)
@@ -131,6 +131,7 @@ class Customer_m extends MY_Model{
 				$data = array(
 					'Email' => $customer->emailCUSTOMER,
 					'idCUSTOMER' => $customer->idCUSTOMER,
+					'profile_picture' => '',
 					'Name' => $customer->nameCUSTOMER,
 					'loggedin' => TRUE
 				);
@@ -171,9 +172,16 @@ class Customer_m extends MY_Model{
 
 	public function checkoldpassword($id){
 		$this->db->select('idCUSTOMER, passwordCUSTOMER');
-		$this->db->from('users');
+		$this->db->from('customer');
 		$this->db->where('idCUSTOMER', $id);
 		$this->db->limit(1);
+		return $this->db->get();
+	}
+
+	public function check_user_fb($password){
+		$this->db->select('loginwithCUSTOMER, idCUSTOMER');
+		$this->db->from('customer');
+		$this->db->where('passwordCUSTOMER', $password);
 		return $this->db->get();
 	}
 }
