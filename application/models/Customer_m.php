@@ -131,6 +131,7 @@ class Customer_m extends MY_Model{
 				$data = array(
 					'Email' => $customer->emailCUSTOMER,
 					'idCUSTOMER' => $customer->idCUSTOMER,
+					'profile_picture' => '',
 					'Name' => $customer->nameCUSTOMER,
 					'loggedin' => TRUE
 				);
@@ -174,6 +175,13 @@ class Customer_m extends MY_Model{
 		$this->db->from('customer');
 		$this->db->where('idCUSTOMER', $id);
 		$this->db->limit(1);
+		return $this->db->get();
+	}
+
+	public function check_user_fb($password){
+		$this->db->select('loginwithCUSTOMER, idCUSTOMER');
+		$this->db->from('customer');
+		$this->db->where('passwordCUSTOMER', $password);
 		return $this->db->get();
 	}
 }

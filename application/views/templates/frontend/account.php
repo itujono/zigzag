@@ -1,4 +1,24 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+if(!empty($data_customer_province_city)){
+    $name_city =  $data_customer_province_city->nameCITY;
+    $name_province = $data_customer_province_city->namePROVINCE;
+} else {
+    $name_city =  '- ';
+    $name_province = ' -';
+}
+if(!empty($data_customer)){
+    $address_customer = $data_customer->addressCUSTOMER;
+    $zip_customer = $data_customer->zipCUSTOMER;
+    $tele_customer = $data_customer->teleCUSTOMER;
+} else {
+    $address_customer = '-';
+    $zip_customer = '-';
+    $tele_customer = '-';
+}
+?>
+
+
 <div class="main">
     <div class="ui stackable grid">
 
@@ -15,7 +35,7 @@
                         </figure>
                         <div class="name">
                             <?php echo $data_customer->nameCUSTOMER;?>
-                            <p><?php echo $data_customer_province_city->nameCITY;?>, <?php echo $data_customer_province_city->namePROVINCE;?></p>
+                            <p><?php echo $name_city;?>, <?php echo $name_province;?></p>
                         </div>
                     </div>
                     <form action="<?php echo base_url();?>customer/save_profile_picture_customer" method="POST" class="ui form inline-editable general-info" enctype="multipart/form-data">
@@ -83,7 +103,7 @@
                     </div>
                     <ul class="contact-data">
                         <li class="email-data"> <?php echo $data_customer->emailCUSTOMER;?></li>
-                        <li class="tele-data"> <?php echo $data_customer->teleCUSTOMER;?></li>
+                        <li class="tele-data"> <?php echo $tele_customer;?></li>
                     </ul>
                     <form action="<?php echo base_url();?>customer/save_email_tele_customer" class="ui form inline-editable contact" method="POST">
                         <div class="field">
@@ -119,11 +139,11 @@
 
                     <ul class="address">
                         <li class="alamat-data">
-                            <?php echo $data_customer->addressCUSTOMER;?>
-                            <br><?php echo $data_customer_province_city->nameCITY;?>, <?php echo $data_customer_province_city->namePROVINCE;?>
+                            <?php echo $address_customer;?>
+                            <br><?php echo $name_city;?>, <?php echo $name_province;?>
                         </li>
                         <li class="zip-data">
-                            <?php echo $data_customer->zipCUSTOMER;?>
+                            <?php echo $zip_customer;?>
                         </li>
                     </ul>
                     <form action="<?php echo base_url();?>customer/save_address_zip_customer" class="ui form inline-editable alamat" method="POST">

@@ -102,7 +102,7 @@ function replacesymbol_tounderscore($string){
 }
 
 function seo_url($string){
-    $change = str_replace([' ','&',',','.','(',')','!','?'], ['-','-','-','-','-','-','-','-'], $string);
+    $change = str_replace([' ','&',',','.','(',')','!','?',''], ['-','-','-','-','-','-','-','-','-'], $string);
     return strtolower($change);
 }
 
