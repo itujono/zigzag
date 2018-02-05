@@ -28,8 +28,8 @@ class City_m extends MY_Model{
 	}
 
 	public function selectall_city($id = NULL) {
-		$this->db->select('*');
-		$this->db->select('province.namePROVINCE');
+		$this->db->select('city.idPROVINCE');
+		$this->db->select('province.idPROVINCE');
 		$this->db->from('city');
 		$this->db->join('province', 'province.idPROVINCE = city.idPROVINCE');
 		if ($id != NULL) {

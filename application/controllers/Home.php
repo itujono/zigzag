@@ -10,6 +10,7 @@ class Home extends Frontend_Controller {
 	}
 
 	public function index() {
+
 		$data['addONS'] = 'home';
 		$data['title'] = 'Zigzag Shop Batam - Official Shop';
 		$data['class'] = 'app';

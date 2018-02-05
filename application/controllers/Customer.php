@@ -23,9 +23,11 @@ class Customer extends Frontend_Controller {
         $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 		if ($this->form_validation->run() == TRUE) {
-			$data = $this->Customer_m->array_from_post(array('nameCUSTOMER','emailCUSTOMER','passwordCUSTOMER','addressCUSTOMER','cityCUSTOMER','zipCUSTOMER','teleCUSTOMER','skCUSTOMER'));
+			$data = $this->Customer_m->array_from_post(array('nameCUSTOMER','emailCUSTOMER','passwordCUSTOMER','addressCUSTOMER','provinceCUSTOMER', 'cityCUSTOMER','zipCUSTOMER','teleCUSTOMER','skCUSTOMER'));
+			$data['loginwithCUSTOMER'] = 1;
 			if($data['skCUSTOMER'] == 'on')$data['skCUSTOMER']=1;
 			else $data['skCUSTOMER'] = 0;
+			
 			
             $data['passwordCUSTOMER'] = $this->Customer_m->hash($data['passwordCUSTOMER']);
 
@@ -89,11 +91,11 @@ class Customer extends Frontend_Controller {
 	// }
 
 	public function load_city($id){
-	  $city = $this->City_m->get_city_by_province($id)->result();
+	  $city = selectall_city_by_province(NULL, $id);
 	  if(!empty($city)){
 	  	  $data = "";
-	      foreach ($city as $value) {
-        	$data .= "<option value='".$value->idCITY."'>".$value->nameCITY."</option>";
+	      foreach ($city as $val) {
+        	$data .= "<option value='".$val['city_id']."'>".$val['city_name']." - ".$val['postal_code']."</option>";
 	      }
 	      echo $data;
 	  } else {
@@ -385,7 +387,8 @@ class Customer extends Frontend_Controller {
 			$data['data_customer']->imageCUSTOMER = base_url() . 'assets/upload/user.jpg';
 		}
 
-		$data['data_customer_province_city'] = $this->City_m->selectall_city($data['data_customer']->cityCUSTOMER)->row();
+		$data['data_customer_province_city'] = selectall_city_by_province($data['data_customer']->cityCUSTOMER, $data['data_customer']->provinceCUSTOMER);
+		
 		$data['data_customer_social'] = $this->Social_customer_m->selectall_social_customer($data['data_customer']->idCUSTOMER)->row();
 		$data['data_customer_wish'] = $this->Wish_m->selectall_wish_by_customer($data['data_customer']->idCUSTOMER)->result();
 		foreach ($data['data_customer_wish'] as $key => $value) {

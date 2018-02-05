@@ -297,13 +297,13 @@ function selectall_category_for_frontend($parent=NULL, $child=NULL){
     return $data;
 }
 
-function select_all_province(){
-    $CI =& get_instance();
-    $CI->db->select('idPROVINCE, namePROVINCE');
-    $CI->db->from('province');
-    $data = $CI->db->get()->result();
-    return $data;
-}
+// function select_all_province(){
+//     $CI =& get_instance();
+//     $CI->db->select('idPROVINCE, namePROVINCE');
+//     $CI->db->from('province');
+//     $data = $CI->db->get()->result();
+//     return $data;
+// }
 
 function slugify($text){
         // replace non letter or digits by -
@@ -333,4 +333,63 @@ function checkwishlist($id){
 
     $data = $CI->db->get()->row();
     return $data;
+}
+
+function select_all_province($id=NULL){
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.rajaongkir.com/starter/province?id=".$id,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => array(
+        "key: d59049b12bec5f149cb709f386dbd012"
+        ),
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+      echo "cURL Error #:" . $err;
+      exit;
+    } else {
+      $response = json_decode($response, TRUE);
+      return $response['rajaongkir']['results'];
+    }
+}
+
+function selectall_city_by_province($id, $id2=NULL) {
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => "https://api.rajaongkir.com/starter/city?id=".$id."&province=".$id2,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "GET",
+      CURLOPT_HTTPHEADER => array(
+        "key: d59049b12bec5f149cb709f386dbd012"
+      ),
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+      echo "cURL Error #:" . $err;
+    } else {
+      $response = json_decode($response, TRUE);
+      return $response['rajaongkir']['results'];
+    }
 }

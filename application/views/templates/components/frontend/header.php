@@ -162,14 +162,14 @@
                                         <div class="two fields">
                                             <div class="field">
                                                 <label for="provinsi">Provinsi</label>
-                                                <select class="ui search dropdown" id="provinsi" name="idPROVINCE">
+                                                <select class="ui search dropdown" id="provinsi" name="provinceCUSTOMER">
                                                     <option value="" selected disabled="disabled">Pilih provinsi kamu</option>
                                                     <?php
                                                     $listprovince = select_all_province();
                                                     if(!empty($listprovince)){
-                                                        foreach ($listprovince as $key => $pro) {
+                                                        foreach ($listprovince as $pro) {
                                                             ?>
-                                                        <option value="<?php echo $pro->idPROVINCE;?>"><?php echo $pro->namePROVINCE;?>
+                                                        <option value="<?php echo $pro['province_id']?>"><?php echo $pro['province'];?>
                                                         </option>
                                                     <?php } ?>
                                                     <?php } ?>

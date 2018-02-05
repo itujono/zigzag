@@ -1,11 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 if(!empty($data_customer_province_city)){
-    $name_city =  $data_customer_province_city->nameCITY;
-    $name_province = $data_customer_province_city->namePROVINCE;
+    
+    $name_city =  $data_customer_province_city['city_name'];
+    $name_province = $data_customer_province_city['province'];
+    $id_province = $data_customer_province_city['province_id'];
+    
 } else {
     $name_city =  '- ';
     $name_province = ' -';
+    $id_province = '-';
 }
 if(!empty($data_customer)){
     $address_customer = $data_customer->addressCUSTOMER;
@@ -58,10 +62,12 @@ if(!empty($data_customer)){
                         </div>
                         <!-- /////////////////// -->
 
+                        <?php if(empty($this->session->userdata('profile_picture'))) {  ?>
                         <div class="field">
                             <label for="inline-photo">Ganti foto?</label>
                             <input type="file" name="imgCUSTOMER" id="imgCUSTOMER" required="required">
                         </div>
+                        <?php } ?>
                        <div class="field">
                             <label for="provinsi">Provinsi</label>
                             <select class="ui search dropdown" id="inline-provinsi" name="idPROVINCE" required="required">
@@ -69,14 +75,14 @@ if(!empty($data_customer)){
                                 <?php
                                 $listprovince = select_all_province();
                                 if(!empty($listprovince)){
-                                    foreach ($listprovince as $key => $pro) {
-                                    if($pro->idPROVINCE == $data_customer_province_city->idPROVINCE){
+                                    foreach ($listprovince as $pro) {
+                                    if($pro['province_id'] == $id_province){
                                         $idpro="selected";
                                     } else {
                                         $idpro="";
                                     }
                                 ?>
-                                    <option <?php echo $idpro; ?> value="<?php echo $pro->idPROVINCE;?>"><?php echo $pro->namePROVINCE;?>
+                                    <option <?php echo $idpro; ?> value="<?php echo $pro['province_id'];?>"><?php echo $pro['province'];?>
                                     </option>
                                 <?php } ?>
                                 <?php } ?>
