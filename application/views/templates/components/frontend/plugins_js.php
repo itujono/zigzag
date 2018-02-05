@@ -434,6 +434,10 @@ if ($plugins == 'home') { ?>
 			$(this).parents("form").siblings(".print-error-msg-profile").transition("fade", 100)
 		})
 
+		function errorMessage(el, text) {
+			return el.siblings(".print-error-msg-profile").transition("fade", 150).text(text)
+		}
+
 	    $("form.inline-editable.alamat").form({
 			inline: true,
 			on: "submit",
@@ -445,12 +449,14 @@ if ($plugins == 'home') { ?>
 				$(this).find("button.submit").addClass("loading")
 
 				if (addressCUSTOMER == '') {
-					$("form.inline-editable.alamat").siblings(".print-error-msg-profile").transition("fade", 150).text("Alamat tidak boleh kosong")
+					$(this).find("button.submit").removeClass("loading")
+					errorMessage($('form.inline-editable.alamat'), "Alamat tidak boleh kosong")
 					return false			
 				}
 
 				if (zipCUSTOMER == '') {
-					$("form.inline-editable.alamat").siblings(".print-error-msg-profile").transition("fade", 150).text("Kode pos tidak boleh kosong")
+					$(this).find("button.submit").removeClass("loading")
+					errorMessage($('form.inline-editable.alamat'), "Kode pos tidak boleh kosong")
 					return false					
 				}
 				
