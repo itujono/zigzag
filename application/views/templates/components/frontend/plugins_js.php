@@ -311,11 +311,12 @@ if ($plugins == 'home') { ?>
 <?php } elseif ($plugins == 'account-customer') { ?>
 <script src="<?php echo base_url().$this->data['asfront'];?>node_modules/feather-icons/dist/feather.min.js"></script>
 <script type="text/javascript">
+
 	feather.replace({
         "stroke-width": 1.5,
         "width": 24,
         "height": 24
-    });
+	})
 
     $(document).ready(function() {
 	    $(".upload_profile_picture_customer").click(function(e){
@@ -346,11 +347,9 @@ if ($plugins == 'home') { ?>
 	                	
 	                }
 	            }
-	        });
+	        })
 	        return false;
-	    });
-	});
-	$(document).ready(function() {
+	    })
 
 		// $(".form.inline-editable.contact button.cancel").on("click", function() {
 		// 	$(this).siblings(".print-error-msg-profile").css('display','none');
@@ -398,7 +397,7 @@ if ($plugins == 'home') { ?>
 						$(this).find("button.submit").removeClass("loading")						
 						$(this).transition("fade", 100, () => {
 							$(".contact-data").transition("fade", 100)
-							$(".email-data").text(response.dataEmail).toLowerCase()
+							$(".email-data").text(response.dataEmail)
 							$(".tele-data").text(response.dataTele)
 							$(".editable").removeClass("disabled")
 						})
@@ -427,9 +426,6 @@ if ($plugins == 'home') { ?>
 				e.preventDefault()
 			}
 		})
-	})
-
-	$(document).ready(function() {
 
 		// $("form.inline-editable.alamat button.cancel").on("click", function() {
 		// 	$(this).parents("form").siblings(".print-error-msg-profile").transition("fade", 100)
@@ -499,9 +495,6 @@ if ($plugins == 'home') { ?>
 				e.preventDefault()				
 			}
 	    })
-	})
-
-	$(document).ready(function() {
 
 		// $("form.inline-editable.alamat button.cancel").on("click", function() {
 		// 	$(this).parents("form").siblings(".print-error-msg-profile").transition("fade", 100)
@@ -564,10 +557,8 @@ if ($plugins == 'home') { ?>
 				})
 				e.preventDefault()				
 			}
-	    })
-	})
-	
-	$(document).ready(function(){
+		})
+		
 		$('.add_cart').click(function(){
 			var idBARANG    = $(this).data("barangid");
 			var nameBARANG  = $(this).data("barangnama");
@@ -584,9 +575,8 @@ if ($plugins == 'home') { ?>
 					$('#detail_cart').html(data);
 				}
 			});
-		});
-	});
-	$(document).ready(function(){
+		})
+
 		$('.remove-wishlist').click(function(){
 			var idWISH    = $(this).data("wishid");
 			$.ajax({
@@ -602,9 +592,8 @@ if ($plugins == 'home') { ?>
 	                }, 1000);
 				}
 			});
-		});
-	});
-	$(document).ready(function() {
+		})
+
 		$(".form.change-password").form({
 	        inline: true,
 	        on: "submit",
@@ -687,11 +676,15 @@ if ($plugins == 'home') { ?>
 	                    }
 	                }
 	            })
-	            e.preventDefault();
+	            e.preventDefault()
 	        }
     	})
-    });
+    })
 </script>
+
+
+
+
 <?php } ?>
 <script type="text/javascript">
 	$('#detail_cart').load("<?php echo base_url();?>product/load_cart");

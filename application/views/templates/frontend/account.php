@@ -90,14 +90,17 @@ if(!empty($data_customer)){
                 <div>
                     <div class="title"> Contact </div>
                     <div class="ui compact teal message print-success-msg-profile" style="display:none">
+                        <i class="close icon"></i>
                         <h5 class="header">Sukses!</h5>
                         Data berhasil disimpan.
                     </div>
                     <div class="ui compact red message print-notsave-msg-profile" style="display:none">
+                        <i class="close icon"></i>
                         <h5 class="header">Oops!</h5>
                         Kami tidak dapat menyimpan data anda, coba lagi nanti.
                     </div>
                     <div class="ui compact red message print-error-msg-profile" style="display:none">
+                        <i class="close icon"></i>
                         <h5 class="header">Oops!</h5>
                         Ini apaan gak tau.
                     </div>
@@ -121,18 +124,23 @@ if(!empty($data_customer)){
                         <i class="write icon"></i>
                     </a>
                 </div>
+
+
                 <div>
                     <div class="title"> Shipping </div>
 
                     <div class="ui compact red message print-error-msg-profile" style="display:none">
+                        <i class="close icon"></i>
                         <h5 class="header">Oops!</h5>
                         Ini apaan coba, Ndan?
                     </div>
                     <div class="ui compact teal message print-success-msg-profile" style="display:none">
+                        <i class="close icon"></i>
                         <h5 class="header">Sukses!</h5>
                         Data berhasil disimpan.
                     </div>
                     <div class="ui compact red message print-notsave-msg-profile" style="display:none">
+                        <i class="close icon"></i>
                         <h5 class="header">Oops!</h5>
                         Kami tidak dapat menyimpan data anda, coba lagi nanti.
                     </div>
@@ -161,12 +169,15 @@ if(!empty($data_customer)){
                         <i class="write icon"></i>
                     </a>
                 </div>
+
+
                 <div>
                     <div class="title"> Socials </div>
                     <div class="ui compact red message print-error-msg-profile" style="display:none">
                         <h5 class="header">Oops!</h5>
                     </div>
-                    <div class="ui compact red message print-success-msg-profile" style="display:none">
+                    <div class="ui compact teal message print-success-msg-profile" style="display:none">
+                        <i class="close icon"></i>
                         <h5 class="header">Sukses!</h5>
                         Data berhasil disimpan.
                     </div>

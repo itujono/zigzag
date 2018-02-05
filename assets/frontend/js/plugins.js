@@ -847,12 +847,17 @@ $(document).ready(function() {
     
     $(".button.cancel").on("click", function(e) {
         e.preventDefault();
-        $(this).parents("form").form("clear").siblings(".editable").removeClass("disabled");
+        $(this).parents("form").siblings(".editable").removeClass("disabled");
         $(this).parents("form").transition("fade", 100, function() {
             $(this).siblings("ul").transition("fade", 100);
         });
         $(this).parents("form").siblings(".will-edit").fadeIn(100)
     });
+
+    $(".message .close").on("click", function() {
+        console.log($(this))
+        $(this).closest(".message").transition("fade", 100)
+    })
 
     $("form.inline-editable.general-info").form({
         inline: true,
