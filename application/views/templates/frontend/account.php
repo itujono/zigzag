@@ -40,18 +40,24 @@ if(!empty($data_customer)){
                     </div>
                     <form action="<?php echo base_url();?>customer/save_profile_picture_customer" method="POST" class="ui form inline-editable general-info" enctype="multipart/form-data">
 
+                        <!-- /////////////////// -->
                         <div class="ui compact red message print-error-msg-profile" style="display:none">
+                            <i class="close icon"></i>
                             <h5 class="header">Oops!</h5>
-
+                            Ini apaan Ndan?
                         </div>
                         <div class="ui compact red message print-success-msg-profile" style="display:none">
+                            <i class="close icon"></i>
                             <h5 class="header">Sukses!</h5>
                             Data berhasil disimpan.
                         </div>
                         <div class="ui compact red message print-notsave-msg-profile" style="display:none">
+                            <i class="close icon"></i>
                             <h5 class="header">Oops!</h5>
                             Kami tidak dapat menyimpan data anda, coba lagi nanti.
                         </div>
+                        <!-- /////////////////// -->
+
                         <div class="field">
                             <label for="inline-photo">Ganti foto?</label>
                             <input type="file" name="imgCUSTOMER" id="imgCUSTOMER" required="required">
@@ -87,8 +93,12 @@ if(!empty($data_customer)){
                     </form>
                     <a href="#" class="ui icon editable button general-info"> <i class="write icon"></i> </a>
                 </div>
+
+
                 <div>
                     <div class="title"> Contact </div>
+
+                    <!-- ///////////// -->
                     <div class="ui compact teal message print-success-msg-profile" style="display:none">
                         <i class="close icon"></i>
                         <h5 class="header">Sukses!</h5>
@@ -104,6 +114,8 @@ if(!empty($data_customer)){
                         <h5 class="header">Oops!</h5>
                         Ini apaan gak tau.
                     </div>
+                    <!-- /////////////// -->
+
                     <ul class="contact-data">
                         <li class="email-data"> <?php echo $data_customer->emailCUSTOMER;?></li>
                         <li class="tele-data"> <?php echo $tele_customer;?></li>
@@ -129,6 +141,7 @@ if(!empty($data_customer)){
                 <div>
                     <div class="title"> Shipping </div>
 
+                    <!-- /////////////// -->
                     <div class="ui compact red message print-error-msg-profile" style="display:none">
                         <i class="close icon"></i>
                         <h5 class="header">Oops!</h5>
@@ -144,6 +157,7 @@ if(!empty($data_customer)){
                         <h5 class="header">Oops!</h5>
                         Kami tidak dapat menyimpan data anda, coba lagi nanti.
                     </div>
+                    <!-- //////////////// -->
 
                     <ul class="address">
                         <li class="alamat-data">
@@ -173,7 +187,10 @@ if(!empty($data_customer)){
 
                 <div>
                     <div class="title"> Socials </div>
+
+                    <!-- ///////////////// -->
                     <div class="ui compact red message print-error-msg-profile" style="display:none">
+                        <i class="close icon"></i>
                         <h5 class="header">Oops!</h5>
                     </div>
                     <div class="ui compact teal message print-success-msg-profile" style="display:none">
@@ -182,9 +199,13 @@ if(!empty($data_customer)){
                         Data berhasil disimpan.
                     </div>
                     <div class="ui compact red message print-notsave-msg-profile" style="display:none">
+                        <i class="close icon"></i>
                         <h5 class="header">Oops!</h5>
                         Kami tidak dapat menyimpan data anda, coba lagi nanti.
                     </div>
+                    <!-- //////////////////// -->
+
+                    
                     <?php
                         if(!empty($data_customer_social)){
                             $facebook= $data_customer_social->facebooknameSOCIAL;
@@ -223,8 +244,8 @@ if(!empty($data_customer)){
 
             </div>
 
-        </div>
-        <!-- kelar Four Wide Column -->
+        </div> <!-- kelar Four Wide Column -->
+
 
         <div class="twelve wide column profile-content">
 

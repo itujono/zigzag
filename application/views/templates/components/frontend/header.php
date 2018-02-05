@@ -125,7 +125,7 @@
                                         Males isi form?
                                     </div>
                                     <div class="login-buttons">
-                                        <a href="<?php echo $this->facebook->login_url();?>" class="ui facebook button">
+                                        <a href="<?php //echo $this->facebook->login_url();?>" class="ui facebook button">
                                             <i class="facebook icon"></i>
                                             Login via Facebook
                                         </a>

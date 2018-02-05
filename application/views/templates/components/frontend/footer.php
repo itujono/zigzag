@@ -71,6 +71,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     <h4 class="header">Great!</h4>
     <p><i class="alarm icon"></i> Item berhasil ditambahkan ke Wishlist</p>
 </div>
+<div class="ui compact teal message login-success">
+    <i class="close icon"></i>
+    <h4 class="header">Great!</h4>
+    <p><i class="alarm icon"></i> Kamu berhasil login. Happy shopping!</p>
+</div>
 <div class="ui compact teal message added-to-cart">
     <i class="close icon"></i>
     <h4 class="header">Great!</h4>

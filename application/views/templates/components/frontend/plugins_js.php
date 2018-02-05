@@ -319,6 +319,13 @@ if ($plugins == 'home') { ?>
 	})
 
     $(document).ready(function() {
+
+		function errorMessage(el, text) {
+			return el.siblings(".print-error-msg-profile")
+				.transition("fade", 150)
+				.html(`<i class='close icon'></i> ${text}`)
+		}
+
 	    $(".upload_profile_picture_customer").click(function(e){
 	        e.preventDefault();
          	var formData = new FormData($('#imgCUSTOMER')[0]);
@@ -376,17 +383,19 @@ if ($plugins == 'home') { ?>
 				const emailCUSTOMER = $("#emailCUSTOMER").val()
 				const teleCUSTOMER = $("#teleCUSTOMER").val()
 				const formData = { emailCUSTOMER, teleCUSTOMER }
-				$(this).find("button.submit").addClass("loading")				
+				$(this).find("button.submit").addClass("loading")			
 
-				// if (emailCUSTOMER == '') {
-				// 	$(".print-error-msg-profile").transition("fade", 150).text("Email tidak boleh kosong")
-				// 	return false			
-				// }
+				if (emailCUSTOMER == '') {
+					errorMessage($('form.inline-editable.contact'), "Email tidak boleh kosong")
+					return false
+					$(this).find("button.submit").removeClass("loading")			
+				}
 
-				// if (teleCUSTOMER == '') {
-				// 	$(".print-error-msg-profile").transition("fade", 150).text("Nomor telepon tidak boleh kosong")
-				// 	return false					
-				// }
+				if (teleCUSTOMER == '') {
+					errorMessage($('form.inline-editable.alamat'), "Nomor telepon tidak boleh kosong")
+					return false
+					$(this).find("button.submit").removeClass("loading")			
+				}
 
 				$.ajax({
 					url: "<?php echo base_url();?>customer/save_email_tele_customer",
@@ -431,10 +440,6 @@ if ($plugins == 'home') { ?>
 		// 	$(this).parents("form").siblings(".print-error-msg-profile").transition("fade", 100)
 		// })
 
-		function errorMessage(el, text) {
-			return el.siblings(".print-error-msg-profile").transition("fade", 150).text(text)
-		}
-
 	    $("form.inline-editable.alamat").form({
 			inline: true,
 			on: "submit",
@@ -448,13 +453,13 @@ if ($plugins == 'home') { ?>
 				if (addressCUSTOMER == '') {
 					$(this).find("button.submit").removeClass("loading")
 					errorMessage($('form.inline-editable.alamat'), "Alamat tidak boleh kosong")
-					return false			
+					return false
 				}
 
 				if (zipCUSTOMER == '') {
 					$(this).find("button.submit").removeClass("loading")
 					errorMessage($('form.inline-editable.alamat'), "Kode pos tidak boleh kosong")
-					return false					
+					return false
 				}
 				
 				$.ajax({
@@ -511,7 +516,7 @@ if ($plugins == 'home') { ?>
 				$(this).find("button.submit").addClass("loading")
 
 				if (facebooknameSOCIAL == '') {
-					$("form.inline-editable.social").siblings(".print-error-msg-profile").transition("fade", 150).text("username facebook kamu tidak boleh kosong")
+					$("form.inline-editable.social").siblings(".print-error-msg-profile").transition("fade", 150).text("Username Facebook kamu tidak boleh kosong")
 					return false			
 				}
 
