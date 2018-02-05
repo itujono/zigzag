@@ -109,6 +109,7 @@ if ($plugins == 'home') { ?>
 	    	var emailCUSTOMER = $("input[name='emailCUSTOMER']").val();
 	    	var passwordCUSTOMER = $("input[name='passwordCUSTOMER']").val();
 	    	var addressCUSTOMER = $("textarea[name='addressCUSTOMER']").val();
+	    	var provinceCUSTOMER = $("select[name='provinceCUSTOMER']").val();
 	    	var cityCUSTOMER = $("select[name='cityCUSTOMER']").val();
 	    	var zipCUSTOMER = $("input[name='zipCUSTOMER']").val();
 	    	var teleCUSTOMER = $("input[name='teleCUSTOMER']").val();
@@ -117,7 +118,7 @@ if ($plugins == 'home') { ?>
 	            url: "<?php echo base_url();?>customer/register",
 	            type:'POST',
 	            dataType: "json",
-	            data: {nameCUSTOMER:nameCUSTOMER, emailCUSTOMER:emailCUSTOMER, passwordCUSTOMER:passwordCUSTOMER, addressCUSTOMER:addressCUSTOMER, cityCUSTOMER:cityCUSTOMER, zipCUSTOMER:zipCUSTOMER, teleCUSTOMER:teleCUSTOMER, skCUSTOMER:skCUSTOMER},
+	            data: {nameCUSTOMER:nameCUSTOMER, emailCUSTOMER:emailCUSTOMER, passwordCUSTOMER:passwordCUSTOMER, addressCUSTOMER:addressCUSTOMER, provinceCUSTOMER:provinceCUSTOMER, cityCUSTOMER:cityCUSTOMER, zipCUSTOMER:zipCUSTOMER, teleCUSTOMER:teleCUSTOMER, skCUSTOMER:skCUSTOMER},
 	            success: function(data) {
 	            	if(data.status == "success"){
 	                	$(".print-error-msg").css('display','none');
