@@ -71,7 +71,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
         }, 3000)
     }
 </script>
+<?php } else if(!empty($message_logout)){ ?>
+<div class="ui compact teal message logout-success <?php echo $message_logout['addClass']; ?>">
+    <i class="close icon"></i>
+    <h4 class="header"><?php echo $message_logout['title']; ?></h4>
+    <p><i class="alarm icon"></i> <?php echo $message_logout['text']; ?></p>
+</div>
 
+<script>
+    const loginSuccess = document.querySelector(".ui.message.logout-success")
+
+    if (loginSuccess.classList.contains("visible")) {
+        setTimeout(function() {
+            loginSuccess.classList.remove("visible")
+        }, 3000)
+    }
+</script>
 <?php } ?>
 <div class="ui compact teal message not-login">
     <i class="close icon"></i>

@@ -226,7 +226,8 @@ class Customer extends Frontend_Controller {
 		    		$data = array(
 						'title' => 'Sukses!',
 						'style' => 'is-success',
-			            'text' => 'Halo! Selamat datang, '. $this->session->userdata('Name')
+			            'text' => 'Halo! Selamat datang, '. $this->session->userdata('Name'),
+			            'addClass' =>'visible'
 			        );
 
 			        $this->session->set_flashdata('message',$data);
@@ -235,7 +236,8 @@ class Customer extends Frontend_Controller {
 	            	$data = array(
 						'title' => 'Error!',
 						'style' => 'is-warning',
-			            'text' => 'Maaf, untuk sementara akun facebook anda tidak dapat kami simpan, silakan daftar lewat web. Terima kasih!'
+			            'text' => 'Maaf, untuk sementara akun facebook anda tidak dapat kami simpan, silakan daftar lewat web. Terima kasih!',
+			            'addClass' =>'visible'
 			        );
 			        $this->session->set_flashdata('message',$data);
 					redirect('home');
@@ -245,7 +247,8 @@ class Customer extends Frontend_Controller {
             $data = array(
 				'title' => 'Error!',
 				'style' => 'is-warning',
-	            'text' => 'Maaf, untuk sementara akun facebook anda tidak dapat kami autentifikasi, silakan daftar lewat web. Terima kasih!'
+	            'text' => 'Maaf, untuk sementara akun facebook anda tidak dapat kami autentifikasi, silakan daftar lewat web. Terima kasih!',
+	            'addClass' =>'visible'
 	        );
 	        $this->session->set_flashdata('message',$data);
 			redirect('home');
@@ -274,7 +277,8 @@ class Customer extends Frontend_Controller {
 				$data = array(
 					'title' => 'Error!',
 					'style' => 'is-warning',
-		            'text' => 'Maaf, untuk sementara akun Anda telah terkunci, silakan hubungi bagian Admin kami untuk melaporkan masalah ini. Terima kasih!'
+		            'text' => 'Maaf, untuk sementara akun Anda telah terkunci, silakan hubungi bagian Admin kami untuk melaporkan masalah ini. Terima kasih!',
+		            'addClass' =>'visible'
 		        );
 		        $this->session->set_flashdata('message',$data);
 				redirect('home');
@@ -284,7 +288,8 @@ class Customer extends Frontend_Controller {
 				$data = array(
 					'title' => 'Error!',
 					'style' => 'is-warning',
-		            'text' => 'Maaf, untuk sementara akun Anda telah terkunci, silakan hubungi bagian Admin kami untuk melaporkan masalah ini. Terima kasih!'
+		            'text' => 'Maaf, untuk sementara akun Anda telah terkunci, silakan hubungi bagian Admin kami untuk melaporkan masalah ini. Terima kasih!',
+		            'addClass' =>'visible'
 		        );
 
 		        $checks = $this->Customer_m->checkcustomer($email)->row();
@@ -312,7 +317,8 @@ class Customer extends Frontend_Controller {
 				$data = array(
 					'title' => 'Error!',
 					'style' => 'is-warning',
-		            'text' => 'Maaf, akun Anda belum aktif, silakan cek email Anda untuk konfirmasi, atau hubungi kami di form Contact Us. Terima kasih!'
+		            'text' => 'Maaf, akun Anda belum aktif, silakan cek email Anda untuk konfirmasi, atau hubungi kami di form Contact Us. Terima kasih!',
+		            'addClass' =>'visible'
 		        	);
 		        $this->session->set_flashdata('message',$data);
 				redirect('home');
@@ -328,7 +334,8 @@ class Customer extends Frontend_Controller {
 				$data = array(
 					'title' => 'Gagal',
 					'style' => 'is-warning',
-		            'text' => 'Maaf, email atau kata sandi yang Anda masukkan salah. Mohon periksa kembali terlebih dulu dengan seksama.'
+		            'text' => 'Maaf, email atau kata sandi yang Anda masukkan salah. Mohon periksa kembali terlebih dulu dengan seksama.',
+		            'addClass' =>'visible'
 		        	);
 		        $this->session->set_flashdata('message',$data);
 				redirect('home');
@@ -337,7 +344,8 @@ class Customer extends Frontend_Controller {
 			$data = array(
 			'title' => 'Error',
 			'style' => 'is-warning',
-            'text' => 'Maaf, silakan ulangi inputan email dan kata sandi Anda di bawah.'
+            'text' => 'Maaf, silakan ulangi inputan email dan kata sandi Anda di bawah.',
+            'addClass' =>'visible'
         	);
         $this->session->set_flashdata('message',$data);
 		redirect('home');
@@ -346,7 +354,7 @@ class Customer extends Frontend_Controller {
 
 	public function logout (){
 		// $this->session->unset_userdata('message');
-		// $this->facebook->destroy_session();
+		$this->facebook->destroy_session();
 		$this->Customer_m->logout();
 		$data = array(
 			'title' => 'Sukses!',
@@ -354,8 +362,8 @@ class Customer extends Frontend_Controller {
 			'text' => 'Anda sudah berhasil logout. Sampai jumpa lagi!',
 			'addClass' => 'visible'
         	);
-        $this->session->set_flashdata('message',$data);
-		redirect('home');
+        $this->session->set_flashdata('message_logout',$data);
+		$this->home();
 	}
 
 	public function move_wish_list_to_cart($id){
@@ -628,6 +636,17 @@ class Customer extends Frontend_Controller {
 
             echo json_encode($response);
 		}
+	}
+
+	public function home() {
+
+		if(!empty($this->session->flashdata('message'))) {
+            $data['message'] = $this->session->flashdata('message');
+        } else {
+        	$data['message'] = '';
+        }
+
+		$this->load->view('home', $data);
 	}
 
 }
