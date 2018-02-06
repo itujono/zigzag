@@ -10,7 +10,7 @@
 
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="icon.png">
-
+    
     <?php echo $addons; ?>
     
 </head>
@@ -125,7 +125,7 @@
                                         Males isi form?
                                     </div>
                                     <div class="login-buttons">
-                                        <a href="<?php //echo $this->facebook->login_url();?>" class="ui facebook button">
+                                        <a href="<?php echo $this->facebook->login_url();?>" class="ui facebook button">
                                             <i class="facebook icon"></i>
                                             Login via Facebook
                                         </a>
