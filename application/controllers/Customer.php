@@ -354,7 +354,7 @@ class Customer extends Frontend_Controller {
 
 	public function logout (){
 		// $this->session->unset_userdata('message');
-		$this->facebook->destroy_session();
+		// $this->facebook->destroy_session();
 		$this->Customer_m->logout();
 		$data = array(
 			'title' => 'Sukses!',
