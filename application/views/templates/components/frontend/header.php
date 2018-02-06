@@ -96,11 +96,7 @@
                                     Profil
                                 </a>
                                 <a class="divider"></a>
-                                <a class="item" href="<?php echo base_url();?>customer/logout" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">Logout</a>
-                                <form id="logout-form" action="<?php echo base_url();?>customer/logout" method="POST" style="display: none;">
-                                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
-                                </form>
+                                <a class="item logout-trigger" href="#">Logout</a>
                             <?php } else { ?>
                             <a class="item login-trigger" href="#">Login</a>
                             <?php } ?>

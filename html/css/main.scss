@@ -996,6 +996,15 @@ a {
                 display: flex
             }
         }
+
+        .ekspedisi-logo {
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            .segments {
+                margin: 0;
+            }
+        }
         
         .ui.steps {
             border: none !important;

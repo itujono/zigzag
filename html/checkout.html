@@ -448,7 +448,7 @@
                             <label>Ekspedisi apa?</label>
                             <div class="field">
                                 <div class="ui segment">
-                                    <div class="ui radio checkbox" data-tab="tab-jne">
+                                    <div class="ui radio checkbox jne">
                                         <input type="radio" name="fruit" tabindex="0" class="hidden" selected>
                                         <label>JNE</label>
                                     </div>
@@ -456,7 +456,7 @@
                             </div>
                             <div class="field">
                                 <div class="ui segment">
-                                    <div class="ui radio checkbox" data-tab="tab-tiki">
+                                    <div class="ui radio checkbox tiki">
                                         <input type="radio" name="fruit" tabindex="0" class="hidden">
                                         <label>TIKI</label>
                                     </div>
@@ -464,53 +464,89 @@
                             </div>
                             <div class="field">
                                 <div class="ui segment">
-                                    <div class="ui radio checkbox" data-tab="tab-sicepat">
+                                    <div class="ui radio checkbox sicepat">
                                         <input type="radio" name="fruit" tabindex="0" class="hidden">
                                         <label>Si Cepat</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="ui tab horizontal segments jne" data-tab="tab-jne">
-                            <div class="ui segment">
-                                <h4>Pengiriman</h4>
-                                Reguler
-                            </div>
-                            <div class="ui segment">
-                                <h4>Lama pengiriman</h4>
-                                4 hari
-                            </div>
-                            <div class="ui segment">
-                                <h4>Ongkos</h4>
-                                Rp 25.000,00
-                            </div>
-                        </div>
-                        <div class="ui tab horizontal segments tiki" data-tab="tab-tiki">
-                            <div class="ui segment">
-                                <h4>Pengiriman</h4>
-                                Express
-                            </div>
-                            <div class="ui segment">
-                                <h4>Lama pengiriman</h4>
-                                2 hari
-                            </div>
-                            <div class="ui segment">
-                                <h4>Ongkos</h4>
-                                Rp 20.000,00
+                        <div class="ui tab segment" data-tab="tab-jne">
+                            <div class="ui items">
+
+                                <div class="item">
+                                    <div class="ui small image ekspedisi-logo">
+                                        <img src="img/jne.png" alt="Logo JNE">
+                                    </div>
+                                    <div class="content">
+                                        <div class="ui horizontal segments">
+                                            <div class="ui segment">
+                                                <h4>Pengiriman</h4>
+                                                <select name="" id="" class="ui search dropdown">
+                                                    <option value="reguler">Reguler</option>
+                                                    <option value="ekspres">Ekspres</option>
+                                                </select>
+                                            </div>
+                                            <div class="ui segment">
+                                                <h4>Lama pengiriman</h4>
+                                                4 hari
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                        <div class="ui tab horizontal segments sicepat" data-tab="tab-sicepat">
-                            <div class="ui segment">
-                                <h4>Pengiriman</h4>
-                                Lemot
+                        <div class="ui tab segment" data-tab="tab-tiki">
+                            <div class="ui items">
+
+                                <div class="item">
+                                    <div class="ui small image ekspedisi-logo">
+                                        <img src="img/tiki.png" alt="Logo TIKI">
+                                    </div>
+                                    <div class="content">
+                                        <div class="ui horizontal segments">
+                                            <div class="ui segment">
+                                                <h4>Pengiriman</h4>
+                                                <select name="" id="" class="ui search dropdown">
+                                                    <option value="reguler">Reguler</option>
+                                                    <option value="ekspres">Ekspres</option>
+                                                </select>
+                                            </div>
+                                            <div class="ui segment">
+                                                <h4>Lama pengiriman</h4>
+                                                45 hari
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div class="ui segment">
-                                <h4>Lama pengiriman</h4>
-                                9 hari
-                            </div>
-                            <div class="ui segment">
-                                <h4>Ongkos</h4>
-                                Rp 75.000,00
+                        </div>
+                        <div class="ui tab segment" data-tab="tab-sicepat">
+                            <div class="ui items">
+
+                                <div class="item">
+                                    <div class="ui small image ekspedisi-logo">
+                                        <img src="img/jne.png" alt="Logo SiCepat">
+                                    </div>
+                                    <div class="content">
+                                        <div class="ui horizontal segments">
+                                            <div class="ui segment">
+                                                <h4>Pengiriman</h4>
+                                                <select name="" id="" class="ui search dropdown">
+                                                    <option value="reguler">Reguler</option>
+                                                    <option value="ekspres">Ekspres</option>
+                                                </select>
+                                            </div>
+                                            <div class="ui segment">
+                                                <h4>Lama pengiriman</h4>
+                                                23 hari
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="ui segment seamless">

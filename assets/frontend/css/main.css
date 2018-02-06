@@ -383,7 +383,7 @@ a.ui.card:hover,
 .ui.message.added-to-wishlist, .ui.message.added-to-cart,
 .ui.message.removed-from-wishlist, .ui.message.removed-from-cart,
 .ui.message.error-wishlist, .ui.message.moved-to-cart, .ui.message.not-login,
-.ui.message.login-success {
+.ui.message.login-success, .ui.message.logout-success {
   display: none;
   position: fixed;
   top: 0;
@@ -397,7 +397,7 @@ a.ui.card:hover,
   .ui.message.added-to-wishlist.visible, .ui.message.added-to-cart.visible,
   .ui.message.removed-from-wishlist.visible, .ui.message.removed-from-cart.visible,
   .ui.message.error-wishlist.visible, .ui.message.moved-to-cart.visible, .ui.message.not-login.visible,
-  .ui.message.login-success.visible {
+  .ui.message.login-success.visible, .ui.message.logout-success.visible {
     display: block;
     -webkit-transition: all .4s ease;
     -o-transition: all .4s ease;

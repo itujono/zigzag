@@ -581,6 +581,18 @@ $(document).ready(function() {
             });
         }
     });
+
+    $(".ekspedisi .radio.checkbox.jne").on("click", function() {
+        $.tab("change tab", "tab-jne" )
+    })
+
+    $(".ekspedisi .radio.checkbox.tiki").on("click", function() {
+        $.tab("change tab", "tab-tiki" )
+    })
+
+    $(".ekspedisi .radio.checkbox.sicepat").on("click", function() {
+        $.tab("change tab", "tab-sicepat" )
+    })
     
     $(".back-to-previous").on("click", function(e) {
         e.preventDefault()

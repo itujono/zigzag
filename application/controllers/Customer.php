@@ -356,14 +356,9 @@ class Customer extends Frontend_Controller {
 		// $this->session->unset_userdata('message');
 		// $this->facebook->destroy_session();
 		$this->Customer_m->logout();
-		$data = array(
-			'title' => 'Sukses!',
-			'style' => 'is-success',
-			'text' => 'Anda sudah berhasil logout. Sampai jumpa lagi!',
-			'addClass' => 'visible'
-        	);
-        $this->session->set_flashdata('message',$data);
-		redirect('home');
+		$response['status'] = 'success';
+		$response['redirect'] = base_url();
+		echo json_encode($response);
 	}
 
 	public function move_wish_list_to_cart($id){

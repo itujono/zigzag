@@ -14,19 +14,19 @@ if ($plugins == 'home') { ?>
 	        $(this).on("click", function(e) {
 	        <?php if(empty($this->session->userdata('idCUSTOMER'))){ ?>
 	        		// todo: Bikin modal login aja kalo belum login!!!
-                	$(".add-to-wishlist").transition("jiggle");
-                	$(".add-to-wishlist").find('.empty.heart').addClass('empty');
+                	$(".add-to-wishlist").transition("jiggle")
+                	$(".add-to-wishlist").find('.empty.heart').addClass('empty')
                 	// Message belum login
                     $(".ui.message.not-login").transition("slide", function() {
                     	setTimeout(function() {
-                    		$(".ui.message.not-login").transition("slide");
-                    	}, 2000);
-                    });
+                    		$(".ui.message.not-login").transition("slide")
+                    	}, 2000)
+                    })
 	        <?php } else { ?>
-	            e.preventDefault();
-	            console.log(this);
+	            e.preventDefault()
+	            console.log(this)
 	            if ($(this).find(".heart.icon").hasClass("empty")) {
-						var idBARANG    = $(this).data("idbarang");
+						var idBARANG    = $(this).data("idbarang")
 						$.ajax({
 							url : "<?php echo base_url();?>product/wish",
 							method : "POST",
@@ -70,21 +70,30 @@ if ($plugins == 'home') { ?>
 	                }, 1000);
 	            }
 	    <?php } ?>
-        });
-    });
+        })
+	})
+
+	if (logoutSuccess) {
+		setTimeout(() => {
+			$(".ui.message.logout-success").addClass("visible")
+		}, 2000);
+	}
+
+	
 	$(".additional-actions .add-to-cart").each(function() {
         $(this).on("click", function(e) {
-            e.preventDefault();
-            $(".additional-actions .add-to-cart .shopping.icon").transition("jiggle");
+            e.preventDefault()
+            $(".additional-actions .add-to-cart .shopping.icon").transition("jiggle")
             setTimeout(function() {
                 $(".ui.message.added-to-cart").transition({
                     onComplete: setTimeout(function() {
-                        $(".ui.message.added-to-cart").transition("slide");
+                        $(".ui.message.added-to-cart").transition("slide")
                     }, 4000)
-                });
-            }, 1000);
-        });
-    });
+                })
+            }, 1000)
+        })
+	})
+	
  	$(document).ready(function(){
 		$('.add_cart').click(function(){
 			var idBARANG    = $(this).data("barangid");
@@ -99,21 +108,21 @@ if ($plugins == 'home') { ?>
 					$('#hide_info').hide();
 					$('#detail_cart').html(data);
 				}
-			});
-		});
-	});
+			})
+		})
+	})
 	$(document).ready(function() {
 	    $(".check-submit").click(function(e){
-	    	e.preventDefault();
-	    	var nameCUSTOMER = $("input[name='nameCUSTOMER']").val();
-	    	var emailCUSTOMER = $("input[name='emailCUSTOMER']").val();
-	    	var passwordCUSTOMER = $("input[name='passwordCUSTOMER']").val();
-	    	var addressCUSTOMER = $("textarea[name='addressCUSTOMER']").val();
-	    	var provinceCUSTOMER = $("select[name='provinceCUSTOMER']").val();
-	    	var cityCUSTOMER = $("select[name='cityCUSTOMER']").val();
-	    	var zipCUSTOMER = $("input[name='zipCUSTOMER']").val();
-	    	var teleCUSTOMER = $("input[name='teleCUSTOMER']").val();
-	    	var skCUSTOMER = $("input[name='skCUSTOMER']").val();
+	    	e.preventDefault()
+	    	var nameCUSTOMER = $("input[name='nameCUSTOMER']").val()
+	    	var emailCUSTOMER = $("input[name='emailCUSTOMER']").val()
+	    	var passwordCUSTOMER = $("input[name='passwordCUSTOMER']").val()
+	    	var addressCUSTOMER = $("textarea[name='addressCUSTOMER']").val()
+	    	var provinceCUSTOMER = $("select[name='provinceCUSTOMER']").val()
+	    	var cityCUSTOMER = $("select[name='cityCUSTOMER']").val()
+	    	var zipCUSTOMER = $("input[name='zipCUSTOMER']").val()
+	    	var teleCUSTOMER = $("input[name='teleCUSTOMER']").val()
+	    	var skCUSTOMER = $("input[name='skCUSTOMER']").val()
 	        $.ajax({
 	            url: "<?php echo base_url();?>customer/register",
 	            type:'POST',
@@ -708,4 +717,17 @@ if ($plugins == 'home') { ?>
 			}
 		});
 	});
+
+	
+	$(".logout-trigger").on("click", function(e) {
+		$.ajax({
+			url: "<?php echo base_url();?>customer/logout",
+			method: "GET",
+			success: function() {
+				console.log("Hooray!")
+				window.location.href = "<?php echo base_url();?>home"
+			}
+		})
+		e.preventDefault()
+	})
 </script>
