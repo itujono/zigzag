@@ -79,11 +79,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 </div>
 
 <script>
-    const loginSuccess = document.querySelector(".ui.message.logout-success")
+    const logoutSuccess = document.querySelector(".ui.message.logout-success")
 
-    if (loginSuccess.classList.contains("visible")) {
+    if (logoutSuccess.classList.contains("visible")) {
         setTimeout(function() {
-            loginSuccess.classList.remove("visible")
+            logoutSuccess.classList.remove("visible")
         }, 3000)
     }
 </script>
