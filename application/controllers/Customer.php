@@ -646,7 +646,8 @@ class Customer extends Frontend_Controller {
         	$data['message'] = '';
         }
 
-		$this->load->view('home', $data);
+		$data['subview'] = $this->load->view($this->data['frontendDIR'].'home', $data, TRUE);
+        $this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}
 
 }
