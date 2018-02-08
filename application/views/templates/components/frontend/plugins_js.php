@@ -31,7 +31,7 @@ if ($plugins == 'home') { ?>
 							url : "<?php echo base_url();?>product/wish",
 							method : "POST",
 							dataType: "json",
-							data : {idBARANG: idBARANG},
+							data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG},
 							success: function(data){
 								if(data.status == "success"){
 					                $(".add-to-wishlist").transition("jiggle").removeClass("empty").css("color", "#f92626");
@@ -103,7 +103,7 @@ if ($plugins == 'home') { ?>
 			$.ajax({
 				url : "<?php echo base_url();?>product/add_to_cart",
 				method : "POST",
-				data : {idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG},
+				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG},
 				success: function(data){
 					$('#hide_info').hide();
 					$('#detail_cart').html(data);
@@ -127,7 +127,7 @@ if ($plugins == 'home') { ?>
 	            url: "<?php echo base_url();?>customer/register",
 	            type:'POST',
 	            dataType: "json",
-	            data: {nameCUSTOMER:nameCUSTOMER, emailCUSTOMER:emailCUSTOMER, passwordCUSTOMER:passwordCUSTOMER, addressCUSTOMER:addressCUSTOMER, provinceCUSTOMER:provinceCUSTOMER, cityCUSTOMER:cityCUSTOMER, zipCUSTOMER:zipCUSTOMER, teleCUSTOMER:teleCUSTOMER, skCUSTOMER:skCUSTOMER},
+	            data: {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', nameCUSTOMER:nameCUSTOMER, emailCUSTOMER:emailCUSTOMER, passwordCUSTOMER:passwordCUSTOMER, addressCUSTOMER:addressCUSTOMER, provinceCUSTOMER:provinceCUSTOMER, cityCUSTOMER:cityCUSTOMER, zipCUSTOMER:zipCUSTOMER, teleCUSTOMER:teleCUSTOMER, skCUSTOMER:skCUSTOMER},
 	            success: function(data) {
 	            	if(data.status == "success"){
 	                	window.location.href = data.redirect
@@ -155,7 +155,7 @@ if ($plugins == 'home') { ?>
 			$.ajax({
 				url : "<?php echo base_url();?>product/add_to_cart",
 				method : "POST",
-				data : {idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG},
+				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG},
 				success: function(data){
 					$('#hide_info').hide();
 					$('#detail_cart').html(data);
@@ -346,7 +346,7 @@ if ($plugins == 'home') { ?>
 	            url             : '<?php echo base_url();?>customer/save_profile_picture_customer',
 	            type 			: 'POST',
 	            processData 	: false,
-	            data 			: {formData, inline_city:inline_city},
+	            data 			: {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', formData, inline_city:inline_city},
 	            success : function (data) {
 
 	                if(data.status == 'success') {
@@ -393,7 +393,7 @@ if ($plugins == 'home') { ?>
 			onSuccess: function(e) {
 				const emailCUSTOMER = $("#emailCUSTOMER").val()
 				const teleCUSTOMER = $("#teleCUSTOMER").val()
-				const formData = { emailCUSTOMER, teleCUSTOMER }
+				const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', emailCUSTOMER, teleCUSTOMER }
 				$(this).find("button.submit").addClass("loading")			
 
 				if (emailCUSTOMER == '') {
@@ -457,7 +457,7 @@ if ($plugins == 'home') { ?>
 			onSuccess: function(e) {
 				const addressCUSTOMER = $("#addressCUSTOMER").val()
 				const zipCUSTOMER = $("#zipCUSTOMER").val()
-				const formData = { addressCUSTOMER, zipCUSTOMER }
+				const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', addressCUSTOMER, zipCUSTOMER }
 
 				$(this).find("button.submit").addClass("loading")
 
@@ -522,7 +522,7 @@ if ($plugins == 'home') { ?>
 			onSuccess: function(e) {
 				const facebooknameSOCIAL = $("#facebooknameSOCIAL").val()
 				const instagramnameSOCIAL = $("#instagramnameSOCIAL").val()
-				const formData = { facebooknameSOCIAL, instagramnameSOCIAL }
+				const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', facebooknameSOCIAL, instagramnameSOCIAL }
 
 				$(this).find("button.submit").addClass("loading")
 
@@ -584,7 +584,7 @@ if ($plugins == 'home') { ?>
 			$.ajax({
 				url : "<?php echo base_url();?>product/add_to_cart",
 				method : "POST",
-				data : {idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG},
+				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG},
 				success: function(data){
 					$('#wishlist_item').load("<?php echo base_url();?>customer/move_wish_list_to_cart/"+idWISH);
 					$('#hide_info').hide();
@@ -654,7 +654,7 @@ if ($plugins == 'home') { ?>
 	            const oldpassword = $("#oldpassword").val()
 	            const password = $("#password").val()
 	            const repassword = $("#repassword").val()
-	            const formData = { oldpassword, password, repassword }
+	            const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', oldpassword, password, repassword }
 	            $.ajax({
 	                url: "<?php echo base_url();?>customer/change_password_customer",
 	                type:'POST',
@@ -710,7 +710,7 @@ if ($plugins == 'home') { ?>
 		$.ajax({
 			url : "<?php echo base_url();?>product/hapus_cart",
 			method : "POST",
-			data : {row_id : row_id},
+			data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', row_id : row_id},
 			success :function(data){
 				$('#detail_cart').html(data);
 				$('#hide_info').show();
