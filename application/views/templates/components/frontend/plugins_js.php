@@ -337,37 +337,118 @@ if ($plugins == 'home') { ?>
 				.html(`<i class='close icon'></i> ${text}`)
 		}
 
-	    $(".upload_profile_picture_customer").click(function(e){
+	    $("#upload_profile_picture_customer").on('submit', (function(e){
 	        e.preventDefault();
-         	var formData = new FormData($('#imgCUSTOMER')[0]);
-	        var inline_city = $(".inline_city").val();
-	        console.log(inline_city);
+	        $(this).find("button.submit").addClass("loading")
 	        $.ajax({
 	            url             : '<?php echo base_url();?>customer/save_profile_picture_customer',
 	            type 			: 'POST',
-	            processData 	: false,
-	            data 			: {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', formData, inline_city:inline_city},
-	            success : function (data) {
+	            data 			: new FormData(this),
+	            mimeType		: "multipart/form-data",
+	            contentType 	: false,  
+                cache 			: false,  
+                processData		: false,
+	            success: response => {
+					$(this).find("button.submit").removeClass("loading")				
+					$(this).transition("fade", 100, () => {
+						$(".profile-data").transition("fade", 100)
+						$(".editable").removeClass("disabled")
+					})
+					$(this).siblings(".print-success-msg-profile").css("display", "block")
+					$(this).siblings(".print-error-msg-profile").css('display','none')
+					$(this).siblings(".print-notsave-msg-profile").css('display','none')
 
-	                if(data.status == 'success') {
-	                	$(".print-error-msg-profile").css('display','none');
-	                	$(".print-notsave-msg-profile").css('display','none');
-	                	$(".print-success-msg-profile").css('display','block');
-	                } else if(data.status == 'notsave') {
-	                	$(".print-notsave-msg-profile").css('display','block');
-	                	$(".print-error-msg-profile").css('display','none');
-	                	$(".print-success-msg-profile").css('display','none');
-	                } else {
-	                	$(".print-notsave-msg-profile").css('display','none');
-	                	$(".print-error-msg-profile").css('display','block');
-	                	$(".print-error-msg-profile").html(data.message);
-	                	$(".print-success-msg-profile").css('display','none');
-	                	
-	                }
-	            }
+					if (response.status == "notuploaded") {
+						$(".editable").removeClass("disabled")
+						$(this).siblings(".print-error-msg-profile").css('display','block')
+						$(this).siblings(".print-success-msg-profile").css('display','none')
+						$(this).siblings(".print-error-msg-profile").html(response.message)
+						return false
+					}
+				}
 	        })
 	        return false;
-	    })
+	    }))
+
+	    $("form.inline-editable.general-info").form({
+			inline: true,
+			on: "submit",
+			fields: {
+				inlinename: {
+					identifier: "inline-name",
+					rules: [
+						{ type: "empty", prompt: "Wajib diisi" }
+					]
+				},
+				provinsi: {
+					identifier: "provinsi",
+					rules: [
+						{ type: "empty", prompt: "Ini juga jangan kosong ya" }
+					]
+				},
+				kota: {
+					identifier: "kota",
+					rules: [
+						{ type: "empty", prompt: "Ini juga jangan kosong juga ya" }
+					]
+				}
+			},
+			onSuccess: function(e) {
+				const name_customer = $("#name_customer").val()
+				const inline_provinsi = $("#inline_provinsi").val()
+				const inline_city = $("#inline_city").val()
+				const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', name_customer, inline_provinsi, inline_city }
+				$(this).find("button.submit").addClass("loading")			
+
+				if (name_customer == '') {
+					errorMessage($('form.inline-editable.general-info'), "Nama tidak boleh kosong")
+					return false
+					$(this).find("button.submit").removeClass("loading")			
+				}
+
+				if (inline_provinsi == '') {
+					errorMessage($('form.inline-editable.general-info'), "Provinsi tidak boleh kosong")
+					return false
+					$(this).find("button.submit").removeClass("loading")			
+				}
+
+				if (inline_city == '') {
+					errorMessage($('form.inline-editable.general-info'), "Kota tidak boleh kosong")
+					return false
+					$(this).find("button.submit").removeClass("loading")			
+				}
+
+				$.ajax({
+					url: "<?php echo base_url();?>customer/save_data_customer",
+					type:'POST',
+					dataType: "json",
+					data: formData,
+					success: response => {
+						$(this).find("button.submit").removeClass("loading")						
+						$(this).transition("fade", 100, () => {
+							$(".customer-data").transition("fade", 100)
+							$(".name_customer").text(response.name_customer)
+							$(".province_customer").text(response.inline_provinsi)
+							$(".city_customer").text(response.inline_city)
+							$(".editable").removeClass("disabled")
+						})
+						$(this).siblings(".print-success-msg-profile").css("display", "block")
+						$(this).siblings(".print-error-msg-profile").css('display','none')
+						$(this).siblings(".print-notsave-msg-profile").css('display','none')
+
+						if (response.status == "error_validation") {
+							$(".editable").removeClass("disabled")
+							$(this).siblings(".print-notsave-msg-profile").css('display','none')
+							$(this).siblings(".print-error-msg-profile").css('display','block')
+							$(this).siblings(".print-success-msg-profile").css('display','none')
+							$(this).siblings(".print-error-msg-profile").html(response.message)
+							return false
+						}
+					}
+				})
+				e.preventDefault()
+			}
+		})
 
 		// $(".form.inline-editable.contact button.cancel").on("click", function() {
 		// 	$(this).siblings(".print-error-msg-profile").css('display','none');

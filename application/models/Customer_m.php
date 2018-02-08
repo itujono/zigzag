@@ -63,10 +63,20 @@ class Customer_m extends MY_Model{
 			)
 	);
 
-	public $rules_save_profile_picture_customer = array(
+	public $rules_save_data_customer = array(
+		'name_customer' => array(
+			'field' => 'name_customer',
+			'label' => 'Nama Kamu',
+			'rules' => 'trim|required'
+			),
 		'inline_city' => array(
 			'field' => 'inline_city',
 			'label' => 'Kota',
+			'rules' => 'trim'
+			),
+		'inline_provinsi' => array(
+			'field' => 'inline_provinsi',
+			'label' => 'Provinsi',
 			'rules' => 'trim'
 			)
 	);

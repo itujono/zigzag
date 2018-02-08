@@ -383,9 +383,10 @@ class Customer extends Frontend_Controller {
 
 		$data['data_customer'] = $this->Customer_m->selectall_customer($this->session->userdata('idCUSTOMER'))->row();
 		
-		$map = directory_map('assets/upload/customer/pic-customer-'.seo_url($data['data_customer']->nameCUSTOMER.''.folenc($data['data_customer']->idCUSTOMER)), FALSE, TRUE);
+		$map = directory_map('assets/upload/customer/pic-customer-'.seo_url($data['data_customer']->nameCUSTOMER.'-'.folenc($data['data_customer']->idCUSTOMER)), FALSE, TRUE);
+
 		if(!empty($map)){
-			$data['data_customer']->imageCUSTOMER = base_url() . 'assets/upload/customer/pic-customer-'.seo_url($data['data_customer']->nameCUSTOMER.''.folenc($data['data_customer']->idCUSTOMER)).'/'.$map[0];
+			$data['data_customer']->imageCUSTOMER = base_url() . 'assets/upload/customer/pic-customer-'.seo_url($data['data_customer']->nameCUSTOMER.'-'.folenc($data['data_customer']->idCUSTOMER)).'/'.$map[0];
 		} elseif ($this->session->userdata('profile_picture') != '') {
 			$data['data_customer']->imageCUSTOMER = $this->session->userdata('profile_picture');
 		} else {
@@ -414,7 +415,40 @@ class Customer extends Frontend_Controller {
 	}
 
 	public function save_profile_picture_customer() {
-		$rules = $this->Customer_m->rules_save_profile_picture_customer;
+		
+		$subject = seo_url($this->session->userdata('Name'));
+		$filenamesubject = 'pic-customer-'.$subject.'-'.folenc($this->session->userdata('idCUSTOMER'));
+		
+		if(isset($_FILES['imgCUSTOMER']['name'])){
+			//delete directory first and then uploading again
+			$path_for_delete = 'assets/upload/customer/'.$filenamesubject;
+			delete_files($path_for_delete);
+
+			$path = 'assets/upload/customer/'.$filenamesubject;
+			if (!file_exists($path)){
+            	mkdir($path, 0777, true);
+        	}
+			$config['upload_path']		= $path;
+            $config['allowed_types']	= 'jpg|png|jpeg';
+            $config['file_name']        = $this->security->sanitize_filename($filenamesubject);
+            $config['overwrite'] 		= TRUE;
+
+	        $this->upload->initialize($config);
+	        if ($this->upload->do_upload('imgCUSTOMER')){
+	        	$data['uploads'] = $this->upload->data();
+	        	$response['status'] = 'success';
+	  			$response['message'] = '';
+	            echo json_encode($response);
+	        } else {
+	        	$response['status'] = 'notuploaded';
+	  			$response['message'] = $this->upload->display_errors();
+	            echo json_encode($response);
+	        }
+		}
+	}
+
+	public function save_data_customer() {
+		$rules = $this->Customer_m->rules_save_data_customer;
 		$this->form_validation->set_rules($rules);
 		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
         $this->form_validation->set_message('trim', 'Form %s adalah Trim');
@@ -422,42 +456,31 @@ class Customer extends Frontend_Controller {
 
 		if ($this->form_validation->run() == TRUE) {
 
+			$data['nameCUSTOMER'] = $this->input->post('name_customer');
 			$data['cityCUSTOMER'] = $this->input->post('inline_city');
+			$data['provinceCUSTOMER'] = $this->input->post('inline_provinsi');
 			
-			$id = decode(urldecode($this->session->userdata('idCUSTOMER')));
+			$id = $this->session->userdata('idCUSTOMER');
 
 			$data = $this->security->xss_clean($data);
 			$idsave = $this->Customer_m->save($data, $id);
 
-			$subject = seo_url($this->session->userdata('Name'));
-			$filenamesubject = 'pic-customer-'.$subject.'-'.folenc($idsave);
-			
-			if(!empty($_FILES['imgCUSTOMER']['name'][0])){
-				$path = 'assets/upload/customer/'.$filenamesubject;
-				if (!file_exists($path)){
-	            	mkdir($path, 0777, true);
-	        	}
-				$config['upload_path']		= $path;
-	            $config['allowed_types']	= 'jpg|png|jpeg';
-	            $config['file_name']        = $this->security->sanitize_filename($filenamesubject);
-	            $config['overwrite'] 		= TRUE;
-		        $this->upload->initialize($config);
-		        if ($this->upload->do_upload('imgCUSTOMER')){
-		        	$data['uploads'] = $this->upload->data();
-		        	$response['status'] = 'success';
-		  			$response['message'] = '';
-		            echo json_encode($response);
-		        } else {
-		        	$response['status'] = 'notsave';
-		  			$response['message'] = '';
-		            echo json_encode($response);
-		        }
-  			}
-  			
-		} else {
-			$response['status'] = 'error';
-			$response['message'] = validation_errors();
-            echo json_encode($response);
+	        if ($idsave){
+	        	$response['status'] = 'success';
+	  			$response['message'] = 'Berhasil terkirim';
+				$response['name_customer'] = $data['nameCUSTOMER'];
+
+				$data['data_customer'] = $this->Customer_m->selectall_customer($id)->row();
+				$data['data_customer_province_city'] = selectall_city_by_province($data['data_customer']->cityCUSTOMER, $data['data_customer']->provinceCUSTOMER);
+
+				$response['inline_provinsi'] = $data['data_customer_province_city']['province'];
+				$response['inline_city'] = $data['data_customer_province_city']['city_name'];
+	            echo json_encode($response);
+	        } else {
+	        	$response['status'] = 'error_validation';
+				$response['message'] = validation_errors();
+	            echo json_encode($response);
+	        }
 		}
 	}
 

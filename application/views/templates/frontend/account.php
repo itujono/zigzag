@@ -33,44 +33,68 @@ if(!empty($data_customer)){
                     <h4 class="header">Oops!</h4>
                 </div>
                 <div>
-                    <div class="will-edit">
-                        <figure class="ui circular image">
-                            <img src="<?php echo $data_customer->imageCUSTOMER; ?>" alt="<?php echo $data_customer->nameCUSTOMER;?>">
-                        </figure>
-                        <div class="name">
-                            <?php echo $data_customer->nameCUSTOMER;?>
-                            <p><?php echo $name_city;?>, <?php echo $name_province;?></p>
-                        </div>
-                    </div>
-                    <form action="<?php echo base_url();?>customer/save_profile_picture_customer" method="POST" class="ui form inline-editable general-info" enctype="multipart/form-data">
-
-                        <!-- /////////////////// -->
-                        <div class="ui compact red message print-error-msg-profile" style="display:none">
-                            <i class="close icon"></i>
-                            <h5 class="header">Oops!</h5>
-                            Ini apaan Ndan?
-                        </div>
-                        <div class="ui compact red message print-success-msg-profile" style="display:none">
+                    <div class="ui compact red message print-success-msg-profile" style="display:none">
                             <i class="close icon"></i>
                             <h5 class="header">Sukses!</h5>
-                            Data berhasil disimpan.
-                        </div>
-                        <div class="ui compact red message print-notsave-msg-profile" style="display:none">
-                            <i class="close icon"></i>
-                            <h5 class="header">Oops!</h5>
-                            Kami tidak dapat menyimpan data anda, coba lagi nanti.
-                        </div>
-                        <!-- /////////////////// -->
-
-                        <?php if(empty($this->session->userdata('profile_picture'))) {  ?>
+                            Gambar Profile berhasil diupload
+                    </div>
+                    <div class="ui compact red message print-notsave-msg-profile" style="display:none">
+                        <i class="close icon"></i>
+                        <h5 class="header">Oops!</h5>
+                        Kami tidak dapat menyimpan data anda, coba lagi nanti.
+                    </div>
+                    <ul class="profile-data">
+                        <li>
+                        <figure class="ui circular image">
+                            <img id="uploaded-image" src="<?php echo $data_customer->imageCUSTOMER; ?>" alt="<?php echo $data_customer->nameCUSTOMER;?>">
+                        </figure>
+                        </li>
+                    </ul>
+                    <?php if(empty($this->session->userdata('profile_picture'))) {  ?>
+                    <form method="POST" action="<?php echo base_url();?>customer/save_profile_picture_customer" class="ui form inline-editable general-picture" enctype="multipart/form-data" id="upload_profile_picture_customer">
+                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
                         <div class="field">
                             <label for="inline-photo">Ganti foto?</label>
-                            <input type="file" name="imgCUSTOMER" id="imgCUSTOMER" required="required">
+                            <input type="file" name="imgCUSTOMER" id="imgCUSTOMER" accept="image/jpg, image/jpeg, image/png">
                         </div>
-                        <?php } ?>
+                        <input class="ui mini button submit" type="submit" value="Update">
+                        <button class="ui mini button basic cancel">Cancel</button>
+                    </form>
+                    <a href="#" class="ui icon editable button general-picture"> <i class="write icon"></i> </a>
+                    <?php } ?>
+                </div>
+                <div>
+                    <div class="title"> Customer </div>
+                    <!-- ///////////// -->
+                    <div class="ui compact teal message print-success-msg-profile" style="display:none">
+                        <i class="close icon"></i>
+                        <h5 class="header">Sukses!</h5>
+                        Data berhasil disimpan.
+                    </div>
+                    <div class="ui compact red message print-notsave-msg-profile" style="display:none">
+                        <i class="close icon"></i>
+                        <h5 class="header">Oops!</h5>
+                        Kami tidak dapat menyimpan data anda, coba lagi nanti.
+                    </div>
+                    <div class="ui compact red message print-error-msg-profile" style="display:none">
+                        <i class="close icon"></i>
+                        <h5 class="header">Oops!</h5>
+                        Ini apaan gak tau.
+                    </div>
+                    <!-- /////////////// -->
+                    <ul class="customer-data">
+                        <li class="name_customer"><?php echo $data_customer->nameCUSTOMER;?></li>
+                        <li class="city_customer"><?php echo $name_city;?></li><li class="province_customer"><?php echo $name_province;?></li>
+                    </ul>
+                    <form method="POST" action="<?php echo base_url();?>customer/save_data_customer" class="ui form inline-editable general-info">
+                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
+                        <div class="field">
+                            <label for="inline-name">Nama kamu</label>
+                            <input type="text" name="name_customer" id="name_customer" value="<?php echo $data_customer->nameCUSTOMER;?>">
+                        </div>
                        <div class="field">
                             <label for="provinsi">Provinsi</label>
-                            <select class="ui search dropdown" id="inline-provinsi" name="idPROVINCE" required="required">
+                            <select class="ui search dropdown" id="inline_provinsi" name="inline_provinsi" required="required">
                                 <option value="" selected disabled="disabled">Pilih provinsi kamu</option>
                                 <?php
                                 $listprovince = select_all_province();
@@ -89,12 +113,12 @@ if(!empty($data_customer)){
                             </select>
                         </div>
                         <div class="field">
-                            <label for="provinsi">Kota/Kab</label>
-                            <select class="ui search dropdown inline_city" id="inline_city" name="inline_city" required="required">
-                                <option value="" disabled="disabled">Pilih provinsi kamu</option>
+                            <label for="kota">Kota/Kab</label>
+                            <select class="ui search dropdown" id="inline_city" name="inline_city" required="required">
+                                <option value="" disabled="disabled">Pilih provinsi kamu dulu</option>
                             </select>
                         </div>
-                        <button class="ui mini button submit upload_profile_picture_customer" type="submit">Update</button>
+                        <button class="ui mini button submit save_data_customer" type="submit">Update</button>
                         <button class="ui mini button basic cancel">Cancel</button>
                     </form>
                     <a href="#" class="ui icon editable button general-info"> <i class="write icon"></i> </a>

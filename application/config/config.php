@@ -466,8 +466,8 @@ $config['csrf_protection'] = TRUE;
 $config['csrf_token_name'] = 'secure_csrf_codewell_app_token';
 $config['csrf_cookie_name'] = 'secure_csrf_codewell_app_cookie';
 $config['csrf_expire'] = 7200;
-$config['csrf_regenerate'] = TRUE;
-$config['csrf_exclude_uris'] = array('');
+$config['csrf_regenerate'] = FALSE;
+$config['csrf_exclude_uris'] = array('customer/save_profile_picture_customer');
 
 /*
 |--------------------------------------------------------------------------

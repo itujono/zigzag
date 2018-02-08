@@ -70,9 +70,9 @@
                         <div class="ui top left pointing dropdown button item">
                         <?php
                             if(!empty($this->session->userdata('idCUSTOMER'))){
-                                $map = directory_map('assets/upload/customer/pic-customer-'.seo_url($this->session->userdata('Name').''.folenc($this->session->userdata('idCUSTOMER'))), FALSE, TRUE);
+                                $map = directory_map('assets/upload/customer/pic-customer-'.seo_url($this->session->userdata('Name').'-'.folenc($this->session->userdata('idCUSTOMER'))), FALSE, TRUE);
                                 if(!empty($map)){
-                                    $image = base_url() . 'assets/upload/customer/pic-customer-'.seo_url($this->session->userdata('Name').''.folenc($this->session->userdata('idCUSTOMER'))).'/'.$map[0];
+                                    $image = base_url() . 'assets/upload/customer/pic-customer-'.seo_url($this->session->userdata('Name').'-'.folenc($this->session->userdata('idCUSTOMER'))).'/'.$map[0];
                                 } elseif ($this->session->userdata('profile_picture') != '') {
                                     $image = $this->session->userdata('profile_picture');
                                 } else {

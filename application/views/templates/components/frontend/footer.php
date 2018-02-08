@@ -115,7 +115,7 @@ $("#provinsi").change(function (){
     $('#city').load(url);
     return false;
 });
-$("#inline-provinsi").change(function (){
+$("#inline_provinsi").change(function (){
     var url = "<?php echo base_url().'customer/load_city/';?>"+$(this).val();
     $('#inline_city').load(url);
     return false;
