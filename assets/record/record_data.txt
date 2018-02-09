@@ -422,3 +422,101 @@ Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zi
 Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/account/andhana-utama - Pada waktu Senin, 5 Februari 2018 | 10:42 
 Bejo Karmila - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/cart.html - Pada waktu Senin, 5 Februari 2018 | 16:57 
 Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/undefined - Pada waktu Selasa, 6 Februari 2018 | 13:34 
+Superadmin ZIGZAG - Berhasil login - Pada waktu Jumat, 9 Februari 2018 | 08:12 
+Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Jumat, 9 Februari 2018 | 08:12 
+Superadmin ZIGZAG - Mengunjungi halaman menu admin - Pada waktu Jumat, 9 Februari 2018 | 08:12 
+Superadmin ZIGZAG - Penyimpanan data menu berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:13 
+Superadmin ZIGZAG - Mengunjungi halaman menu admin - Pada waktu Jumat, 9 Februari 2018 | 08:13 
+Superadmin ZIGZAG - Penyimpanan data menu berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:14 
+Superadmin ZIGZAG - Mengunjungi halaman menu admin - Pada waktu Jumat, 9 Februari 2018 | 08:14 
+Superadmin ZIGZAG - Mengunjungi halaman user admin - Pada waktu Jumat, 9 Februari 2018 | 08:14 
+Superadmin ZIGZAG - Mengunjungi halaman user admin - Pada waktu Jumat, 9 Februari 2018 | 08:14 
+Superadmin ZIGZAG - Penyimpanan user admin berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:14 
+Superadmin ZIGZAG - Mengunjungi halaman user admin - Pada waktu Jumat, 9 Februari 2018 | 08:14 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:28 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:29 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:29 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:29 
+Superadmin ZIGZAG - Penyimpanan data shipping tidak berhasil format salah - Pada waktu Jumat, 9 Februari 2018 | 08:29 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:29 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:29 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:29 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:30 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:30 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:30 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:30 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:30 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:31 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:32 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:32 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:32 
+Superadmin ZIGZAG - Penyimpanan data shipping tidak berhasil format salah - Pada waktu Jumat, 9 Februari 2018 | 08:32 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:32 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:39 
+Superadmin ZIGZAG - Penyimpanan data shipping tidak berhasil format salah - Pada waktu Jumat, 9 Februari 2018 | 08:39 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:39 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:42 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:42 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:42 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:42 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:42 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:42 
+Superadmin ZIGZAG - Penyimpanan data shipping tidak berhasil format salah - Pada waktu Jumat, 9 Februari 2018 | 08:42 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:42 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:43 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:43 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:43 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:47 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:47 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:48 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:48 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:49 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:50 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:50 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:50 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:50 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:50 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:51 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:51 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:51 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:52 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 08:52 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:52 
+Superadmin ZIGZAG - Mengunjungi halaman Activity - Pada waktu Jumat, 9 Februari 2018 | 08:52 
+Superadmin ZIGZAG - Mengunjungi halaman Activity - Pada waktu Jumat, 9 Februari 2018 | 08:55 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:56 
+Superadmin ZIGZAG - Mengunjungi halaman Activity - Pada waktu Jumat, 9 Februari 2018 | 08:56 
+Superadmin ZIGZAG - Mengunjungi halaman Activity - Pada waktu Jumat, 9 Februari 2018 | 08:57 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 08:57 
+Superadmin ZIGZAG - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/img/jne.png - Pada waktu Jumat, 9 Februari 2018 | 08:59 
+Superadmin ZIGZAG - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/img/tiki.png - Pada waktu Jumat, 9 Februari 2018 | 08:59 
+Superadmin ZIGZAG - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/img/jne.png - Pada waktu Jumat, 9 Februari 2018 | 09:00 
+Superadmin ZIGZAG - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/img/tiki.png - Pada waktu Jumat, 9 Februari 2018 | 09:00 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/img/jne.png - Pada waktu Jumat, 9 Februari 2018 | 09:01 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/img/tiki.png - Pada waktu Jumat, 9 Februari 2018 | 09:01 
+Superadmin ZIGZAG - Berhasil login - Pada waktu Jumat, 9 Februari 2018 | 09:06 
+Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Jumat, 9 Februari 2018 | 09:06 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 09:06 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 09:06 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 09:07 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 09:07 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 09:07 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/img/jne.png - Pada waktu Jumat, 9 Februari 2018 | 09:08 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/img/tiki.png - Pada waktu Jumat, 9 Februari 2018 | 09:08 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/img/jne.png - Pada waktu Jumat, 9 Februari 2018 | 09:10 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/img/tiki.png - Pada waktu Jumat, 9 Februari 2018 | 09:10 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 09:10 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 09:10 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 09:10 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/img/jne.png - Pada waktu Jumat, 9 Februari 2018 | 09:10 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/img/tiki.png - Pada waktu Jumat, 9 Februari 2018 | 09:10 
+Superadmin ZIGZAG - Berhasil login - Pada waktu Jumat, 9 Februari 2018 | 10:21 
+Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Jumat, 9 Februari 2018 | 10:21 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 10:21 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 10:21 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 10:21 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 10:21 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 10:22 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 10:22 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Jumat, 9 Februari 2018 | 10:22 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Jumat, 9 Februari 2018 | 10:22 

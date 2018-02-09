@@ -8,6 +8,8 @@ class Product extends Frontend_Controller {
 		$this->load->model('Category_barang_m');
 		$this->load->model('Barang_m');
 		$this->load->model('Wish_m');
+		$this->load->model('Shipping_m');
+		$this->load->model('Customer_m');
 	}
 
 	public function detail($slug){
@@ -168,5 +170,27 @@ class Product extends Frontend_Controller {
 		if(!empty($this->session->flashdata('message'))) {
 	        $data['message'] = $this->session->flashdata('message');
 	    }
+	}
+
+	public function checkout(){
+		$data['addONS'] = '';
+		$data['class'] = 'checkout';
+		$data['title'] = 'Checkout - '.$this->session->userdata('Name');
+
+		$data['checkshipping_notactive'] = $this->Shipping_m->checkshipping(0)->result();
+		$data['checkshipping_active'] = $this->Shipping_m->checkshipping(1)->result();
+		foreach ($data['checkshipping_active'] as $key => $value) {
+			$map = directory_map('assets/upload/shipping/pic-shipping-'.folenc($data['checkshipping_active'][$key]->idSHIPPING), FALSE, TRUE);
+			if(!empty($map)){
+				$data['checkshipping_active'][$key]->imageSHIPPING = base_url() . 'assets/upload/shipping/pic-shipping-'.folenc($data['checkshipping_active'][$key]->idSHIPPING).'/'.$map[0];
+			} else {
+				$data['checkshipping_active'][$key]->imageSHIPPING = base_url() . 'assets/upload/no-image-available.png';
+			}
+		}
+		$data['data_customer'] = $this->Customer_m->selectall_customer($this->session->userdata('idCUSTOMER'))->row();
+		$data['data_customer_province_city'] = selectall_city_by_province($data['data_customer']->cityCUSTOMER, $data['data_customer']->provinceCUSTOMER);
+
+		$data['subview'] = $this->load->view($this->data['frontendDIR'].'checkout', $data, TRUE);
+		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}
 }

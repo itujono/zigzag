@@ -286,8 +286,10 @@ if(!empty($data_customer)){
                     <i class="diamond icon"></i> Histori Pembelian</a>
                 <a href="#" class="item" data-tab="retur-history">
                     <i class="moon icon"></i> Histori Retur</a>
+                <?php if(empty($this->session->userdata('profile_picture'))) {  ?>
                 <a href="#" class="right floated item" data-tab="settings">
                     <i class="wrench icon"></i> Settings</a>
+                <?php } ?>
             </div>
 
             <div class="ui tab active segment" id="wishlist" data-tab="wishlist">
