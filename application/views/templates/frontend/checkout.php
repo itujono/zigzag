@@ -429,7 +429,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         <td>
                             <div class="item">
                                 <div class="ui tiny image">
-                                    <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
+                                    <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" alt="">
                                 </div>
                                 <div class="left aligned content">
                                     Basic Knitted Pulljump Pouch Bag
@@ -450,7 +450,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         <td>
                             <div class="item">
                                 <div class="ui tiny image">
-                                    <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" alt="">
+                                    <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" alt="">
                                 </div>
                                 <div class="left aligned content">
                                     Hand-bag Washed Jeans Parachutes

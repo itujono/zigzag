@@ -33,7 +33,7 @@
                 <a href="#" class="learn-more">Apa itu deposit?</a>
                 <div class="ui fluid popup what-is-deposit item center right">
                     <div class="ui avatar image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" alt="">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" alt="">
                     </div>
                     <div class="content">
                         <div class="header">Apa itu deposit?</div>
@@ -103,7 +103,7 @@
         <div class="four wide column">
             <a href="#" class="ui card">
                 <div class="image">
-                    <img src="https://source.unsplash.com/collection/1055793/" alt="">
+                    <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" alt="">
                 </div>
             </a>
         </div>
@@ -127,8 +127,8 @@
             <div class="three wide doubling column">
                 <a href="#" class="ui card">
                     <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
                         <div class="ui icon black buttons additional-actions">
                             <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
                                 <i class="empty heart icon"></i>
@@ -151,8 +151,8 @@
             <div class="three wide doubling column">
                 <a href="#" class="ui card">
                     <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
                         <div class="ui icon black buttons additional-actions">
                             <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
                                 <i class="empty heart icon"></i>
@@ -176,8 +176,8 @@
             <div class="three wide doubling column">
                 <a href="#" class="ui card">
                     <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/9823/501/807/9823501807_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
                         <div class="ui icon black buttons additional-actions">
                             <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
                                 <i class="empty heart icon"></i>
@@ -200,8 +200,8 @@
             <div class="three wide doubling column">
                 <a href="#" class="ui card">
                     <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/502/015/5820502015_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
                         <div class="ui icon black buttons additional-actions">
                             <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
                                 <i class="empty heart icon"></i>
@@ -224,8 +224,8 @@
             <div class="three wide doubling column">
                 <a href="#" class="ui card">
                     <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
                         <div class="ui icon black buttons additional-actions">
                             <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
                                 <i class="empty heart icon"></i>
@@ -248,8 +248,8 @@
             <div class="three wide doubling column">
                 <a href="#" class="ui card">
                     <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
                         <div class="ui icon black buttons additional-actions">
                             <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
                                 <i class="empty heart icon"></i>
@@ -273,8 +273,8 @@
             <div class="three wide doubling column">
                 <a href="#" class="ui card">
                     <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/9823/501/807/9823501807_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
                         <div class="ui icon black buttons additional-actions">
                             <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
                                 <i class="empty heart icon"></i>
@@ -297,8 +297,8 @@
             <div class="three wide doubling column">
                 <a href="#" class="ui card">
                     <div class="ui slide masked reveal image">
-                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/502/015/5820502015_2_1_2.jpg" class="visible content">
-                        <img src="https://source.unsplash.com/user/nativemello/" class="hidden content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
+                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
                         <div class="ui icon black buttons additional-actions">
                             <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
                                 <i class="empty heart icon"></i>

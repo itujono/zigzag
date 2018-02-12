@@ -91,10 +91,12 @@ class Product extends Frontend_Controller {
 	}
 
 	public function hapus_cart(){ //fungsi untuk menghapus item cart
-		$data = array(
-			'rowid' => $this->input->post('row_id'),
-			'qty' => 0
-		);
+		foreach ($this->cart->contents() as $val) {
+			$data = array(
+				'rowid' => $this->input->post('row_id'),
+				'qty' => ($val['qty'] - 1)
+			);
+		}
 		$this->cart->update($data);
 		echo $this->show_cart();
 	}

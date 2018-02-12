@@ -73,11 +73,11 @@ if ($plugins == 'home') { ?>
         })
 	})
 
-	if (logoutSuccess) {
-		setTimeout(() => {
-			$(".ui.message.logout-success").addClass("visible")
-		}, 2000);
-	}
+	// if (logoutSuccess) {
+	// 	setTimeout(() => {
+	// 		$(".ui.message.logout-success").addClass("visible")
+	// 	}, 2000);
+	// }
 
 	
 	$(".additional-actions .add-to-cart").each(function() {

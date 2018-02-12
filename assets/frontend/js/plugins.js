@@ -241,9 +241,6 @@ $(document).ready(function() {
         },
         onFailure: function() {
             $(this).form("clear");
-        },
-        onSuccess: function() {
-            
         }
     });
     
@@ -584,6 +581,18 @@ $(document).ready(function() {
             });
         }
     });
+
+    $(".ekspedisi .radio.checkbox.jne").on("click", function() {
+        $.tab("change tab", "tab-jne" )
+    })
+
+    $(".ekspedisi .radio.checkbox.tiki").on("click", function() {
+        $.tab("change tab", "tab-tiki" )
+    })
+
+    $(".ekspedisi .radio.checkbox.sicepat").on("click", function() {
+        $.tab("change tab", "tab-sicepat" )
+    })
     
     $(".back-to-previous").on("click", function(e) {
         e.preventDefault()
@@ -835,6 +844,69 @@ $(document).ready(function() {
         el.parents("ul").siblings(".content-detail").transition("slide", 150)
     })
 
+
+
+    $(".change-password").form({
+        inline: true,
+        on: "submit",
+        fields: {
+            newPassword: {
+                identifier: "newPassword",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Jangan dikosongin password nya ya"
+                    },
+                    {
+                        type: "minLength[6]",
+                        prompt: "Kurang panjang tuh password nya"
+                    }
+                ]
+            },
+            repeatNewPassword: {
+                identifier: "repeatNewPassword",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Nah yang ini kok dikosongin juga?"
+                    },
+                    {
+                        type: "match[newPassword]",
+                        prompt: "Kayaknya nggak sama deh sama yang diketik di atas"
+                    }
+                ]
+            },
+            oldPassword: {
+                identifier: "oldPassword",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Nah yang ini kok dikosongin juga? Duh!"
+                    }
+                ]
+            },
+        },
+        onSuccess: function(e) {
+            e.preventDefault();
+            $(".confirmation-change-password").modal({
+                closable: false,
+                blurring: true,
+                onApprove: function() {
+                    $(".change-password").form("clear");
+                    $(".change-password").transition("slide", 150);
+                    $(".password-changed").css("display", "flex");
+                    setTimeout(function() {
+                        $(".change-password").transition("slide", 200)
+                        $(".password-changed").css("display", "none");
+                    }, 3000);
+                }
+            }).modal("show");
+        }
+    });
+
+
+
+
     const editable = $(".editable");
 
     editable.on("click", function(e) {
@@ -850,17 +922,12 @@ $(document).ready(function() {
     
     $(".button.cancel").on("click", function(e) {
         e.preventDefault();
-        $(this).parents("form").siblings(".editable").removeClass("disabled");
+        $(this).parents("form").form("clear").siblings(".editable").removeClass("disabled");
         $(this).parents("form").transition("fade", 100, function() {
             $(this).siblings("ul").transition("fade", 100);
         });
-        $(this).parents("form").siblings(".will-edit").fadeIn(100)
+        $(this).parents("form").siblings(".will-edit").fadeIn(100);
     });
-
-    $(".message .close").on("click", function() {
-        console.log($(this))
-        $(this).closest(".message").transition("fade", 100)
-    })
 
     $("form.inline-editable.general-info").form({
         inline: true,
@@ -901,7 +968,8 @@ $(document).ready(function() {
                 ]
             }
         },
-        onSuccess: function(e) {
+        onSuccess: function() {
+            // Okay hajar di sini AJAX nya wak!
         }
     });
     
