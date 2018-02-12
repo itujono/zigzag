@@ -10,6 +10,7 @@ class Product extends Frontend_Controller {
 		$this->load->model('Wish_m');
 		$this->load->model('Shipping_m');
 		$this->load->model('Customer_m');
+		$this->load->model('Order_m');
 	}
 
 	public function detail($slug){
@@ -45,7 +46,8 @@ class Product extends Frontend_Controller {
 			'id' => $this->input->post('idBARANG'), 
 			'name' => $this->input->post('nameBARANG'), 
 			'price' => $this->input->post('priceBARANG'), 
-			'qty' => $this->input->post('qtyBARANG'), 
+			'qty' => $this->input->post('qtyBARANG'),
+			'weight' => $this->input->post('weightBARANG')
 		);
 		$this->cart->insert($data);
 		echo $this->show_cart(); //tampilkan cart setelah added
@@ -195,4 +197,94 @@ class Product extends Frontend_Controller {
 		$data['subview'] = $this->load->view($this->data['frontendDIR'].'checkout', $data, TRUE);
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}
+
+	public function process_checkout(){
+		// $rules = $this->Order_m->rules_order;
+		// $this->form_validation->set_rules($rules);
+		// $this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
+  //       $this->form_validation->set_message('trim', 'Form %s adalah Trim');
+  //       $this->form_validation->set_message('valid_email', 'Maaf, $s Anda tidak valid');
+  //       $this->form_validation->set_message('is_unique', 'Tampaknya inputan %s anda sudah terdaftar');
+  //       $this->form_validation->set_message('min_length', 'Minimal kata sandi 8 karakter');
+  //       $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
+  //       $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+		// if ($this->form_validation->run() == TRUE) {
+			if($this->input->post('original_data') == ''){
+				$data = $this->Order_m->array_from_post(array('customerORDER','csORDER','kodeORDER','descORDER','statusORDER', 'nameORDER','emailORDER','teleORDER','provinceORDER','cityORDER','zipORDER','addressORDER','ekspedisiORDER','paymentORDER','dropshipperORDER','dropshippercompanyORDER','telehomeORDER'));
+				$data['customerORDER'] = $this->session->userdata('idCUSTOMER');
+				$data['csORDER'] = '-';
+				$data['provinceORDER'] = $this->input->post('provinsi-checkout');
+				$data['cityORDER'] = $this->input->post('city-checkout');
+				//START GENERATE KODE ORDER //
+				$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+				$res = "";
+				for ($i = 0; $i < 4; $i++) {
+				    $res .= $chars[mt_rand(0, strlen($chars)-1)];
+				}
+				$kodeorder = "ZG" . date('Ymd') . $res;
+				//END GENERATE KODE ORDER //
+				$data['kodeORDER'] = $kodeorder;
+
+				$checkkodeorder = $this->Order_m->checkkodeorder($data['kodeORDER'])->row();
+				if($checkkodeorder != NULL){
+					//START GENERATE KODE ORDER //
+					$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+					$res = "";
+					for ($i = 0; $i < 4; $i++) {
+					    $res .= $chars[mt_rand(0, strlen($chars)-1)];
+					}
+					$kodeorder = "ZG" . date('Ymd') . $res;
+					//END GENERATE KODE ORDER //
+					$data['kodeORDER'] = $kodeorder;
+				}
+
+				$data['statusORDER'] = 1;
+				if($this->input->post('dropshipper_check') == ''){
+					$data['dropshipperORDER'] = '-';
+					$data['dropshippercompanyORDER'] = '-';
+				}
+				if(!empty($this->cart->contents())){
+					foreach ($this->cart->contents() as $key => $val) {
+						$weight_barang[$key] = $val['weight']*$val['qty'];
+					}
+				}
+				$sum_weight = array_sum($weight_barang);
+				$cost = cost_ekspedisi(48, $data['cityORDER'], $data['ekspedisiORDER'], $sum_weight);
+				if(empty($cost)){
+					$response['status'] = 'empty-data';
+					$response['redirect'] = base_url();
+		            echo json_encode($response);
+				}
+	   			$data['totalekspedisiORDER'] = $cost[0]['cost'][0]['value'];
+	   			
+	   			$data = $this->security->xss_clean($data);
+				$saveid = $this->Order_m->save($data);
+
+				if ($saveid) {
+
+	            	$response['status'] = 'success';
+					$response['redirect'] = base_url();
+		            echo json_encode($response);
+
+				} else {
+
+					$data = array(
+						'title' => 'Error!',
+						'style' => 'is-warning',
+			            'text' => 'Maaf, sistem tidak dapat menyimpan data Anda. Silakan ulangi beberapa saat lagi.'
+			        );
+			       	$this->session->set_flashdata('message',$data);
+			        redirect('home');
+				}
+			} else {
+				echo "jelek";
+				exit;
+			}
+		// } else {
+		// 	$errors['status'] = 'error';
+		// 	$errors['message'] = validation_errors();
+  //           echo json_encode($errors);
+		// }
+	}
+
 }

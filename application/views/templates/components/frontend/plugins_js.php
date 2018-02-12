@@ -99,11 +99,12 @@ if ($plugins == 'home') { ?>
 			var idBARANG    = $(this).data("barangid");
 			var nameBARANG  = $(this).data("barangnama");
 			var priceBARANG = $(this).data("barangharga");
+			var weightBARANG = $(this).data("barangberat");
 			var qtyBARANG     = $('#' + idBARANG).val();
 			$.ajax({
 				url : "<?php echo base_url();?>product/add_to_cart",
 				method : "POST",
-				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG},
+				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG, weightBARANG: weightBARANG},
 				success: function(data){
 					$('#hide_info').hide();
 					$('#detail_cart').html(data);
@@ -151,11 +152,12 @@ if ($plugins == 'home') { ?>
 			var idBARANG    = $(this).data("barangid");
 			var nameBARANG  = $(this).data("barangnama");
 			var priceBARANG = $(this).data("barangharga");
+			var weightBARANG = $(this).data("barangberat");
 			var qtyBARANG     = $('#' + idBARANG).val();
 			$.ajax({
 				url : "<?php echo base_url();?>product/add_to_cart",
 				method : "POST",
-				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG},
+				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG, weightBARANG: weightBARANG},
 				success: function(data){
 					$('#hide_info').hide();
 					$('#detail_cart').html(data);
@@ -234,11 +236,12 @@ if ($plugins == 'home') { ?>
 			var idBARANG    = $(this).data("barangid");
 			var nameBARANG  = $(this).data("barangnama");
 			var priceBARANG = $(this).data("barangharga");
+			var weightBARANG = $(this).data("barangberat");
 			var qtyBARANG     = $('#' + idBARANG).val();
 			$.ajax({
 				url : "<?php echo base_url();?>product/add_to_cart",
 				method : "POST",
-				data : {idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG},
+				data : {idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG, weightBARANG: weightBARANG},
 				success: function(data){
 					$('#hide_info').hide();
 					$('#detail_cart').html(data);
@@ -660,12 +663,13 @@ if ($plugins == 'home') { ?>
 			var idBARANG    = $(this).data("barangid");
 			var nameBARANG  = $(this).data("barangnama");
 			var priceBARANG = $(this).data("barangharga");
+			var weightBARANG = $(this).data("barangberat");
 			var qtyBARANG     = $('#' + idBARANG).val();
 			var idWISH     = $('#idWISH').val();
 			$.ajax({
 				url : "<?php echo base_url();?>product/add_to_cart",
 				method : "POST",
-				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG},
+				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG, weightBARANG: weightBARANG},
 				success: function(data){
 					$('#wishlist_item').load("<?php echo base_url();?>customer/move_wish_list_to_cart/"+idWISH);
 					$('#hide_info').hide();

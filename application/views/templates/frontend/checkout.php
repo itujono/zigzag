@@ -55,12 +55,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="sub header">Isi detail info dan detail pengiriman</div>
             </h3>
 
-            <form class="ui form" action="" method="" id="shipping-address">
-
+            <form class="ui form" action="<?php echo base_url();?>product/process_checkout" method="POST" id="">
+                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
                 <div class="inline field mb2em">
                     <div class="ui segment seamless">
                         <div class="ui slider checkbox" id="default-address">
-                            <input type="checkbox" class="hidden">
+                            <input type="checkbox" name="original_data" class="hidden">
                             <label>Pake data alamat sesuai dari data Profile kamu? </label>
                         </div>
                     </div>
@@ -70,21 +70,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="two fields will-hidden">
                     <div class="required field">
                         <label for="nama">Nama lengkap penerima</label>
-                        <input type="text" name="nama" placeholder="John Doe">
+                        <input type="text" name="nameORDER" placeholder="John Doe">
                     </div>
                     <div class="required field">
                         <label for="email">Email penerima</label>
-                        <input type="email" name="email" placeholder="emailku@email.com">
+                        <input type="email" name="emailORDER" placeholder="emailku@email.com">
                     </div>
                 </div>
                 <div class="two fields mb2em will-hidden">
                     <div class="required field">
                         <label for="handphone">Nomor handphone</label>
-                        <input type="tel" name="handphone" placeholder="0812 34567890">
+                        <input type="tel" name="teleORDER" placeholder="0812 34567890" required="required">
                     </div>
                     <div class="field">
                         <label for="telepon">Nomor telepon rumah/kantor</label>
-                        <input type="tel" name="telepon" placeholder="021 2345678">
+                        <input type="tel" name="telehomeORDER" placeholder="021 2345678">
                     </div>
                 </div>
 
@@ -112,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     </div>
                     <div class="required field">
                         <label for="kodepos">Kode Pos</label>
-                        <input type="number" name="kodepos" placeholder="Misal: 29433">
+                        <input type="number" name="zipORDER" placeholder="Misal: 29433">
                     </div>
                 </div>
 
@@ -121,18 +121,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="two fields will-show mb2em transition hidden">
                     <div class="field">
                         <label for="nama">Nama lengkap penerima</label>
-                        <?php echo $data_customer->nameCUSTOMER;?>
+                        <input type="text" name="nameORDER" value="<?php echo $data_customer->nameCUSTOMER;?>" required="required" disabled="disabled">
                     </div>
                     <div class="field">
                         <label for="email">Email penerima</label>
-                        <?php echo $data_customer->emailCUSTOMER;?>
+                        <input type="email" name="emailORDER" value="<?php echo $data_customer->emailCUSTOMER;?>"  required="required" disabled="disabled">
                     </div>
                 </div>
 
                 <div class="one fields will-show mb2em transition hidden">
                     <div class="field">
                         <label for="nama">Nomor telepon penerima</label>
-                        <?php echo $data_customer->teleCUSTOMER;?>
+                        <input type="number" name="teleORDER" value="<?php echo $data_customer->teleCUSTOMER;?>"  required="required" disabled="disabled">
                     </div>
                 </div>
 
@@ -140,25 +140,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="field">
                         <label for="hidden-provinsi">Provinsi</label>
                         <?php echo $data_customer_province_city['province'];?>
+                        <input type="hidden" name="provinceORDER" value="<?php echo $data_customer_province_city['province_id'];?>" required="required" disabled="disabled">
                     </div>
                     <div class="field">
                         <label for="hidden-provinsi">Kota/Kabupaten</label>
                         <?php echo $data_customer_province_city['city_name'];?>
+                        <input type="hidden" name="cityORDER" value="<?php echo $data_customer_province_city['city_id'];?>" required="required" disabled="disabled">
                     </div>
                     <div class="field">
                         <label for="hidden-provinsi">Kode Pos</label>
-                        <?php echo $data_customer->zipCUSTOMER;?>
+                        <input type="number" name="zipORDER" value="<?php echo $data_customer->zipCUSTOMER;?>" required="required" disabled="disabled">
                     </div>
                 </div>
 
                 <div class="field will-show transition hidden mb2em">
                     <label for="alamat">Alamat pengiriman</label>
-                    <?php echo $data_customer->addressCUSTOMER;?>
+                    <textarea name="addressORDER" rows="6" disabled="disabled" required="required"><?php echo $data_customer->addressCUSTOMER;?></textarea>
                 </div>
 
                 <div class="required field mb2em will-hidden">
                     <label for="alamat">Alamat pengiriman</label>
-                    <textarea name="alamat" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"></textarea>
+                    <textarea name="addressORDER" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas" required></textarea>
                 </div>
 
                 <div class="inline three fields ekspedisi">
@@ -175,7 +177,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="field">
                         <div class="ui segment">
                             <div class="ui radio checkbox <?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>">
-                                <input type="radio" name="fruit" tabindex="0" class="hidden" <?php echo $selected;?>>
+                                <input type="radio" name="ekspedisiORDER" tabindex="0" class="hidden" <?php echo $selected;?> value="<?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>" required>
                                 <label><?php echo $active->nameSHIPPING;?></label>
                             </div>
                         </div>
@@ -194,7 +196,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             <div class="ui small image ekspedisi-logo">
                                 <img src="<?php echo $active->imageSHIPPING;?>" alt="Logo <?php echo $active->nameSHIPPING;?>">
                             </div>
-                            <div class="content">
+                            <!-- <div class="content">
                                 <div class="ui horizontal segments">
                                     <div class="ui segment">
                                         <h4>Pengiriman</h4>
@@ -208,7 +210,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                         4 hari
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>
@@ -219,7 +221,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="ui segment seamless">
                     <div class="field">
                         <div class="ui slider checkbox dropshipper">
-                            <input type="checkbox" tabindex="0" class="hidden">
+                            <input type="checkbox" name="dropshipper_check" tabindex="0" class="hidden">
                             <label>Saya mengirim barang ini kepada orang lain atas nama saya</label>
                         </div>
                     </div>
@@ -227,14 +229,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="two fields" id="dropshipper-field">
                     <div class="field">
                         <label for="">Nama saya sebagai dropshipper</label>
-                        <input type="text" name="" placeholder="John Doe">
+                        <input type="text" name="dropshipperORDER" placeholder="John Doe">
                     </div>
                     <div class="field">
                         <label for="">Institusi/organisasi saya sebagai dropshipper</label>
-                        <input type="text" name="" placeholder="CV Megah Jaya">
+                        <input type="text" name="dropshippercompanyORDER" placeholder="CV Megah Jaya">
                     </div>
                 </div>
-                <input type="submit" class="ui fluid zz button" id="shipping" value="Lanjut">
+                <input type="submit" class="ui fluid zz button" id="" value="Lanjut">
             </form>
         </div>
 

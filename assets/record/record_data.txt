@@ -529,3 +529,10 @@ Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Sabtu, 10 Februari
 Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Sabtu, 10 Februari 2018 | 12:14 
 Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Sabtu, 10 Februari 2018 | 12:14 
 Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Sabtu, 10 Februari 2018 | 12:14 
+Superadmin ZIGZAG - Berhasil login - Pada waktu Senin, 12 Februari 2018 | 08:36 
+Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Senin, 12 Februari 2018 | 08:36 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Senin, 12 Februari 2018 | 08:36 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Senin, 12 Februari 2018 | 08:36 
+Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Senin, 12 Februari 2018 | 08:36 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Senin, 12 Februari 2018 | 08:36 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/checkout.html - Pada waktu Senin, 12 Februari 2018 | 09:16 

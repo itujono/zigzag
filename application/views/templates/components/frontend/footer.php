@@ -78,11 +78,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
     <h4 class="header">Maaf!</h4>
     <p><i class="alarm icon"></i> Kamu belum melakukan login</p>
 </div>
-<div class="ui compact teal message logout-success">
+<!-- <div class="ui compact teal message logout-success">
     <i class="close icon"></i>
     <h4 class="header">Horeee!</h4>
     <p><i class="alarm icon"></i> Kamu udah logout. Jumpa lagi! </p>
-</div>
+</div> -->
 <div class="ui compact teal message added-to-wishlist">
     <i class="close icon"></i>
     <h4 class="header">Great!</h4>

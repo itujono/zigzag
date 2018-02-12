@@ -393,3 +393,38 @@ function selectall_city_by_province($id, $id2=NULL) {
       return $response['rajaongkir']['results'];
     }
 }
+
+function cost_ekspedisi($origin, $destination, $shipper, $weight_barang){
+    $asal = $origin;
+    $tujuan = $destination;
+    $kurir = $shipper;
+    $berat = $weight_barang;
+
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+    CURLOPT_URL => "http://api.rajaongkir.com/starter/cost",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => "origin=".$asal."&destination=".$tujuan."&weight=".$berat."&courier=".$kurir."",
+    CURLOPT_HTTPHEADER => array(
+      "content-type: application/x-www-form-urlencoded",
+      "key: d59049b12bec5f149cb709f386dbd012"
+    ),
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+    echo "cURL Error #:" . $err;
+    } else {
+    $response = json_decode($response, TRUE);
+    return ($response['rajaongkir']['results'][0]['costs']);
+    }
+}
