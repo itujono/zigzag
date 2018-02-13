@@ -394,11 +394,11 @@ function selectall_city_by_province($id, $id2=NULL) {
     }
 }
 
-function cost_ekspedisi($origin, $destination, $shipper, $weight_barang){
-    $asal = $origin;
-    $tujuan = $destination;
-    $kurir = $shipper;
-    $berat = $weight_barang;
+function cost_ekspedisi(){
+    $asal = 48;
+    $tujuan = 22;
+    $kurir = 'tiki';
+    $berat = 100;
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
@@ -425,6 +425,6 @@ function cost_ekspedisi($origin, $destination, $shipper, $weight_barang){
     echo "cURL Error #:" . $err;
     } else {
     $response = json_decode($response, TRUE);
-    return ($response['rajaongkir']['results'][0]['costs']);
+    return ($response['rajaongkir']['results'][0]);
     }
 }

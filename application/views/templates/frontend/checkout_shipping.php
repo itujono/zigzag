@@ -174,7 +174,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         if(!empty($checkshipping_active)){
                             foreach ($checkshipping_active as $key => $active) {
                                 if($key == 0){
-                                    $selected = 'selected';
+                                    $selected = '';
                                 } else {
                                     $selected = ''; 
                                 }
@@ -182,7 +182,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="field">
                         <div class="ui segment">
                             <div class="ui radio checkbox <?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>">
-                                <input type="radio" name="ekspedisiORDER" tabindex="0" class="hidden" <?php echo $selected;?> value="<?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>">
+                                <input type="radio" name="ekspedisiORDER" id="ekspedisi-shipping-<?php echo $key;?>" class="hidden ekspedisi_class" <?php echo $selected;?> value="<?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>">
                                 <label><?php echo $active->nameSHIPPING;?></label>
                             </div>
                         </div>
@@ -202,21 +202,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             <div class="ui small image ekspedisi-logo">
                                 <img src="<?php echo $active->imageSHIPPING;?>" alt="Logo <?php echo $active->nameSHIPPING;?>">
                             </div>
-                            <!-- <div class="content">
-                                <div class="ui horizontal segments">
-                                    <div class="ui segment">
-                                        <h4>Pengiriman</h4>
-                                        <select name="" id="" class="ui search dropdown">
-                                            <option value="reguler">Reguler</option>
-                                            <option value="ekspres">Ekspres</option>
-                                        </select>
-                                    </div>
-                                    <div class="ui segment">
-                                        <h4>Lama pengiriman</h4>
-                                        4 hari
-                                    </div>
-                                </div>
-                            </div> -->
+                            <div class="content" id="detail_ekspedisi"></div>
                         </div>
 
                     </div>

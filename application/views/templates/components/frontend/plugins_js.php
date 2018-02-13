@@ -783,8 +783,51 @@ if ($plugins == 'home') { ?>
     })
 </script>
 <?php } elseif ($plugins == 'checkout-customer') { ?>
+<?php
+	if(!empty($this->cart->contents())){
+		foreach ($this->cart->contents() as $key => $val) {
+			$weight_barang[$key] = $val['weight']*$val['qty'];
+		}
+	}
+	$sum_weight = array_sum($weight_barang);
+?>
 <script type="text/javascript">
-
+	$(document).ready(function () {
+		$('#ekspedisi-shipping-0').change(function() {
+			console.log('ini jne');
+			const city_id = $("select[name='city-checkout']").val()
+			const ekspedisi = $(".ekspedisi_class:checked").val();
+			console.log(ekspedisi);
+			const weight = "<?php echo $sum_weight;?>"
+			const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', city_id, ekspedisi, weight}
+			$.ajax({
+            	type : "POST",
+           		url : "<?php echo base_url();?>product/checking_ongkir",
+            	data : formData,
+					success: function (data) {
+					//jika data berhasil didapatkan, tampilkan ke dalam element div ongkir
+					$("#detail_ekspedisi").html(data);
+				}
+          	});
+		});
+		$('#ekspedisi-shipping-1').change(function() {
+			console.log('ini tiki');
+			const city_id = $("select[name='city-checkout']").val()
+			const ekspedisi = $(".ekspedisi_class:checked").val();
+			console.log(ekspedisi);
+			const weight = "<?php echo $sum_weight;?>"
+			const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', city_id, ekspedisi, weight}
+			$.ajax({
+            	type : "POST",
+           		url : "<?php echo base_url();?>product/checking_ongkir",
+            	data : formData,
+					success: function (data) {
+					//jika data berhasil didapatkan, tampilkan ke dalam element div ongkir
+					$("#detail_ekspedisi").html(data);
+				}
+          	});
+		});
+	});
 	// $(".form.shipping-address").form({
  //        inline: true,
  //        on: "submit",

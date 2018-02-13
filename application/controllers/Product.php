@@ -286,6 +286,57 @@ class Product extends Frontend_Controller {
 		}
 	}
 
+	public function checking_ongkir(){
+		$asal = 48;
+	    $tujuan = $this->input->post('city_id');
+	    $kurir = $this->input->post('ekspedisi');
+	    $berat = $this->input->post('weight');
+	    
+	    $curl = curl_init();
+	    curl_setopt_array($curl, array(
+	    CURLOPT_URL => "http://api.rajaongkir.com/starter/cost",
+	    CURLOPT_RETURNTRANSFER => true,
+	    CURLOPT_ENCODING => "",
+	    CURLOPT_MAXREDIRS => 10,
+	    CURLOPT_TIMEOUT => 30,
+	    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	    CURLOPT_CUSTOMREQUEST => "POST",
+	    CURLOPT_POSTFIELDS => "origin=".$asal."&destination=".$tujuan."&weight=".$berat."&courier=".$kurir."",
+	    CURLOPT_HTTPHEADER => array(
+	      "content-type: application/x-www-form-urlencoded",
+	      "key: d59049b12bec5f149cb709f386dbd012"
+	    ),
+	    ));
+
+	    $response = curl_exec($curl);
+	    $err = curl_error($curl);
+
+	    curl_close($curl);
+
+	    if ($err) {
+	    echo "cURL Error #:" . $err;
+	    } else {
+	    $response = json_decode($response, TRUE);
+	    $output = '';
+	    $data_ekspedisi = $response['rajaongkir']['results'][0]['costs'];
+	    if(!empty($data_ekspedisi)){
+	    $output .= '<div class="ui horizontal segments">
+                        <div class="ui segment">
+                            <h4>Pengiriman</h4>
+                            <select name="" id="" class="ui search dropdown">';
+                            foreach ($data_ekspedisi as $cost_val) {
+                                $output .= '<option value="'.$cost_val['cost'][0]['value'].'">'.$cost_val['service'].' '.'('.$cost_val['description'].')'.' '.$cost_val['cost'][0]['etd'].' Hari'.' - '.'Rp. '.number_format($cost_val['cost'][0]['value'], 0,',','.').'</option>';
+                            }
+                            $output .= '</select>
+                        </div>
+                    </div>';
+        } else {
+        	$output = 'KOSONG';
+        }
+        echo $output;
+	    }
+	}
+
 	public function checkout_billing(){
 		$data['addONS'] = 'checkout-customer';
 		$data['class'] = 'checkout';
@@ -295,6 +346,13 @@ class Product extends Frontend_Controller {
 
 		$data['subview'] = $this->load->view($this->data['frontendDIR'].'checkout_billing', $data, TRUE);
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
+	}
+
+	public function cek_ongkir(){
+		$costing = cost_ekspedisi();
+		echo "<pre>";
+		print_r($costing);
+		exit;
 	}
 
 }
