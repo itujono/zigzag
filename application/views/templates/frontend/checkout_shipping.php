@@ -193,7 +193,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
                 <?php 
                     if(!empty($checkshipping_active)){
-                        foreach ($checkshipping_active as $active) {
+                        foreach ($checkshipping_active as $keys => $active) {
                 ?>
                 <div class="ui tab segment" data-tab="tab-<?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>">
                     <div class="ui items">
@@ -202,7 +202,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             <div class="ui small image ekspedisi-logo">
                                 <img src="<?php echo $active->imageSHIPPING;?>" alt="Logo <?php echo $active->nameSHIPPING;?>">
                             </div>
-                            <div class="content" id="detail_ekspedisi"></div>
+                            <div class="content" id="detail_ekspedisi<?php echo $keys;?>"></div>
                         </div>
 
                     </div>

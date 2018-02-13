@@ -82,7 +82,7 @@ class Product extends Frontend_Controller {
 			 <div class="centered cart-total">
                 <h4>Total: Rp '.number_format($this->cart->total()).'</h4>
             </div>
-            <a href="cart.html" class="ui animated bottom attached fade black button" tabindex="0">
+            <a href="'.base_url().'product/checkout_shipping" class="ui animated bottom attached fade black button" tabindex="0">
                 <div class="visible content"><i class="send icon"></i></div>
                 <div class="hidden content">Checkout sekarang</div>
             </a>
@@ -215,6 +215,12 @@ class Product extends Frontend_Controller {
 				$data['csORDER'] = '-';
 				$data['provinceORDER'] = $this->input->post('provinsi-checkout');
 				$data['cityORDER'] = $this->input->post('city-checkout');
+
+				$keterangan_ekspedisi = $this->input->post('keterangan_ekspedisi');
+				$break = explode("-",$keterangan_ekspedisi);
+				$data['ketekspedisi'] = $break[1];
+				$data['totalekspedisiORDER'] = $break[0];
+				
 				//START GENERATE KODE ORDER //
 				$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 				$res = "";
@@ -243,19 +249,6 @@ class Product extends Frontend_Controller {
 					$data['dropshipperORDER'] = '-';
 					$data['dropshippercompanyORDER'] = '-';
 				}
-				if(!empty($this->cart->contents())){
-					foreach ($this->cart->contents() as $key => $val) {
-						$weight_barang[$key] = $val['weight']*$val['qty'];
-					}
-				}
-				$sum_weight = array_sum($weight_barang);
-				$cost = cost_ekspedisi(48, $data['cityORDER'], $data['ekspedisiORDER'], $sum_weight);
-				if(empty($cost)){
-					$response['status'] = 'empty-data';
-					$response['redirect'] = base_url();
-		            echo json_encode($response);
-				}
-	   			$data['totalekspedisiORDER'] = $cost[0]['cost'][0]['value'];
 	   			
 	   			$data = $this->security->xss_clean($data);
 	   			echo '<pre>';
@@ -291,7 +284,7 @@ class Product extends Frontend_Controller {
 	    $tujuan = $this->input->post('city_id');
 	    $kurir = $this->input->post('ekspedisi');
 	    $berat = $this->input->post('weight');
-	    
+
 	    $curl = curl_init();
 	    curl_setopt_array($curl, array(
 	    CURLOPT_URL => "http://api.rajaongkir.com/starter/cost",
@@ -323,9 +316,9 @@ class Product extends Frontend_Controller {
 	    $output .= '<div class="ui horizontal segments">
                         <div class="ui segment">
                             <h4>Pengiriman</h4>
-                            <select name="" id="" class="ui search dropdown">';
+                            <select name="keterangan_ekspedisi" class="ui search dropdown">';
                             foreach ($data_ekspedisi as $cost_val) {
-                                $output .= '<option value="'.$cost_val['cost'][0]['value'].'">'.$cost_val['service'].' '.'('.$cost_val['description'].')'.' '.$cost_val['cost'][0]['etd'].' Hari'.' - '.'Rp. '.number_format($cost_val['cost'][0]['value'], 0,',','.').'</option>';
+                                $output .= '<option value="'.$cost_val['cost'][0]['value'].'-'.$cost_val['description'].'">'.$cost_val['service'].' '.'('.$cost_val['description'].')'.' '.$cost_val['cost'][0]['etd'].' Hari'.' - '.'Rp. '.number_format($cost_val['cost'][0]['value'], 0,',','.').'</option>';
                             }
                             $output .= '</select>
                         </div>
@@ -347,7 +340,8 @@ class Product extends Frontend_Controller {
 		$data['subview'] = $this->load->view($this->data['frontendDIR'].'checkout_billing', $data, TRUE);
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}
-
+	
+	//function testing aje
 	public function cek_ongkir(){
 		$costing = cost_ekspedisi();
 		echo "<pre>";

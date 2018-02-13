@@ -794,10 +794,8 @@ if ($plugins == 'home') { ?>
 <script type="text/javascript">
 	$(document).ready(function () {
 		$('#ekspedisi-shipping-0').change(function() {
-			console.log('ini jne');
 			const city_id = $("select[name='city-checkout']").val()
 			const ekspedisi = $(".ekspedisi_class:checked").val();
-			console.log(ekspedisi);
 			const weight = "<?php echo $sum_weight;?>"
 			const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', city_id, ekspedisi, weight}
 			$.ajax({
@@ -806,15 +804,13 @@ if ($plugins == 'home') { ?>
             	data : formData,
 					success: function (data) {
 					//jika data berhasil didapatkan, tampilkan ke dalam element div ongkir
-					$("#detail_ekspedisi").html(data);
+					$("#detail_ekspedisi0").html(data);
 				}
           	});
 		});
 		$('#ekspedisi-shipping-1').change(function() {
-			console.log('ini tiki');
 			const city_id = $("select[name='city-checkout']").val()
 			const ekspedisi = $(".ekspedisi_class:checked").val();
-			console.log(ekspedisi);
 			const weight = "<?php echo $sum_weight;?>"
 			const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', city_id, ekspedisi, weight}
 			$.ajax({
@@ -823,7 +819,7 @@ if ($plugins == 'home') { ?>
             	data : formData,
 					success: function (data) {
 					//jika data berhasil didapatkan, tampilkan ke dalam element div ongkir
-					$("#detail_ekspedisi").html(data);
+					$("#detail_ekspedisi1").html(data);
 				}
           	});
 		});

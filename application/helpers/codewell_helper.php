@@ -393,12 +393,12 @@ function selectall_city_by_province($id, $id2=NULL) {
       return $response['rajaongkir']['results'];
     }
 }
-
+//dibiarin aja cuman untuk keperluan testing
 function cost_ekspedisi(){
     $asal = 48;
     $tujuan = 22;
     $kurir = 'tiki';
-    $berat = 100;
+    $berat = 300;
 
     $curl = curl_init();
     curl_setopt_array($curl, array(
@@ -425,6 +425,6 @@ function cost_ekspedisi(){
     echo "cURL Error #:" . $err;
     } else {
     $response = json_decode($response, TRUE);
-    return ($response['rajaongkir']['results'][0]);
+    return ($response['rajaongkir']);
     }
 }
