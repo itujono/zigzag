@@ -41,7 +41,8 @@ class Login extends CI_Controller {
 				$data = array(
 					'title' => 'Error!',
 					'style' => 'is-warning',
-		            'text' => 'Maaf, untuk sementara akun Anda telah terkunci, silakan hubungi bagian Admin kami untuk melaporkan masalah ini. Terima kasih!'
+		            'text' => 'Maaf, untuk sementara akun Anda telah terkunci, silakan hubungi bagian Admin kami untuk melaporkan masalah ini. Terima kasih!',
+		            'addClass' =>'visible'
 		        );
 		        $this->session->set_flashdata('message',$data);
 				redirect('login');
@@ -72,7 +73,8 @@ class Login extends CI_Controller {
 				$data = array(
 		            'title' => 'Welcome!',
 		            'text' => 'Hallo, Selamat datang '. $this->session->userdata('Email').' !',
-		            'type' => 'success'
+		            'type' => 'success',
+		            'addClass' =>'visible'
 		        );
 		        $this->session->set_flashdata('message',$data);
 				redirect('zigzagadmin/dashboard/index_dashboard');
@@ -82,7 +84,8 @@ class Login extends CI_Controller {
 				$data = array(
 					'title' => 'Maaf!',
 		            'text' => 'Akun anda telah di Non-Aktifkan',
-		            'type' => 'danger'
+		            'type' => 'danger',
+		            'addClass' =>'visible'
 		        );
 		        
 		        $this->session->set_flashdata('message',$data);
@@ -99,7 +102,8 @@ class Login extends CI_Controller {
 				$data = array(
 					'title' => 'Warning!',
 			  		'text' => 'email atau kata sandi yang anda masukkan salah',
-			  		'type' => 'danger'
+			  		'type' => 'danger',
+			  		'addClass' =>'visible'
 			    );
 		 	 	$this->session->set_flashdata('message',$data);
 				redirect('login');
@@ -110,7 +114,8 @@ class Login extends CI_Controller {
 			$data = array(
 				'title' => 'Warning!',
 	            'text' => 'Silakan ulangi email anda kata sandi anda dibawah!',
-	            'type' => 'danger'
+	            'type' => 'danger',
+	            'addClass' =>'visible'
         	);
 	        $this->session->set_flashdata('message',$data);
 			$this->index();
@@ -123,7 +128,8 @@ class Login extends CI_Controller {
 		$data = array(
 			'title' => 'Success',
 			'type' => 'success',
-	  		'text' => 'Successfully Logout'
+	  		'text' => 'Successfully Logout',
+	  		'addClass' =>'visible'
 	    );
  	 	$this->session->set_flashdata('message',$data);
 		$this->index();
@@ -140,7 +146,8 @@ class Login extends CI_Controller {
 	    	$data = array(
 	    		'title' => 'Error!',
 				'style' => 'is-warning',
-	            'text' => 'Maaf, akun Anda tidak terdaftar di data kami.'
+	            'text' => 'Maaf, akun Anda tidak terdaftar di data kami.',
+	            'addClass' =>'visible'
 	        );
 	        $this->session->set_flashdata('message',$data);
 			redirect('login');

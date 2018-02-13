@@ -536,3 +536,4 @@ Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Senin, 12 Februari
 Superadmin ZIGZAG - Penyimpanan data shipping berhasil - Pada waktu Senin, 12 Februari 2018 | 08:36 
 Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Senin, 12 Februari 2018 | 08:36 
 Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/checkout.html - Pada waktu Senin, 12 Februari 2018 | 09:16 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/cart.html - Pada waktu Selasa, 13 Februari 2018 | 08:54 

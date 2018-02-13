@@ -33,13 +33,13 @@ class Order_m extends MY_Model{
 			'label' => 'Telepon Order', 
 			'rules' => 'trim|required|numeric'
 		),
-		'provinceORDER' => array(
-			'field' => 'provinceORDER', 
+		'provinsi-checkout' => array(
+			'field' => 'provinsi-checkout', 
 			'label' => 'Provinsi Order', 
 			'rules' => 'trim|required'
 		),
-		'cityORDER' => array(
-			'field' => 'cityORDER', 
+		'city-checkout' => array(
+			'field' => 'city-checkout', 
 			'label' => 'Kota Order', 
 			'rules' => 'trim|required'
 		),
@@ -56,11 +56,6 @@ class Order_m extends MY_Model{
 		'ekspedisiORDER' => array(
 			'field' => 'ekspedisiORDER', 
 			'label' => 'Ekspedisi Order', 
-			'rules' => 'trim|required'
-		),
-		'paymentORDER' => array(
-			'field' => 'paymentORDER', 
-			'label' => 'Pilihan Pembayaran Order', 
 			'rules' => 'trim|required'
 		)
 	);

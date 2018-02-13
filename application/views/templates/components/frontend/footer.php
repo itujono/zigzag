@@ -120,9 +120,9 @@ $("#inline_provinsi").change(function (){
     $('#inline_city').load(url);
     return false;
 });
-$("#provinsi-checkout").change(function (){
+$("#provinsi_checkout").change(function (){
     var url = "<?php echo base_url().'customer/load_city/';?>"+$(this).val();
-    $('#city-checkout').load(url);
+    $('#city_checkout').load(url);
     return false;
 });
 </script>

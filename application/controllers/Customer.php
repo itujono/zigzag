@@ -153,7 +153,8 @@ class Customer extends Frontend_Controller {
 	    	$data = array(
 	    		'title' => 'Error!',
 				'style' => 'is-warning',
-	            'text' => 'Maaf, akun Anda tidak terdaftar di data kami.'
+	            'text' => 'Maaf, akun Anda tidak terdaftar di data kami.',
+	            'addClass' =>'visible'
 	        );
 	        $this->session->set_flashdata('message',$data);
 			redirect('home');
@@ -199,7 +200,8 @@ class Customer extends Frontend_Controller {
 	    		$data = array(
 					'title' => 'Sukses!',
 					'style' => 'is-success',
-		            'text' => 'Halo! Selamat datang, '. $this->session->userdata('Name')
+		            'text' => 'Halo! Selamat datang, '. $this->session->userdata('Name'),
+		            'addClass' =>'visible'
 		        );
 
 		        $this->session->set_flashdata('message',$data);
@@ -648,9 +650,6 @@ class Customer extends Frontend_Controller {
 		} else {
 			$response['status'] = 'error_validation';
 			$response['message'] = validation_errors();
-
-			print_r($response);
-			exit;
 
             echo json_encode($response);
 		}

@@ -782,10 +782,55 @@ if ($plugins == 'home') { ?>
     	})
     })
 </script>
+<?php } elseif ($plugins == 'checkout-customer') { ?>
+<script type="text/javascript">
 
-
-
-
+	// $(".form.shipping-address").form({
+ //        inline: true,
+ //        on: "submit",
+ //        onSuccess: function(e) {
+ //        	const original_data = $("#original_data").val()
+ //            const nameORDER = $("#nameORDER").val()
+ //            const emailORDER = $("#emailORDER").val()
+ //            const teleORDER = $("#teleORDER").val()
+ //            const telehomeORDER = $("#telehomeORDER").val()
+ //            const provinsi_checkout = $("#provinsi_checkout").val()
+ //            const city_checkout = $("#city_checkout").val()
+ //            const zipORDER = $("#zipORDER").val()
+ //            const addressORDER = $("#addressORDER").val()
+ //            const ekspedisiORDER = $("#ekspedisiORDER").val()
+ //            const dropshipper_check = $("#dropshipper_check").val()
+ //            const dropshipperORDER = $("#dropshipperORDER").val()
+ //            const dropshippercompanyORDER = $("#dropshippercompanyORDER").val()
+ //            const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', original_data, nameORDER, emailORDER, teleORDER, telehomeORDER, provinsi_checkout, city_checkout, zipORDER, addressORDER, ekspedisiORDER, dropshipper_check, dropshipperORDER, dropshippercompanyORDER }
+ //            	$.ajax({
+	//                 url: "<?php echo base_url();?>product/process_checkout",
+	//                 type:'POST',
+	//                 dataType: "json",
+	//                 data: formData,
+	//                 success: response => {
+	//                 	if(response.status == "success"){
+	// 	                    $(this).closest("#step-shipping").transition("fade", 150, function() {
+	// 			                $("#step-billing").transition("fade", 150);
+	// 			            });
+	//                 	}
+	//                     if (response.status == "error_validation") {
+	//                     	$(".password-not-same").css('display','none')
+	//                         $(".password-error-validation").css('display','block')
+	//                         $(".password-error-validation").html(response.message)
+	//                         return false
+	//                     }
+	//                     if (response.status == "empty-data") {
+	//                         $(".password-error-validation").css('display','none')
+	//                         $(".password-not-same").css('display','block')
+	//                         return false
+	//                     }
+	//                 }
+	//             })
+ //            e.preventDefault();
+ //        }
+ //    });
+</script>
 <?php } ?>
 <script type="text/javascript">
 	$('#detail_cart').load("<?php echo base_url();?>product/load_cart");

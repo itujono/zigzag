@@ -176,8 +176,8 @@ class Product extends Frontend_Controller {
 	    }
 	}
 
-	public function checkout(){
-		$data['addONS'] = '';
+	public function checkout_shipping(){
+		$data['addONS'] = 'checkout-customer';
 		$data['class'] = 'checkout';
 		$data['title'] = 'Checkout - '.$this->session->userdata('Name');
 
@@ -194,23 +194,23 @@ class Product extends Frontend_Controller {
 		$data['data_customer'] = $this->Customer_m->selectall_customer($this->session->userdata('idCUSTOMER'))->row();
 		$data['data_customer_province_city'] = selectall_city_by_province($data['data_customer']->cityCUSTOMER, $data['data_customer']->provinceCUSTOMER);
 
-		$data['subview'] = $this->load->view($this->data['frontendDIR'].'checkout', $data, TRUE);
+		$data['subview'] = $this->load->view($this->data['frontendDIR'].'checkout_shipping', $data, TRUE);
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}
 
 	public function process_checkout(){
-		// $rules = $this->Order_m->rules_order;
-		// $this->form_validation->set_rules($rules);
-		// $this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
-  //       $this->form_validation->set_message('trim', 'Form %s adalah Trim');
-  //       $this->form_validation->set_message('valid_email', 'Maaf, $s Anda tidak valid');
-  //       $this->form_validation->set_message('is_unique', 'Tampaknya inputan %s anda sudah terdaftar');
-  //       $this->form_validation->set_message('min_length', 'Minimal kata sandi 8 karakter');
-  //       $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
-  //       $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
-		// if ($this->form_validation->run() == TRUE) {
+		$rules = $this->Order_m->rules_order;
+		$this->form_validation->set_rules($rules);
+		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
+        $this->form_validation->set_message('trim', 'Form %s adalah Trim');
+        $this->form_validation->set_message('valid_email', 'Maaf, inputan email Anda tidak valid');
+        $this->form_validation->set_message('is_unique', 'Tampaknya inputan %s anda sudah terdaftar');
+        $this->form_validation->set_message('min_length', 'Minimal kata sandi 8 karakter');
+        $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
+        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+		if ($this->form_validation->run() == TRUE) {
 			if($this->input->post('original_data') == ''){
-				$data = $this->Order_m->array_from_post(array('customerORDER','csORDER','kodeORDER','descORDER','statusORDER', 'nameORDER','emailORDER','teleORDER','provinceORDER','cityORDER','zipORDER','addressORDER','ekspedisiORDER','paymentORDER','dropshipperORDER','dropshippercompanyORDER','telehomeORDER'));
+				$data = $this->Order_m->array_from_post(array('customerORDER','csORDER','kodeORDER','descORDER','statusORDER', 'nameORDER','emailORDER','teleORDER','zipORDER','addressORDER','ekspedisiORDER','paymentORDER','dropshipperORDER','dropshippercompanyORDER','telehomeORDER'));
 				$data['customerORDER'] = $this->session->userdata('idCUSTOMER');
 				$data['csORDER'] = '-';
 				$data['provinceORDER'] = $this->input->post('provinsi-checkout');
@@ -258,6 +258,9 @@ class Product extends Frontend_Controller {
 	   			$data['totalekspedisiORDER'] = $cost[0]['cost'][0]['value'];
 	   			
 	   			$data = $this->security->xss_clean($data);
+	   			echo '<pre>';
+	   			print_r($data);
+	   			exit;
 				$saveid = $this->Order_m->save($data);
 
 				if ($saveid) {
@@ -268,23 +271,30 @@ class Product extends Frontend_Controller {
 
 				} else {
 
-					$data = array(
-						'title' => 'Error!',
-						'style' => 'is-warning',
-			            'text' => 'Maaf, sistem tidak dapat menyimpan data Anda. Silakan ulangi beberapa saat lagi.'
-			        );
-			       	$this->session->set_flashdata('message',$data);
-			        redirect('home');
+					$response['status'] = 'error';
+					$response['redirect'] = base_url();
+		            echo json_encode($response);
 				}
 			} else {
 				echo "jelek";
 				exit;
 			}
-		// } else {
-		// 	$errors['status'] = 'error';
-		// 	$errors['message'] = validation_errors();
-  //           echo json_encode($errors);
-		// }
+		} else {
+			$response['status'] = 'error_validation';
+			$response['message'] = validation_errors();
+            echo json_encode($response);
+		}
+	}
+
+	public function checkout_billing(){
+		$data['addONS'] = 'checkout-customer';
+		$data['class'] = 'checkout';
+		$data['title'] = 'Checkout Billing- '.$this->session->userdata('Name');
+
+		$data['checkshipping_notactive'] = $this->Shipping_m->checkshipping(0)->result();
+
+		$data['subview'] = $this->load->view($this->data['frontendDIR'].'checkout_billing', $data, TRUE);
+		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}
 
 }

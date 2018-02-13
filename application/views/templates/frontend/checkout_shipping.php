@@ -54,8 +54,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 Isi detail kamu
                 <div class="sub header">Isi detail info dan detail pengiriman</div>
             </h3>
-
-            <form class="ui form" action="<?php echo base_url();?>product/process_checkout" method="POST" id="">
+            <!-- <div class="ui info icon message password-not-same" style="display: none">
+                <i class="checkmark icon"></i>
+                <div class="content">
+                    <div class="header"> Maaf! </div>
+                    Silakan Ulangi alamat pengiriman anda 
+                </div>
+            </div> -->
+            <form class="ui form" action="<?php echo base_url();?>product/process_checkout" method="POST">
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
                 <div class="inline field mb2em">
                     <div class="ui segment seamless">
@@ -80,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="two fields mb2em will-hidden">
                     <div class="required field">
                         <label for="handphone">Nomor handphone</label>
-                        <input type="tel" name="teleORDER" placeholder="0812 34567890" required="required">
+                        <input type="tel" name="teleORDER" placeholder="0812 34567890">
                     </div>
                     <div class="field">
                         <label for="telepon">Nomor telepon rumah/kantor</label>
@@ -91,7 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="three fields will-hidden">
                     <div class="required field">
                         <label for="provinsi-checkout">Provinsi</label>
-                        <select class="ui search dropdown" id="provinsi-checkout" name="provinsi-checkout">
+                        <select class="ui search dropdown" id="provinsi_checkout" name="provinsi-checkout">
                             <option value="" selected disabled="disabled">Pilih provinsi kamu</option>
                             <?php
                             $listprovince = select_all_province();
@@ -106,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     </div>
                     <div class="required field">
                         <label for="kota-checkout">Kota/Kabupaten</label>
-                        <select class="ui search dropdown" id="city-checkout" name="city-checkout">
+                        <select class="ui search dropdown" id="city_checkout" name="city-checkout">
                             <option value="" selected disabled="disabled">Pilih kota kamu</option>
                         </select>
                     </div>
@@ -118,21 +124,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
 
                 <!-- Ini section form kalo pilih sesuai data dari Profile -->
-                <div class="two fields will-show mb2em transition hidden">
+                <!-- <div class="two fields will-show mb2em transition hidden">
                     <div class="field">
                         <label for="nama">Nama lengkap penerima</label>
-                        <input type="text" name="nameORDER" value="<?php echo $data_customer->nameCUSTOMER;?>" required="required" disabled="disabled">
+                        <input type="text" name="nameORDER" id="nameORDERs" value="<?php echo $data_customer->nameCUSTOMER;?>" disabled="disabled">
                     </div>
                     <div class="field">
                         <label for="email">Email penerima</label>
-                        <input type="email" name="emailORDER" value="<?php echo $data_customer->emailCUSTOMER;?>"  required="required" disabled="disabled">
+                        <input type="email" name="emailORDER" id="emailORDERs" value="<?php echo $data_customer->emailCUSTOMER;?>" disabled="disabled">
                     </div>
-                </div>
+                </div> -->
 
-                <div class="one fields will-show mb2em transition hidden">
+                <!-- <div class="one fields will-show mb2em transition hidden">
                     <div class="field">
                         <label for="nama">Nomor telepon penerima</label>
-                        <input type="number" name="teleORDER" value="<?php echo $data_customer->teleCUSTOMER;?>"  required="required" disabled="disabled">
+                        <input type="number" name="teleORDER" id="teleORDERs" value="<?php echo $data_customer->teleCUSTOMER;?>" disabled="disabled">
                     </div>
                 </div>
 
@@ -140,29 +146,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="field">
                         <label for="hidden-provinsi">Provinsi</label>
                         <?php echo $data_customer_province_city['province'];?>
-                        <input type="hidden" name="provinceORDER" value="<?php echo $data_customer_province_city['province_id'];?>" required="required" disabled="disabled">
+                        <input type="hidden" name="provinsi-checkout" id="provinsi_checkouts" value="<?php echo $data_customer_province_city['province_id'];?>" disabled="disabled">
                     </div>
                     <div class="field">
                         <label for="hidden-provinsi">Kota/Kabupaten</label>
                         <?php echo $data_customer_province_city['city_name'];?>
-                        <input type="hidden" name="cityORDER" value="<?php echo $data_customer_province_city['city_id'];?>" required="required" disabled="disabled">
+                        <input type="hidden" name="city-checkout" id="city_checkouts" value="<?php echo $data_customer_province_city['city_id'];?>" disabled="disabled">
                     </div>
                     <div class="field">
                         <label for="hidden-provinsi">Kode Pos</label>
-                        <input type="number" name="zipORDER" value="<?php echo $data_customer->zipCUSTOMER;?>" required="required" disabled="disabled">
+                        <input type="number" name="zipORDER" id="zipORDERs" value="<?php echo $data_customer->zipCUSTOMER;?>" disabled="disabled">
                     </div>
                 </div>
 
                 <div class="field will-show transition hidden mb2em">
                     <label for="alamat">Alamat pengiriman</label>
-                    <textarea name="addressORDER" rows="6" disabled="disabled" required="required"><?php echo $data_customer->addressCUSTOMER;?></textarea>
-                </div>
+                    <textarea name="addressORDER" rows="6" id="addressORDERs" disabled="disabled"><?php echo $data_customer->addressCUSTOMER;?></textarea>
+                </div> -->
 
                 <div class="required field mb2em will-hidden">
                     <label for="alamat">Alamat pengiriman</label>
-                    <textarea name="addressORDER" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas" required></textarea>
+                    <textarea name="addressORDER" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"></textarea>
                 </div>
-
                 <div class="inline three fields ekspedisi">
                     <label>Ekspedisi apa?</label>
                     <?php
@@ -177,7 +182,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="field">
                         <div class="ui segment">
                             <div class="ui radio checkbox <?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>">
-                                <input type="radio" name="ekspedisiORDER" tabindex="0" class="hidden" <?php echo $selected;?> value="<?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>" required>
+                                <input type="radio" name="ekspedisiORDER" tabindex="0" class="hidden" <?php echo $selected;?> value="<?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>">
                                 <label><?php echo $active->nameSHIPPING;?></label>
                             </div>
                         </div>
@@ -185,6 +190,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         <?php } ?>
                     <?php } ?>
                 </div>
+
                 <?php 
                     if(!empty($checkshipping_active)){
                         foreach ($checkshipping_active as $active) {
@@ -236,7 +242,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         <input type="text" name="dropshippercompanyORDER" placeholder="CV Megah Jaya">
                     </div>
                 </div>
-                <input type="submit" class="ui fluid zz button" id="" value="Lanjut">
+                <button type="submit" class="ui fluid zz button ">Lanjut</button>
             </form>
         </div>
 
