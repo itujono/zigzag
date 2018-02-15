@@ -60,6 +60,14 @@ class Order_m extends MY_Model{
 		)
 	);
 
+	public $rules_order_billing = array(
+		'paymentORDER' => array(
+			'field' => 'paymentORDER', 
+			'label' => 'Payment Order', 
+			'rules' => 'trim|required'
+		)
+	);
+
 	function __construct (){
 		parent::__construct();
 	}
@@ -80,5 +88,15 @@ class Order_m extends MY_Model{
 		$this->db->from('order');
 		$this->db->where('kodeORDER', $kodeorder);
 		return $this->db->get();
+	}
+
+	public function check_latest_data_order($id){
+		$query = $this->db->query("SELECT idORDER, nameORDER FROM zigzag_order WHERE createdateORDER IN (SELECT MAX(createdateORDER) FROM zigzag_order WHERE customerORDER = ".$id." GROUP BY customerORDER) ORDER BY createdateORDER DESC");
+		return $query->row();
+	}
+
+	public function check_latest_data_order_for_payment($id){
+		$query = $this->db->query("SELECT ekspedisiORDER, addressORDER, paymentORDER FROM zigzag_order WHERE createdateORDER IN (SELECT MAX(createdateORDER) FROM zigzag_order WHERE customerORDER = ".$id." GROUP BY customerORDER) ORDER BY createdateORDER DESC");
+		return $query->row();
 	}
 }

@@ -538,3 +538,6 @@ Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Senin, 12 Februari
 Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/checkout.html - Pada waktu Senin, 12 Februari 2018 | 09:16 
 Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/cart.html - Pada waktu Selasa, 13 Februari 2018 | 08:54 
 Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/cek_ongkir - Pada waktu Selasa, 13 Februari 2018 | 16:23 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/checkout_payment - Pada waktu Kamis, 15 Februari 2018 | 14:17 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/checkout_payment - Pada waktu Kamis, 15 Februari 2018 | 14:18 
+Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/checkout_payment - Pada waktu Kamis, 15 Februari 2018 | 14:40 

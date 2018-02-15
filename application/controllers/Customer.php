@@ -99,7 +99,7 @@ class Customer extends Frontend_Controller {
 	      }
 	      echo $data;
 	  } else {
-	  	  $data = "<option value='' selected disabled>Maaf, Lokasi anda belum tersedia</option>";
+	  	  $data = "<option value='' disabled>Maaf, Lokasi anda belum tersedia</option>";
 	      echo $data;
 	  }
 	}

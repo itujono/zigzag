@@ -23,32 +23,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     </div>
                 </div>
             </div>
-            <!-- kelar div Three Steps -->
-        </div>
-    </div> <!-- kelar div Grid / Step-Shipping -->
-
-    <div class="ui grid" id="step-billing">
-        <div class="sixteen wide column">
-            <div class="ui three ordered steps">
-                <div class="completed step">
-                    <div class="content">
-                        <div class="title">Shipping</div>
-                        <div class="description">Isi form order untuk pengiriman</div>
-                    </div>
-                </div>
-                <div class="active step">
-                    <div class="content">
-                        <div class="title">Billing</div>
-                        <div class="description">Pilih metode pembayaran</div>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="content">
-                        <div class="title">Confirm Order</div>
-                        <div class="description">Review semua sebelum place order</div>
-                    </div>
-                </div>
-            </div>
 
             <?php
                 if(!empty($checkshipping_notactive)){
@@ -81,13 +55,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 Pembayaran adalah hal yang bermakna bagi nusa dan bangsa orang Melayu di Pinang bagian selatan.
             </div>
 
-            <form class="ui form" method="" id="payment-option">
+            <form class="ui form" action="<?php echo base_url();?>product/process_checkout_billing" method="POST">
+                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
                 <div class="ui styled accordion payment-option">
                     <div class="title active">
                         <i class="dropdown icon"></i>
                         Transfer Bank
                     </div>
-
                     <div class="content active">
                         <div class="text">
                             <h3>Transfer Bank</h3>
@@ -98,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <div class="field">
                                     <div class="ui segment">
                                         <div class="ui radio checkbox">
-                                            <input type="radio" name="bank" tabindex="0" class="hidden">
+                                            <input type="radio" name="paymentORDER" tabindex="0" class="hidden" required="required" value="BCA">
                                             <label>BCA</label>
                                         </div>
                                     </div>
@@ -106,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <div class="field">
                                     <div class="ui segment">
                                         <div class="ui radio checkbox">
-                                            <input type="radio" name="bank" tabindex="0" class="hidden">
+                                            <input type="radio" name="paymentORDER" tabindex="0" class="hidden" required="required" value="Mandiri">
                                             <label>Mandiri</label>
                                         </div>
                                     </div>
@@ -114,12 +88,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 <div class="field">
                                     <div class="ui segment">
                                         <div class="ui radio checkbox">
-                                            <input type="radio" name="bank" tabindex="0" class="hidden">
+                                            <input type="radio" name="paymentORDER" tabindex="0" class="hidden" required="required" value="BNI">
                                             <label>BNI</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <p><?php echo form_error('paymentORDER'); ?></p>
                         </div>
                         <!-- kelar Ui Form -->
 
@@ -164,7 +139,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 </div>
                 <!-- kelar Accordion / Bank transfer -->
 
-                <input type="submit" class="ui fluid teal button" id="billing" value="Lanjut">
+                <input type="submit" class="ui fluid teal button" value="Lanjut">
             </form>
 
             <a href="#" class="back-to-previous">

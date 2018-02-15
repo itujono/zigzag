@@ -576,9 +576,9 @@ $(document).ready(function() {
         // },
         onSuccess: function(e) {
             e.preventDefault();
-            $(this).closest("#step-shipping").transition("fade", 150, function() {
-                $("#step-billing").transition("fade", 150);
-            });
+            // $(this).closest("#step-shipping").transition("fade", 150, function() {
+            //     $("#step-billing").transition("fade", 150);
+            // });
         }
     });
 
@@ -594,12 +594,12 @@ $(document).ready(function() {
         $.tab("change tab", "tab-sicepat" )
     })
     
-    $(".back-to-previous").on("click", function(e) {
-        e.preventDefault()
-        $(this).parents("#step-billing").transition("fade", 150, function() {
-            $(this).siblings("#step-shipping").transition("fade", 150)
-        })
-    })
+    // $(".back-to-previous").on("click", function(e) {
+    //     e.preventDefault()
+    //     $(this).parents("#step-billing").transition("fade", 150, function() {
+    //         $(this).siblings("#step-shipping").transition("fade", 150)
+    //     })
+    // })
 
     $("#payment-option").form({
         onSuccess: e => {

@@ -88,6 +88,13 @@ class Barang_m extends MY_Model{
 		return $this->db->get();
 	}
 
+	public function selectall_barang_payment($id) {
+		$this->db->select('codeBARANG');
+		$this->db->from('barang');
+		$this->db->where('idBARANG',$id);
+		return $this->db->get();
+	}
+
 	public function select_barang_promo() {
 		$this->db->select('idBARANG, nameBARANG, priceBARANG, hotBARANG, slugBARANG, weightBARANG');
 		$this->db->select('nameCATEGORY');

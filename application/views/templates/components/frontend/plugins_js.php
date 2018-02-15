@@ -803,7 +803,6 @@ if(!empty($checkshipping_active)){
        		url : "<?php echo base_url();?>product/checking_ongkir",
         	data : formData,
 				success: function (data) {
-				//jika data berhasil didapatkan, tampilkan ke dalam element div ongkir
 				$("#detail_ekspedisi<?php echo $keys_ship;?>").html(data);
 			}
       	});

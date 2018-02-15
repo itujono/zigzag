@@ -76,49 +76,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="two fields will-hidden">
                     <div class="required field">
                         <label for="nama">Nama lengkap penerima</label>
-                        <input type="text" name="nameORDER" placeholder="John Doe">
+                        <input type="text" name="nameORDER" placeholder="John Doe" value="<?php echo set_value('nameORDER'); ?>">
+                        <p><?php echo form_error('nameORDER'); ?></p>
                     </div>
                     <div class="required field">
                         <label for="email">Email penerima</label>
-                        <input type="email" name="emailORDER" placeholder="emailku@email.com">
+                        <input type="email" name="emailORDER" placeholder="emailku@email.com" value="<?php echo set_value('emailORDER'); ?>">
+                        <p><?php echo form_error('emailORDER'); ?></p>
                     </div>
                 </div>
                 <div class="two fields mb2em will-hidden">
                     <div class="required field">
                         <label for="handphone">Nomor handphone</label>
-                        <input type="tel" name="teleORDER" placeholder="0812 34567890">
+                        <input type="tel" name="teleORDER" placeholder="0812 34567890" value="<?php echo set_value('teleORDER'); ?>">
+                        <p><?php echo form_error('teleORDER'); ?></p>
                     </div>
                     <div class="field">
                         <label for="telepon">Nomor telepon rumah/kantor</label>
-                        <input type="tel" name="telehomeORDER" placeholder="021 2345678">
+                        <input type="tel" name="telehomeORDER" placeholder="021 2345678" value="<?php echo set_value('telehomeORDER'); ?>">
+                        <p><?php echo form_error('telehomeORDER'); ?></p>
                     </div>
                 </div>
 
                 <div class="three fields will-hidden">
                     <div class="required field">
                         <label for="provinsi-checkout">Provinsi</label>
-                        <select class="ui search dropdown" id="provinsi_checkout" name="provinsi-checkout">
-                            <option value="" selected disabled="disabled">Pilih provinsi kamu</option>
-                            <?php
+                        <?php
                             $listprovince = select_all_province();
                             if(!empty($listprovince)){
-                                foreach ($listprovince as $pro) {
-                            ?>
-                            <option value="<?php echo $pro['province_id']?>"><?php echo $pro['province'];?>
-                            </option>
-                                <?php } ?>
-                            <?php } ?>
-                        </select>
+                                $options = array();
+                                foreach ($listprovince as $key => $value){
+                                    $options[$value['province_id']] = $value['province'];
+                                }
+                            }
+                        ?>
+                        <?php echo form_dropdown('provinsi-checkout', $options, $this->input->post('provinsi-checkout'),'required="required" id="provinsi_checkout" class="ui search dropdown"'); ?>
+                        <p><?php echo form_error('provinsi-checkout'); ?></p>
                     </div>
                     <div class="required field">
                         <label for="kota-checkout">Kota/Kabupaten</label>
-                        <select class="ui search dropdown" id="city_checkout" name="city-checkout">
-                            <option value="" selected disabled="disabled">Pilih kota kamu</option>
+                        <select class="ui search dropdown" id="city_checkout" name="city-checkout" required="required">
+                            <option value="" disabled="disabled">Pilih kota kamu</option>
                         </select>
+                        <p><?php echo form_error('city-checkout'); ?></p>
                     </div>
                     <div class="required field">
                         <label for="kodepos">Kode Pos</label>
-                        <input type="number" name="zipORDER" placeholder="Misal: 29433">
+                        <input type="number" name="zipORDER" placeholder="Misal: 29433" value="<?php echo set_value('zipORDER'); ?>">
+                        <p><?php echo form_error('zipORDER'); ?></p>
                     </div>
                 </div>
 
@@ -166,7 +171,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
                 <div class="required field mb2em will-hidden">
                     <label for="alamat">Alamat pengiriman</label>
-                    <textarea name="addressORDER" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"></textarea>
+                    <textarea name="addressORDER" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"><?php echo set_value('addressORDER'); ?></textarea>
+                    <p><?php echo form_error('addressORDER'); ?></p>
                 </div>
                 <div class="inline three fields ekspedisi">
                     <label>Ekspedisi apa?</label>
@@ -177,8 +183,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="field">
                         <div class="ui segment">
                             <div class="ui radio checkbox <?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>">
-                                <input type="radio" name="ekspedisiORDER" id="ekspedisi-shipping-<?php echo $key;?>" class="hidden ekspedisi_class" value="<?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>">
+                                <input type="radio" name="ekspedisiORDER" id="ekspedisi-shipping-<?php echo $key;?>" class="hidden ekspedisi_class" value="<?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>" required="required">
                                 <label><?php echo $active->nameSHIPPING;?></label>
+                                <p><?php echo form_error('ekspedisiORDER'); ?></p>
                             </div>
                         </div>
                     </div>
@@ -208,7 +215,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="ui segment seamless">
                     <div class="field">
                         <div class="ui slider checkbox dropshipper">
-                            <input type="checkbox" name="dropshipper_check" tabindex="0" class="hidden">
+                            <?php
+                                $selected= 'selected';
+                                if($this->input->post('dropshipper_check') == ''){
+                                    $selected= '';
+                                }
+                            ?>
+                            <input type="checkbox" <?php echo $selected;?> name="dropshipper_check" tabindex="0" class="hidden">
                             <label>Saya mengirim barang ini kepada orang lain atas nama saya</label>
                         </div>
                     </div>
@@ -216,326 +229,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="two fields" id="dropshipper-field">
                     <div class="field">
                         <label for="">Nama saya sebagai dropshipper</label>
-                        <input type="text" name="dropshipperORDER" placeholder="John Doe">
+                        <input type="text" name="dropshipperORDER" placeholder="John Doe" value="<?php echo set_value('dropshipperORDER'); ?>">
+                        <p><?php echo form_error('dropshipperORDER'); ?></p>
                     </div>
                     <div class="field">
                         <label for="">Institusi/organisasi saya sebagai dropshipper</label>
-                        <input type="text" name="dropshippercompanyORDER" placeholder="CV Megah Jaya">
+                        <input type="text" name="dropshippercompanyORDER" placeholder="CV Megah Jaya" value="<?php echo set_value('dropshippercompanyORDER'); ?>">
+                        <p><?php echo form_error('dropshippercompanyORDER'); ?></p>
                     </div>
                 </div>
                 <button type="submit" class="ui fluid zz button ">Lanjut</button>
             </form>
         </div>
-
     </div> <!-- kelar div Grid / Step-Shipping -->
-    <div class="ui grid" id="step-billing">
-
-        <div class="sixteen wide column">
-            <div class="ui three ordered steps">
-                <div class="completed step">
-                    <div class="content">
-                        <div class="title">Shipping</div>
-                        <div class="description">Isi form order untuk pengiriman</div>
-                    </div>
-                </div>
-                <div class="active step">
-                    <div class="content">
-                        <div class="title">Billing</div>
-                        <div class="description">Pilih metode pembayaran</div>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="content">
-                        <div class="title">Confirm Order</div>
-                        <div class="description">Review semua sebelum place order</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ui segments">
-                <div class="ui right dividing rail">
-                    <div class="ui negative message">
-                        <i class="close icon"></i>
-                        <div class="header">
-                            Sedang sibuk
-                        </div>
-                        <p>Mohon maaf, saat ini di ekspedisi sedang dalam kesibukan yang yaampun banget. Jadi agak lelet
-                            kalo mau ngirim barang. Harap maklum.</p>
-                        <p>
-                            <strong>Management</strong>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="header" id="form-header">
-                <h3>Pembayaran</h3>
-                Pembayaran adalah hal yang bermakna bagi nusa dan bangsa orang Melayu di Pinang bagian selatan.
-            </div>
-
-            <form class="ui form" method="" id="payment-option">
-                <div class="ui styled accordion payment-option">
-                    <div class="title active">
-                        <i class="dropdown icon"></i>
-                        Transfer Bank
-                    </div>
-
-                    <div class="content active">
-                        <div class="text">
-                            <h3>Transfer Bank</h3>
-                            Transfer bank mempunyai kelebihan yang mumpuni dibandingkan menabung di bank
-                        </div>
-                        <div class="ui form">
-                            <div class="three required fields transfer">
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="bank" tabindex="0" class="hidden">
-                                            <label>BCA</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="bank" tabindex="0" class="hidden">
-                                            <label>Mandiri</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="bank" tabindex="0" class="hidden">
-                                            <label>BNI</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- kelar Ui Form -->
-
-                        <div class="help-text">
-                            <ol>
-                                <li>Harap lakukan pembayaran paling lambat 3 jam, kalo nggak kami cancel nih,</li>
-                                <li>Nomer rekening bakal dikasih tau pas di email nanti. Ini cuma pilihan bank yang diinginkan
-                                    aja kok untuk transaksi.</li>
-                            </ol>
-                        </div>
-
-                    </div>
-
-                    <div class="title">
-                        <i class="dropdown icon"></i>
-                        Dana dari Deposit
-                    </div>
-
-                    <div class="content">
-
-                        <div class="text">
-                            <h3>Gunakan Dana dari Deposit Saya</h3>
-                            Jika kamu memilih deposit dana, maka kamu harus mandi dulu pagi tadi
-                        </div>
-
-                        <div class="ui form">
-
-                            <div class="field">
-                                <div class="ui checkbox">
-                                    <input type="checkbox" name="agree" tabindex="0" class="hidden">
-                                    <label for="agree">Ya, gunakan dana dari Deposit saya</label>
-                                </div>
-                            </div>
-
-                            <!-- <div class="field">
-                                <label for="customAmount">Atau pilih nominal kamu sendiri (masukkan hanya angka)</label>
-                                <input type="number" name="customAmount" placeholder="Misal: 350000">
-                            </div> -->
-
-                        </div>
-                    </div>
-                </div>
-                <!-- kelar Accordion / Bank transfer -->
-
-                <input type="submit" class="ui fluid teal button" id="billing" value="Lanjut">
-            </form>
-
-            <a href="#" class="back-to-previous">
-                <i class="chevron left icon"></i> Kembali
-            </a>
-        </div>
-
-    </div>
-    <!-- kelar div Grid / Step-Billing -->
-
-
-    <div class="ui grid" id="step-confirm">
-
-        <div class="sixteen wide column">
-            <div class="ui three ordered steps">
-                <div class="completed step">
-                    <div class="content">
-                        <div class="title">Shipping</div>
-                        <div class="description">Isi form order untuk pengiriman</div>
-                    </div>
-                </div>
-                <div class="completed step">
-                    <div class="content">
-                        <div class="title">Billing</div>
-                        <div class="description">Pilih metode pembayaran</div>
-                    </div>
-                </div>
-                <div class="active step">
-                    <div class="content">
-                        <div class="title">Confirm Order</div>
-                        <div class="description">Review semua sebelum place order</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="header" id="form-header">
-            <h3>Review order</h3>
-            Ini adalah kesempatan terakhir kamu dalam hidup. Silakan review sebelum place order. Yuk!
-        </div>
-
-        <div class="sixteen wide column" id="cart-table">
-            <table class="ui padded table">
-
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Harga</th>
-                        <th>Qty</th>
-                        <th>Subtotal</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr class="cart-item">
-                        <td>
-                            <div class="item">
-                                <div class="ui tiny image">
-                                    <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" alt="">
-                                </div>
-                                <div class="left aligned content">
-                                    Basic Knitted Pulljump Pouch Bag
-                                    <br>
-                                    <strong>Kode: NY08909</strong>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Rp 450.000,00
-                        </td>
-                        <td>2</td>
-                        <td>
-                            Rp 900.000,00
-                        </td>
-                    </tr>
-                    <tr class="cart-item">
-                        <td>
-                            <div class="item">
-                                <div class="ui tiny image">
-                                    <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" alt="">
-                                </div>
-                                <div class="left aligned content">
-                                    Hand-bag Washed Jeans Parachutes
-                                    <br>
-                                    <strong>Kode: PX23498</strong>
-                                </div>
-                            </div>
-                        </td>
-                        <td>Rp 275.000,00</td>
-                        <td>1</td>
-                        <td>Rp 275.000,00</td>
-                    </tr>
-                </tbody>
-
-                <tfoot class="full-width">
-                    <tr>
-                        <th colspan="4">
-                            <button type="button" class="ui zz checkout right floated button">Bayar sekarang
-                                <i class="angle right icon"></i>
-                            </button>
-                            <a href="checkout.html" class="ui black button">
-                                <i class="angle left icon"></i> Nanti dulu
-                            </a>
-                        </th>
-                    </tr>
-                </tfoot>
-
-            </table>
-        </div>
-
-        <div class="sixteen wide column" id="cart-recap">
-            <div class="content">
-                <h3 class="header">Detail belanja kamu</h3>
-
-                <table class="ui very basic table">
-                    <tbody>
-                        <tr>
-                            <td>Ekspedisi: </td>
-                            <td class="right aligned">JNE</td>
-                        </tr>
-                        <tr>
-                            <td>Alamat: </td>
-                            <td class="right aligned">
-                                Jalan Kepodang Raya Blok X #33
-                                <br> Sukabumi, Kendari, Sulawesi Tenggara 20949
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Pembayaran: </td>
-                            <td class="right aligned">Transfer Bank - BCA</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-            </div>
-        </div>
-        <!-- kelar div Cart Recap Row -->
-
-        <div class="sixteen wide column" id="cart-total">
-            <div class="content">
-                <h3 class="header">Total belanja kamu</h3>
-
-                <table class="ui very basic table">
-                    <tbody>
-                        <tr>
-                            <td>Subtotal: </td>
-                            <td class="right aligned">Rp 1.450.000,00</td>
-                        </tr>
-                        <tr>
-                            <td>Diskon: </td>
-                            <td class="right aligned">-</td>
-                        </tr>
-                        <tr>
-                            <td>PPh/PPN: </td>
-                            <td class="right aligned">0%</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr class="relaxed">
-                            <th>Total yang harus dibayar: </th>
-                            <th class="right aligned">Rp 1.450.000,00</th>
-                        </tr>
-                    </tfoot>
-                </table>
-
-                <a href="#" class="ui animated fade large black fluid checkout button" tabindex="0">
-                    <div class="visible content">Bayar sekarang</div>
-                    <div class="hidden content">
-                        <i class="shopping cart icon"></i>
-                    </div>
-                </a>
-
-            </div>
-        </div>
-        <!-- kelar div Cart Total Row -->
-
-
-    </div>
-
-
 </div>
 <!-- kelar Main -->

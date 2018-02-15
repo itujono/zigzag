@@ -223,15 +223,17 @@ class Product extends Frontend_Controller {
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 		if ($this->form_validation->run() == TRUE) {
 			if($this->input->post('original_data') == ''){
-				$data = $this->Order_m->array_from_post(array('customerORDER','csORDER','kodeORDER','descORDER','statusORDER', 'nameORDER','emailORDER','teleORDER','zipORDER','addressORDER','ekspedisiORDER','paymentORDER','dropshipperORDER','dropshippercompanyORDER','telehomeORDER'));
+				$data = $this->Order_m->array_from_post(array('customerORDER','csORDER','kodeORDER','descORDER','statusORDER', 'nameORDER','emailORDER','teleORDER','zipORDER','addressORDER','ekspedisiORDER','dropshipperORDER','dropshippercompanyORDER','telehomeORDER'));
 				$data['customerORDER'] = $this->session->userdata('idCUSTOMER');
-				$data['csORDER'] = '-';
+				$data['csORDER'] = '0';
 				$data['provinceORDER'] = $this->input->post('provinsi-checkout');
 				$data['cityORDER'] = $this->input->post('city-checkout');
-
+				if($data['telehomeORDER'] == ''){
+					$data['telehomeORDER'] = 0;
+				}
 				$keterangan_ekspedisi = $this->input->post('keterangan_ekspedisi');
 				$break = explode("-",$keterangan_ekspedisi);
-				$data['ketekspedisi'] = $break[1];
+				$data['ketekspedisiORDER'] = $break[1];
 				$data['totalekspedisiORDER'] = $break[0];
 				
 				//START GENERATE KODE ORDER //
@@ -264,31 +266,33 @@ class Product extends Frontend_Controller {
 				}
 	   			
 	   			$data = $this->security->xss_clean($data);
-	   			echo '<pre>';
-	   			print_r($data);
-	   			exit;
 				$saveid = $this->Order_m->save($data);
 
 				if ($saveid) {
 
-	            	$response['status'] = 'success';
-					$response['redirect'] = base_url();
-		            echo json_encode($response);
+	            	redirect('product/checkout_billing');
 
 				} else {
-
-					$response['status'] = 'error';
-					$response['redirect'] = base_url();
-		            echo json_encode($response);
+					$data = array(
+						'title' => 'Gagal,',
+						'text' => 'Maaf, silakan ulangi pengisian form shipping kembali.',
+						'type' => 'error'
+						);
+					$this->session->set_flashdata('message',$data);
+					$this->checkout_shipping();
 				}
 			} else {
 				echo "jelek";
 				exit;
 			}
 		} else {
-			$response['status'] = 'error_validation';
-			$response['message'] = validation_errors();
-            echo json_encode($response);
+			$data = array(
+				'title' => 'Gagal,',
+				'text' => 'Maaf, silakan ulangi pengisian form shipping anda kembali.',
+				'type' => 'error'
+				);
+			$this->session->set_flashdata('message',$data);
+			$this->checkout_shipping();
 		}
 	}
 
@@ -337,7 +341,15 @@ class Product extends Frontend_Controller {
                         </div>
                     </div>';
         } else {
-        	$output = 'KOSONG';
+        	$output .= 
+    			'<div class="ui horizontal segments">
+                    <div class="ui segment">
+                        <h4>Pengiriman</h4>
+                        <select name="" class="ui search dropdown">
+                            <option selected="true" disabled="disabled">Maaf, tidak ada pengantaran didaerah yang anda pilih.</option>
+                        </select>
+                    </div>
+                </div>';
         }
         echo $output;
 	    }
@@ -346,14 +358,64 @@ class Product extends Frontend_Controller {
 	public function checkout_billing(){
 		$data['addONS'] = 'checkout-customer';
 		$data['class'] = 'checkout';
-		$data['title'] = 'Checkout Billing- '.$this->session->userdata('Name');
+		$data['title'] = 'Checkout Billing - '.$this->session->userdata('Name');
 
 		$data['checkshipping_notactive'] = $this->Shipping_m->checkshipping(0)->result();
 
 		$data['subview'] = $this->load->view($this->data['frontendDIR'].'checkout_billing', $data, TRUE);
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}
+
+	public function process_checkout_billing(){
+		$rules = $this->Order_m->rules_order_billing;
+		$this->form_validation->set_rules($rules);
+		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
+        $this->form_validation->set_message('trim', 'Form %s adalah Trim');
+        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+		if ($this->form_validation->run() == TRUE) {
+				$data = $this->Order_m->array_from_post(array('paymentORDER'));
+				$id = $this->session->userdata('idCUSTOMER');
+				$check_latest_data_order = $this->Order_m->check_latest_data_order($id);
+
+	   			$data = $this->security->xss_clean($data);
+				$saveid = $this->Order_m->save($data, $check_latest_data_order->idORDER);
+
+				if ($saveid) {
+
+	            	redirect('product/checkout_payment');
+
+				} else {
+					$data = array(
+						'title' => 'Gagal,',
+						'text' => 'Maaf, silakan ulangi pengisian form shipping kembali.',
+						'type' => 'error'
+						);
+					$this->session->set_flashdata('message',$data);
+					$this->checkout_billing();
+				}
+
+		} else {
+			$data = array(
+				'title' => 'Gagal,',
+				'text' => 'Maaf, silakan ulangi pengisian form billing anda kembali.',
+				'type' => 'error'
+				);
+			$this->session->set_flashdata('message',$data);
+			$this->checkout_billing();
+		}
+	}
 	
+	public function checkout_payment(){
+		$data['addONS'] = 'checkout-customer';
+		$data['class'] = 'checkout';
+		$data['title'] = 'Checkout Payment - '.$this->session->userdata('Name');
+		$id = $this->session->userdata('idCUSTOMER');
+		$data['order_payment'] = $this->Order_m->check_latest_data_order_for_payment($id);
+
+		$data['subview'] = $this->load->view($this->data['frontendDIR'].'checkout_payment', $data, TRUE);
+		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
+	}
+
 	//function testing aje
 	public function cek_ongkir(){
 		$costing = cost_ekspedisi();
