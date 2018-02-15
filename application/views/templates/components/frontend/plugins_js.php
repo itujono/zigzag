@@ -4,7 +4,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 	<script src="<?php echo base_url().$this->data['asfront'];?>js/plugins.js"></script>
 	<script src="<?php echo base_url().$this->data['asfront'];?>js/main.js"></script>
-
+	
 <?php
 if ($plugins == 'home') { ?>
 
@@ -106,7 +106,6 @@ if ($plugins == 'home') { ?>
 				method : "POST",
 				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG, weightBARANG: weightBARANG},
 				success: function(data){
-					$('#hide_info').hide();
 					$('#detail_cart').html(data);
 				}
 			})
@@ -159,7 +158,6 @@ if ($plugins == 'home') { ?>
 				method : "POST",
 				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG, weightBARANG: weightBARANG},
 				success: function(data){
-					$('#hide_info').hide();
 					$('#detail_cart').html(data);
 				}
 			});
@@ -243,7 +241,6 @@ if ($plugins == 'home') { ?>
 				method : "POST",
 				data : {idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG, weightBARANG: weightBARANG},
 				success: function(data){
-					$('#hide_info').hide();
 					$('#detail_cart').html(data);
 				}
 			});
@@ -672,7 +669,6 @@ if ($plugins == 'home') { ?>
 				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG, weightBARANG: weightBARANG},
 				success: function(data){
 					$('#wishlist_item').load("<?php echo base_url();?>customer/move_wish_list_to_cart/"+idWISH);
-					$('#hide_info').hide();
 					$('#detail_cart').html(data);
 				}
 			});
@@ -782,8 +778,8 @@ if ($plugins == 'home') { ?>
     	})
     })
 </script>
-<?php } elseif ($plugins == 'checkout-customer') { ?>
-<?php
+<?php } elseif ($plugins == 'checkout-customer') {
+
 	if(!empty($this->cart->contents())){
 		foreach ($this->cart->contents() as $key => $val) {
 			$weight_barang[$key] = $val['weight']*$val['qty'];
@@ -792,83 +788,29 @@ if ($plugins == 'home') { ?>
 	$sum_weight = array_sum($weight_barang);
 ?>
 <script type="text/javascript">
-	$(document).ready(function () {
-		$('#ekspedisi-shipping-0').change(function() {
-			const city_id = $("select[name='city-checkout']").val()
-			const ekspedisi = $(".ekspedisi_class:checked").val();
-			const weight = "<?php echo $sum_weight;?>"
-			const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', city_id, ekspedisi, weight}
-			$.ajax({
-            	type : "POST",
-           		url : "<?php echo base_url();?>product/checking_ongkir",
-            	data : formData,
-					success: function (data) {
-					//jika data berhasil didapatkan, tampilkan ke dalam element div ongkir
-					$("#detail_ekspedisi0").html(data);
-				}
-          	});
-		});
-		$('#ekspedisi-shipping-1').change(function() {
-			const city_id = $("select[name='city-checkout']").val()
-			const ekspedisi = $(".ekspedisi_class:checked").val();
-			const weight = "<?php echo $sum_weight;?>"
-			const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', city_id, ekspedisi, weight}
-			$.ajax({
-            	type : "POST",
-           		url : "<?php echo base_url();?>product/checking_ongkir",
-            	data : formData,
-					success: function (data) {
-					//jika data berhasil didapatkan, tampilkan ke dalam element div ongkir
-					$("#detail_ekspedisi1").html(data);
-				}
-          	});
-		});
+$(document).ready(function () {
+<?php 
+if(!empty($checkshipping_active)){
+	foreach ($checkshipping_active as $keys_ship => $val_ship) {
+?>
+	$('#ekspedisi-shipping-<?php echo $keys_ship;?>').change(function() {
+		const city_id = $("select[name='city-checkout']").val()
+		const ekspedisi = $(".ekspedisi_class:checked").val();
+		const weight = "<?php echo $sum_weight;?>"
+		const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', city_id, ekspedisi, weight}
+		$.ajax({
+        	type : "POST",
+       		url : "<?php echo base_url();?>product/checking_ongkir",
+        	data : formData,
+				success: function (data) {
+				//jika data berhasil didapatkan, tampilkan ke dalam element div ongkir
+				$("#detail_ekspedisi<?php echo $keys_ship;?>").html(data);
+			}
+      	});
 	});
-	// $(".form.shipping-address").form({
- //        inline: true,
- //        on: "submit",
- //        onSuccess: function(e) {
- //        	const original_data = $("#original_data").val()
- //            const nameORDER = $("#nameORDER").val()
- //            const emailORDER = $("#emailORDER").val()
- //            const teleORDER = $("#teleORDER").val()
- //            const telehomeORDER = $("#telehomeORDER").val()
- //            const provinsi_checkout = $("#provinsi_checkout").val()
- //            const city_checkout = $("#city_checkout").val()
- //            const zipORDER = $("#zipORDER").val()
- //            const addressORDER = $("#addressORDER").val()
- //            const ekspedisiORDER = $("#ekspedisiORDER").val()
- //            const dropshipper_check = $("#dropshipper_check").val()
- //            const dropshipperORDER = $("#dropshipperORDER").val()
- //            const dropshippercompanyORDER = $("#dropshippercompanyORDER").val()
- //            const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', original_data, nameORDER, emailORDER, teleORDER, telehomeORDER, provinsi_checkout, city_checkout, zipORDER, addressORDER, ekspedisiORDER, dropshipper_check, dropshipperORDER, dropshippercompanyORDER }
- //            	$.ajax({
-	//                 url: "<?php echo base_url();?>product/process_checkout",
-	//                 type:'POST',
-	//                 dataType: "json",
-	//                 data: formData,
-	//                 success: response => {
-	//                 	if(response.status == "success"){
-	// 	                    $(this).closest("#step-shipping").transition("fade", 150, function() {
-	// 			                $("#step-billing").transition("fade", 150);
-	// 			            });
-	//                 	}
-	//                     if (response.status == "error_validation") {
-	//                     	$(".password-not-same").css('display','none')
-	//                         $(".password-error-validation").css('display','block')
-	//                         $(".password-error-validation").html(response.message)
-	//                         return false
-	//                     }
-	//                     if (response.status == "empty-data") {
-	//                         $(".password-error-validation").css('display','none')
-	//                         $(".password-not-same").css('display','block')
-	//                         return false
-	//                     }
-	//                 }
-	//             })
- //            e.preventDefault();
- //        }
- //    });
+	<?php } ?>
+<?php } ?>
+});
 </script>
 <?php } ?>
 <script type="text/javascript">
@@ -882,7 +824,7 @@ if ($plugins == 'home') { ?>
 			data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', row_id : row_id},
 			success :function(data){
 				$('#detail_cart').html(data);
-				$('#hide_info').show();
+				$('#hide_info').css('display','block')
 			}
 		});
 	});

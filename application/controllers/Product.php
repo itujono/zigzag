@@ -64,6 +64,7 @@ class Product extends Frontend_Controller {
 				$map = directory_map('assets/upload/barang/pic-barang-'.folenc($items['id']), FALSE, TRUE);
 				$imageBARANG = base_url() . 'assets/upload/barang/pic-barang-'.folenc($items['id']).'/'.$map[0];
 				$output .='
+					<div class="ui divided items">				
 	                    <div class="item">
 	                        <a href="#" class="ui mini image">
 	                            <img src="'.$imageBARANG.'" alt="">
@@ -86,7 +87,18 @@ class Product extends Frontend_Controller {
                 <div class="visible content"><i class="send icon"></i></div>
                 <div class="hidden content">Checkout sekarang</div>
             </a>
+          	</div>
 			';
+		} else {
+			$output = 
+			'<div class="ui divided items">
+                <div class="item">
+                    <div class="content">
+                        <h4 class="header">Kamu belum menambahkan item apapun di Cart</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="ui divided items"></div>';
 		}
 		
 		return $output;
@@ -99,6 +111,7 @@ class Product extends Frontend_Controller {
 				'qty' => ($val['qty'] - 1)
 			);
 		}
+
 		$this->cart->update($data);
 		echo $this->show_cart();
 	}

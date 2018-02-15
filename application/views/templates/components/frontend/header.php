@@ -58,14 +58,7 @@
                         <div class="cart-header">
                             <h4>Cart kamu</h4>
                         </div>
-                        <div class="ui divided items" id="hide_info">
-                            <div class="item">
-                                <div class="content">
-                                    <h4 class="header">Kamu belum menambahkan item apapun di Cart</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ui divided items" id="detail_cart"></div>
+                        <div id="detail_cart"></div>
                     </div>
                         <div class="ui top left pointing dropdown button item">
                         <?php
