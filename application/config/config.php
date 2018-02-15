@@ -1,14 +1,23 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-function __autoload($classname) {
+spl_autoload_register(function($classname) {
 	if (strpos($classname, 'CI_') !== 0) {
 		$file = APPPATH . 'libraries/' . $classname . '.php';
 		if (file_exists($file) && is_file($file)) {
 			@include_once($file);
 		}
 	}
-}
+});
+//for php 5.6
+// function __autoload($classname) {
+// 	if (strpos($classname, 'CI_') !== 0) {
+// 		$file = APPPATH . 'libraries/' . $classname . '.php';
+// 		if (file_exists($file) && is_file($file)) {
+// 			@include_once($file);
+// 		}
+// 	}
+// }
 
 date_default_timezone_set('Asia/Jakarta');
 /*
