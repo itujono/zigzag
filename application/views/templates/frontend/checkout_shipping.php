@@ -173,16 +173,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <?php
                         if(!empty($checkshipping_active)){
                             foreach ($checkshipping_active as $key => $active) {
-                                if($key == 0){
-                                    $selected = '';
-                                } else {
-                                    $selected = ''; 
-                                }
                     ?>
                     <div class="field">
                         <div class="ui segment">
                             <div class="ui radio checkbox <?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>">
-                                <input type="radio" name="ekspedisiORDER" id="ekspedisi-shipping-<?php echo $key;?>" class="hidden ekspedisi_class" <?php echo $selected;?> value="<?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>">
+                                <input type="radio" name="ekspedisiORDER" id="ekspedisi-shipping-<?php echo $key;?>" class="hidden ekspedisi_class" value="<?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>">
                                 <label><?php echo $active->nameSHIPPING;?></label>
                             </div>
                         </div>
@@ -233,9 +228,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
         </div>
 
     </div> <!-- kelar div Grid / Step-Shipping -->
-
-
-
     <div class="ui grid" id="step-billing">
 
         <div class="sixteen wide column">

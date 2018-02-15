@@ -297,14 +297,6 @@ function selectall_category_for_frontend($parent=NULL, $child=NULL){
     return $data;
 }
 
-// function select_all_province(){
-//     $CI =& get_instance();
-//     $CI->db->select('idPROVINCE, namePROVINCE');
-//     $CI->db->from('province');
-//     $data = $CI->db->get()->result();
-//     return $data;
-// }
-
 function slugify($text){
         // replace non letter or digits by -
     $text = preg_replace('~[^\pL\d]+~u', '-', $text);
