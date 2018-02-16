@@ -388,7 +388,7 @@ function selectall_city_by_province($id, $id2=NULL) {
 //dibiarin aja cuman untuk keperluan testing
 function cost_ekspedisi(){
     $asal = 48;
-    $tujuan = 22;
+    $tujuan = 60;
     $kurir = 'tiki';
     $berat = 300;
 

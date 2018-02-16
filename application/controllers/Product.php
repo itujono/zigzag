@@ -376,7 +376,7 @@ class Product extends Frontend_Controller {
 
 	public function checking_ongkir(){
 		$asal = 48;
-	    $tujuan = $this->input->post('city_id');
+	    $tujuan = $this->input->post('city_ids');
 	    $kurir = $this->input->post('ekspedisi');
 	    $berat = $this->input->post('weight');
 
