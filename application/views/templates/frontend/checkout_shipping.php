@@ -132,18 +132,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                  <div class="two fields will-show hide mb2em">
                     <div class="field">
                         <label for="nama">Nama lengkap penerima</label>
-                        <input type="text" name="nameORDER" id="nameORDERs" value="<?php echo $data_customer->nameCUSTOMER;?>" disabled="disabled">
+                        <input type="text" name="nameORDER" id="nameORDER" value="<?php echo $data_customer->nameCUSTOMER;?>" disabled="disabled">
                     </div>
                     <div class="field">
                         <label for="email">Email penerima</label>
-                        <input type="email" name="emailORDER" id="emailORDERs" value="<?php echo $data_customer->emailCUSTOMER;?>" disabled="disabled">
+                        <input type="email" name="emailORDER" id="emailORDER" value="<?php echo $data_customer->emailCUSTOMER;?>" disabled="disabled">
                     </div>
                 </div>
 
                 <div class="one fields will-show hide mb2em">
                     <div class="field">
                         <label for="nama">Nomor telepon penerima</label>
-                        <input type="number" name="teleORDER" id="teleORDERs" value="<?php echo $data_customer->teleCUSTOMER;?>" disabled="disabled">
+                        <input type="number" name="teleORDER" id="teleORDER" value="<?php echo $data_customer->teleCUSTOMER;?>" disabled="disabled">
                     </div>
                 </div>
 
@@ -151,22 +151,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="field">
                         <label for="hidden-provinsi">Provinsi</label>
                         <?php echo $data_customer_province_city['province'];?>
-                        <input type="hidden" name="provinsi-checkout" id="provinsi_checkouts" value="<?php echo $data_customer_province_city['province_id'];?>" disabled="disabled">
+                        <input type="hidden" name="provinsi-checkout" id="provinsi_checkout_default" value="<?php echo $data_customer_province_city['province_id'];?>" disabled="disabled">
                     </div>
                     <div class="field">
                         <label for="hidden-provinsi">Kota/Kabupaten</label>
                         <?php echo $data_customer_province_city['city_name'];?>
-                        <input type="hidden" name="city-checkout" id="city_checkouts" value="<?php echo $data_customer_province_city['city_id'];?>" disabled="disabled">
+                        <input type="hidden" name="city-checkout" id="city_checkout_default" value="<?php echo $data_customer_province_city['city_id'];?>" disabled="disabled">
                     </div>
                     <div class="field">
                         <label for="hidden-provinsi">Kode Pos</label>
-                        <input type="number" name="zipORDER" id="zipORDERs" value="<?php echo $data_customer->zipCUSTOMER;?>" disabled="disabled">
+                        <input type="number" name="zipORDER" id="zipORDER" value="<?php echo $data_customer->zipCUSTOMER;?>" disabled="disabled">
                     </div>
                 </div>
 
                 <div class="field will-show hide mb2em">
                     <label for="alamat">Alamat pengiriman</label>
-                    <textarea name="addressORDER" rows="6" id="addressORDERs" disabled="disabled"><?php echo $data_customer->addressCUSTOMER;?></textarea>
+                    <textarea name="addressORDER" rows="6" id="addressORDER" disabled="disabled"><?php echo $data_customer->addressCUSTOMER;?></textarea>
                 </div>
 
                 <div class="required field mb2em will-hidden">

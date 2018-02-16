@@ -48,11 +48,15 @@ a.header:hover {
   .zz.button:hover {
     background-color: rgba(88, 220, 185, 0.8); }
 
-.ui.simple.active.dropdown > .menu, .ui.simple.dropdown:hover > .menu {
+.help {
+  color: #f92626; }
+
+.ui.simple.active.dropdown > .menu,
+.ui.simple.dropdown:hover > .menu {
   z-index: 101; }
 
 .ui.pointing.dropdown > .menu {
-  margin-top: .3rem !important;
+  margin-top: 0.3rem !important;
   z-index: 101 !important; }
 
 .ui.message .header {
@@ -69,7 +73,8 @@ form .ui.slider.checkbox.checked label:before {
 form .ui.slider.checkbox input:checked ~ .box:before {
   background-color: #58dcb9 !important; }
 
-form .ui.slider.checkbox input:checked ~ .box, form .ui.slider.checkbox input:checked ~ label {
+form .ui.slider.checkbox input:checked ~ .box,
+form .ui.slider.checkbox input:checked ~ label {
   color: #58dcb9 !important; }
 
 form .ui.slider.checkbox input:checked ~ label:before {
@@ -94,14 +99,16 @@ a {
   width: auto; }
 
 .ui.avatar.image {
-  margin-right: .7em; }
+  margin-right: 0.7em; }
 
 .ui.form .field > label {
-  margin-bottom: .4rem; }
+  margin-bottom: 0.4rem; }
 
-.ui.form input, .ui.form textarea {
+.ui.form input,
+.ui.form textarea {
   border: 1px solid rgba(149, 151, 152, 0.15) !important; }
-  .ui.form input:focus, .ui.form textarea:focus {
+  .ui.form input:focus,
+  .ui.form textarea:focus {
     border-color: #58dcb9 !important; }
 
 .right.menu > .item:first-child {
@@ -110,9 +117,9 @@ a {
 
 .right.menu .ui.input > input {
   line-height: 4;
-  -webkit-transition: all .2s ease;
-  -o-transition: all .2s ease;
-  transition: all .2s ease; }
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
   .right.menu .ui.input > input:focus {
     padding-right: 6em !important; }
 
@@ -145,18 +152,28 @@ a {
       object-fit: cover; }
 
 .main .main-ad .column {
-  padding-left: .5rem;
-  padding-right: .5rem; }
+  padding-left: 0.5rem;
+  padding-right: 0.5rem; }
 
-.main .best-seller .ui.card, .main .promo .ui.card, .main .new-arrival .ui.card {
+.main .best-seller .ui.card,
+.main .promo .ui.card,
+.main .new-arrival .ui.card {
   width: auto; }
-  .main .best-seller .ui.card > .content, .main .promo .ui.card > .content, .main .new-arrival .ui.card > .content {
-    padding: .7em; }
-    .main .best-seller .ui.card > .content > .header:not(.ui), .main .promo .ui.card > .content > .header:not(.ui), .main .new-arrival .ui.card > .content > .header:not(.ui) {
+  .main .best-seller .ui.card > .content,
+  .main .promo .ui.card > .content,
+  .main .new-arrival .ui.card > .content {
+    padding: 0.7em; }
+    .main .best-seller .ui.card > .content > .header:not(.ui),
+    .main .promo .ui.card > .content > .header:not(.ui),
+    .main .new-arrival .ui.card > .content > .header:not(.ui) {
       font-size: 0.85em; }
-  .main .best-seller .ui.card > .image, .main .promo .ui.card > .image, .main .new-arrival .ui.card > .image {
+  .main .best-seller .ui.card > .image,
+  .main .promo .ui.card > .image,
+  .main .new-arrival .ui.card > .image {
     height: 160px; }
-  .main .best-seller .ui.card .meta, .main .promo .ui.card .meta, .main .new-arrival .ui.card .meta {
+  .main .best-seller .ui.card .meta,
+  .main .promo .ui.card .meta,
+  .main .new-arrival .ui.card .meta {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -164,13 +181,21 @@ a {
     -ms-flex-pack: justify;
     justify-content: space-between; }
 
-.main .best-seller .blackish, .main .promo .blackish, .main .new-arrival .blackish {
+.main .best-seller .blackish,
+.main .promo .blackish,
+.main .new-arrival .blackish {
   padding: 2rem; }
-  .main .best-seller .blackish.nobefore:before, .main .promo .blackish.nobefore:before, .main .new-arrival .blackish.nobefore:before {
+  .main .best-seller .blackish.nobefore:before,
+  .main .promo .blackish.nobefore:before,
+  .main .new-arrival .blackish.nobefore:before {
     content: initial; }
-  .main .best-seller .blackish.nobefore:after, .main .promo .blackish.nobefore:after, .main .new-arrival .blackish.nobefore:after {
+  .main .best-seller .blackish.nobefore:after,
+  .main .promo .blackish.nobefore:after,
+  .main .new-arrival .blackish.nobefore:after {
     content: initial; }
-  .main .best-seller .blackish .card, .main .promo .blackish .card, .main .new-arrival .blackish .card {
+  .main .best-seller .blackish .card,
+  .main .promo .blackish .card,
+  .main .new-arrival .blackish .card {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -190,7 +215,9 @@ a {
     color: #fff;
     font-size: 1.2rem;
     letter-spacing: 1.5px; }
-    .main .best-seller .blackish .card a, .main .promo .blackish .card a, .main .new-arrival .blackish .card a {
+    .main .best-seller .blackish .card a,
+    .main .promo .blackish .card a,
+    .main .new-arrival .blackish .card a {
       font-size: 0.8em; }
 
 .main .new-arrival {
@@ -199,9 +226,9 @@ a {
 .main .ui.card {
   -webkit-box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1);
-  -webkit-transition: all .2s ease;
-  -o-transition: all .2s ease;
-  transition: all .2s ease; }
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
   .main .ui.card:hover {
     -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -225,9 +252,9 @@ a {
     -webkit-transform: translate(-5px);
     -ms-transform: translate(-5px);
     transform: translate(-5px);
-    -webkit-transition: all .2s ease;
-    -o-transition: all .2s ease;
-    transition: all .2s ease; }
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease; }
   .main .ui.card .image {
     position: relative;
     overflow-y: hidden; }
@@ -264,7 +291,7 @@ a {
   height: auto;
   min-height: 1px;
   padding-bottom: 2em;
-  padding-top: .2em;
+  padding-top: 0.2em;
   cursor: move; }
   .main .loop .loopy:before {
     content: "";
@@ -307,8 +334,8 @@ a {
 .ui.five.column.grid {
   margin: -1rem -1rem -1rem 0; }
   .ui.five.column.grid > .column {
-    padding-left: .5rem;
-    padding-right: .5rem; }
+    padding-left: 0.5rem;
+    padding-right: 0.5rem; }
 
 .ui.cards a.card:hover,
 .ui.link.cards .card:hover,
@@ -358,7 +385,7 @@ a.ui.card:hover,
     .ui.cart-content .item .description {
       font-size: 1em; }
   .ui.cart-content .ui.divided.items {
-    margin-top: .5em;
+    margin-top: 0.5em;
     margin-bottom: 2em; }
     .ui.cart-content .ui.divided.items .item:first-child {
       padding-top: 1.2em !important; }
@@ -380,9 +407,13 @@ a.ui.card:hover,
     -ms-flex-align: center;
     align-items: center; }
 
-.ui.message.added-to-wishlist, .ui.message.added-to-cart,
-.ui.message.removed-from-wishlist, .ui.message.removed-from-cart,
-.ui.message.error-wishlist, .ui.message.moved-to-cart, .ui.message.not-login {
+.ui.message.added-to-wishlist,
+.ui.message.added-to-cart,
+.ui.message.removed-from-wishlist,
+.ui.message.removed-from-cart,
+.ui.message.error-wishlist,
+.ui.message.moved-to-cart,
+.ui.message.not-login {
   display: none;
   position: fixed;
   top: 0;
@@ -390,16 +421,20 @@ a.ui.card:hover,
   z-index: 99;
   -webkit-box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.11), 8px 8px 30px 0 rgba(0, 0, 0, 0.1);
-  -webkit-transition: all .4s ease;
-  -o-transition: all .4s ease;
-  transition: all .4s ease; }
-  .ui.message.added-to-wishlist.visible, .ui.message.added-to-cart.visible,
-  .ui.message.removed-from-wishlist.visible, .ui.message.removed-from-cart.visible,
-  .ui.message.error-wishlist.visible, .ui.message.moved-to-cart.visible, .ui.message.not-login.visible {
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease; }
+  .ui.message.added-to-wishlist.visible,
+  .ui.message.added-to-cart.visible,
+  .ui.message.removed-from-wishlist.visible,
+  .ui.message.removed-from-cart.visible,
+  .ui.message.error-wishlist.visible,
+  .ui.message.moved-to-cart.visible,
+  .ui.message.not-login.visible {
     display: block;
-    -webkit-transition: all .4s ease;
-    -o-transition: all .4s ease;
-    transition: all .4s ease; }
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease; }
 
 .ui.deposit .card {
   background-color: #f7fbff; }
@@ -434,9 +469,15 @@ a.ui.card:hover,
   margin-right: 0;
   margin-bottom: 1em; }
 
-.ui.modal.login, .ui.modal.register, .ui.modal.delete-cart, .ui.modal.confirm-order {
+.ui.modal.login,
+.ui.modal.register,
+.ui.modal.delete-cart,
+.ui.modal.confirm-order {
   background-color: #f9f9f9; }
-  .ui.modal.login .header-login, .ui.modal.register .header-login, .ui.modal.delete-cart .header-login, .ui.modal.confirm-order .header-login {
+  .ui.modal.login .header-login,
+  .ui.modal.register .header-login,
+  .ui.modal.delete-cart .header-login,
+  .ui.modal.confirm-order .header-login {
     padding: 1.5em 3em;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -444,13 +485,19 @@ a.ui.card:hover,
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center; }
-    .ui.modal.login .header-login .header-icon, .ui.modal.register .header-login .header-icon, .ui.modal.delete-cart .header-login .header-icon, .ui.modal.confirm-order .header-login .header-icon {
+    .ui.modal.login .header-login .header-icon,
+    .ui.modal.register .header-login .header-icon,
+    .ui.modal.delete-cart .header-login .header-icon,
+    .ui.modal.confirm-order .header-login .header-icon {
       color: #58dcb9;
       -webkit-animation: rotator 5s linear infinite;
       animation: rotator 5s linear infinite; }
-    .ui.modal.login .header-login .ui.header, .ui.modal.register .header-login .ui.header, .ui.modal.delete-cart .header-login .ui.header, .ui.modal.confirm-order .header-login .ui.header {
+    .ui.modal.login .header-login .ui.header,
+    .ui.modal.register .header-login .ui.header,
+    .ui.modal.delete-cart .header-login .ui.header,
+    .ui.modal.confirm-order .header-login .ui.header {
       margin-top: 0;
-      padding-left: .5em; }
+      padding-left: 0.5em; }
 
 @-webkit-keyframes rotator {
   from {
@@ -467,33 +514,74 @@ a.ui.card:hover,
   to {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
-  .ui.modal.login .form, .ui.modal.register .form, .ui.modal.delete-cart .form, .ui.modal.confirm-order .form {
+  .ui.modal.login .form,
+  .ui.modal.register .form,
+  .ui.modal.delete-cart .form,
+  .ui.modal.confirm-order .form {
     padding: 1em 3em;
     margin-bottom: 1.2em; }
-  .ui.modal.login .login.button, .ui.modal.register .login.button, .ui.modal.delete-cart .login.button, .ui.modal.confirm-order .login.button {
+  .ui.modal.login .login.button,
+  .ui.modal.register .login.button,
+  .ui.modal.delete-cart .login.button,
+  .ui.modal.confirm-order .login.button {
     background-color: #58dcb9;
     color: #fff; }
-    .ui.modal.login .login.button:hover, .ui.modal.register .login.button:hover, .ui.modal.delete-cart .login.button:hover, .ui.modal.confirm-order .login.button:hover {
+    .ui.modal.login .login.button:hover,
+    .ui.modal.register .login.button:hover,
+    .ui.modal.delete-cart .login.button:hover,
+    .ui.modal.confirm-order .login.button:hover {
       background-color: #2ed3a7; }
-    .ui.modal.login .login.button .content, .ui.modal.register .login.button .content, .ui.modal.delete-cart .login.button .content, .ui.modal.confirm-order .login.button .content {
+    .ui.modal.login .login.button .content,
+    .ui.modal.register .login.button .content,
+    .ui.modal.delete-cart .login.button .content,
+    .ui.modal.confirm-order .login.button .content {
       padding: initial; }
-  .ui.modal.login .header, .ui.modal.register .header, .ui.modal.delete-cart .header, .ui.modal.confirm-order .header {
+  .ui.modal.login .header,
+  .ui.modal.register .header,
+  .ui.modal.delete-cart .header,
+  .ui.modal.confirm-order .header {
     border-bottom: none;
     padding: 1em 2em; }
-    .ui.modal.login .header.sub, .ui.modal.register .header.sub, .ui.modal.delete-cart .header.sub, .ui.modal.confirm-order .header.sub {
+    .ui.modal.login .header.sub,
+    .ui.modal.register .header.sub,
+    .ui.modal.delete-cart .header.sub,
+    .ui.modal.confirm-order .header.sub {
       padding: 0; }
-  .ui.modal.login .login-buttons, .ui.modal.register .login-buttons, .ui.modal.delete-cart .login-buttons, .ui.modal.confirm-order .login-buttons {
+  .ui.modal.login .login-buttons,
+  .ui.modal.register .login-buttons,
+  .ui.modal.delete-cart .login-buttons,
+  .ui.modal.confirm-order .login-buttons {
     text-align: center;
     margin: 0 auto;
     padding-bottom: 3em; }
-  .ui.modal.login .forgot, .ui.modal.login .signup-link, .ui.modal.login .login-link, .ui.modal.register .forgot, .ui.modal.register .signup-link, .ui.modal.register .login-link, .ui.modal.delete-cart .forgot, .ui.modal.delete-cart .signup-link, .ui.modal.delete-cart .login-link, .ui.modal.confirm-order .forgot, .ui.modal.confirm-order .signup-link, .ui.modal.confirm-order .login-link {
+  .ui.modal.login .forgot,
+  .ui.modal.login .signup-link,
+  .ui.modal.login .login-link,
+  .ui.modal.register .forgot,
+  .ui.modal.register .signup-link,
+  .ui.modal.register .login-link,
+  .ui.modal.delete-cart .forgot,
+  .ui.modal.delete-cart .signup-link,
+  .ui.modal.delete-cart .login-link,
+  .ui.modal.confirm-order .forgot,
+  .ui.modal.confirm-order .signup-link,
+  .ui.modal.confirm-order .login-link {
     text-align: center;
     margin-bottom: 2.6em; }
-  .ui.modal.login .login-link, .ui.modal.register .login-link, .ui.modal.delete-cart .login-link, .ui.modal.confirm-order .login-link {
+  .ui.modal.login .login-link,
+  .ui.modal.register .login-link,
+  .ui.modal.delete-cart .login-link,
+  .ui.modal.confirm-order .login-link {
     padding-bottom: 2.4em; }
-  .ui.modal.login .ui.checkbox label, .ui.modal.register .ui.checkbox label, .ui.modal.delete-cart .ui.checkbox label, .ui.modal.confirm-order .ui.checkbox label {
+  .ui.modal.login .ui.checkbox label,
+  .ui.modal.register .ui.checkbox label,
+  .ui.modal.delete-cart .ui.checkbox label,
+  .ui.modal.confirm-order .ui.checkbox label {
     font-size: 12px; }
-  .ui.modal.login .content, .ui.modal.register .content, .ui.modal.delete-cart .content, .ui.modal.confirm-order .content {
+  .ui.modal.login .content,
+  .ui.modal.register .content,
+  .ui.modal.delete-cart .content,
+  .ui.modal.confirm-order .content {
     padding: 1em 3em 3em 3em; }
 
 .forgot .header {
@@ -590,7 +678,7 @@ a.ui.card:hover,
   margin-bottom: 1.5em;
   background-color: #f3f3f3; }
   .item-detail .features .item {
-    margin-bottom: .8em; }
+    margin-bottom: 0.8em; }
   .item-detail .features .colors {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -599,7 +687,7 @@ a.ui.card:hover,
     -ms-flex-pack: stretch;
     justify-content: stretch; }
     .item-detail .features .colors > div {
-      margin-right: .5em;
+      margin-right: 0.5em;
       width: 18px;
       height: 18px;
       background: black; }
@@ -707,7 +795,8 @@ a.ui.card:hover,
   position: relative;
   margin-bottom: 5em; }
 
-.checkout #step-billing, .checkout #step-confirm {
+.checkout #step-billing,
+.checkout #step-confirm {
   display: none; }
 
 .checkout #step-shipping .sixteen.column {
@@ -854,17 +943,22 @@ a.ui.card:hover,
 .done-payment-link {
   color: #999; }
 
-.order-done #cart-table, .order-done #cart-recap, .order-done #cart-total {
+.order-done #cart-table,
+.order-done #cart-recap,
+.order-done #cart-total {
   margin-bottom: 2em; }
 
-.order-done #cart-recap tr td:last-of-type, .order-done #cart-recap tr th:last-of-type, .order-done #cart-total tr td:last-of-type, .order-done #cart-total tr th:last-of-type {
+.order-done #cart-recap tr td:last-of-type,
+.order-done #cart-recap tr th:last-of-type,
+.order-done #cart-total tr td:last-of-type,
+.order-done #cart-total tr th:last-of-type {
   font-weight: bold; }
 
 .search .header {
   margin-bottom: 5em;
   color: #999; }
   .search .header h3 {
-    margin-bottom: .3em;
+    margin-bottom: 0.3em;
     color: initial; }
   .search .header strong {
     color: #58dcb9; }
@@ -892,7 +986,7 @@ a.ui.card:hover,
     text-transform: uppercase;
     font-size: 1em;
     letter-spacing: 2px;
-    margin-bottom: .5em; }
+    margin-bottom: 0.5em; }
   .account .user-information .name {
     display: block !important;
     text-align: center;
@@ -1046,7 +1140,7 @@ a.ui.card:hover,
     -ms-flex-preferred-size: 20%;
     flex-basis: 20%;
     list-style-type: none;
-    margin-right: .5em;
+    margin-right: 0.5em;
     margin-bottom: 0 !important; }
     .feed.details .item-list ul li img {
       width: 100%;
@@ -1111,7 +1205,7 @@ footer .column.footer-logo {
     footer .column.footer-logo > div h2 {
       color: #fff;
       font-size: 4em;
-      line-height: .8;
+      line-height: 0.8;
       margin: 0;
       text-transform: uppercase; }
 

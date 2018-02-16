@@ -798,7 +798,13 @@ if(!empty($checkshipping_active)){
 	foreach ($checkshipping_active as $keys_ship => $val_ship) {
 ?>
 	$('#ekspedisi-shipping-<?php echo $keys_ship;?>').change(function() {
-		const city_id = $("select[name='city-checkout']").val()
+		const city_id = $("[name='city-checkout']").val()
+		const city_id_default = $("[name='city-checkout_default']").val()
+
+		if (!city_id) {
+			return city_id_default
+		}
+
 		const ekspedisi = $(".ekspedisi_class:checked").val();
 		const weight = "<?php echo $sum_weight;?>"
 		const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', city_id, ekspedisi, weight}

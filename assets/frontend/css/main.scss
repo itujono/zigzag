@@ -1,9 +1,5 @@
-
 @import "var.scss";
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700i,900i');
-
-
-
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700i,900i");
 
 body {
     background-color: #fafafa;
@@ -32,19 +28,23 @@ body {
     footer {
         grid-area: f;
     }
-    &.forgot, &.search {
+    &.forgot,
+    &.search {
         grid-template-areas:
         "h h h h h h h h h h h h"
         ". . m m m m m m m m . ."
-        "f f f f f f f f f f f f"
+        "f f f f f f f f f f f f";
     }
     &.account {
         grid-template-areas:
         "h h h h h h h h h h h h"
         ". m m m m m m m m m m ."
-        "f f f f f f f f f f f f"
+        "f f f f f f f f f f f f";
     }
-    &.checkout, &.order-done, &.confirmation, &.retur {
+    &.checkout,
+    &.order-done,
+    &.confirmation,
+    &.retur {
         grid-template-areas:
         "h h h h h h h h h h h h"
         ". . . m m m m m m . . ."
@@ -80,16 +80,21 @@ a.header {
     background-color: $tosca;
     color: #fff;
     &:hover {
-        background-color: transparentize($tosca, .2);
+        background-color: transparentize($tosca, 0.2);
     }
 }
 
-.ui.simple.active.dropdown>.menu, .ui.simple.dropdown:hover>.menu {
+.help {
+    color: $red;
+}
+
+.ui.simple.active.dropdown > .menu,
+.ui.simple.dropdown:hover > .menu {
     z-index: 101;
 }
 
-.ui.pointing.dropdown>.menu {
-    margin-top: .3rem !important;
+.ui.pointing.dropdown > .menu {
+    margin-top: 0.3rem !important;
     z-index: 101 !important;
 }
 
@@ -111,20 +116,21 @@ form .ui.slider.checkbox {
             &:before {
                 background-color: $tosca !important;
             }
-       }
+        }
     }
     input:checked {
-       ~.box:before {
-           background-color: $tosca !important;
-       }
-       ~.box, ~label {
-           color: $tosca !important;
-       }
-       ~label {
+        ~ .box:before {
+            background-color: $tosca !important;
+        }
+        ~ .box,
+        ~ label {
+            color: $tosca !important;
+        }
+        ~ label {
             &:before {
                 background-color: $tosca !important;
             }
-       }
+        }
     }
 }
 
@@ -137,7 +143,7 @@ a {
 }
 
 .learn-more {
-    font-size: $defaultSize - .2;
+    font-size: $defaultSize - 0.2;
 }
 
 .image {
@@ -154,17 +160,18 @@ a {
 
 .ui.avatar {
     &.image {
-        margin-right: .7em;
+        margin-right: 0.7em;
     }
 }
 
 .ui.form {
     .field {
         > label {
-            margin-bottom: .4rem;
+            margin-bottom: 0.4rem;
         }
     }
-    input, textarea {
+    input,
+    textarea {
         border: 1px solid rgba(149, 151, 152, 0.15) !important;
         &:focus {
             border-color: $tosca !important;
@@ -180,16 +187,13 @@ a {
     .ui.input {
         > input {
             line-height: 4;
-            transition: all .2s ease;
+            transition: all 0.2s ease;
             &:focus {
                 padding-right: 6em !important;
             }
         }
     }
 }
-
-
-
 
 .sidebar {
     .ui.vertical.menu {
@@ -203,8 +207,6 @@ a {
         }
     }
 }
-
-
 
 .app {
     .main {
@@ -222,8 +224,8 @@ a {
         }
     }
     .header {
-        margin-bottom:  2em;
-        margin-top:  2em;
+        margin-bottom: 2em;
+        margin-top: 2em;
         h3 {
             color: #000;
         }
@@ -241,17 +243,19 @@ a {
             }
         }
         .column {
-            padding-left: .5rem;
-            padding-right: .5rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
         }
     }
-    .best-seller, .promo, .new-arrival {
+    .best-seller,
+    .promo,
+    .new-arrival {
         .ui.card {
             width: auto;
             > .content {
-                padding: .7em;
+                padding: 0.7em;
                 > .header:not(.ui) {
-                    font-size: $defaultSize - .15;
+                    font-size: $defaultSize - 0.15;
                 }
             }
             > .image {
@@ -306,7 +310,7 @@ a {
                         font-size: 1.2rem;
                         letter-spacing: 1.5px;
                         a {
-                            font-size: $defaultSize - .2;
+                            font-size: $defaultSize - 0.2;
                         }
                     }
                 }
@@ -316,9 +320,9 @@ a {
             }
             .ui.card {
                 box-shadow: $boxShadow;
-                transition: all .2s ease;
+                transition: all 0.2s ease;
                 &:hover {
-                    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+                    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
                     transform: translateY(-3px);
                 }
                 &:active {
@@ -326,7 +330,7 @@ a {
                 }
                 .content {
                     .meta {
-                        font-size: $defaultSize - .2;
+                        font-size: $defaultSize - 0.2;
                     }
                     .header {
                         white-space: nowrap;
@@ -339,7 +343,7 @@ a {
                     left: 50%;
                     z-index: 2;
                     transform: translate(-5px);
-                    transition: all .2s ease;
+                    transition: all 0.2s ease;
                 }
                 .image {
                     position: relative;
@@ -369,7 +373,7 @@ a {
                 left: initial;
                 top: 0;
                 right: 0;
-                margin: 0 0 0 -1.5em!important;
+                margin: 0 0 0 -1.5em !important;
             }
             .loop {
                 .loopy {
@@ -378,11 +382,15 @@ a {
                     height: auto;
                     min-height: 1px;
                     padding-bottom: 2em;
-                    padding-top: .2em;
+                    padding-top: 0.2em;
                     cursor: move;
                     &:before {
                         content: "";
-                        background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+                        background: linear-gradient(
+                        to right,
+                        rgba(255, 255, 255, 1),
+                        rgba(255, 255, 255, 0)
+                        );
                         position: absolute;
                         left: -10px;
                         width: 5%;
@@ -391,7 +399,11 @@ a {
                     }
                     &:after {
                         content: "";
-                        background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+                        background: linear-gradient(
+                        to left,
+                        rgba(255, 255, 255, 1),
+                        rgba(255, 255, 255, 0)
+                        );
                         position: absolute;
                         right: -10px;
                         bottom: 0;
@@ -418,8 +430,8 @@ a {
         .ui.five.column.grid {
             margin: -1rem -1rem -1rem 0;
             > .column {
-                padding-left: .5rem;
-                padding-right: .5rem;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
             }
         }
         
@@ -485,7 +497,7 @@ a {
                 }
             }
             .ui.divided.items {
-                margin-top: .5em;
+                margin-top: 0.5em;
                 margin-bottom: 2em;
                 .item {
                     &:first-child {
@@ -511,19 +523,23 @@ a {
             }
         }
         
-        .ui.message.added-to-wishlist, .ui.message.added-to-cart,
-        .ui.message.removed-from-wishlist, .ui.message.removed-from-cart,
-        .ui.message.error-wishlist, .ui.message.moved-to-cart, .ui.message.not-login {
+        .ui.message.added-to-wishlist,
+        .ui.message.added-to-cart,
+        .ui.message.removed-from-wishlist,
+        .ui.message.removed-from-cart,
+        .ui.message.error-wishlist,
+        .ui.message.moved-to-cart,
+        .ui.message.not-login {
             display: none;
             position: fixed;
             top: 0;
             right: 20px;
             z-index: 99;
             box-shadow: $boxShadow;
-            transition: all .4s ease;
+            transition: all 0.4s ease;
             &.visible {
                 display: block;
-                transition: all .4s ease;
+                transition: all 0.4s ease;
             }
         }
         
@@ -552,11 +568,11 @@ a {
             }
             .what-is-deposit {
                 .header {
-                    font-size: $defaultSize + .4;
+                    font-size: $defaultSize + 0.4;
                     margin-bottom: 1em;
                 }
                 .description {
-                    font-size: $defaultSize - .1;
+                    font-size: $defaultSize - 0.1;
                 }
                 .ui.avatar.image {
                     margin-right: 0;
@@ -565,7 +581,10 @@ a {
             }
         }
         
-        .ui.modal.login, .ui.modal.register, .ui.modal.delete-cart, .ui.modal.confirm-order {
+        .ui.modal.login,
+        .ui.modal.register,
+        .ui.modal.delete-cart,
+        .ui.modal.confirm-order {
             background-color: #f9f9f9;
             .header-login {
                 padding: 1.5em 3em;
@@ -577,14 +596,14 @@ a {
                 }
                 .ui.header {
                     margin-top: 0;
-                    padding-left: .5em;
+                    padding-left: 0.5em;
                 }
                 @keyframes rotator {
                     from {
-                        transform: rotate(0)
+                        transform: rotate(0);
                     }
                     to {
-                        transform: rotate(360deg)
+                        transform: rotate(360deg);
                     }
                 }
             }
@@ -614,7 +633,9 @@ a {
                 margin: 0 auto;
                 padding-bottom: 3em;
             }
-            .forgot, .signup-link, .login-link {
+            .forgot,
+            .signup-link,
+            .login-link {
                 text-align: center;
                 margin-bottom: 2.6em;
             }
@@ -630,15 +651,6 @@ a {
                 padding: 1em 3em 3em 3em;
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         // Wooow bagian Forgot Password ni sekarang! Heheh.
         
@@ -662,11 +674,6 @@ a {
                 }
             }
         }
-        
-        
-        
-        
-        
         
         // Whoop whoop! Sudin bagian Products wak nih! Hahahhaah!
         
@@ -717,12 +724,6 @@ a {
             }
         }
         
-        
-        
-        
-        
-        
-        
         // Cieeek udah di Product Detail ni yeee. Cieeeek!
         
         .add-to-wishlist {
@@ -771,23 +772,35 @@ a {
                 margin-bottom: 1.5em;
                 background-color: #f3f3f3;
                 .item {
-                    margin-bottom: .8em;
+                    margin-bottom: 0.8em;
                 }
                 .colors {
                     display: flex;
                     justify-content: stretch;
                     > div {
-                        margin-right: .5em;
+                        margin-right: 0.5em;
                         width: 18px;
                         height: 18px;
                         background: black;
                     }
-                    .red { background: red; }
-                    .blueviolet { background: blueviolet; }
-                    .darkslategray { background: darkslategray; }
-                    .yellow { background: yellow; }
-                    .green { background: green; }
-                    .brown { background: brown; }
+                    .red {
+                        background: red;
+                    }
+                    .blueviolet {
+                        background: blueviolet;
+                    }
+                    .darkslategray {
+                        background: darkslategray;
+                    }
+                    .yellow {
+                        background: yellow;
+                    }
+                    .green {
+                        background: green;
+                    }
+                    .brown {
+                        background: brown;
+                    }
                 }
             }
             .quantity-select {
@@ -835,14 +848,6 @@ a {
             border: 1px #ddd solid;
             z-index: 99 !important;
         }
-        
-        
-        
-        
-        
-        
-        
-        
         
         // Yippiieeee! Udah masuk Cart woooy! Hahahah!important
         
@@ -918,14 +923,6 @@ a {
             }
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
         // Bujuneng! Ini udah di Checkout aja hahahahah! Yeaaay!
         
         .checkout {
@@ -939,7 +936,8 @@ a {
                 position: relative;
                 margin-bottom: 5em;
             }
-            #step-billing, #step-confirm {
+            #step-billing,
+            #step-confirm {
                 display: none;
             }
             #step-shipping {
@@ -992,14 +990,14 @@ a {
                 }
             }
         }
-
+        
         .ui.tab.horizontal.segments {
             display: none;
             &.active {
-                display: flex
+                display: flex;
             }
         }
-
+        
         .ekspedisi-logo {
             display: flex !important;
             justify-content: center;
@@ -1078,25 +1076,28 @@ a {
             }
         }
         
-        
-        
-        
-        
-        
         // Yup! Sudin masuk Order-Done ya ceritanya. Heheh.
         
         @keyframes checkmark {
-            0% { stroke-dashoffset: 50px }
-            100% { stroke-dashoffset: 0 }
+            0% {
+                stroke-dashoffset: 50px;
+            }
+            100% {
+                stroke-dashoffset: 0;
+            }
         }
         
         @keyframes checkmark-circle {
-            0% { stroke-dashoffset: 240px }
-            100% { stroke-dashoffset: 480px }
+            0% {
+                stroke-dashoffset: 240px;
+            }
+            100% {
+                stroke-dashoffset: 480px;
+            }
         }
         
         .inlinesvg .svg svg {
-            display: inline
+            display: inline;
         }
         
         .icon--order-success {
@@ -1116,7 +1117,7 @@ a {
         .success-text {
             margin-bottom: 2em;
             h2 {
-                margin-bottom: $defaultSize - .5;
+                margin-bottom: $defaultSize - 0.5;
             }
         }
         
@@ -1125,25 +1126,21 @@ a {
         }
         
         .order-done {
-            #cart-table, #cart-recap, #cart-total {
+            #cart-table,
+            #cart-recap,
+            #cart-total {
                 margin-bottom: 2em;
             }
-            #cart-recap, #cart-total {
+            #cart-recap,
+            #cart-total {
                 tr {
-                    td:last-of-type, th:last-of-type {
+                    td:last-of-type,
+                    th:last-of-type {
                         font-weight: bold;
                     }
                 }
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
         
         // Yippiiiieee! Udah masuk Search Results konooon!
         
@@ -1152,7 +1149,7 @@ a {
                 margin-bottom: 5em;
                 color: #999;
                 h3 {
-                    margin-bottom: .3em;
+                    margin-bottom: 0.3em;
                     color: initial;
                 }
                 strong {
@@ -1164,7 +1161,7 @@ a {
             }
             .discounted {
                 text-decoration: line-through;
-                color: transparentize($red, .4);
+                color: transparentize($red, 0.4);
             }
         }
         
@@ -1180,12 +1177,6 @@ a {
             }
         }
         
-        
-        
-        
-        
-        
-        
         // Woooow kok udah di User Profile ya?
         
         .account {
@@ -1197,14 +1188,14 @@ a {
                     text-transform: uppercase;
                     font-size: $defaultSize;
                     letter-spacing: 2px;
-                    margin-bottom: .5em;
+                    margin-bottom: 0.5em;
                 }
                 .name {
                     display: block !important;
                     text-align: center;
                     font-weight: bold;
                     p {
-                        font-weight: initial
+                        font-weight: initial;
                     }
                 }
                 .segment {
@@ -1247,7 +1238,7 @@ a {
                                 top: 0;
                             }
                             &.disabled {
-                                display: none
+                                display: none;
                             }
                         }
                     }
@@ -1316,7 +1307,7 @@ a {
                     &:hover {
                         .remove-from-wishlist {
                             display: inline-block;
-                            visibility: visible
+                            visibility: visible;
                         }
                     }
                     .remove-from-wishlist {
@@ -1354,7 +1345,6 @@ a {
             }
         }
         
-        
         .feed.details {
             .summary {
                 margin-bottom: 1em !important;
@@ -1371,7 +1361,8 @@ a {
                 }
                 .label {
                     border-radius: 50%;
-                    width: 40px; height: 40px;
+                    width: 40px;
+                    height: 40px;
                     img {
                         width: 100%;
                         height: 100%;
@@ -1388,10 +1379,11 @@ a {
                     li {
                         flex-basis: 20%;
                         list-style-type: none;
-                        margin-right: .5em;
+                        margin-right: 0.5em;
                         margin-bottom: 0 !important;
                         img {
-                            width: 100%; height: 100%;
+                            width: 100%;
+                            height: 100%;
                             object-fit: cover;
                         }
                     }
@@ -1432,20 +1424,9 @@ a {
             }
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         footer {
             .ui.grid.footer {
-                border-bottom: 1px solid rgba(0, 0, 0, .4);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.4);
                 .column {
                     padding: 1em 3em !important;
                     border-right: 1px solid #ddd;
@@ -1461,7 +1442,7 @@ a {
                     h2 {
                         color: #fff;
                         font-size: $defaultSize * 4;
-                        line-height: .8;
+                        line-height: 0.8;
                         margin: 0;
                         text-transform: uppercase;
                     }

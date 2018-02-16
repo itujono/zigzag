@@ -465,18 +465,37 @@ $(document).ready(function() {
 
 
 
-	const defaultAddress = $("#default-address input")
+    const defaultAddress = $("#default-address input")
+    const willShowHasClassHide = $(".will-show").hasClass("hide")
+    const willHiddenHasClassHide = $(".will-hidden").hasClass("hide")
 	
-	defaultAddress.on("focus", () => {
+	// defaultAddress.on("focus", () => {
+    //     $(".will-hidden").css("opacity", .5)
+    //     setTimeout(() => {
+    //         $(".will-hidden").css("opacity", 1)
+    //         if (!$(".will-hidden").hasClass("hide") && $(".will-show").hasClass("hide")) {
+    //             $(".will-hidden").addClass("hide")
+    //             $(".will-show").removeClass("hide")
+    //         } else {
+    //             $(".will-hidden").removeClass("hide")
+    //             $(".will-show").addClass("hide")
+    //         }
+    //     }, 1000)
+    // })
+
+    defaultAddress.on("focus", () => {
         $(".will-hidden").css("opacity", .5)
         setTimeout(() => {
             $(".will-hidden").css("opacity", 1)
-            if (!$(".will-hidden").hasClass("hide") && $(".will-show").hasClass("hide")) {
-                $(".will-hidden").addClass("hide")
-                $(".will-show").removeClass("hide")
-            } else {
-                $(".will-hidden").removeClass("hide")
-                $(".will-show").addClass("hide")
+            if (!willHiddenHasClassHide && willShowHasClassHide) {
+                console.log("Betul atas!")
+                $(".will-hidden").addClass("hide").remove()
+                $(".will-show").removeClass("hide").show()
+            }
+            if (!willShowHasClassHide) {
+                console.log("Betul bawah!")
+                $(".will-hidden").removeClass("hide").show()
+                $(".will-show").addClass("hide").remove()
             }
         }, 1000)
     })
