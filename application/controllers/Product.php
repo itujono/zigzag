@@ -11,6 +11,7 @@ class Product extends Frontend_Controller {
 		$this->load->model('Shipping_m');
 		$this->load->model('Customer_m');
 		$this->load->model('Order_m');
+		$this->load->model('Order_detail_m');
 	}
 
 	public function detail($slug){
@@ -47,7 +48,8 @@ class Product extends Frontend_Controller {
 			'name' => $this->input->post('nameBARANG'), 
 			'price' => $this->input->post('priceBARANG'), 
 			'qty' => $this->input->post('qtyBARANG'),
-			'weight' => $this->input->post('weightBARANG')
+			'weight' => $this->input->post('weightBARANG'),
+			'stock' => $this->input->post('stockBARANG')
 		);
 		$this->cart->insert($data);
 		echo $this->show_cart(); //tampilkan cart setelah added
@@ -193,7 +195,9 @@ class Product extends Frontend_Controller {
 		$data['addONS'] = 'checkout-customer';
 		$data['class'] = 'checkout';
 		$data['title'] = 'Checkout - '.$this->session->userdata('Name');
-
+		if(empty($this->session->userdata('idCUSTOMER'))){
+			redirect('customer/logout');
+		}
 		$data['checkshipping_notactive'] = $this->Shipping_m->checkshipping(0)->result();
 		$data['checkshipping_active'] = $this->Shipping_m->checkshipping(1)->result();
 		foreach ($data['checkshipping_active'] as $key => $value) {
@@ -359,7 +363,9 @@ class Product extends Frontend_Controller {
 		$data['addONS'] = 'checkout-customer';
 		$data['class'] = 'checkout';
 		$data['title'] = 'Checkout Billing - '.$this->session->userdata('Name');
-
+		if(empty($this->session->userdata('idCUSTOMER'))){
+			redirect('customer/logout');
+		}
 		$data['checkshipping_notactive'] = $this->Shipping_m->checkshipping(0)->result();
 
 		$data['subview'] = $this->load->view($this->data['frontendDIR'].'checkout_billing', $data, TRUE);
@@ -410,10 +416,42 @@ class Product extends Frontend_Controller {
 		$data['class'] = 'checkout';
 		$data['title'] = 'Checkout Payment - '.$this->session->userdata('Name');
 		$id = $this->session->userdata('idCUSTOMER');
+		if(empty($id)){
+			redirect('customer/logout');
+		}
 		$data['order_payment'] = $this->Order_m->check_latest_data_order_for_payment($id);
 
 		$data['subview'] = $this->load->view($this->data['frontendDIR'].'checkout_payment', $data, TRUE);
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
+	}
+
+	public function process_checkout_payment(){
+		$id = $this->session->userdata('idCUSTOMER');
+		if(empty($id)){
+			redirect('customer/logout');
+		}
+		$check_latest_data_process_payment_order = $this->Order_detail_m->check_latest_data_order_for_process_payment($id);
+
+		foreach ($this->cart->contents() as $key => $value) {
+            $array_data_detail_order[$key]['idORDER'] = $check_latest_data_process_payment_order->idORDER;
+            $array_data_detail_order[$key]['idproductdetailORDER'] = $value['id'];
+            $array_data_detail_order[$key]['productdetailORDER'] = $value['name'];
+            $array_data_detail_order[$key]['qtydetailORDER'] = $value['qty'];
+            $array_data_detail_order[$key]['pricedetailORDER'] = $value['price'];
+        }
+        $insert_all = $this->Order_detail_m->insert_batch_detail_order($array_data_detail_order);
+        if($insert_all == TRUE){
+	        foreach ($this->cart->contents() as $item) {
+	            $stock = $item['stock'] - $item['qty'];
+	            $data = array(
+	                    'stockBARANG' => $stock
+	            );
+		        $this->Barang_m->save($data, $item['id']);
+	        }
+	    }
+        $this->cart->destroy();
+        redirect('home','refresh');
+
 	}
 
 	//function testing aje

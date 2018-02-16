@@ -322,7 +322,7 @@ if(!empty($data_customer)){
                             <div class="extra">
                                 <input type="hidden" name="qtyBARANG" id="<?php echo $wish->idBARANG;?>" value="1" class="quantity">
                                 <input type="hidden" name="idWISH" id="idWISH" value="<?php echo $wish->idWISH;?>">
-                                <button class="ui basic teal tiny button move-to-cart add_cart" title="Tambahkan ke Cart" data-barangid="<?php echo $wish->idBARANG;?>" data-barangnama="<?php echo $wish->nameBARANG;?>" data-barangharga="<?php echo $wish->priceBARANG;?>">
+                                <button class="ui basic teal tiny button move-to-cart add_cart" title="Tambahkan ke Cart" data-barangid="<?php echo $wish->idBARANG;?>" data-barangnama="<?php echo $wish->nameBARANG;?>" data-barangharga="<?php echo $wish->priceBARANG;?>" data-stokbarang="<?php echo $wish->stockBARANG;?>">
                                     <i class="plus icon"></i>Pindahkan ke Cart
                                 </button>
                                 <a href="#" class="remove-from-wishlist remove-wishlist" id="idWISH" data-wishid="<?php echo $wish->idWISH;?>"><i class="remove icon"></i>Hapus dari Wishlist</a>                                        

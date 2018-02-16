@@ -353,7 +353,7 @@
                                 <i class="empty heart icon"></i>
                             </button>
                             <input type="hidden" name="qtyBARANG" id="<?php echo $promo->idBARANG;?>" value="1" class="quantity">
-                            <button class="add_cart ui button add-to-cart" title="Tambahkan ke Cart" data-barangid="<?php echo $promo->idBARANG;?>" data-barangnama="<?php echo $promo->nameBARANG;?>" data-barangharga="<?php echo $promo->priceBARANG;?>" data-barangberat="<?php echo $promo->weightBARANG;?>">
+                            <button class="add_cart ui button add-to-cart" title="Tambahkan ke Cart" data-barangid="<?php echo $promo->idBARANG;?>" data-barangnama="<?php echo $promo->nameBARANG;?>" data-barangharga="<?php echo $promo->priceBARANG;?>" data-barangberat="<?php echo $promo->weightBARANG;?>" data-stokbarang="<?php echo $promo->stockBARANG;?>">
                                 <i class="shopping basket icon"></i>
                             </button>
                         </div>
@@ -404,7 +404,7 @@
                                 <i class="empty heart icon"></i>
                             </button>
                             <input type="hidden" name="qtyBARANG" id="<?php echo $updated->idBARANG;?>" value="1" class="quantity">
-                            <button class="add_cart ui button add-to-cart" title="Tambahkan ke Cart" data-barangid="<?php echo $updated->idBARANG;?>" data-barangnama="<?php echo $updated->nameBARANG;?>" data-barangharga="<?php echo $updated->priceBARANG;?>" data-barangberat="<?php echo $updated->weightBARANG;?>">
+                            <button class="add_cart ui button add-to-cart" title="Tambahkan ke Cart" data-barangid="<?php echo $updated->idBARANG;?>" data-barangnama="<?php echo $updated->nameBARANG;?>" data-barangharga="<?php echo $updated->priceBARANG;?>" data-barangberat="<?php echo $updated->weightBARANG;?>" data-stokbarang="<?php echo $updated->stockBARANG;?>">
                                 <i class="shopping basket icon"></i>
                             </button>
                         </div>

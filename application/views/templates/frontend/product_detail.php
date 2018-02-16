@@ -201,7 +201,7 @@
                                 <option value="5">5</option>
                             </select>
                         </div>
-                        <button class="add_cart ui toggle fade add-to-cart black button" tabindex="0" data-barangid="<?php echo $getbarang->idBARANG;?>" data-barangnama="<?php echo $getbarang->nameBARANG;?>" data-barangharga="<?php echo $getbarang->priceBARANG;?>" data-barangberat="<?php echo $getbarang->weightBARANG;?>">
+                        <button class="add_cart ui toggle fade add-to-cart black button" tabindex="0" data-barangid="<?php echo $getbarang->idBARANG;?>" data-barangnama="<?php echo $getbarang->nameBARANG;?>" data-barangharga="<?php echo $getbarang->priceBARANG;?>" data-barangberat="<?php echo $getbarang->weightBARANG;?>" data-stokbarang="<?php echo $getbarang->stockBARANG;?>">
                             <i class="plus square outline icon"></i> Tambahkan ke Keranjang
                         </button> &nbsp; &nbsp;
                         <span>atau</span> &nbsp; &nbsp;

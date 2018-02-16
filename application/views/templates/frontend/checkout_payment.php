@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <tfoot class="full-width">
                     <tr>
                         <th colspan="4">
-                            <a href="<?php echo base_url();?>" class="ui zz checkout right floated button">Bayar sekarang
+                            <a href="<?php echo base_url();?>product/process_checkout_payment" class="ui zz checkout right floated button">Bayar sekarang
                                 <i class="angle right icon"></i>
                             </a>
                             <a href="checkout.html" class="ui black button">
@@ -136,7 +136,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     </tfoot>
                 </table>
 
-                <a href="<?php echo base_url();?>" class="ui animated fade large black fluid checkout button" tabindex="0">
+                <a href="<?php echo base_url();?>product/process_checkout_payment" class="ui animated fade large black fluid checkout button" tabindex="0">
                     <div class="visible content">Bayar sekarang</div>
                     <div class="hidden content">
                         <i class="shopping cart icon"></i>

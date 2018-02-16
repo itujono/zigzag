@@ -30,7 +30,7 @@
                                 Tambahkan ke wishlist
                             </button>
                             <input type="hidden" name="qtyBARANG" id="<?php echo $search->idBARANG;?>" value="1" class="quantity">
-                            <button class="add_cart ui basic teal button" title="Tambahkan ke Cart" data-barangid="<?php echo $search->idBARANG;?>" data-barangnama="<?php echo $search->nameBARANG;?>" data-barangharga="<?php echo $search->priceBARANG;?>" data-barangberat="<?php echo $search->weightBARANG;?>">
+                            <button class="add_cart ui basic teal button" title="Tambahkan ke Cart" data-barangid="<?php echo $search->idBARANG;?>" data-barangnama="<?php echo $search->nameBARANG;?>" data-barangharga="<?php echo $search->priceBARANG;?>" data-barangberat="<?php echo $search->weightBARANG;?>" data-stokbarang="<?php echo $search->stockBARANG;?>">
                                 <i class="shopping basket icon"></i>
                                 Tambahkan ke cart
                             </button>

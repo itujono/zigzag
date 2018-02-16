@@ -96,7 +96,7 @@ class Barang_m extends MY_Model{
 	}
 
 	public function select_barang_promo() {
-		$this->db->select('idBARANG, nameBARANG, priceBARANG, hotBARANG, slugBARANG, weightBARANG');
+		$this->db->select('idBARANG, nameBARANG, priceBARANG, hotBARANG, slugBARANG, weightBARANG, stockBARANG');
 		$this->db->select('nameCATEGORY');
 		$this->db->from('barang');
 		$this->db->join('category_barang', 'category_barang.idCATEGORY = barang.idCATEGORY');
@@ -106,7 +106,7 @@ class Barang_m extends MY_Model{
 	}
 
 	public function select_updated_barang() {
-		$this->db->select('idBARANG, nameBARANG, priceBARANG, hotBARANG, slugBARANG, weightBARANG');
+		$this->db->select('idBARANG, nameBARANG, priceBARANG, hotBARANG, slugBARANG, weightBARANG, stockBARANG');
 		$this->db->select('nameCATEGORY');
 		$this->db->from('barang');
 		$this->db->join('category_barang', 'category_barang.idCATEGORY = barang.idCATEGORY');
@@ -128,7 +128,7 @@ class Barang_m extends MY_Model{
 
     	$this->db->cache_on();
     	
-    	$this->db->select('idBARANG, nameBARANG, descBARANG, materialBARANG, colorBARANG, slugBARANG, priceBARANG, weightBARANG');
+    	$this->db->select('idBARANG, nameBARANG, descBARANG, materialBARANG, colorBARANG, slugBARANG, priceBARANG, weightBARANG, stockBARANG');
     	$this->db->select('category_barang.nameCATEGORY');
 		$this->db->from('barang');
 		$this->db->join('category_barang','barang.idCATEGORY = category_barang.idCATEGORY');
