@@ -373,7 +373,7 @@ a:hover { color: #24aa87; }
 
 #shipping-address .divider { margin-top: 3em; margin-bottom: 3em; }
 
-#shipping-address .will-show.transition.hidden, #shipping-address .will-hidden.transition.hidden { display: none; visibility: hidden; }
+#shipping-address .will-show.hide, #shipping-address .will-hidden.hide { display: none !important; visibility: hidden !important; }
 
 #dropshipper-field { display: none; margin-bottom: 3em; }
 

@@ -129,7 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
 
                 <!-- Ini section form kalo pilih sesuai data dari Profile -->
-                <!-- <div class="two fields will-show mb2em transition hidden">
+                 <div class="two fields will-show hide mb2em">
                     <div class="field">
                         <label for="nama">Nama lengkap penerima</label>
                         <input type="text" name="nameORDER" id="nameORDERs" value="<?php echo $data_customer->nameCUSTOMER;?>" disabled="disabled">
@@ -138,16 +138,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         <label for="email">Email penerima</label>
                         <input type="email" name="emailORDER" id="emailORDERs" value="<?php echo $data_customer->emailCUSTOMER;?>" disabled="disabled">
                     </div>
-                </div> -->
+                </div>
 
-                <!-- <div class="one fields will-show mb2em transition hidden">
+                <div class="one fields will-show hide mb2em">
                     <div class="field">
                         <label for="nama">Nomor telepon penerima</label>
                         <input type="number" name="teleORDER" id="teleORDERs" value="<?php echo $data_customer->teleCUSTOMER;?>" disabled="disabled">
                     </div>
                 </div>
 
-                <div class="three fields will-show mb2em transition hidden">
+                <div class="three fields will-show hide mb2em">
                     <div class="field">
                         <label for="hidden-provinsi">Provinsi</label>
                         <?php echo $data_customer_province_city['province'];?>
@@ -164,10 +164,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     </div>
                 </div>
 
-                <div class="field will-show transition hidden mb2em">
+                <div class="field will-show hide mb2em">
                     <label for="alamat">Alamat pengiriman</label>
                     <textarea name="addressORDER" rows="6" id="addressORDERs" disabled="disabled"><?php echo $data_customer->addressCUSTOMER;?></textarea>
-                </div> -->
+                </div>
 
                 <div class="required field mb2em will-hidden">
                     <label for="alamat">Alamat pengiriman</label>

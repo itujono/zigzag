@@ -471,12 +471,12 @@ $(document).ready(function() {
         $(".will-hidden").css("opacity", .5)
         setTimeout(() => {
             $(".will-hidden").css("opacity", 1)
-            if (!$(".will-hidden").hasClass("transition hidden") && $(".will-show").hasClass("transition hidden")) {
-                $(".will-hidden").addClass("transition hidden")
-                $(".will-show").removeClass("transition hidden")
+            if (!$(".will-hidden").hasClass("hide") && $(".will-show").hasClass("hide")) {
+                $(".will-hidden").addClass("hide")
+                $(".will-show").removeClass("hide")
             } else {
-                $(".will-hidden").removeClass("transition hidden")
-                $(".will-show").addClass("transition hidden")
+                $(".will-hidden").removeClass("hide")
+                $(".will-show").addClass("hide")
             }
         }, 1000)
     })

@@ -541,3 +541,4 @@ Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zi
 Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/checkout_payment - Pada waktu Kamis, 15 Februari 2018 | 14:17 
 Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/checkout_payment - Pada waktu Kamis, 15 Februari 2018 | 14:18 
 Andhana Utama - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/product/checkout_payment - Pada waktu Kamis, 15 Februari 2018 | 14:40 
+Unknown user - using Chrome - ip:::1 - Mengunjungi halaman yang di-request http://localhost/codewell/zigzag/forgot.html - Pada waktu Jumat, 16 Februari 2018 | 15:13 

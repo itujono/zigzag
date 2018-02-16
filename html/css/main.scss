@@ -956,14 +956,11 @@ a {
                 margin-bottom: 3em;
             }
             .will-show, .will-hidden {
-                &.transition.hidden {
-                    display: none;
-                    visibility: hidden
+                &.hide {
+                    display: none !important;
+                    visibility: hidden !important
                 }
             }
-            // .search.dropdown, [name="kodepos"], [name="alamat"] {
-            //     display: none;
-            // }
         }
         
         #dropshipper-field {
