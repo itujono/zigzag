@@ -216,17 +216,18 @@ class Product extends Frontend_Controller {
 	}
 
 	public function process_checkout(){
-		$rules = $this->Order_m->rules_order;
-		$this->form_validation->set_rules($rules);
-		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
-        $this->form_validation->set_message('trim', 'Form %s adalah Trim');
-        $this->form_validation->set_message('valid_email', 'Maaf, inputan email Anda tidak valid');
-        $this->form_validation->set_message('is_unique', 'Tampaknya inputan %s anda sudah terdaftar');
-        $this->form_validation->set_message('min_length', 'Minimal kata sandi 8 karakter');
-        $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
-        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
-		if ($this->form_validation->run() == TRUE) {
 			if($this->input->post('original_data') == ''){
+				$rules = $this->Order_m->rules_order;
+				$this->form_validation->set_rules($rules);
+				$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
+		        $this->form_validation->set_message('trim', 'Form %s adalah Trim');
+		        $this->form_validation->set_message('valid_email', 'Maaf, inputan email Anda tidak valid');
+		        $this->form_validation->set_message('is_unique', 'Tampaknya inputan %s anda sudah terdaftar');
+		        $this->form_validation->set_message('min_length', 'Minimal kata sandi 8 karakter');
+		        $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
+		        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+				if ($this->form_validation->run() == TRUE) {
+
 				$data = $this->Order_m->array_from_post(array('customerORDER','csORDER','kodeORDER','descORDER','statusORDER', 'nameORDER','emailORDER','teleORDER','zipORDER','addressORDER','ekspedisiORDER','dropshipperORDER','dropshippercompanyORDER','telehomeORDER'));
 				$data['customerORDER'] = $this->session->userdata('idCUSTOMER');
 				$data['csORDER'] = '0';
@@ -268,14 +269,90 @@ class Product extends Frontend_Controller {
 					$data['dropshipperORDER'] = '-';
 					$data['dropshippercompanyORDER'] = '-';
 				}
-	   			
 	   			$data = $this->security->xss_clean($data);
 				$saveid = $this->Order_m->save($data);
+					if ($saveid) {
+		            	redirect('product/checkout_billing');
+					} else {
+						$data = array(
+							'title' => 'Gagal,',
+							'text' => 'Maaf, silakan ulangi pengisian form shipping kembali.',
+							'type' => 'error'
+							);
+						$this->session->set_flashdata('message',$data);
+						$this->checkout_shipping();
+					}
+				} else {
+					$data = array(
+						'title' => 'Gagal,',
+						'text' => 'Maaf, silakan ulangi pengisian form shipping anda kembali.',
+						'type' => 'error'
+						);
+					$this->session->set_flashdata('message',$data);
+					$this->checkout_shipping();
+				}
+		} else if($this->input->post('original_data') == 'on') {
+			$rules = $this->Order_m->rules_order_default;
+			$this->form_validation->set_rules($rules);
+			$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
+	        $this->form_validation->set_message('trim', 'Form %s adalah Trim');
+	        $this->form_validation->set_message('valid_email', 'Maaf, inputan email Anda tidak valid');
+	        $this->form_validation->set_message('is_unique', 'Tampaknya inputan %s anda sudah terdaftar');
+	        $this->form_validation->set_message('min_length', 'Minimal kata sandi 8 karakter');
+	        $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
+	        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+			if ($this->form_validation->run() == TRUE) {
 
+			$data['customerORDER'] = $this->session->userdata('idCUSTOMER');
+			$data['descORDER'] = $this->input->post('descdefaultORDER');
+			$data['nameORDER'] = $this->input->post('namedefaultORDER');
+			$data['emailORDER'] = $this->input->post('emaildefaultORDER');
+			$data['teleORDER'] = $this->input->post('teledefaultORDER');
+			$data['zipORDER'] = $this->input->post('zipdefaultORDER');
+			$data['addressORDER'] = $this->input->post('addressdefaultORDER');
+			$data['csORDER'] = '0';
+			$data['provinceORDER'] = $this->input->post('provinsi_checkout_default');
+			$data['cityORDER'] = $this->input->post('city_checkout_default');
+			if($data['telehomeORDER'] == ''){
+				$data['telehomeORDER'] = 0;
+			}
+			$keterangan_ekspedisi = $this->input->post('keterangan_ekspedisi');
+			$break = explode("-",$keterangan_ekspedisi);
+			$data['ketekspedisiORDER'] = $break[1];
+			$data['totalekspedisiORDER'] = $break[0];
+			
+			//START GENERATE KODE ORDER //
+			$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			$res = "";
+			for ($i = 0; $i < 4; $i++) {
+			    $res .= $chars[mt_rand(0, strlen($chars)-1)];
+			}
+			$kodeorder = "ZG" . date('Ymd') . $res;
+			//END GENERATE KODE ORDER //
+			$data['kodeORDER'] = $kodeorder;
+
+			$checkkodeorder = $this->Order_m->checkkodeorder($data['kodeORDER'])->row();
+			if($checkkodeorder != NULL){
+				//START GENERATE KODE ORDER //
+				$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+				$res = "";
+				for ($i = 0; $i < 4; $i++) {
+				    $res .= $chars[mt_rand(0, strlen($chars)-1)];
+				}
+				$kodeorder = "ZG" . date('Ymd') . $res;
+				//END GENERATE KODE ORDER //
+				$data['kodeORDER'] = $kodeorder;
+			}
+
+			$data['statusORDER'] = 1;
+			if($this->input->post('dropshipper_check') == ''){
+				$data['dropshipperORDER'] = '-';
+				$data['dropshippercompanyORDER'] = '-';
+			}
+   			$data = $this->security->xss_clean($data);
+			$saveid = $this->Order_m->save($data);
 				if ($saveid) {
-
 	            	redirect('product/checkout_billing');
-
 				} else {
 					$data = array(
 						'title' => 'Gagal,',
@@ -286,17 +363,14 @@ class Product extends Frontend_Controller {
 					$this->checkout_shipping();
 				}
 			} else {
-				echo "jelek";
-				exit;
+				$data = array(
+					'title' => 'Gagal,',
+					'text' => 'Maaf, silakan ulangi pengisian form shipping anda kembali.',
+					'type' => 'error'
+					);
+				$this->session->set_flashdata('message',$data);
+				$this->checkout_shipping();
 			}
-		} else {
-			$data = array(
-				'title' => 'Gagal,',
-				'text' => 'Maaf, silakan ulangi pengisian form shipping anda kembali.',
-				'type' => 'error'
-				);
-			$this->session->set_flashdata('message',$data);
-			$this->checkout_shipping();
 		}
 	}
 

@@ -799,15 +799,15 @@ if(!empty($checkshipping_active)){
 ?>
 	$('#ekspedisi-shipping-<?php echo $keys_ship;?>').change(function() {
 		const city_id = $("[name='city-checkout']").val()
-		const city_id_default = $("[name='city-checkout_default']").val()
-
+		const city_id_default = $("[name='city_checkout_default']").val()
 		if (!city_id) {
 			return city_id_default
 		}
-
 		const ekspedisi = $(".ekspedisi_class:checked").val();
+
 		const weight = "<?php echo $sum_weight;?>"
 		const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', city_id, ekspedisi, weight}
+
 		$.ajax({
         	type : "POST",
        		url : "<?php echo base_url();?>product/checking_ongkir",

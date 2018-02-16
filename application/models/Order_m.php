@@ -60,6 +60,59 @@ class Order_m extends MY_Model{
 		)
 	);
 
+	public $rules_order_default = array(
+		'namedefaultORDER' => array(
+			'field' => 'namedefaultORDER', 
+			'label' => 'Nama Order', 
+			'rules' => 'trim|required'
+		),
+		'customerORDER' => array(
+			'field' => 'customerORDER', 
+			'label' => 'Customer Order', 
+			'rules' => 'trim'
+		),
+		'descdefaultORDER' => array(
+			'field' => 'descdefaultORDER', 
+			'label' => 'Deskripsi Order', 
+			'rules' => 'trim'
+		),
+		'emaildefaultORDER' => array(
+			'field' => 'emaildefaultORDER', 
+			'label' => 'Email Order', 
+			'rules' => 'trim|required|valid_email'
+		),
+		'teledefaultORDER' => array(
+			'field' => 'teledefaultORDER', 
+			'label' => 'Telepon Order', 
+			'rules' => 'trim|required|numeric'
+		),
+		'provinsi-checkout-default' => array(
+			'field' => 'provinsi-checkout-default', 
+			'label' => 'Provinsi Order', 
+			'rules' => 'trim|required'
+		),
+		'city-checkout-default' => array(
+			'field' => 'city-checkout-default', 
+			'label' => 'Kota Order', 
+			'rules' => 'trim|required'
+		),
+		'zipdefaultORDER' => array(
+			'field' => 'zipdefaultORDER', 
+			'label' => 'Kode Pos Order', 
+			'rules' => 'trim|required'
+		),
+		'addressdefaultORDER' => array(
+			'field' => 'addressdefaultORDER', 
+			'label' => 'Alamat Order', 
+			'rules' => 'trim|required'
+		),
+		'ekspedisiORDER' => array(
+			'field' => 'ekspedisiORDER', 
+			'label' => 'Ekspedisi Order', 
+			'rules' => 'trim|required'
+		)
+	);
+
 	public $rules_order_billing = array(
 		'paymentORDER' => array(
 			'field' => 'paymentORDER', 

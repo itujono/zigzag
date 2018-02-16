@@ -77,24 +77,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="required field">
                         <label for="nama">Nama lengkap penerima</label>
                         <input type="text" name="nameORDER" placeholder="John Doe" value="<?php echo set_value('nameORDER'); ?>">
-                        <p><?php echo form_error('nameORDER'); ?></p>
+                        <?php echo form_error('nameORDER'); ?>
                     </div>
                     <div class="required field">
                         <label for="email">Email penerima</label>
                         <input type="email" name="emailORDER" placeholder="emailku@email.com" value="<?php echo set_value('emailORDER'); ?>">
-                        <p><?php echo form_error('emailORDER'); ?></p>
+                        <?php echo form_error('emailORDER'); ?>
                     </div>
                 </div>
                 <div class="two fields mb2em will-hidden">
                     <div class="required field">
                         <label for="handphone">Nomor handphone</label>
                         <input type="tel" name="teleORDER" placeholder="0812 34567890" value="<?php echo set_value('teleORDER'); ?>">
-                        <p><?php echo form_error('teleORDER'); ?></p>
+                        <?php echo form_error('teleORDER'); ?>
                     </div>
                     <div class="field">
                         <label for="telepon">Nomor telepon rumah/kantor</label>
                         <input type="tel" name="telehomeORDER" placeholder="021 2345678" value="<?php echo set_value('telehomeORDER'); ?>">
-                        <p><?php echo form_error('telehomeORDER'); ?></p>
+                        <?php echo form_error('telehomeORDER'); ?>
                     </div>
                 </div>
 
@@ -111,19 +111,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             }
                         ?>
                         <?php echo form_dropdown('provinsi-checkout', $options, $this->input->post('provinsi-checkout'),'required="required" id="provinsi_checkout" class="ui search dropdown"'); ?>
-                        <p><?php echo form_error('provinsi-checkout'); ?></p>
+                        <?php echo form_error('provinsi-checkout'); ?>
                     </div>
                     <div class="required field">
                         <label for="kota-checkout">Kota/Kabupaten</label>
                         <select class="ui search dropdown" id="city_checkout" name="city-checkout" required="required">
                             <option value="" disabled="disabled">Pilih kota kamu</option>
                         </select>
-                        <p><?php echo form_error('city-checkout'); ?></p>
+                        <?php echo form_error('city-checkout'); ?>
                     </div>
                     <div class="required field">
                         <label for="kodepos">Kode Pos</label>
                         <input type="number" name="zipORDER" placeholder="Misal: 29433" value="<?php echo set_value('zipORDER'); ?>">
-                        <p><?php echo form_error('zipORDER'); ?></p>
+                        <?php echo form_error('zipORDER'); ?>
                     </div>
                 </div>
 
@@ -132,18 +132,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                  <div class="two fields will-show hide mb2em">
                     <div class="field">
                         <label for="nama">Nama lengkap penerima</label>
-                        <input type="text" name="nameORDER" id="nameORDER" value="<?php echo $data_customer->nameCUSTOMER;?>" disabled="disabled">
+                        <input type="text" name="namedefaultORDER" value="<?php echo $data_customer->nameCUSTOMER;?>" disabled="disabled">
                     </div>
                     <div class="field">
                         <label for="email">Email penerima</label>
-                        <input type="email" name="emailORDER" id="emailORDER" value="<?php echo $data_customer->emailCUSTOMER;?>" disabled="disabled">
+                        <input type="email" name="emaildefaultORDER" value="<?php echo $data_customer->emailCUSTOMER;?>" disabled="disabled">
                     </div>
                 </div>
 
                 <div class="one fields will-show hide mb2em">
                     <div class="field">
                         <label for="nama">Nomor telepon penerima</label>
-                        <input type="number" name="teleORDER" id="teleORDER" value="<?php echo $data_customer->teleCUSTOMER;?>" disabled="disabled">
+                        <input type="number" name="teledefaultORDER" value="<?php echo $data_customer->teleCUSTOMER;?>" disabled="disabled">
                     </div>
                 </div>
 
@@ -151,28 +151,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="field">
                         <label for="hidden-provinsi">Provinsi</label>
                         <?php echo $data_customer_province_city['province'];?>
-                        <input type="hidden" name="provinsi-checkout" id="provinsi_checkout_default" value="<?php echo $data_customer_province_city['province_id'];?>" disabled="disabled">
+                        <input type="hidden" name="provinsi_checkout_default" id="provinsi_checkout_default" value="<?php echo $data_customer_province_city['province_id'];?>" disabled="disabled">
                     </div>
                     <div class="field">
                         <label for="hidden-provinsi">Kota/Kabupaten</label>
                         <?php echo $data_customer_province_city['city_name'];?>
-                        <input type="hidden" name="city-checkout" id="city_checkout_default" value="<?php echo $data_customer_province_city['city_id'];?>" disabled="disabled">
+                        <input type="hidden" name="city_checkout_default" id="city_checkout_default" value="<?php echo $data_customer_province_city['city_id'];?>" disabled="disabled">
                     </div>
                     <div class="field">
                         <label for="hidden-provinsi">Kode Pos</label>
-                        <input type="number" name="zipORDER" id="zipORDER" value="<?php echo $data_customer->zipCUSTOMER;?>" disabled="disabled">
+                        <input type="number" name="zipdefaultORDER" value="<?php echo $data_customer->zipCUSTOMER;?>" disabled="disabled">
                     </div>
                 </div>
 
                 <div class="field will-show hide mb2em">
                     <label for="alamat">Alamat pengiriman</label>
-                    <textarea name="addressORDER" rows="6" id="addressORDER" disabled="disabled"><?php echo $data_customer->addressCUSTOMER;?></textarea>
+                    <textarea name="addressdefaultORDER" rows="6" disabled="disabled"><?php echo $data_customer->addressCUSTOMER;?></textarea>
                 </div>
 
                 <div class="required field mb2em will-hidden">
                     <label for="alamat">Alamat pengiriman</label>
                     <textarea name="addressORDER" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"><?php echo set_value('addressORDER'); ?></textarea>
-                    <p><?php echo form_error('addressORDER'); ?></p>
+                    <?php echo form_error('addressORDER'); ?>
                 </div>
                 <div class="inline three fields ekspedisi">
                     <label>Ekspedisi apa?</label>
@@ -185,7 +185,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             <div class="ui radio checkbox <?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>">
                                 <input type="radio" name="ekspedisiORDER" id="ekspedisi-shipping-<?php echo $key;?>" class="hidden ekspedisi_class" value="<?php echo strtolower(str_replace(' ', '', $active->nameSHIPPING));?>" required="required">
                                 <label><?php echo $active->nameSHIPPING;?></label>
-                                <p><?php echo form_error('ekspedisiORDER'); ?></p>
+                                <?php echo form_error('ekspedisiORDER'); ?>
                             </div>
                         </div>
                     </div>
@@ -230,12 +230,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="field">
                         <label for="">Nama saya sebagai dropshipper</label>
                         <input type="text" name="dropshipperORDER" placeholder="John Doe" value="<?php echo set_value('dropshipperORDER'); ?>">
-                        <p><?php echo form_error('dropshipperORDER'); ?></p>
+                        <?php echo form_error('dropshipperORDER'); ?>
                     </div>
                     <div class="field">
                         <label for="">Institusi/organisasi saya sebagai dropshipper</label>
                         <input type="text" name="dropshippercompanyORDER" placeholder="CV Megah Jaya" value="<?php echo set_value('dropshippercompanyORDER'); ?>">
-                        <p><?php echo form_error('dropshippercompanyORDER'); ?></p>
+                        <?php echo form_error('dropshippercompanyORDER'); ?>
                     </div>
                 </div>
                 <button type="submit" class="ui fluid zz button ">Lanjut</button>
