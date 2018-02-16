@@ -25,7 +25,7 @@ class Wish_m extends MY_Model{
 
 	public function selectall_wish_by_customer($id) {
 		$this->db->select('wish.idWISH, wish.idBARANG, wish.idCUSTOMER');
-		$this->db->select('barang.idBARANG, nameBARANG,priceBARANG, descBARANG, slugBARANG');
+		$this->db->select('barang.idBARANG, nameBARANG,priceBARANG, descBARANG, slugBARANG, stockBARANG');
 		$this->db->select('category_barang.idCATEGORY, nameCATEGORY');
 		$this->db->select('customer.idCUSTOMER');
 		$this->db->from('wish');

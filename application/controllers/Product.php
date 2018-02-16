@@ -195,7 +195,7 @@ class Product extends Frontend_Controller {
 		$data['addONS'] = 'checkout-customer';
 		$data['class'] = 'checkout';
 		$data['title'] = 'Checkout - '.$this->session->userdata('Name');
-		if(empty($this->session->userdata('idCUSTOMER'))){
+		if(empty($this->session->userdata('idCUSTOMER')) || empty($this->cart->contents())){
 			redirect('customer/logout');
 		}
 		$data['checkshipping_notactive'] = $this->Shipping_m->checkshipping(0)->result();
@@ -363,7 +363,7 @@ class Product extends Frontend_Controller {
 		$data['addONS'] = 'checkout-customer';
 		$data['class'] = 'checkout';
 		$data['title'] = 'Checkout Billing - '.$this->session->userdata('Name');
-		if(empty($this->session->userdata('idCUSTOMER'))){
+		if(empty($this->session->userdata('idCUSTOMER')) || empty($this->cart->contents())){
 			redirect('customer/logout');
 		}
 		$data['checkshipping_notactive'] = $this->Shipping_m->checkshipping(0)->result();
@@ -416,7 +416,7 @@ class Product extends Frontend_Controller {
 		$data['class'] = 'checkout';
 		$data['title'] = 'Checkout Payment - '.$this->session->userdata('Name');
 		$id = $this->session->userdata('idCUSTOMER');
-		if(empty($id)){
+		if(empty($id) || empty($this->cart->contents())){
 			redirect('customer/logout');
 		}
 		$data['order_payment'] = $this->Order_m->check_latest_data_order_for_payment($id);
