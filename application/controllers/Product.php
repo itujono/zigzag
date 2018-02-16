@@ -292,6 +292,7 @@ class Product extends Frontend_Controller {
 					$this->checkout_shipping();
 				}
 		} else if($this->input->post('original_data') == 'on') {
+			
 			$rules = $this->Order_m->rules_order_default;
 			$this->form_validation->set_rules($rules);
 			$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
@@ -306,6 +307,7 @@ class Product extends Frontend_Controller {
 			$data['customerORDER'] = $this->session->userdata('idCUSTOMER');
 			$data['descORDER'] = $this->input->post('descdefaultORDER');
 			$data['nameORDER'] = $this->input->post('namedefaultORDER');
+
 			$data['emailORDER'] = $this->input->post('emaildefaultORDER');
 			$data['teleORDER'] = $this->input->post('teledefaultORDER');
 			$data['zipORDER'] = $this->input->post('zipdefaultORDER');
@@ -313,9 +315,8 @@ class Product extends Frontend_Controller {
 			$data['csORDER'] = '0';
 			$data['provinceORDER'] = $this->input->post('provinsi_checkout_default');
 			$data['cityORDER'] = $this->input->post('city_checkout_default');
-			if($data['telehomeORDER'] == ''){
-				$data['telehomeORDER'] = 0;
-			}
+			$data['ekspedisiORDER'] = $this->input->post('ekspedisiORDER');
+			$data['telehomeORDER'] = '0';
 			$keterangan_ekspedisi = $this->input->post('keterangan_ekspedisi');
 			$break = explode("-",$keterangan_ekspedisi);
 			$data['ketekspedisiORDER'] = $break[1];

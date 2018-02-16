@@ -116,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="required field">
                         <label for="kota-checkout">Kota/Kabupaten</label>
                         <select class="ui search dropdown" id="city_checkout" name="city-checkout" required="required">
-                            <option value="" disabled="disabled">Pilih kota kamu</option>
+                            <option value="">Pilih kota kamu</option>
                         </select>
                         <?php echo form_error('city-checkout'); ?>
                     </div>
@@ -132,18 +132,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                  <div class="two fields will-show hide mb2em">
                     <div class="field">
                         <label for="nama">Nama lengkap penerima</label>
-                        <input type="text" name="namedefaultORDER" value="<?php echo $data_customer->nameCUSTOMER;?>" disabled="disabled">
+                        <input type="text" name="namedefaultORDER" value="<?php echo $data_customer->nameCUSTOMER;?>" readonly>
                     </div>
                     <div class="field">
                         <label for="email">Email penerima</label>
-                        <input type="email" name="emaildefaultORDER" value="<?php echo $data_customer->emailCUSTOMER;?>" disabled="disabled">
+                        <input type="email" name="emaildefaultORDER" value="<?php echo $data_customer->emailCUSTOMER;?>" readonly>
                     </div>
                 </div>
 
                 <div class="one fields will-show hide mb2em">
                     <div class="field">
                         <label for="nama">Nomor telepon penerima</label>
-                        <input type="number" name="teledefaultORDER" value="<?php echo $data_customer->teleCUSTOMER;?>" disabled="disabled">
+                        <input type="number" name="teledefaultORDER" value="<?php echo $data_customer->teleCUSTOMER;?>" readonly>
                     </div>
                 </div>
 
@@ -151,22 +151,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="field">
                         <label for="hidden-provinsi">Provinsi</label>
                         <?php echo $data_customer_province_city['province'];?>
-                        <input type="hidden" name="provinsi_checkout_default" id="provinsi_checkout_default" value="<?php echo $data_customer_province_city['province_id'];?>" disabled="disabled">
+                        <input type="hidden" name="provinsi_checkout_default" id="provinsi_checkout_default" value="<?php echo $data_customer_province_city['province_id'];?>" >
                     </div>
                     <div class="field">
                         <label for="hidden-provinsi">Kota/Kabupaten</label>
                         <?php echo $data_customer_province_city['city_name'];?>
-                        <input type="hidden" name="city_checkout_default" id="city_checkout_default" value="<?php echo $data_customer_province_city['city_id'];?>" disabled="disabled">
+                        <input type="hidden" name="city_checkout_default" id="city_checkout_default" value="<?php echo $data_customer_province_city['city_id'];?>" >
                     </div>
                     <div class="field">
                         <label for="hidden-provinsi">Kode Pos</label>
-                        <input type="number" name="zipdefaultORDER" value="<?php echo $data_customer->zipCUSTOMER;?>" disabled="disabled">
+                        <input type="number" name="zipdefaultORDER" value="<?php echo $data_customer->zipCUSTOMER;?>" readonly>
                     </div>
                 </div>
 
                 <div class="field will-show hide mb2em">
                     <label for="alamat">Alamat pengiriman</label>
-                    <textarea name="addressdefaultORDER" rows="6" disabled="disabled"><?php echo $data_customer->addressCUSTOMER;?></textarea>
+                    <textarea name="addressdefaultORDER" rows="6" readonly><?php echo $data_customer->addressCUSTOMER;?></textarea>
                 </div>
 
                 <div class="required field mb2em will-hidden">
