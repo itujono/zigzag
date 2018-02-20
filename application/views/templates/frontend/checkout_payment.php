@@ -116,6 +116,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <table class="ui very basic table">
                     <tbody>
                         <tr>
+                            <td>Pengiriman (<?php echo $order_payment->ketekspedisiORDER;?>) : </td>
+                            <td class="right aligned">Rp. <?php echo number_format($order_payment->totalekspedisiORDER); ?></td>
+                        </tr>
+                        <tr>
                             <td>Subtotal: </td>
                             <td class="right aligned">Rp. <?php echo number_format($this->cart->total()); ?></td>
                         </tr>
@@ -129,9 +133,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         </tr>
                     </tbody>
                     <tfoot>
+                        <?php
+                            $subtotal = $this->cart->total();
+                            $ekspedisi_total = $order_payment->totalekspedisiORDER;
+                        ?>
                         <tr class="relaxed">
                             <th>Total yang harus dibayar: </th>
-                            <th class="right aligned">Rp. <?php echo number_format($this->cart->total()); ?></th>
+                            <th class="right aligned">Rp. <?php echo number_format($subtotal+$ekspedisi_total); ?></th>
                         </tr>
                     </tfoot>
                 </table>

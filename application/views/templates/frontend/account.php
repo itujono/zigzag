@@ -377,9 +377,13 @@ if(!empty($data_customer)){
                     <h3>
                         <i class="diamond icon"></i> Order History</h3>
                 </div>
-
+    
                 <div class="ui feed details">
                     <!-- ntar taruh buka php disini -->
+                    <?php
+                        if(!empty($history_order)){
+                            foreach ($history_order as $hist_order) {
+                    ?>
                     <div class="event">
                         <div class="label">
                             <img src="<?php echo $data_customer->imageCUSTOMER; ?>" alt="<?php echo $data_customer->nameCUSTOMER; ?>">
@@ -387,21 +391,19 @@ if(!empty($data_customer)){
                         <div class="content">
                             <div class="summary">
                                 Kamu belanja
-                                <span>2 tas</span> dan
-                                <span>3 sepatu</span>
-                                <div class="date"> 2 hari yang lalu </div>
+                                <span> <?php echo $count_history;?> Barang</span>
+                                <div class="date"> <?php echo timeAgo(dF('H:i:s',strtotime($hist_order->createdateORDER))) ?> </div>
                             </div>
                             <div class="item-list">
                                 <ul>
+                                    <?php
+                                    if(!empty($barang_image)){
+                                        foreach ($barang_image as $key=> $value_img) { ?>
                                     <li>
-                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
+                                        <img src="<?php echo $value_img; ?>">
                                     </li>
-                                    <li>
-                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                                    </li>
-                                    <li>
-                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                                    </li>
+                                        <?php } ?>
+                                    <?php } ?>
                                     <a href="#" class="more" data-text-swap="Tutup">Selengkapnya...</a>
                                 </ul>
 
@@ -416,54 +418,26 @@ if(!empty($data_customer)){
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <?php
+                                            foreach ($history_order_detail as $key => $hist_detail) {
+                                        ?>
                                             <tr>
                                                 <td class="single line">
                                                     <div class="ui image header">
-                                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
+                                                        <img src="<?php echo $hist_detail->imageBARANG; ?>" alt="<?php echo $hist_detail->nameBARANG; ?>">
                                                         <div class="content">
-                                                            Pouch Bag Slingshot Cool
+                                                            <?php echo $hist_detail->nameBARANG; ?>
                                                             <div class="sub header">
-                                                                Kode: PX3459
+                                                                Kode: <?php echo $hist_detail->codeBARANG; ?>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td> 2 x Rp 300.000,00 </td>
+                                                <td> <?php echo $hist_detail->qtydetailORDER; ?> x Rp. <?php echo number_format($hist_detail->pricedetailORDER);?> </td>
                                                 <td>-</td>
-                                                <td> Rp 600.000,00 </td>
+                                                <td> Rp. <?php echo number_format($hist_detail->pricedetailORDER*$hist_detail->qtydetailORDER);?> </td>
                                             </tr>
-                                            <tr>
-                                                <td class="single line">
-                                                    <div class="ui image header">
-                                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                                                        <div class="content">
-                                                            Pouch Bag Slingshot Cool
-                                                            <div class="sub header">
-                                                                Kode: PX3459
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td> 2 x Rp 300.000,00 </td>
-                                                <td>-</td>
-                                                <td> Rp 600.000,00 </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="single line">
-                                                    <div class="ui image header">
-                                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                                                        <div class="content">
-                                                            Pouch Bag Slingshot Cool
-                                                            <div class="sub header">
-                                                                Kode: PX3459
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td> 1 x Rp 250.000,00 </td>
-                                                <td>-</td>
-                                                <td> Rp 250.000,00 </td>
-                                            </tr>
+                                        <?php } ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -521,7 +495,8 @@ if(!empty($data_customer)){
                         </div>
                     </div>
                     <!-- kelar div Event satuan -->
-
+                        <?php } ?>
+                    <?php } ?>
                     <!-- ntar taruh tutup php disini -->
 
                 </div>
