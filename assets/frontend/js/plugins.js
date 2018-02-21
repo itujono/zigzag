@@ -466,138 +466,139 @@ $(document).ready(function() {
 
 
     const defaultAddress = $("#default-address input")
+    const willHidden = $(".will-hidden")
     const willShowHasClassHide = $(".will-show").hasClass("hide")
     const willHiddenHasClassHide = $(".will-hidden").hasClass("hide")
 	
-	// defaultAddress.on("focus", () => {
+	defaultAddress.on("focus", () => {
+
+        if (!willHiddenHasClassHide) {
+            console.log("Betul atas")
+            $(".will-hidden").addClass("hide")
+            $(".will-show").removeClass("hide")
+        } else {
+            console.log("Betul bawah")
+            $(".will-hidden").removeClass("hide")
+            $(".will-show").addClass("hide")
+        }
+
+    })
+
+	defaultAddress.on("click", () => {
+    })
+
+    // defaultAddress.on("click", () => {
     //     $(".will-hidden").css("opacity", .5)
     //     setTimeout(() => {
     //         $(".will-hidden").css("opacity", 1)
-    //         if (!$(".will-hidden").hasClass("hide") && $(".will-show").hasClass("hide")) {
-    //             $(".will-hidden").addClass("hide")
-    //             $(".will-show").removeClass("hide")
-    //         } else {
-    //             $(".will-hidden").removeClass("hide")
-    //             $(".will-show").addClass("hide")
-    //         }
+    //         console.log("Betul atas!")
+    //         $(".will-hidden").addClass("hide").remove()
+    //         $(".will-show").removeClass("hide").show()
     //     }, 1000)
     // })
 
-    defaultAddress.on("focus", () => {
-        $(".will-hidden").css("opacity", .5)
-        setTimeout(() => {
-            $(".will-hidden").css("opacity", 1)
-            if (!willHiddenHasClassHide && willShowHasClassHide) {
-                console.log("Betul atas!")
-                $(".will-hidden").addClass("hide").remove()
-                $(".will-show").removeClass("hide").show()
-            }
-            if (!willShowHasClassHide) {
-                console.log("Betul bawah!")
-                $(".will-hidden").removeClass("hide").show()
-                $(".will-show").addClass("hide").remove()
-            }
-        }, 1000)
-    })
+    // defaultAddress.on("focusout", () => {
+    //     $(".will-show").css("opacity", .5)
+    //     setTimeout(() => {
+    //         $(".will-show").css("opacity", 1)
+    //         console.log("Betul bawah!")
+    //         $(".will-hidden").show()
+    //         $(".will-show").remove()
+    //     }, 1000)
+    // })
     
     $("#shipping-address").form({
-        // inline: true,
-        // on: "submit",
-        // fields: {
-        //     name: {
-        //         identifier: "nama",
-        //         rules: [
-        //             {
-        //                 type: "empty",
-        //                 prompt: "Jangan dikosongin namanya ya"
-        //             },
-        //             {
-        //                 type: "minLength[5]",
-        //                 prompt: "Kurang panjang tuh namanya"
-        //             },
-        //             {
-        //                 type: "containsExactly[ ]",
-        //                 prompt: "Nama belakangnya udah belum?"
-        //             }
-        //         ]
-        //     },
-        //     email: {
-        //         identifier: "email",
-        //         rules: [
-        //             {
-        //                 type: "empty",
-        //                 prompt: "Jangan dikosongin emailnya ya"
-        //             },
-        //             {
-        //                 type: "regExp[/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/]",
-        //                 prompt: "Udah bener emangnya format emailnya tuh?"
-        //             }
-        //         ]
-        //     },
-        //     handphone: {
-        //         identifier: "handphone",
-        //         on: "submit",
-        //         rules: [
-        //             {
-        //                 type: "empty",
-        //                 prompt: "Hayooo, nomer handphone nya, mas!"
-        //             },
-        //             {
-        //                 type: "integer",
-        //                 prompt: "Nomer hape gak ada yang make huruf deh perasaan"
-        //             },
-        //             {
-        //                 type: "minLength[8]",
-        //                 prompt: "Nggak kurang tu nomernya? Dikit amat perasaan"
-        //             }
-        //         ]
-        //     },
-        //     telepon: {
-        //         identifier: "telepon",
-        //         optional: true,
-        //         rules: [
-        //             {
-        //                 type: "empty",
-        //                 prompt: "Hayooo, nomer telepon nya, mas!"
-        //             }
-        //         ]
-        //     },
-        //     kodepos: {
-        //         identifier: "kodepos",
-        //         rules: [
-        //             {
-        //                 type: "empty",
-        //                 prompt: "jangan sampe lupa juga ya kode pos nya"
-        //             },
-        //             {
-        //                 type: "maxLength[5]",
-        //                 prompt: "Emang ada kode pos lebih dari 5 digit ya?"
-        //             },
-        //             {
-        //                 type: "minLength[5]",
-        //                 prompt: "Perasaan gak ada deh kodepos di bawah 5 digit"
-        //             }
-        //         ]
-        //     },
-        //     alamat: {
-        //         identifier: "alamat",
-        //         rules: [
-        //             {
-        //                 type: "empty",
-        //                 prompt: "Yakali yang beginian juga kelupaan diisi"
-        //             },
-        //             {
-        //                 type: "minLength[8]",
-        //                 prompt: "Ni bener gak nih ngisi alamatnya? Pendek amat."
-        //             }
-        //         ]
-        //     }
-        // },
-        onSuccess: function(e) {
-            e.preventDefault();
-            // $(this).closest("#step-shipping").transition("fade", 150, function() {
-            //     $("#step-billing").transition("fade", 150);
-            // });
+        inline: true,
+        on: "submit",
+        fields: {
+            name: {
+                identifier: "nameORDER",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Jangan dikosongin namanya ya"
+                    },
+                    {
+                        type: "minLength[5]",
+                        prompt: "Kurang panjang tuh namanya"
+                    },
+                    {
+                        type: "containsExactly[ ]",
+                        prompt: "Nama belakangnya udah belum?"
+                    }
+                ]
+            },
+            email: {
+                identifier: "emailORDER",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Jangan dikosongin emailnya ya"
+                    },
+                    {
+                        type: "regExp[/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/]",
+                        prompt: "Udah bener emangnya format emailnya tuh?"
+                    }
+                ]
+            },
+            handphone: {
+                identifier: "teleORDER",
+                on: "submit",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Hayooo, nomer handphone nya, mas!"
+                    },
+                    {
+                        type: "integer",
+                        prompt: "Nomer hape gak ada yang make huruf deh perasaan"
+                    },
+                    {
+                        type: "minLength[8]",
+                        prompt: "Nggak kurang tu nomernya? Dikit amat perasaan"
+                    }
+                ]
+            },
+            telepon: {
+                identifier: "telehomeORDER",
+                optional: true,
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Hayooo, nomer telepon nya, mas!"
+                    }
+                ]
+            },
+            kodepos: {
+                identifier: "zipORDER",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "jangan sampe lupa juga ya kode pos nya"
+                    },
+                    {
+                        type: "maxLength[5]",
+                        prompt: "Emang ada kode pos lebih dari 5 digit ya?"
+                    },
+                    {
+                        type: "minLength[5]",
+                        prompt: "Perasaan gak ada deh kodepos di bawah 5 digit"
+                    }
+                ]
+            },
+            alamat: {
+                identifier: "addressORDER",
+                rules: [
+                    {
+                        type: "empty",
+                        prompt: "Yakali yang beginian juga kelupaan diisi"
+                    },
+                    {
+                        type: "minLength[8]",
+                        prompt: "Ni bener gak nih ngisi alamatnya? Pendek amat."
+                    }
+                ]
+            }
         }
     });
 

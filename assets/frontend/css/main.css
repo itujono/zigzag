@@ -808,11 +808,11 @@ a.ui.card:hover,
     margin-top: 3em;
     margin-bottom: 3em; }
   #step-shipping .will-hidden.hide {
-    display: none !important;
-    visibility: hidden !important; }
+    display: none;
+    visibility: hidden; }
   #step-shipping .will-show.hide {
-    display: none !important;
-    visibility: hidden !important; }
+    display: none;
+    visibility: hidden; }
 
 #dropshipper-field {
   display: none;

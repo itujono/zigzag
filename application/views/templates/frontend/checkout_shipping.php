@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     Silakan Ulangi alamat pengiriman anda 
                 </div>
             </div> -->
-            <form class="ui form" action="<?php echo base_url();?>product/process_checkout" method="POST">
+            <form class="ui form" id="shipping-address" action="<?php echo base_url();?>product/process_checkout" method="POST">
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
                 <div class="inline field mb2em">
                     <div class="ui segment seamless">

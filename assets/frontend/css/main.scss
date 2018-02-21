@@ -955,14 +955,14 @@ a {
             }
             .will-hidden {
                 &.hide {
-                    display: none !important;
-                    visibility: hidden !important
+                    display: none;
+                    visibility: hidden
                 }
             }
             .will-show {
                 &.hide {
-                    display: none !important;
-                    visibility: hidden !important
+                    display: none;
+                    visibility: hidden
                 }
             }
         }
