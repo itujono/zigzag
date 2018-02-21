@@ -9,146 +9,109 @@
 if ($plugins == 'home') { ?>
 
     <script src="<?php echo base_url().$this->data['asfront'];?>js/owl.js"></script>
+
 	<script type="text/javascript">
-		$(".additional-actions .add-to-wishlist").each(function() {
-	        $(this).on("click", function(e) {
-	        <?php if(empty($this->session->userdata('idCUSTOMER'))){ ?>
-	        		// todo: Bikin modal login aja kalo belum login!!!
-                	$(".add-to-wishlist").transition("jiggle")
-                	$(".add-to-wishlist").find('.empty.heart').addClass('empty')
-                	// Message belum login
-                    $(".ui.message.not-login").transition("slide", function() {
-                    	setTimeout(function() {
-                    		$(".ui.message.not-login").transition("slide")
-                    	}, 2000)
-                    })
-	        <?php } else { ?>
-	            e.preventDefault()
-	            console.log(this)
-	            if ($(this).find(".heart.icon").hasClass("empty")) {
-						var idBARANG    = $(this).data("idbarang")
-						$.ajax({
-							url : "<?php echo base_url();?>product/wish",
-							method : "POST",
-							dataType: "json",
-							data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG},
-							success: function(data){
-								if(data.status == "success"){
-					                $(".add-to-wishlist").transition("jiggle").removeClass("empty").css("color", "#f92626");
-					                console.log(this);
-									setTimeout(function() {
-					                    $(".ui.message.added-to-wishlist").transition("slide", function() {
-					                        setTimeout(function() {
-					                            $(".ui.message.added-to-wishlist").transition("slide");
-					                        }, 4000);
-					                    });
-					                }, 1000);
-								} else {
-									console.log(this);
-									$(".add-to-wishlist").transition("jiggle").find(".heart.icon").addClass("empty").css("color", "#fff");
-					                setTimeout(function() {
-					                    $(".ui.message.error-wishlist").transition("slide", function() {
-					                        setTimeout(function() {
-					                            $(".ui.message.error-wishlist").transition("slide");
-					                            console.log(this);
-					                        }, 4000);
-					                    });
-					                }, 1000);
-								}
-							}
-						});
+		$(".add-to-wishlist").on("click", function(e) {
+		<?php if(empty($this->session->userdata('idCUSTOMER'))){ ?>
+			// todo: Bikin modal login aja kalo belum login!!!
+			$(".add-to-wishlist").transition("jiggle")
+			$(".add-to-wishlist").find('.empty.heart').addClass('empty')
+			// Message belum login
+			$(".ui.message.not-login").transition("slide", function() {
+				setTimeout(function() {
+					$(".ui.message.not-login").transition("slide")
+				}, 2000)
+			})
+		<?php } else { ?>
+			e.preventDefault()
+			if ($(".add-to-wishlist").find(".heart.icon").hasClass("empty")) {
+				var idBARANG = $(this).data("idbarang")
+				$.ajax({
+					url : "<?php echo base_url();?>product/wish",
+					method : "POST",
+					dataType: "json",
+					data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG},
+					success: function(data){
+						if(data.status == "success"){
+							$(".add-to-wishlist").find(".heart.icon").transition("jiggle").removeClass("empty").css("color", "#f92626");
+							$(".ui.message.added-to-wishlist").transition("slide", function() {
+								setTimeout(function() {
+									$(".ui.message.added-to-wishlist").transition("slide");
+								}, 2000);
+							});
+						}
+					}
+				});
+			} else {
+				$(".add-to-wishlist").find(".heart.icon").transition("jiggle").addClass("empty").css("color", "#fff");
+				$(".ui.message.removed-from-wishlist").transition("slide", function() {
+					setTimeout(function() {
+						$(".ui.message.removed-from-wishlist").transition("slide");
+					}, 2000);
+				});
+			}
+		<?php } ?>
+		})
 
-	            } else {
-	                $(this).find(".heart.icon").transition("jiggle").addClass("empty").css("color", "#fff");
-	                setTimeout(function() {
-	                    $(".ui.message.removed-from-wishlist").transition("slide", function() {
-	                        setTimeout(function() {
-	                            $(".ui.message.removed-from-wishlist").transition("slide");
-	                            console.log(this);
-	                        }, 4000);
-	                    });
-	                }, 1000);
-	            }
-	    <?php } ?>
-        })
-	})
-
-	// if (logoutSuccess) {
-	// 	setTimeout(() => {
-	// 		$(".ui.message.logout-success").addClass("visible")
-	// 	}, 2000);
-	// }
-
-	
-	$(".additional-actions .add-to-cart").each(function() {
-        $(this).on("click", function(e) {
-            e.preventDefault()
-            $(".additional-actions .add-to-cart .shopping.icon").transition("jiggle")
-            setTimeout(function() {
-                $(".ui.message.added-to-cart").transition({
-                    onComplete: setTimeout(function() {
-                        $(".ui.message.added-to-cart").transition("slide")
-                    }, 4000)
-                })
-            }, 1000)
-        })
-	})
-	
- 	$(document).ready(function(){
-		$('.add_cart').click(function(){
+		$('.add_cart').on("click", function(e){
 			var idBARANG    = $(this).data("barangid");
 			var nameBARANG  = $(this).data("barangnama");
 			var priceBARANG = $(this).data("barangharga");
 			var weightBARANG = $(this).data("barangberat");
 			var stockBARANG = $(this).data("stokbarang");
 			var qtyBARANG     = $('#' + idBARANG).val();
+			console.log("Kedetect!");
 			$.ajax({
-				url : "<?php echo base_url();?>product/add_to_cart",
+				url : "<?php echo base_url();?>/product/add_to_cart",
 				method : "POST",
 				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG, weightBARANG: weightBARANG, stockBARANG: stockBARANG},
 				success: function(data){
 					$('#detail_cart').html(data);
 				}
-			})
-		})
-	})
-	$(document).ready(function() {
-	    $(".check-submit").click(function(e){
-	    	e.preventDefault()
-	    	var nameCUSTOMER = $("input[name='nameCUSTOMER']").val()
-	    	var emailCUSTOMER = $("input[name='emailCUSTOMER']").val()
-	    	var passwordCUSTOMER = $("input[name='passwordCUSTOMER']").val()
-	    	var addressCUSTOMER = $("textarea[name='addressCUSTOMER']").val()
-	    	var provinceCUSTOMER = $("select[name='provinceCUSTOMER']").val()
-	    	var cityCUSTOMER = $("select[name='cityCUSTOMER']").val()
-	    	var zipCUSTOMER = $("input[name='zipCUSTOMER']").val()
-	    	var teleCUSTOMER = $("input[name='teleCUSTOMER']").val()
-	    	var skCUSTOMER = $("input[name='skCUSTOMER']").val()
-	        $.ajax({
-	            url: "<?php echo base_url();?>customer/register",
-	            type:'POST',
-	            dataType: "json",
-	            data: {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', nameCUSTOMER:nameCUSTOMER, emailCUSTOMER:emailCUSTOMER, passwordCUSTOMER:passwordCUSTOMER, addressCUSTOMER:addressCUSTOMER, provinceCUSTOMER:provinceCUSTOMER, cityCUSTOMER:cityCUSTOMER, zipCUSTOMER:zipCUSTOMER, teleCUSTOMER:teleCUSTOMER, skCUSTOMER:skCUSTOMER},
-	            success: function(data) {
-	            	if(data.status == "success"){
-	                	window.location.href = data.redirect
-	                	$(".print-error-msg").css('display','none')
-	                	$(".ui.message.login-success").addClass("visible")
-	                }else{
+			});
+			e.preventDefault();
+		});
+
+		$(".check-submit").click(function(e){
+			var nameCUSTOMER = $("input[name='nameCUSTOMER']").val()
+			var emailCUSTOMER = $("input[name='emailCUSTOMER']").val()
+			var passwordCUSTOMER = $("input[name='passwordCUSTOMER']").val()
+			var addressCUSTOMER = $("textarea[name='addressCUSTOMER']").val()
+			var provinceCUSTOMER = $("select[name='provinceCUSTOMER']").val()
+			var cityCUSTOMER = $("select[name='cityCUSTOMER']").val()
+			var zipCUSTOMER = $("input[name='zipCUSTOMER']").val()
+			var teleCUSTOMER = $("input[name='teleCUSTOMER']").val()
+			var skCUSTOMER = $("input[name='skCUSTOMER']").val()
+			$.ajax({
+				url: "<?php echo base_url();?>customer/register",
+				type:'POST',
+				dataType: "json",
+				data: {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', nameCUSTOMER:nameCUSTOMER, emailCUSTOMER:emailCUSTOMER, passwordCUSTOMER:passwordCUSTOMER, addressCUSTOMER:addressCUSTOMER, provinceCUSTOMER:provinceCUSTOMER, cityCUSTOMER:cityCUSTOMER, zipCUSTOMER:zipCUSTOMER, teleCUSTOMER:teleCUSTOMER, skCUSTOMER:skCUSTOMER},
+				success: function(data) {
+					if(data.status == "success"){
+						window.location.href = data.redirect
+						$(".print-error-msg").css('display','none')
+						$(".ui.message.login-success").addClass("visible")
+					}else{
 						$(".print-error-msg").css('display','block');
-	                	$(".print-error-msg").html(data.message);
-	                }
-	            }
-	        })
-	    });
-	});
+						$(".print-error-msg").html(data.message);
+					}
+				}
+			})
+			e.preventDefault()
+		});
+
 	</script>
+
+
+
+
 <?php } elseif ($plugins == 'product-detail') { ?>
 	<script src="<?php echo base_url().$this->data['asfront'];?>js/owl.js"></script>
 	<script src="<?php echo base_url().$this->data['asfront'];?>js/cloud-zoom.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
-		$('.add_cart').click(function(){
+		$('.add_cart').click(function(e){
 			var idBARANG    = $(this).data("barangid");
 			var nameBARANG  = $(this).data("barangnama");
 			var priceBARANG = $(this).data("barangharga");
@@ -163,76 +126,76 @@ if ($plugins == 'home') { ?>
 					$('#detail_cart').html(data);
 				}
 			});
+			e.preventDefault();
 		});
 	});
 	
-	$(".add-to-wishlist").each(function() {
-	        $(this).on("click", function(e) {
-	        <?php if(empty($this->session->userdata('idCUSTOMER'))){ ?>
-	        		// todo: Bikin modal login aja kalo belum login!!!
-                	$(".add-to-wishlist").transition("jiggle");
-                	$(".add-to-wishlist").find('.empty.heart').addClass('empty');
-                	// Message belum login
-                    $(".ui.message.not-login").transition("slide", function() {
-                    	setTimeout(function() {
-                    		$(".ui.message.not-login").transition("slide");
-                    	}, 2000);
-                    });
-	        <?php } else { ?>
-	            e.preventDefault();
-	            if ($(this).find(".heart.icon").hasClass("empty")) {
-						var idBARANG    = $(this).data("idbarang");
-						$.ajax({
-							url : "<?php echo base_url();?>product/wish",
-							method : "POST",
-							dataType: "json",
-							data : {idBARANG: idBARANG},
-							success: function(data){
-								if(data.status == "success"){
-					                $(".add-to-wishlist").transition("jiggle").removeClass("empty").css("color", "#f92626");
-									setTimeout(function() {
-					                    $(".ui.message.added-to-wishlist").transition("slide", function() {
-					                        setTimeout(function() {
-					                            $(".ui.message.added-to-wishlist").transition("slide");
-					                        }, 4000);
-					                    });
-					                }, 1000);
-								} else {
-									$(".add-to-wishlist").transition("jiggle").find(".heart.icon").addClass("empty").css("color", "#fff");
-					                setTimeout(function() {
-					                    $(".ui.message.error-wishlist").transition("slide", function() {
-					                        setTimeout(function() {
-					                            $(".ui.message.error-wishlist").transition("slide");
-					                            console.log(this);
-					                        }, 4000);
-					                    });
-					                }, 1000);
-								}
-							}
+	$(".add-to-wishlist").on("click", function(e) {
+		const heartIcon = $(".add-to-wishlist").find(".heart.icon");
+		e.preventDefault();
+
+	<?php if(empty($this->session->userdata('idCUSTOMER'))){ ?>
+		// todo: Bikin modal login aja kalo belum login!!!
+		$(".add-to-wishlist").transition("jiggle");
+		$(".add-to-wishlist").find('.empty.heart').addClass('empty');
+		// Message belum login
+		$(".ui.message.not-login").transition("slide", function() {
+			setTimeout(function() {
+				$(".ui.message.not-login").transition("slide");
+			}, 2000);
+		});
+	<?php } else { ?>
+		if (!heartIcon.hasClass("empty")) {
+			var idBARANG = $(this).data("idbarang");
+			console.log("Ketembak kok!");
+			$.ajax({
+				url : "<?php echo base_url();?>product/wish",
+				method : "POST",
+				dataType: "json",
+				data : {idBARANG: idBARANG},
+				success: function(data) {
+					if(data.status == "success"){
+						heartIcon.transition("jiggle").removeClass("empty").css("color", "#f92626");
+						$(".ui.message.added-to-wishlist").transition("slide", function() {
+							setTimeout(function() {
+								$(".ui.message.added-to-wishlist").transition("slide");
+							}, 2000);
 						});
-
-	            } else {
-	                $(this).find(".heart.icon").transition("jiggle").addClass("empty").css("color", "#fff");
-	                setTimeout(function() {
-	                    $(".ui.message.removed-from-wishlist").transition("slide", function() {
-	                        setTimeout(function() {
-	                            $(".ui.message.removed-from-wishlist").transition("slide");
-	                            console.log(this);
-	                        }, 4000);
-	                    });
-	                }, 1000);
-	            }
-	    <?php } ?>
-        });
-    });
-
+					} else {
+						heartIcon.transition("jiggle").addClass("empty").css("color", "#fff");
+						$(".ui.message.error-wishlist").transition("slide", function() {
+							setTimeout(function() {
+								$(".ui.message.error-wishlist").transition("slide");
+								console.log(this);
+							}, 2000);
+						});
+					}
+				}
+			});
+		} else {
+			$(this).find(".heart.icon").transition("jiggle").addClass("empty").css("color", "#fff");
+			setTimeout(function() {
+				$(".ui.message.removed-from-wishlist").transition("slide", function() {
+					setTimeout(function() {
+						$(".ui.message.removed-from-wishlist").transition("slide");
+						console.log(this);
+					}, 4000);
+				});
+			}, 1000);
+		}
+<?php } ?>
+});
 	</script>
 <?php
+
+
+
+
 } elseif ($plugins == 'search-product') {
 ?>
 	<script type="text/javascript">
 	$(document).ready(function(){
-		$('.add_cart').click(function(){
+		$('.add_cart').click(function(e){
 			var idBARANG    = $(this).data("barangid");
 			var nameBARANG  = $(this).data("barangnama");
 			var priceBARANG = $(this).data("barangharga");
@@ -247,6 +210,7 @@ if ($plugins == 'home') { ?>
 					$('#detail_cart').html(data);
 				}
 			});
+			e.preventDefault();
 		});
 	});
 
@@ -261,6 +225,9 @@ if ($plugins == 'home') { ?>
 	<?php } else { ?>
 		$(".add-to-wishlist").transition("jiggle").find(".heart.icon").addClass("empty").css("color", "#fff");
 	<?php } ?>
+
+
+
 	$(".add-to-wishlist").each(function() {
         $(this).on("click", function(e) {
         <?php if(empty($this->session->userdata('idCUSTOMER'))){ ?>
@@ -320,8 +287,10 @@ if ($plugins == 'home') { ?>
 	    <?php } ?>
         });
     });
-
 	</script>
+
+
+
 <?php } elseif ($plugins == 'account-customer') { ?>
 <script src="<?php echo base_url().$this->data['asfront'];?>node_modules/feather-icons/dist/feather.min.js"></script>
 <script type="text/javascript">
@@ -659,7 +628,7 @@ if ($plugins == 'home') { ?>
 			}
 		})
 		
-		$('.add_cart').click(function(){
+		$('.add_cart').click(function(e){
 			var idBARANG    = $(this).data("barangid");
 			var nameBARANG  = $(this).data("barangnama");
 			var priceBARANG = $(this).data("barangharga");
@@ -676,7 +645,8 @@ if ($plugins == 'home') { ?>
 					$('#detail_cart').html(data);
 				}
 			});
-		})
+			e.preventDefault();
+		});
 
 		$('.remove-wishlist').click(function(){
 			var idWISH    = $(this).data("wishid");
@@ -780,8 +750,13 @@ if ($plugins == 'home') { ?>
 	            e.preventDefault()
 	        }
     	})
-    })
+	})
+
 </script>
+
+
+
+
 <?php } elseif ($plugins == 'checkout-customer') {
 
 	if(!empty($this->cart->contents())){
@@ -823,7 +798,14 @@ if(!empty($checkshipping_active)){
 <?php } ?>
 });
 </script>
+
+
+
+
 <?php } ?>
+
+
+
 <script type="text/javascript">
 	$('#detail_cart').load("<?php echo base_url();?>product/load_cart");
 	//Hapus Item Cart

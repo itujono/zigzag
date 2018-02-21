@@ -57,45 +57,42 @@ $(document).ready(function() {
         e.preventDefault();
     });
     
-    $(".additional-actions .add-to-wishlist").each(function() {
-        $(this).on("click", function(e) {
-            e.preventDefault();
-            if ($(this).find(".empty.heart.icon").hasClass("empty")) {
-                setTimeout(function() {
-                    $(".ui.message.added-to-wishlist").transition("slide", function() {
-                        setTimeout(function() {
-                            $(".ui.message.added-to-wishlist").transition("slide");
-                        }, 4000);
-                    });
-                }, 1000);
-                $(this).find(".empty.heart.icon").transition("jiggle").removeClass("empty").css("color", "#f92626");
-            } else {
-                $(this).find(".heart.icon").transition("jiggle").addClass("empty").css("color", "#fff");
-                setTimeout(function() {
-                    $(".ui.message.removed-from-wishlist").transition("slide", function() {
-                        setTimeout(function() {
-                            $(".ui.message.removed-from-wishlist").transition("slide");
-                            console.log(this);
-                        }, 4000);
-                    });
-                }, 1000);
-            }
+    // $(".additional-actions .add-to-wishlist").on("click", function(e) {
+    //     e.preventDefault();
+    //     if ($(this).find(".heart.icon").hasClass("empty")) {
+    //         console.log($(this))
+    //         $(".ui.message.added-to-wishlist").transition("slide", function() {
+    //             setTimeout(() => {
+    //                 $(".ui.message.added-to-wishlist").transition("slide");
+    //             }, 2000);
+    //         });
+    //         $(this).find(".empty.heart.icon").transition("jiggle").removeClass("empty").css("color", "#f92626");
+    //     } else {
+    //         $(this).find(".heart.icon").transition("jiggle").addClass("empty").css("color", "#fff");
+    //         $(".ui.message.removed-from-wishlist").transition("slide", function() {
+    //             setTimeout(function() {
+    //                 $(".ui.message.removed-from-wishlist").transition("slide");
+    //             }, 2000);
+    //         });
+    //     }
+    // });
+    
+    $(".additional-actions .add-to-cart").on("click", function(e) {
+		e.preventDefault();
+		$(this).find(".shopping.basket").transition("jiggle");
+        $(".ui.message.added-to-cart").transition("slide", function() {
+            const setTo = setTimeout(() => {
+                $(".ui.message.added-to-cart").transition("slide", 200)
+            }, 2000);
         });
     });
     
-    $(".additional-actions .add-to-cart").each(function() {
-        $(this).on("click", function(e) {
-            e.preventDefault();
-            $(".additional-actions .add-to-cart .shopping.icon").transition("jiggle");
-            setTimeout(function() {
-                $(".ui.message.added-to-cart").transition({
-                    onComplete: setTimeout(function() {
-                        $(".ui.message.added-to-cart").transition("slide");
-                    }, 4000)
-                });
-            }, 1000);
-        });
-    });
+    // function hideMessage() {
+    //     setTimeout(function() {
+    //         $(".ui.message.added-to-cart").slideUp();      
+    //         console.log("Ketutup!");
+    //     }, 2000)
+    // }
     
     // $(".ui.message .close").on("click", function() {
     //     $(this).closest(".ui.message").transition("slide", 200);
@@ -398,7 +395,7 @@ $(document).ready(function() {
             toggleButton.innerHTML = "<i class='heart icon'></i> Berhasil ditambah ke Keranjang";
             toggleButton.classList.remove("loading");
             $(".ui.message.added-to-cart").transition("slide", 200);
-        }, 3000);
+        }, 1000);
         
     });
     
@@ -410,6 +407,7 @@ $(document).ready(function() {
     
     $(".ui.message.added-to-cart .close").on("click", function() {
         $(this).closest(".ui.message.added-to-cart").transition("scale", 200);
+        clearTimeout(setTo);
     });
     
     $(".ui.message.added-to-wishlist .close").on("click", function() {
