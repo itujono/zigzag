@@ -133,10 +133,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="field">
                         <label for="nama">Nama lengkap penerima</label>
                         <input type="text" name="namedefaultORDER" value="<?php echo $data_customer->nameCUSTOMER;?>" readonly>
+                        <?php echo form_error('namedefaultORDER'); ?>
                     </div>
                     <div class="field">
                         <label for="email">Email penerima</label>
                         <input type="email" name="emaildefaultORDER" value="<?php echo $data_customer->emailCUSTOMER;?>" readonly>
+                        <?php echo form_error('emaildefaultORDER'); ?>
                     </div>
                 </div>
 
@@ -144,6 +146,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                     <div class="field">
                         <label for="nama">Nomor telepon penerima</label>
                         <input type="number" name="teledefaultORDER" value="<?php echo $data_customer->teleCUSTOMER;?>" readonly>
+                        <?php echo form_error('teledefaultORDER'); ?>
                     </div>
                 </div>
 
@@ -152,21 +155,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         <label for="hidden-provinsi">Provinsi</label>
                         <?php echo $data_customer_province_city['province'];?>
                         <input type="hidden" name="provinsi_checkout_default" id="provinsi_checkout_default" value="<?php echo $data_customer_province_city['province_id'];?>" >
+                        <?php echo form_error('provinsi_checkout_default'); ?>
                     </div>
                     <div class="field">
                         <label for="hidden-provinsi">Kota/Kabupaten</label>
                         <?php echo $data_customer_province_city['city_name'];?>
                         <input type="hidden" name="city_checkout_default" id="city_checkout_default" value="<?php echo $data_customer_province_city['city_id'];?>" >
+                        <?php echo form_error('city_checkout_default'); ?>
                     </div>
                     <div class="field">
                         <label for="hidden-provinsi">Kode Pos</label>
                         <input type="number" name="zipdefaultORDER" value="<?php echo $data_customer->zipCUSTOMER;?>" readonly>
+                        <?php echo form_error('zipdefaultORDER'); ?>
                     </div>
                 </div>
 
                 <div class="field will-show hide mb2em">
                     <label for="alamat">Alamat pengiriman</label>
                     <textarea name="addressdefaultORDER" rows="6" readonly><?php echo $data_customer->addressCUSTOMER;?></textarea>
+                    <?php echo form_error('addressdefaultORDER'); ?>
                 </div>
 
                 <div class="required field mb2em will-hidden">

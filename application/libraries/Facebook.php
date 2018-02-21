@@ -169,12 +169,13 @@ Class Facebook
             $this->fb->setDefaultAccessToken($access_token);
             return $access_token;
         }
+
         // If we did not have a stored access token or if it has expired, try get a new access token
         if(!$access_token){
             try{
                 $access_token = $this->helper->getAccessToken();
             }catch (FacebookSDKException $e){
-                $this->logError($e->getCode(), $e->getMessage());
+                $lala = $this->logError($e->getCode(), $e->getMessage());
                 return null;
             }
             // If we got a session we need to exchange it for a long lived session.

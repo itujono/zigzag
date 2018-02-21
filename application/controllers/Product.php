@@ -216,7 +216,7 @@ class Product extends Frontend_Controller {
 	}
 
 	public function process_checkout(){
-			if($this->input->post('original_data') == ''){
+			if($this->input->post('original_data') != 'on'){
 				$rules = $this->Order_m->rules_order;
 				$this->form_validation->set_rules($rules);
 				$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
@@ -291,36 +291,30 @@ class Product extends Frontend_Controller {
 					$this->session->set_flashdata('message',$data);
 					$this->checkout_shipping();
 				}
-		} else if($this->input->post('original_data') == 'on') {
-			
-			$rules = $this->Order_m->rules_order_default;
-			$this->form_validation->set_rules($rules);
-			$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
-	        $this->form_validation->set_message('trim', 'Form %s adalah Trim');
-	        $this->form_validation->set_message('valid_email', 'Maaf, inputan email Anda tidak valid');
-	        $this->form_validation->set_message('is_unique', 'Tampaknya inputan %s anda sudah terdaftar');
-	        $this->form_validation->set_message('min_length', 'Minimal kata sandi 8 karakter');
-	        $this->form_validation->set_message('is_numeric', 'Hanya memasukan angka saja');
-	        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
-			if ($this->form_validation->run() == TRUE) {
+		} else {
+			$id = $this->session->userdata('idCUSTOMER');
 
-			$data['customerORDER'] = $this->session->userdata('idCUSTOMER');
+			$data_customer = $this->Customer_m->selectall_customer($id)->row();
+
+			$data['customerORDER'] = $id;
 			$data['descORDER'] = $this->input->post('descdefaultORDER');
-			$data['nameORDER'] = $this->input->post('namedefaultORDER');
+			$data['nameORDER'] = $data_customer->nameCUSTOMER;
 
-			$data['emailORDER'] = $this->input->post('emaildefaultORDER');
-			$data['teleORDER'] = $this->input->post('teledefaultORDER');
-			$data['zipORDER'] = $this->input->post('zipdefaultORDER');
-			$data['addressORDER'] = $this->input->post('addressdefaultORDER');
+			$data['emailORDER'] = $data_customer->emailCUSTOMER;
+			$data['teleORDER'] = $data_customer->teleCUSTOMER;
+			$data['zipORDER'] = $data_customer->zipCUSTOMER;
+			$data['addressORDER'] = $data_customer->addressCUSTOMER;
 			$data['csORDER'] = '0';
-			$data['provinceORDER'] = $this->input->post('provinsi_checkout_default');
-			$data['cityORDER'] = $this->input->post('city_checkout_default');
+			$data['provinceORDER'] = $data_customer->provinceCUSTOMER;
+			$data['cityORDER'] = $data_customer->cityCUSTOMER;
 			$data['ekspedisiORDER'] = $this->input->post('ekspedisiORDER');
 			$data['telehomeORDER'] = '0';
 			$keterangan_ekspedisi = $this->input->post('keterangan_ekspedisi');
 			$break = explode("-",$keterangan_ekspedisi);
 			$data['ketekspedisiORDER'] = $break[1];
 			$data['totalekspedisiORDER'] = $break[0];
+			$data['dropshipperORDER'] = $this->input->post('dropshipperORDER');
+			$data['dropshippercompanyORDER'] = $this->input->post('dropshippercompanyORDER');
 			
 			//START GENERATE KODE ORDER //
 			$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -352,21 +346,12 @@ class Product extends Frontend_Controller {
 			}
    			$data = $this->security->xss_clean($data);
 			$saveid = $this->Order_m->save($data);
-				if ($saveid) {
-	            	redirect('product/checkout_billing');
-				} else {
-					$data = array(
-						'title' => 'Gagal,',
-						'text' => 'Maaf, silakan ulangi pengisian form shipping kembali.',
-						'type' => 'error'
-						);
-					$this->session->set_flashdata('message',$data);
-					$this->checkout_shipping();
-				}
+			if ($saveid) {
+            	redirect('product/checkout_billing');
 			} else {
 				$data = array(
 					'title' => 'Gagal,',
-					'text' => 'Maaf, silakan ulangi pengisian form shipping anda kembali.',
+					'text' => 'Maaf, silakan ulangi pengisian form shipping kembali.',
 					'type' => 'error'
 					);
 				$this->session->set_flashdata('message',$data);

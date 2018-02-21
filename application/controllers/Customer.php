@@ -169,7 +169,6 @@ class Customer extends Frontend_Controller {
 	}
 
 	public function login_facebook(){
-		$userData = array();
 		if($this->facebook->is_authenticated()){
 			$userProfile = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,gender,picture');
 			
@@ -255,7 +254,6 @@ class Customer extends Frontend_Controller {
 	        $this->session->set_flashdata('message',$data);
 			redirect('home');
         }
-	    $this->load->view('login',$data);
     }
 
 	public function process(){
@@ -356,11 +354,12 @@ class Customer extends Frontend_Controller {
 
 	public function logout (){
 		// $this->session->unset_userdata('message');
-		// $this->facebook->destroy_session();
+		$this->facebook->destroy_session();
 		$this->Customer_m->logout();
-		$response['status'] = 'success';
-		$response['redirect'] = base_url();
-		echo json_encode($response);
+		// $response['status'] = 'success';
+		// $response['redirect'] = base_url();
+		// echo json_encode($response);
+		redirect('home');
 	}
 
 	public function move_wish_list_to_cart($id){
@@ -382,6 +381,8 @@ class Customer extends Frontend_Controller {
 		$data['addONS'] = 'account-customer';
 		$data['class'] = 'account';
 		$data['title'] = 'Akun '.$this->session->userdata('Name').' - Zigzag Shop Batam - Official Shop';
+
+		$this->load->model('Order_m');
 
 		$data['data_customer'] = $this->Customer_m->selectall_customer($this->session->userdata('idCUSTOMER'))->row();
 		
@@ -408,6 +409,30 @@ class Customer extends Frontend_Controller {
 			}
 		}
 
+		$data['history_order'] = $this->Order_m->history_order_customer($this->session->userdata('idCUSTOMER'))->result();
+		foreach ($data['history_order'] as $val) {
+			$id_order = $val->idORDER;
+		}
+		$data['history_order_detail'] = $this->Order_m->history_detail_order_customer($id_order)->result();
+		
+		// $data['data_merge'] = array_merge($data['history_order'], $data['history_order_detail']);
+		
+		$data['count_history'] = count($data['history_order_detail']);
+		foreach ($data['history_order_detail'] as $key => $history) {
+			$map[] = directory_map('assets/upload/barang/pic-barang-'.folenc($data['history_order_detail'][$key]->idproductdetailORDER), FALSE, TRUE);
+			$maps = array();
+			if(!empty($map)){
+				foreach ($map  as $key => $value) {
+					$maps[] = base_url().'assets/upload/barang/pic-barang-'.folenc($data['history_order_detail'][$key]->idproductdetailORDER).'/'.$value[0];
+				}
+				$data['history_order_detail'][$key]->imageBARANG = base_url() . 'assets/upload/barang/pic-barang-'.folenc($data['history_order_detail'][$key]->idproductdetailORDER).'/'.$map[0];
+			}
+			$data['history_order_detail'][$key]->map = $maps;
+		}
+		$data['barang_image'] = $data['history_order_detail'][$key]->map;
+		// echo "<pre>";
+		// print_r($data['history_order_detail'][$key]->map);
+		// exit;
 		if(empty($this->session->userdata('idCUSTOMER'))){
 			redirect('customer/logout');
 		}
