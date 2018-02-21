@@ -91,19 +91,24 @@ if ($plugins == 'home') { ?>
 			const zipCUSTOMER = $("input[name='zipCUSTOMER']").val()
 			const teleCUSTOMER = $("input[name='teleCUSTOMER']").val()
 			const skCUSTOMER = $("input[name='skCUSTOMER']").val()
+			const dataCustomer = {
+				'<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
+				nameCUSTOMER, emailCUSTOMER, passwordCUSTOMER, addressCUSTOMER, provinceCUSTOMER, cityCUSTOMER, zipCUSTOMER, teleCUSTOMER, skCUSTOMER
+			}
+
 			$.ajax({
 				url: "<?php echo base_url();?>customer/register",
 				type:'POST',
 				dataType: "json",
-				data: {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', nameCUSTOMER:nameCUSTOMER, emailCUSTOMER:emailCUSTOMER, passwordCUSTOMER:passwordCUSTOMER, addressCUSTOMER:addressCUSTOMER, provinceCUSTOMER:provinceCUSTOMER, cityCUSTOMER:cityCUSTOMER, zipCUSTOMER:zipCUSTOMER, teleCUSTOMER:teleCUSTOMER, skCUSTOMER:skCUSTOMER},
-				success: function(data) {
-					if(data.status == "success"){
+				data: dataCustomer,
+				success: data => {
+					if (data.status == "success") {
 						window.location.href = data.redirect
 						$(".print-error-msg").css('display','none')
 						$(".ui.message.login-success").addClass("visible")
-					}else{
-						$(".print-error-msg").css('display','block');
-						$(".print-error-msg").html(data.message);
+					} else {
+						$(".print-error-msg").css('display','block')
+						$(".print-error-msg").html(data.message)
 					}
 				}
 			})
@@ -111,7 +116,7 @@ if ($plugins == 'home') { ?>
 		});
 		
 		function displayTimedMessage(el) {
-			setTimeout(function() { el.transition("slide"); }, 2000);
+			setTimeout(function() { el.transition("slide"); }, 2000)
 		}
 
 
