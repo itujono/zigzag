@@ -391,18 +391,25 @@ if(!empty($data_customer)){
                         <div class="content">
                             <div class="summary">
                                 Kamu belanja
-                                <span> <?php echo $count_history;?> Barang</span>
+                                <?php $history_order_detail = history_detail_order_customer($hist_order->idORDER); ?>
+                                <span> <?php echo count($history_order_detail);?> Barang</span>
                                 <div class="date"> <?php echo timeAgo(dF('H:i:s',strtotime($hist_order->createdateORDER))) ?> </div>
                             </div>
                             <div class="item-list">
                                 <ul>
                                     <?php
-                                    if(!empty($barang_image)){
-                                        foreach ($barang_image as $key=> $value_img) { ?>
+                                    $history_order_detail = history_detail_order_customer($hist_order->idORDER);
+                                    foreach ($history_order_detail as $key_image => $hist_detail) {
+                                    $map[] = directory_map('assets/upload/barang/pic-barang-'.folenc($hist_detail->idproductdetailORDER), FALSE, TRUE);
+                                    if(!empty($map)){
+                                        foreach ($map  as $key => $value) {
+                                            $imageBARANG = base_url() . 'assets/upload/barang/pic-barang-'.folenc($hist_detail->idproductdetailORDER).'/'.$value[0];
+                                        }
+                                    }
+                                    ?>
                                     <li>
-                                        <img src="<?php echo $value_img; ?>">
+                                        <img src="<?php echo $imageBARANG; ?>">
                                     </li>
-                                        <?php } ?>
                                     <?php } ?>
                                     <a href="#" class="more" data-text-swap="Tutup">Selengkapnya...</a>
                                 </ul>
@@ -419,12 +426,19 @@ if(!empty($data_customer)){
                                         </thead>
                                         <tbody>
                                         <?php
-                                            foreach ($history_order_detail as $key => $hist_detail) {
+                                        $history_order_detail = history_detail_order_customer($hist_order->idORDER);
+                                        foreach ($history_order_detail as $key => $hist_detail) {
+                                            $map[] = directory_map('assets/upload/barang/pic-barang-'.folenc($hist_detail->idproductdetailORDER), FALSE, TRUE);
+                                            if(!empty($map)){
+                                                foreach ($map  as $key => $value) {
+                                                    $imageBARANG = base_url() . 'assets/upload/barang/pic-barang-'.folenc($hist_detail->idproductdetailORDER).'/'.$value[0];
+                                                }
+                                            }
                                         ?>
                                             <tr>
                                                 <td class="single line">
                                                     <div class="ui image header">
-                                                        <img src="<?php echo $hist_detail->imageBARANG; ?>" alt="<?php echo $hist_detail->nameBARANG; ?>">
+                                                        <img src="<?php echo $imageBARANG; ?>" alt="<?php echo $hist_detail->nameBARANG; ?>">
                                                         <div class="content">
                                                             <?php echo $hist_detail->nameBARANG; ?>
                                                             <div class="sub header">
@@ -444,7 +458,7 @@ if(!empty($data_customer)){
                                                 <th></th>
                                                 <th></th>
                                                 <th>Total:</th>
-                                                <th>Rp 1.450.000,00</th>
+                                                <th>Rp. <?php echo number_format($hist_order->subtotal+$hist_order->totalekspedisiORDER);?></th>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -452,13 +466,18 @@ if(!empty($data_customer)){
                                     <div class="footer-detail">
                                         <address>
                                             <strong>Dikirim ke</strong>
-                                            <br> Jalan Kepodang Raya Blok XX #33 Sei Kundur
-                                            <br> Kendari, Sulawesi Tenggara 23590
+                                            <br> <?php echo $hist_order->addressORDER;?>
+                                            <br> <?php echo $name_city;?>, <?php echo $name_province;?> <?php echo $hist_order->zipORDER;?>
                                             <br>
                                             <br>
-
+                                            <?php
+                                                $telehome = $hist_order->telehomeORDER;
+                                                if($hist_order->telehomeORDER == 0){
+                                                    $telehome = '-';
+                                                }
+                                            ?>
                                             <strong>Telepon</strong>
-                                            <br> 0778 34590354 / 0812 249845780
+                                            <br> <?php echo $hist_order->teleORDER;?> / <?php echo $telehome;?>
                                             <br>
                                             <br>
 
@@ -467,25 +486,18 @@ if(!empty($data_customer)){
                                         </address>
                                         <address>
                                             <strong>Nama penerima di tempat</strong>
-                                            <br> Rusmanda Norman
-                                            <br>
-                                            <br>
-
-                                            <strong>Tanggal tiba</strong>
-                                            <br> 13 Desember 2022
+                                            <br> <?php echo $hist_order->nameORDER;?>
                                             <br>
                                             <br>
 
                                             <strong>Ekspedisi</strong>
-                                            <br> Si Kilat
+                                            <br> <?php echo strtoupper($hist_order->ekspedisiORDER);?>
                                             <br>
                                             <br>
 
                                             <strong>Status</strong>
                                             <br>
-                                            <i class="check square green icon"></i> Keanter
-                                            <!-- atau -->
-                                            <i class="minus square red icon"></i> Bermasalah
+                                            <?php echo $hist_order->status;?>
                                         </address>
                                     </div>
                                 </div>

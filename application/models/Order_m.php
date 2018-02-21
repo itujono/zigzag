@@ -149,21 +149,12 @@ class Order_m extends MY_Model{
 	}
 
 	public function history_order_customer($id) {
-		$this->db->select('order.idORDER, kodeORDER, order.createdateORDER');
-		$this->db->select('');
+		$this->db->select('order.idORDER, kodeORDER, order.createdateORDER, order.totalekspedisiORDER, statusORDER, addressORDER, nameORDER, zipORDER, ekspedisiORDER, telehomeORDER, teleORDER');
+		$this->db->select('SUM(qtydetailORDER * pricedetailORDER) as subtotal');
 		$this->db->from('order');
 		$this->db->join('detail_orders', 'detail_orders.idORDER = order.idORDER');
 		$this->db->where('order.customerORDER',$id);
 		$this->db->group_by('detail_orders.idORDER');
-		return $this->db->get();
-	}
-
-	public function history_detail_order_customer($id) {
-		$this->db->select('nameBARANG, codeBARANG');
-		$this->db->select('idORDER, idproductdetailORDER, productdetailORDER, qtydetailORDER, pricedetailORDER');
-		$this->db->from('barang');
-		$this->db->join('detail_orders', 'detail_orders.idproductdetailORDER = barang.idBARANG');
-		$this->db->where('detail_orders.idORDER',$id);
 		return $this->db->get();
 	}
 }

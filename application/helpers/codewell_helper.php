@@ -385,6 +385,18 @@ function selectall_city_by_province($id, $id2=NULL) {
       return $response['rajaongkir']['results'];
     }
 }
+
+function history_detail_order_customer($id) {
+    $CI =& get_instance();
+    $CI->db->select('nameBARANG, codeBARANG');
+    $CI->db->select('idORDER, idproductdetailORDER, productdetailORDER, qtydetailORDER, pricedetailORDER');
+    $CI->db->from('barang');
+    $CI->db->join('detail_orders', 'detail_orders.idproductdetailORDER = barang.idBARANG');
+    $CI->db->where('detail_orders.idORDER',$id);
+    $data = $CI->db->get()->result();
+    return $data;
+}
+
 //dibiarin aja cuman untuk keperluan testing
 function cost_ekspedisi(){
     $asal = 48;

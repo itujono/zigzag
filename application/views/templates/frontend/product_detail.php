@@ -194,11 +194,15 @@
                         <div class="field">
                             <label for="qty-select">Qty </label>
                             <select class="ui compact dropdown quantity" name="qtyBARANG" id="<?php echo $getbarang->idBARANG;?>">
+                                <?php if($getbarang->stockBARANG == 1){ ?>
+                                <option value="1" selected="selected">1</option>
+                                <?php } elseif ($getbarang->stockBARANG >= 1) { ?>
                                 <option value="1" selected="selected">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
+                                <?php } ?>
                             </select>
                         </div>
                         <button class="add_cart ui toggle fade add-to-cart black button" tabindex="0" data-barangid="<?php echo $getbarang->idBARANG;?>" data-barangnama="<?php echo $getbarang->nameBARANG;?>" data-barangharga="<?php echo $getbarang->priceBARANG;?>" data-barangberat="<?php echo $getbarang->weightBARANG;?>" data-stokbarang="<?php echo $getbarang->stockBARANG;?>">

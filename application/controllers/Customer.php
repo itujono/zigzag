@@ -385,9 +385,7 @@ class Customer extends Frontend_Controller {
 		$this->load->model('Order_m');
 
 		$data['data_customer'] = $this->Customer_m->selectall_customer($this->session->userdata('idCUSTOMER'))->row();
-		
 		$map = directory_map('assets/upload/customer/pic-customer-'.seo_url($data['data_customer']->nameCUSTOMER.'-'.folenc($data['data_customer']->idCUSTOMER)), FALSE, TRUE);
-
 		if(!empty($map)){
 			$data['data_customer']->imageCUSTOMER = base_url() . 'assets/upload/customer/pic-customer-'.seo_url($data['data_customer']->nameCUSTOMER.'-'.folenc($data['data_customer']->idCUSTOMER)).'/'.$map[0];
 		} elseif ($this->session->userdata('profile_picture') != '') {
@@ -410,29 +408,27 @@ class Customer extends Frontend_Controller {
 		}
 
 		$data['history_order'] = $this->Order_m->history_order_customer($this->session->userdata('idCUSTOMER'))->result();
-		foreach ($data['history_order'] as $val) {
-			$id_order = $val->idORDER;
-		}
-		$data['history_order_detail'] = $this->Order_m->history_detail_order_customer($id_order)->result();
-		
-		// $data['data_merge'] = array_merge($data['history_order'], $data['history_order_detail']);
-		
-		$data['count_history'] = count($data['history_order_detail']);
-		foreach ($data['history_order_detail'] as $key => $history) {
-			$map[] = directory_map('assets/upload/barang/pic-barang-'.folenc($data['history_order_detail'][$key]->idproductdetailORDER), FALSE, TRUE);
-			$maps = array();
-			if(!empty($map)){
-				foreach ($map  as $key => $value) {
-					$maps[] = base_url().'assets/upload/barang/pic-barang-'.folenc($data['history_order_detail'][$key]->idproductdetailORDER).'/'.$value[0];
-				}
-				$data['history_order_detail'][$key]->imageBARANG = base_url() . 'assets/upload/barang/pic-barang-'.folenc($data['history_order_detail'][$key]->idproductdetailORDER).'/'.$map[0];
+		foreach ($data['history_order'] as $key => $val) {
+			if($val->statusORDER == 1){
+				$status='<i class="check square green icon"></i> Order diterima';
+			} elseif($val->statusORDER == 2) {
+				$status='<i class="check square green icon"></i> Menunggu pembayaran';
+			} elseif ($val->statusORDER == 3) {
+				$status='<i class="check square green icon"></i> Proses pembayaran';
+			} else if ($val->statusORDER == 4){
+				$status='<i class="check square green icon"></i> Pembayaran disetujui';
+			} else if ($val->statusORDER == 5){
+				$status='<i class="check square green icon"></i> Proses digudang';
+			} elseif($val->statusORDER == 6){
+				$status='<i class="check square green icon"></i> Barang terkirim';
+			} elseif($val->statusORDER == 7){
+				$status='<i class="check square green icon"></i> Pesanan dibatalkan';
+			} else {
+				$status='<span class="uk-badge uk-badge-danger">Pembayaran ditolak</span>';
 			}
-			$data['history_order_detail'][$key]->map = $maps;
+			$data['history_order'][$key]->status = $status;
 		}
-		$data['barang_image'] = $data['history_order_detail'][$key]->map;
-		// echo "<pre>";
-		// print_r($data['history_order_detail'][$key]->map);
-		// exit;
+
 		if(empty($this->session->userdata('idCUSTOMER'))){
 			redirect('customer/logout');
 		}

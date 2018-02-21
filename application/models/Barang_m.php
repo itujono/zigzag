@@ -102,6 +102,7 @@ class Barang_m extends MY_Model{
 		$this->db->join('category_barang', 'category_barang.idCATEGORY = barang.idCATEGORY');
 		$this->db->where('category_barang.idCATEGORY', 14);
 		$this->db->or_where('category_barang.nameCATEGORY', 'Promo Discount');
+		$this->db->where('stockBARANG > 1');
 		return $this->db->get();
 	}
 
@@ -111,6 +112,7 @@ class Barang_m extends MY_Model{
 		$this->db->from('barang');
 		$this->db->join('category_barang', 'category_barang.idCATEGORY = barang.idCATEGORY');
 		$this->db->order_by('idBARANG', 'desc');
+		$this->db->where('stockBARANG > 1');
 		return $this->db->get();
 	}
 
