@@ -11,77 +11,86 @@ if ($plugins == 'home') { ?>
     <script src="<?php echo base_url().$this->data['asfront'];?>js/owl.js"></script>
 
 	<script type="text/javascript">
+
+
 		$(".add-to-wishlist").on("click", function(e) {
+
 		<?php if(empty($this->session->userdata('idCUSTOMER'))){ ?>
 			// todo: Bikin modal login aja kalo belum login!!!
+			const notLoggedIn = $(".ui.message.not-login");
+			
 			$(".add-to-wishlist").transition("jiggle")
 			$(".add-to-wishlist").find('.empty.heart').addClass('empty')
-			// Message belum login
-			$(".ui.message.not-login").transition("slide", function() {
-				setTimeout(function() {
-					$(".ui.message.not-login").transition("slide")
-				}, 2000)
-			})
-		<?php } else { ?>
-			e.preventDefault()
-			if ($(".add-to-wishlist").find(".heart.icon").hasClass("empty")) {
-				var idBARANG = $(this).data("idbarang")
+			$(".ui.message.not-login").transition("slide", displayTimedMessage(notLoggedIn))
+			
+			<?php } else { ?>
+			const heartIcon = $(".add-to-wishlist").find(".heart.icon");
+
+			if (heartIcon.hasClass("empty")) {
+				const idBARANG = $(this).data("idbarang");
+				const itemData = {
+					'<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
+					idBARANG
+				}
+
 				$.ajax({
 					url : "<?php echo base_url();?>product/wish",
 					method : "POST",
 					dataType: "json",
-					data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG},
-					success: function(data){
-						if(data.status == "success"){
-							$(".add-to-wishlist").find(".heart.icon").transition("jiggle").removeClass("empty").css("color", "#f92626");
-							$(".ui.message.added-to-wishlist").transition("slide", function() {
-								setTimeout(function() {
-									$(".ui.message.added-to-wishlist").transition("slide");
-								}, 2000);
-							});
+					data : itemData,
+					success: data => {
+						if(data.status == "success") {
+							const addedToWishlist = $(".ui.message.added-to-wishlist");
+
+							heartIcon.transition("jiggle").removeClass("empty").css("color", "#f92626");
+							$(".ui.message.added-to-wishlist").transition("slide", displayTimedMessage(addedToWishlist))
 						}
 					}
 				});
 			} else {
-				$(".add-to-wishlist").find(".heart.icon").transition("jiggle").addClass("empty").css("color", "#fff");
-				$(".ui.message.removed-from-wishlist").transition("slide", function() {
-					setTimeout(function() {
-						$(".ui.message.removed-from-wishlist").transition("slide");
-					}, 2000);
-				});
+				const removedFromWishlist = $(".ui.message.removed-from-wishlist");
+
+				heartIcon.transition("jiggle").addClass("empty").css("color", "#fff");
+				$(".ui.message.removed-from-wishlist").transition("slide", displayTimedMessage(removedFromWishlist))
 			}
+			e.preventDefault()
+
 		<?php } ?>
 		})
 
+		
 		$('.add_cart').on("click", function(e){
-			var idBARANG    = $(this).data("barangid");
-			var nameBARANG  = $(this).data("barangnama");
-			var priceBARANG = $(this).data("barangharga");
-			var weightBARANG = $(this).data("barangberat");
-			var stockBARANG = $(this).data("stokbarang");
-			var qtyBARANG     = $('#' + idBARANG).val();
-			console.log("Kedetect!");
+			const idBARANG    = $(this).data("barangid");
+			const nameBARANG  = $(this).data("barangnama");
+			const priceBARANG = $(this).data("barangharga");
+			const weightBARANG = $(this).data("barangberat");
+			const stockBARANG = $(this).data("stokbarang");
+			const qtyBARANG     = $('#' + idBARANG).val();
+			const itemBarang = {
+				'<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>',
+				idBARANG, nameBARANG, priceBARANG, qtyBARANG, weightBARANG, stockBARANG
+			}
+
 			$.ajax({
 				url : "<?php echo base_url();?>/product/add_to_cart",
 				method : "POST",
-				data : {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', idBARANG: idBARANG, nameBARANG: nameBARANG, priceBARANG: priceBARANG, qtyBARANG: qtyBARANG, weightBARANG: weightBARANG, stockBARANG: stockBARANG},
-				success: function(data){
-					$('#detail_cart').html(data);
-				}
+				data : itemBarang,
+				success: data => { $('#detail_cart').html(data) }
 			});
+
 			e.preventDefault();
 		});
-
+		
 		$(".check-submit").click(function(e){
-			var nameCUSTOMER = $("input[name='nameCUSTOMER']").val()
-			var emailCUSTOMER = $("input[name='emailCUSTOMER']").val()
-			var passwordCUSTOMER = $("input[name='passwordCUSTOMER']").val()
-			var addressCUSTOMER = $("textarea[name='addressCUSTOMER']").val()
-			var provinceCUSTOMER = $("select[name='provinceCUSTOMER']").val()
-			var cityCUSTOMER = $("select[name='cityCUSTOMER']").val()
-			var zipCUSTOMER = $("input[name='zipCUSTOMER']").val()
-			var teleCUSTOMER = $("input[name='teleCUSTOMER']").val()
-			var skCUSTOMER = $("input[name='skCUSTOMER']").val()
+			const nameCUSTOMER = $("input[name='nameCUSTOMER']").val()
+			const emailCUSTOMER = $("input[name='emailCUSTOMER']").val()
+			const passwordCUSTOMER = $("input[name='passwordCUSTOMER']").val()
+			const addressCUSTOMER = $("textarea[name='addressCUSTOMER']").val()
+			const provinceCUSTOMER = $("select[name='provinceCUSTOMER']").val()
+			const cityCUSTOMER = $("select[name='cityCUSTOMER']").val()
+			const zipCUSTOMER = $("input[name='zipCUSTOMER']").val()
+			const teleCUSTOMER = $("input[name='teleCUSTOMER']").val()
+			const skCUSTOMER = $("input[name='skCUSTOMER']").val()
 			$.ajax({
 				url: "<?php echo base_url();?>customer/register",
 				type:'POST',
@@ -100,6 +109,11 @@ if ($plugins == 'home') { ?>
 			})
 			e.preventDefault()
 		});
+		
+		function displayTimedMessage(el) {
+			setTimeout(function() { el.transition("slide"); }, 2000);
+		}
+
 
 	</script>
 
