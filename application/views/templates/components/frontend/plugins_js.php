@@ -840,6 +840,14 @@ $("#kode_order").change(function (){
     return false;
 });
 </script>
+<?php } elseif ($plugins == 'return_barang') { ?>
+<script type="text/javascript">
+$("#kode_order_return").change(function (){
+    var url = "<?php echo base_url().'customer/load_product_by_kode_order/';?>"+$(this).val();
+    $('#kode_barang_return').load(url);
+    return false;
+});
+</script>
 <?php } ?>
 <script type="text/javascript">
 	$('#detail_cart').load("<?php echo base_url();?>product/load_cart");

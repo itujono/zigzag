@@ -187,17 +187,6 @@ class Order_m extends MY_Model{
 	}
 
 	public function success_order($id){
-		// $this->db->select('order.idORDER, kodeORDER, order.createdateORDER, order.totalekspedisiORDER, statusORDER, addressORDER, nameORDER, zipORDER, ekspedisiORDER, telehomeORDER, teleORDER');
-		// $this->db->select('order.idORDER, kodeORDER');
-		// $this->db->select('SUM(qtydetailORDER * pricedetailORDER) as subtotal');
-		// $this->db->from('order');
-		// $this->db->join('detail_orders', 'detail_orders.idORDER = order.idORDER');
-		// $this->db->where('order.customerORDER', $id);
-		// $this->db->group_by('order.customerORDER');
-		// $this->db->order_by('order.createdateORDER', 'desc');
-		
-		
-		// return $this->db->get();
 
 		$query = $this->db->query("SELECT zigzag_order.idORDER, ekspedisiORDER, addressORDER, paymentORDER, totalekspedisiORDER, ketekspedisiORDER, kodeORDER, zipORDER, SUM(qtydetailORDER * pricedetailORDER) as subtotal FROM zigzag_order INNER JOIN zigzag_detail_orders ON zigzag_order.idORDER = zigzag_detail_orders.idORDER WHERE zigzag_order.createdateORDER IN (SELECT MAX(zigzag_order.createdateORDER) FROM zigzag_order WHERE customerORDER = ".$id." GROUP BY customerORDER) ORDER BY zigzag_order.createdateORDER DESC");
 		return $query->row();
@@ -211,4 +200,21 @@ class Order_m extends MY_Model{
         $query = $this->db->query("SELECT statusORDER FROM $table $fil $sess");
         return $query->num_rows();
     }
+
+     public function list_kodeorder_customer($id) {
+		$this->db->select('kodeORDER');
+		$this->db->from('order');
+		$this->db->where('customerORDER',$id);
+		return $this->db->get();
+	}
+
+	public function get_all_product_customer_by_kodeorder($id){
+		$this->db->select('codeBARANG, nameBARANG');
+		$this->db->select('idproductdetailORDER');
+		$this->db->from('barang');
+		$this->db->join('detail_orders', 'detail_orders.idproductdetailORDER = barang.idBARANG');
+		$this->db->where('detail_orders.idORDER',$id);
+		return $this->db->get();
+	}
+
 }

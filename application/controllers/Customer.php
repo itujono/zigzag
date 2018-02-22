@@ -10,6 +10,9 @@ class Customer extends Frontend_Controller {
 		$this->load->model('Attempts_customer_m');
 		$this->load->model('Social_customer_m');
 		$this->load->model('Wish_m');
+		$this->load->model('Order_confirmation_m');
+		$this->load->model('Order_m');
+		$this->load->model('Return_m');
 	}
 
 	public function register(){
@@ -353,14 +356,71 @@ class Customer extends Frontend_Controller {
 	}
 
 	public function return_barang(){
-		$data['addONS'] = '';
+		$data['addONS'] = 'return_barang';
 		$data['class'] = 'retur';
 		$data['title'] = 'Form Retur Barang - Zigzag Shop Batam - Official Shop';
 		if(empty($this->session->userdata('idCUSTOMER'))){
 			redirect('home');
 		}
+
+		$data['list_kodeorder_customer'] = $this->Return_m->list_kodeorder_customer($this->session->userdata('idCUSTOMER'))->result();
+
+		if(!empty($this->session->flashdata('message_return'))) {
+            $data['message_return'] = $this->session->flashdata('message_return');
+        }
+
 		$data['subview'] = $this->load->view($this->data['frontendDIR'].'return_barang', $data, TRUE);
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
+	}
+
+
+	public function load_product_by_kode_order($kode){
+	  $get_id_order = $this->Order_confirmation_m->get_idorder_from_kodeorder($kode)->row();
+	  $customer_product = $this->Return_m->get_all_product_customer_by_kodeorder($get_id_order->idORDER)->result();
+	  if(!empty($customer_product)){
+	  	  $data = "";
+	      foreach ($customer_product as $val) {
+        	$data .= "<option value='".$val->codeBARANG."'>".$val->codeBARANG." - ".$val->nameBARANG."</option>";
+	      }
+	      echo $data;
+	  } else {
+	  	  $data = "<option value='' disabled>Maaf, Produk yang anda beli belum tersedia</option>";
+	      echo $data;
+	  }
+	}
+
+	public function process_return_barang(){
+		$rules = $this->Return_m->rules_return_barang;
+		$this->form_validation->set_rules($rules);
+		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
+        $this->form_validation->set_message('trim', 'Form %s adalah Trim');
+        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+		if ($this->form_validation->run() == TRUE) {
+			$data = $this->Return_m->array_from_post(array('kodeorderRETURN','kodebarangRETURN','reasonRETURN','setujuRETURN'));
+			if($data['setujuRETURN'] == 'on')$data['setujuRETURN']=1;
+			else $data['setujuRETURN'] = 0;
+
+   			$data = $this->security->xss_clean($data);
+			$saveid = $this->Return_m->save($data);
+			if($saveid){
+				$data = array(
+					'title' => 'Berhasil,',
+					'text' => 'Okay, terima kasih udah luangin waktunya, ya. <br> Kami akan segera memberi kabar begitu permintaan return barang kamu disetujui.',
+					'type' => 'success'
+					);
+				$this->session->set_flashdata('message_return',$data);
+				redirect('customer/return_barang');
+			}
+
+		} else {
+			$data = array(
+				'title' => 'Gagal,',
+				'text' => 'Maaf, silakan ulangi pengisian form Konfirmasi anda kembali.',
+				'type' => 'error'
+				);
+			$this->session->set_flashdata('message_return',$data);
+			$this->return_barang();
+		}
 	}
 
 	public function account(){
@@ -661,4 +721,57 @@ class Customer extends Frontend_Controller {
             echo json_encode($response);
 		}
 	}
-}
+
+	public function forgot_password(){
+		$data['addONS'] = '';
+		$data['class'] = 'forgot';
+		$data['title'] = 'Lupa Kata sandi - Zigzag Shop Batam - Official Shop';
+		
+		$data['subview'] = $this->load->view($this->data['frontendDIR'].'forgot_password', $data, TRUE);
+		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
+	}
+
+	public function process_forgot_password(){
+		$email = $this->input->post('emailForgot');
+		if(empty($email)){
+			$data = array(
+				'title' => 'Warning!',
+				'style' => 'is-warning',
+	            'text' => 'Maaf, Anda belum memasukkan email.'
+	        	);
+	        $this->session->set_flashdata('message',$data);
+			redirect('customer/forgot_password');
+		} else {
+			$checkemail = $this->Customer_m->checkcustomer($email)->row();
+			if(!empty($checkemail)){
+				$emailnotifreset = $this->sendemailnotificationreset($checkemail->idCUSTOMER, $checkemail->emailCUSTOMER, $checkemail->nameCUSTOMER);
+				if($emailnotifreset){
+					$data = array(
+	                    'title' => 'Sukses!',
+						'style' => 'is-success',
+			            'text' => 'Kami sudah berhasil mengirim tautan reset kata sandi lewat email. <br> Harap periksa inbox email Anda.'
+	                );
+	                $this->session->set_flashdata('message',$data);
+	                redirect('customer/forgot_password');
+				} else {
+					$data = array(
+						'title' => 'Warning!',
+						'style' => 'is-warning',
+	                    'text' => 'Maaf, kami tidak dapat mengirim email kepada Anda, silakan coba beberapa saat kembali. <br> Terima Kasih!'
+	                );
+	                $this->session->set_flashdata('message',$data);
+	                redirect('customer/forgot_password');
+				}
+			} else {
+				$data = array(
+					'title' => 'Warning!',
+					'style' => 'is-warning',
+                    'text' => 'Maaf, email Anda tidak terdaftar pada sistem kami, silakan masukkan kembali alamat email Anda dengan benar. <br> Terima kasih!'
+                );
+
+                $this->session->set_flashdata('message',$data);
+                redirect('customer/forgot_password');
+			}
+		}
+	}
+}	

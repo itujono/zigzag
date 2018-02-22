@@ -168,7 +168,7 @@ class Customer_m extends MY_Model{
 	}
 
 	public function checkcustomer($email=NULL, $id=NULL){
-		$this->db->select('idCUSTOMER, emailCUSTOMER');
+		$this->db->select('idCUSTOMER, emailCUSTOMER, nameCUSTOMER');
 		$this->db->from('customer');
 		if($email != NULL){
 			$this->db->where('emailCUSTOMER', $email);
