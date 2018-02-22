@@ -19,7 +19,11 @@ class Order extends Frontend_Controller {
 			redirect('customer/logout');
 		}
 		$data['listkodeorder'] = $this->Order_confirmation_m->listkodeorder()->result();
-		
+			
+		if(!empty($this->session->flashdata('message_confirmation'))) {
+            $data['message_confirmation'] = $this->session->flashdata('message_confirmation');
+        }
+
 		$data['subview'] = $this->load->view($this->data['frontendDIR'].'confirmation', $data, TRUE);
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}
@@ -52,24 +56,32 @@ class Order extends Frontend_Controller {
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 		if ($this->form_validation->run() == TRUE) {
 				$data = $this->Order_confirmation_m->array_from_post(array('kodeCONFIRM','bankCONFIRM','namaCONFIRM','rekeningCONFIRM','nominalCONFIRM','setujuCONFIRM'));
+				if($data['setujuCONFIRM'] == 'on')$data['setujuCONFIRM']=1;
+				else $data['setujuCONFIRM'] = 0;
 
 				$nominal = $data['nominalCONFIRM'];
 				$kode_confirm = $data['kodeCONFIRM'];
 				$check_nominal = $this->Order_confirmation_m->get_total_price_order($kode_confirm)->row();
 				$total_nominal = $check_nominal->totalekspedisiORDER+$check_nominal->subtotal;
-				if($nominal <= $total_nominal || $nominal >= $total_nominal){
+
+				if($nominal > $total_nominal || $nominal < $total_nominal){
 					$data = array(
 						'title' => 'Gagal,',
 						'text' => 'Maaf, silakan ulangi pengisian form nominal transfer anda.',
 						'type' => 'error'
 						);
-					$this->session->set_flashdata('message',$data);
-					$this->confirmation();
+					$this->session->set_flashdata('message_confirmation',$data);
+					redirect('order/confirmation');
 				}
 
 	   			$data = $this->security->xss_clean($data);
 				$saveid = $this->Order_confirmation_m->save($data);
 
+				//update status order setelah konfirmasi
+				$getid = $this->Order_confirmation_m->get_idorder_from_kodeorder($kode_confirm)->row();
+				$data_update['statusORDER'] = 3;
+				$this->Order_m->save($data_update, $getid->idORDER);
+				
 				$subject = $saveid;
 				$filenamesubject = 'file-confirmation-'.folenc($subject);
 				if(!empty($_FILES['uploadBukti']['name'][0])) {
@@ -81,6 +93,7 @@ class Order extends Frontend_Controller {
 					$config['upload_path']		= $path;
 		            $config['allowed_types']	= 'jpg|png|jpeg';
 		            $config['file_name']        = $this->security->sanitize_filename($filenamesubject);
+		            $config['overwrite'] 		= TRUE;
 
 			        $this->upload->initialize($config);
 
@@ -93,7 +106,7 @@ class Order extends Frontend_Controller {
 					'text' => 'Okay, terima kasih udah luangin waktunya, ya. <br> Kami akan segera memberi kabar begitu payment kamu berhasil kami verifikasi.',
 					'type' => 'success'
 					);
-				$this->session->set_flashdata('message',$data);
+				$this->session->set_flashdata('message_confirmation',$data);
 				redirect('order/confirmation');
 
 		} else {
@@ -102,7 +115,7 @@ class Order extends Frontend_Controller {
 				'text' => 'Maaf, silakan ulangi pengisian form Konfirmasi anda kembali.',
 				'type' => 'error'
 				);
-			$this->session->set_flashdata('message',$data);
+			$this->session->set_flashdata('message_confirmation',$data);
 			$this->confirmation();
 		}
 	}

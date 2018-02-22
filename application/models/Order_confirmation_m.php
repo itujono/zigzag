@@ -26,7 +26,7 @@ class Order_confirmation_m extends MY_Model{
 		'rekeningCONFIRM' => array(
 			'field' => 'rekeningCONFIRM', 
 			'label' => 'Rekening Pengirim', 
-			'rules' => 'trim|required'
+			'rules' => 'trim|required|is_numeric'
 		),
 		'nominalCONFIRM' => array(
 			'field' => 'nominalCONFIRM', 
@@ -36,7 +36,7 @@ class Order_confirmation_m extends MY_Model{
 		'setujuCONFIRM' => array(
 			'field' => 'setujuCONFIRM', 
 			'label' => 'Nominal Transfer', 
-			'rules' => 'trim|required|is_numeric'
+			'rules' => 'trim|required'
 		),
 	);
 
@@ -57,6 +57,14 @@ class Order_confirmation_m extends MY_Model{
 		$this->db->from('order');
 		$this->db->join('detail_orders', 'detail_orders.idORDER = order.idORDER');
 		$this->db->where('order.kodeORDER',$kode);
+		return $this->db->get();
+	}
+
+	public function get_idorder_from_kodeorder($kode) {
+		$this->db->select('idORDER');
+		$this->db->from('order');
+		$this->db->where('kodeORDER',$kode);
+		$this->db->limit(1);
 		return $this->db->get();
 	}
 

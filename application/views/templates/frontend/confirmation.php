@@ -6,6 +6,13 @@
                 <h3>Konfirmasi Pembayaran di Sini</h3>
                 Merasa udah transfer kewajiban? Maka kamu seharusnya coba makan wortel dan bayam di pagi hari mulai besok.
             </div>
+            <?php if (!empty($message_confirmation)){ ?>
+            <div class="ui compact red message print-success-msg-profile">
+                <i class="close icon"></i>
+                <h5 class="header"><?php echo $message_confirmation['title']; ?></h5>
+                <?php echo $message_confirmation['text']; ?>
+            </div>
+            <?php } ?>
             <form method="POST" action="<?php echo base_url();?>order/process_confirmation" class="ui form" enctype="multipart/form-data">
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
                 <div class="required field">
@@ -42,7 +49,7 @@
                 </div>
                 <div class="required field">
                     <label for="nomorRekeningPengirim">Nomor rekening pengirim</label>
-                    <input type="text" name="rekeningCONFIRM" placeholder="Misal: 10900112345678" required="required" value="<?php echo set_value('rekeningCONFIRM'); ?>">
+                    <input type="number" name="rekeningCONFIRM" placeholder="Misal: 10900112345678" required="required" value="<?php echo set_value('rekeningCONFIRM'); ?>">
                     <?php echo form_error('rekeningCONFIRM'); ?>
                 </div>
                 <div class="required field" id="show_total"></div>
