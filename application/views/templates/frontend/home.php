@@ -123,201 +123,35 @@
         </div>
 
         <div class="twelve wide column loop owl-theme owl-carousel">
-
+        <?php
+            if(!empty($bestselling)){
+                foreach ($bestselling as $key => $best) {
+        ?>
             <div class="three wide doubling column">
                 <a href="#" class="ui card">
                     <div class="ui slide masked reveal image">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
+                        <img src="<?php echo $best->imageBARANG;?>" class="visible content" alt="<?php echo $best->nameBARANG;?>">
+                        <img src="<?php echo $best->imageBARANG2;?>" class="hidden content" alt="<?php echo $best->nameBARANG;?>">
                         <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
+                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist" data-idbarang="<?php echo encode(urlencode($best->idproductdetailORDER));?>">
                                 <i class="empty heart icon"></i>
                             </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
+                            <input type="hidden" name="qtyBARANG" id="<?php echo $best->idproductdetailORDER;?>" value="1" class="quantity">
+                            <button class="add_cart ui button add-to-cart" title="Tambahkan ke Cart" data-barangid="<?php echo $best->idproductdetailORDER;?>" data-barangnama="<?php echo $best->nameBARANG;?>" data-barangharga="<?php echo $best->priceBARANG;?>" data-barangberat="<?php echo $best->weightBARANG;?>" data-stokbarang="<?php echo $best->stockBARANG;?>">
                                 <i class="shopping basket icon"></i>
                             </button>
                         </div>
                     </div>
                     <div class="content">
-                        <h4 class="header">Brick-shaped backpack</h4>
+                        <h4 class="header"><?php echo $best->nameBARANG;?></h4>
                         <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
+                            <span class="price">IDR <?php echo number_format($best->priceBARANG, 0,',','.'); ?></span>
                         </div>
                     </div>
                 </a>
             </div>
-
-            <div class="three wide doubling column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="floating ui red label">HOT!</div>
-                    <div class="content">
-                        <h4 class="header">Handbag-style backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="three wide doubling column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4 class="header">Basic two-tone backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="three wide doubling column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4 class="header">Faux leather backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="three wide doubling column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4 class="header">Brick-shaped backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="three wide doubling column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="floating ui red label">HOT!</div>
-                    <div class="content">
-                        <h4 class="header">Handbag-style backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="three wide doubling column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4 class="header">Basic two-tone backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="three wide doubling column">
-                <a href="#" class="ui card">
-                    <div class="ui slide masked reveal image">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="visible content">
-                        <img src="http://localhost/codewell/zigzag/assets/upload/slider/pic-slider-mg==/pic-slider-mg.jpg" class="hidden content">
-                        <div class="ui icon black buttons additional-actions">
-                            <button class="ui button add-to-wishlist" title="Tambahkan ke Wishlist">
-                                <i class="empty heart icon"></i>
-                            </button>
-                            <button class="ui button add-to-cart" title="Tambahkan ke Cart">
-                                <i class="shopping basket icon"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4 class="header">Faux leather backpack</h4>
-                        <div class="meta">
-                            <span class="price">IDR 50K</span>
-                            <span class="category">Bag, Clutch</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
+            <?php } ?>
+        <?php } ?>
         </div> <!-- kelar div Loop / Owl-Carousel -->
 
     </div>

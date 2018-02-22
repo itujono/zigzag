@@ -204,12 +204,27 @@ if ($plugins == 'home') { ?>
 		}
 <?php } ?>
 });
+	function genericSocialShare(url){
+        window.open(url,'sharer','toolbar=0,status=0,width=648,height=395');
+        return true;
+    }
+	function createFBShareLink(FBVars) {
+	    // FBVars is app_id
+	    var url = 'http://www.facebook.com/dialog/feed?app_id='+FBVars+
+	    '&link=' + '<?php echo base_url(uri_string());?>' +
+	    '&picture=' + '<?php echo $getbarang->imageBARANG;?>' +
+	    '&name=' + encodeURIComponent('<?php echo $getbarang->nameBARANG;?>') +
+	    '&description=' + encodeURIComponent('<?php echo word_limiter($getbarang->descBARANG,8);?>') +
+	    '&redirect_uri=' + '<?php echo base_url(uri_string());?>' +
+	    '&display=popup';
+	    window.open(url,'feedDialog','toolbar=0,status=0,width=626,height=436');
+	}
+	$(".ShareFB").click(function(e) {
+	    e.preventDefault();
+	    createFBShareLink('539255253097727');
+	});
 	</script>
 <?php
-
-
-
-
 } elseif ($plugins == 'search-product') {
 ?>
 	<script type="text/javascript">

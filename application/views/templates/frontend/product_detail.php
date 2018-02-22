@@ -116,10 +116,14 @@
                 <div class="share-to-social">
                     <h5 class="header">Share item ini ke teman-teman mu</h5>
                     <div class="ui icon basic buttons">
-                        <a href="#" class="ui button"><i class="facebook icon"></i></a>
-                        <a href="#" class="ui button"><i class="twitter icon"></i></a>
-                        <a href="#" class="ui button"><i class="whatsapp icon"></i></a>
-                        <a href="#" class="ui button"><i class="google plus icon"></i></a>
+                        <a href="#" class="ui button ShareFB"><i class="facebook icon"></i></a>
+                        <a href="javascript:void(0)" onclick="javascript:genericSocialShare('http://twitter.com/share?text=<?php echo $getbarang->nameBARANG;?>&url=<?php echo base_url(uri_string());?>')" class="ui button"><i class="twitter icon"></i></a>
+                        <?php
+                            $content_wa = str_replace(' ','%20',$getbarang->nameBARANG);
+                            $url_wa = "https://api.whatsapp.com/send?text=".$content_wa;
+                        ?>
+                        <a href="javascript:void(0)" onclick="javascript:genericSocialShare('<?php echo $url_wa;?>')" class="ui button"><i class="whatsapp icon"></i></a>
+                        <a href="javascript:void(0)" onclick="javascript:genericSocialShare('https://plus.google.com/share?url=<?php echo base_url(uri_string());?>')" class="ui button"><i class="google plus icon"></i></a>
                     </div>
                 </div>
             </div>

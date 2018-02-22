@@ -31,9 +31,11 @@ class Product extends Frontend_Controller {
 					$maps[] = base_url().'assets/upload/barang/pic-barang-'.folenc($data['getbarang']->idBARANG).'/'.$value;
 					$imgs[] = $value;
 				}
+				$data['getbarang']->imageBARANG = base_url() . 'assets/upload/barang/pic-barang-'.folenc($data['getbarang']->idBARANG).'/'.$map[0];
 			}
 			$data['getbarang']->map = $maps;
 			$data['getbarang']->imgs = $imgs;
+			
 		} else {
 			redirect('home','refresh');
 		}

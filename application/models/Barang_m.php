@@ -81,7 +81,7 @@ class Barang_m extends MY_Model{
 		$this->db->select('*');
 		$this->db->select('nameCATEGORY');
 		$this->db->from('barang');
-		$this->db->join('category_barang', 'category_barang.idCATEGORY = barang.idCATEGORY', 'left');
+		$this->db->join('category_barang', 'category_barang.idCATEGORY = barang.idCATEGORY');
 		if ($id != NULL) {
 			$this->db->where('idBARANG',$id);
 		}
@@ -139,16 +139,18 @@ class Barang_m extends MY_Model{
 		$this->db->or_like('materialBARANG', $search);
 		$this->db->or_like('colorBARANG', $search);
 		$this->db->or_like('nameCATEGORY', $search);
-
+		$this->db->where('stockBARANG > 1');
 		return $this->db->get();
     }
 
     public function select_best_selling_barang(){
+    	$this->db->select('weightBARANG, priceBARANG, stockBARANG, nameBARANG');
     	$this->db->select('idproductdetailORDER, SUM(qtydetailORDER) AS totalqtyorder');
-    	$this->db->from('detail_orders');
+    	$this->db->from('barang');
+    	$this->db->join('detail_orders', 'detail_orders.idproductdetailORDER = barang.idBARANG');
     	$this->db->group_by('idproductdetailORDER');
     	$this->db->order_by('totalqtyorder', 'desc');
-
+    	$this->db->where('stockBARANG > 1');
     	return $this->db->get();
     }
 }
