@@ -511,7 +511,23 @@ class Product extends Frontend_Controller {
 	    }
         $this->cart->destroy();
         redirect('home','refresh');
+	}
 
+	public function checkout_success(){
+		$data['addONS'] = 'checkout-customer';
+		$data['class'] = 'order-done';
+		$data['title'] = 'Checkout Sukses - '.$this->session->userdata('Name');
+		$id = $this->session->userdata('idCUSTOMER');
+		if(empty($id) ){
+			redirect('customer/logout');
+		}
+		$data['order_success'] = $this->Order_m->success_order($id);
+
+		$data['data_customer'] = $this->Customer_m->selectall_customer($id)->row();
+		$data['data_customer_province_city'] = selectall_city_by_province($data['data_customer']->cityCUSTOMER, $data['data_customer']->provinceCUSTOMER);
+		
+		$data['subview'] = $this->load->view($this->data['frontendDIR'].'checkout_success', $data, TRUE);
+		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}
 
 	//function testing aje

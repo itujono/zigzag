@@ -76,20 +76,6 @@ class Customer extends Frontend_Controller {
 		}
 	}
 
-	// public function load_city($id){
-	//   $city = $this->City_m->get_city_by_province($id)->result();
-	//   if(!empty($city)){
-	//   	  $data = "";
-	//       foreach ($city as $value) {
-	//           $data .= "<option value='".$value->idCITY."'>".$value->nameCITY."</option>";
-	//       }
-	//       echo $data;
-	//   } else {
-	//   	  $data = "<option value='' selected disabled>Maaf, Lokasi anda belum tersedia</option>";
-	//       echo $data;
-	//   }
-	// }
-
 	public function load_city($id){
 	  $city = selectall_city_by_province(NULL, $id);
 	  if(!empty($city)){

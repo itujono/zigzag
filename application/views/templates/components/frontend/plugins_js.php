@@ -817,14 +817,15 @@ if(!empty($checkshipping_active)){
 <?php } ?>
 });
 </script>
-
-
-
-
+<?php } elseif ($plugins == 'confirmation_order') { ?>
+<script type="text/javascript">
+$("#kode_order").change(function (){
+    var url = "<?php echo base_url().'order/load_price_total_order/';?>"+$(this).val();
+    $('#show_total').load(url);
+    return false;
+});
+</script>
 <?php } ?>
-
-
-
 <script type="text/javascript">
 	$('#detail_cart').load("<?php echo base_url();?>product/load_cart");
 	//Hapus Item Cart
@@ -840,8 +841,6 @@ if(!empty($checkshipping_active)){
 			}
 		});
 	});
-
-	
 	$(".logout-trigger").on("click", function(e) {
 		$.ajax({
 			url: "<?php echo base_url();?>customer/logout",

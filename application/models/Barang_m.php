@@ -142,4 +142,13 @@ class Barang_m extends MY_Model{
 
 		return $this->db->get();
     }
+
+    public function select_best_selling_barang(){
+    	$this->db->select('idproductdetailORDER, SUM(qtydetailORDER) AS totalqtyorder');
+    	$this->db->from('detail_orders');
+    	$this->db->group_by('idproductdetailORDER');
+    	$this->db->order_by('totalqtyorder', 'desc');
+
+    	return $this->db->get();
+    }
 }
