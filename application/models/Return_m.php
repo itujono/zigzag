@@ -27,6 +27,11 @@ class Return_m extends MY_Model{
 			'field' => 'setujuRETURN', 
 			'label' => 'Setuju Return', 
 			'rules' => 'trim|required'
+		),
+		'qtybarangRETURN' => array(
+			'field' => 'qtybarangRETURN', 
+			'label' => 'Quantity Barang Return', 
+			'rules' => 'trim|required|is_numeric'
 		)
 	);
 
@@ -35,7 +40,7 @@ class Return_m extends MY_Model{
 	}
 
 	public function list_return_customer($id){
-		$this->db->select('kodeorderRETURN, reasonRETURN, statusRETURN, reasonadminRETURN, createdateRETURN, idbarangRETURN, customerRETURN');
+		$this->db->select('kodeorderRETURN, reasonRETURN, statusRETURN, reasonadminRETURN, createdateRETURN, idbarangRETURN, customerRETURN, qtybarangRETURN');
 		$this->db->select('addressORDER, zipORDER');
 	    $this->db->from('return_barang');
 	    $this->db->join('order', 'order.kodeORDER = return_barang.kodeorderRETURN');

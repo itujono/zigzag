@@ -397,26 +397,19 @@ function history_detail_order_customer($id) {
     return $data;
 }
 
-function return_detail_barang_customer($kode_order) {
+function return_detail_barang_customer($kode_order, $id_barang) {
     $CI =& get_instance();
     $CI->db->select('order.addressORDER, zipORDER');
     $CI->db->select('idproductdetailORDER, qtydetailORDER, pricedetailORDER, productdetailORDER');
     $CI->db->select('codeBARANG');
+    $CI->db->select('qtybarangRETURN');
     $CI->db->from('order');
     $CI->db->join('detail_orders', 'detail_orders.idORDER = order.idORDER');
     $CI->db->join('barang', 'barang.idBARANG = detail_orders.idproductdetailORDER');
+    $CI->db->join('return_barang', 'return_barang.kodeorderRETURN = order.kodeORDER');
     $CI->db->where('order.kodeORDER',$kode_order);
+    $CI->db->where('idproductdetailORDER',$id_barang);
     $CI->db->group_by('idproductdetailORDER');
-    $data = $CI->db->get()->row();
-    return $data;
-}
-
-function list_return_barang_customer_additional($id) {
-    $CI =& get_instance();
-    $CI->db->select('idbarangRETURN');
-    $CI->db->from('return_barang');
-    $CI->db->where('customerRETURN', $id);
-    //$CI->db->group_by('idbarangRETURN');
     $data = $CI->db->get()->result();
     return $data;
 }

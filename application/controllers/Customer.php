@@ -398,7 +398,7 @@ class Customer extends Frontend_Controller {
 	  if(!empty($qty_product)){
         $data .= 
         	"<label for='qty_barang'>Qty barang</label>
-			<input type='number' name='qty_barang' required='required' value='".$qty_product->qty_barang."'>
+			<input type='number' name='qtybarangRETURN' required='required' value='".$qty_product->qty_barang."'>
 			";
 	    echo $data;
 	  } else {
@@ -413,9 +413,10 @@ class Customer extends Frontend_Controller {
 		$this->form_validation->set_rules($rules);
 		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
         $this->form_validation->set_message('trim', 'Form %s adalah Trim');
+        $this->form_validation->set_message('is_numeric', 'Silakan masukkan angka saja');
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 		if ($this->form_validation->run() == TRUE) {
-			$data = $this->Return_m->array_from_post(array('kodeorderRETURN','kodebarangRETURN','reasonRETURN','setujuRETURN','statusRETURN'));
+			$data = $this->Return_m->array_from_post(array('kodeorderRETURN','kodebarangRETURN','reasonRETURN','setujuRETURN','statusRETURN','qtybarangRETURN'));
 			$data['statusRETURN'] = '1';
 			$get_id_barang= get_idbarang_from_kode_barang($data['kodebarangRETURN']);
 			$data['idbarangRETURN'] = $get_id_barang->idBARANG;
@@ -522,7 +523,7 @@ class Customer extends Frontend_Controller {
 		if(empty($this->session->userdata('idCUSTOMER'))){
 			redirect('customer/logout');
 		}
-		
+
 		$data['subview'] = $this->load->view($this->data['frontendDIR'].'account', $data, TRUE);
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}

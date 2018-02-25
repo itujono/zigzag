@@ -535,8 +535,7 @@ if(!empty($data_customer)){
                         <div class="content">
                             <div class="summary">
                                 Kamu ngembaliin
-                                <?php $return_details = return_detail_barang_customer($return->kodeorderRETURN); ?>
-                                <span>1 Barang</span>
+                                <span><?php echo $return->qtybarangRETURN;?> pcs Barang</span>
                                 <div class="date"> <?php echo timeAgo(dF('H:i:s',strtotime($return->createdateRETURN))); ?> </div>
                             </div>
                             <div class="item-list">
@@ -561,31 +560,38 @@ if(!empty($data_customer)){
 
                                         <tbody>
                                         <?php
-                                            $return_details = return_detail_barang_customer($return->kodeorderRETURN);
+                                            $return_details_product = return_detail_barang_customer($return->kodeorderRETURN, $return->idbarangRETURN);
+                                            foreach ($return_details_product as $return_det) {
                                         ?>
                                             <tr>
                                                 <td class="single line">
                                                     <div class="ui image header">
-                                                        <img src="<?php echo $return->imageRETURNBARANG;?>" alt="<?php echo $return_details->productdetailORDER;?>">
+                                                        <img src="<?php echo $return->imageRETURNBARANG;?>" alt="<?php echo $return_det->productdetailORDER;?>">
                                                         <div class="content">
-                                                            <?php echo $return_details->productdetailORDER;?>
+                                                            <?php echo $return_det->productdetailORDER;?>
                                                             <div class="sub header">
-                                                                Kode: <?php echo $return_details->codeBARANG;?>
+                                                                Kode: <?php echo $return_det->codeBARANG;?>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td> <?php echo $return_details->qtydetailORDER; ?> x Rp. <?php echo number_format($return_details->pricedetailORDER);?></td>
+                                                <td> <?php echo $return_det->qtybarangRETURN; ?> x Rp. <?php echo number_format($return_det->pricedetailORDER);?></td>
                                                 <td>-</td>
-                                                <td> Rp. <?php echo number_format($return_details->pricedetailORDER*$return_details->qtydetailORDER);?> </td>
+                                                <td> Rp. <?php echo number_format($return_det->pricedetailORDER*$return_det->qtybarangRETURN);?> </td>
                                             </tr>
+                                            <?php } ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th></th>
                                                 <th></th>
                                                 <th>Total:</th>
-                                                <th>Rp. <?php echo number_format($return_details->pricedetailORDER*$return_details->qtydetailORDER);?></th>
+                                                <?php
+                                                $return_details_product = return_detail_barang_customer($return->kodeorderRETURN, $return->idbarangRETURN);
+                                                        foreach ($return_details_product as $return_det) {
+                                                ?>
+                                                <th>Rp. <?php echo number_format($return_det->pricedetailORDER*$return_det->qtybarangRETURN);?></th>
+                                                <?php } ?>
                                             </tr>
                                         </tfoot>
                                     </table>
