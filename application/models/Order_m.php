@@ -183,6 +183,7 @@ class Order_m extends MY_Model{
 		$this->db->join('detail_orders', 'detail_orders.idORDER = order.idORDER');
 		$this->db->where('order.customerORDER',$id);
 		$this->db->group_by('detail_orders.idORDER');
+		$this->db->order_by('createdateORDER', 'desc');
 		return $this->db->get();
 	}
 
