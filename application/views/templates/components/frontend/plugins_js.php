@@ -843,8 +843,23 @@ $("#kode_order").change(function (){
 <?php } elseif ($plugins == 'return_barang') { ?>
 <script type="text/javascript">
 $("#kode_order_return").change(function (){
-    var url = "<?php echo base_url().'customer/load_product_by_kode_order/';?>"+$(this).val();
-    $('#kode_barang_return').load(url);
+    const url = "<?php echo base_url().'customer/load_product_by_kode_order/';?>"+$(this).val();
+    // $('#kode_barang_return').load(url);
+    // return false;
+    $.ajax({
+		success: function(){
+			$('#kode_barang_return').load(url);
+
+			const kode_bar = $(".kode_barang option:selected").val();
+			const url_func = "<?php echo base_url().'customer/load_qty_product_by_kode_barang/';?>"+kode_bar;
+		    $('#qty_barang_return').load(url_func);
+		    return false;
+		}
+	});
+});
+$("#kode_barang_return").change(function (){
+    var url = "<?php echo base_url().'customer/load_qty_product_by_kode_barang/';?>"+$(this).val();
+    $('#qty_barang_return').load(url);
     return false;
 });
 </script>

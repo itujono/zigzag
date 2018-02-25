@@ -34,10 +34,20 @@ class Return_m extends MY_Model{
 		parent::__construct();
 	}
 
-     public function list_kodeorder_customer($id) {
+	public function list_return_customer($id){
+		$this->db->select('kodeorderRETURN, reasonRETURN, statusRETURN, reasonadminRETURN, createdateRETURN, idbarangRETURN, customerRETURN');
+		$this->db->select('addressORDER, zipORDER');
+	    $this->db->from('return_barang');
+	    $this->db->join('order', 'order.kodeORDER = return_barang.kodeorderRETURN');
+	    $this->db->where('customerRETURN', $id);
+		return $this->db->get();
+	}
+
+    public function list_kodeorder_customer($id) {
 		$this->db->select('kodeORDER');
 		$this->db->from('order');
 		$this->db->where('customerORDER',$id);
+		$this->db->where('statusORDER',6);
 		return $this->db->get();
 	}
 

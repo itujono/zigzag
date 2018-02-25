@@ -36,12 +36,13 @@
 					</div>
 					<div class="required field">
 						<label for="kodeBarang">Kode barang</label>
-						<select class="ui search dropdown" id="kode_barang_return" name="kodebarangRETURN" required="required">
+						<select class="ui search dropdown kode_barang" id="kode_barang_return" name="kodebarangRETURN" required="required">
                             <option value="" disabled="disabled">Pilih kode order kamu dulu</option>
                         </select>
                         <?php echo form_error('kodebarangRETURN'); ?>
 					</div>
 				</div>
+				<div class="required field" id="qty_barang_return"></div>
 				<div class="required field">
 					<label for="alasanRetur">Alasan ingin meretur barang</label>
 					<textarea name="reasonRETURN" rows="6" placeholder="Misal: Barang tidak sesuai harapan" required="required"><?php echo set_value('reasonRETURN'); ?></textarea>

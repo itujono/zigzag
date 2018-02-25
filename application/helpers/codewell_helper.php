@@ -397,6 +397,40 @@ function history_detail_order_customer($id) {
     return $data;
 }
 
+function return_detail_barang_customer($kode_order) {
+    $CI =& get_instance();
+    $CI->db->select('order.addressORDER, zipORDER');
+    $CI->db->select('idproductdetailORDER, qtydetailORDER, pricedetailORDER, productdetailORDER');
+    $CI->db->select('codeBARANG');
+    $CI->db->from('order');
+    $CI->db->join('detail_orders', 'detail_orders.idORDER = order.idORDER');
+    $CI->db->join('barang', 'barang.idBARANG = detail_orders.idproductdetailORDER');
+    $CI->db->where('order.kodeORDER',$kode_order);
+    $CI->db->group_by('idproductdetailORDER');
+    $data = $CI->db->get()->row();
+    return $data;
+}
+
+function list_return_barang_customer_additional($id) {
+    $CI =& get_instance();
+    $CI->db->select('idbarangRETURN');
+    $CI->db->from('return_barang');
+    $CI->db->where('customerRETURN', $id);
+    //$CI->db->group_by('idbarangRETURN');
+    $data = $CI->db->get()->result();
+    return $data;
+}
+
+function get_idbarang_from_kode_barang($code){
+    $CI =& get_instance();
+    $CI->db->select('idBARANG');
+    $CI->db->from('barang');
+    $CI->db->where('codeBARANG', $code);
+
+    $data = $CI->db->get()->row();
+    return $data;
+}
+
 //dibiarin aja cuman untuk keperluan testing
 function cost_ekspedisi(){
     $asal = 48;

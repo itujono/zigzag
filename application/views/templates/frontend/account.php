@@ -393,7 +393,7 @@ if(!empty($data_customer)){
                                 Kamu belanja
                                 <?php $history_order_detail = history_detail_order_customer($hist_order->idORDER); ?>
                                 <span> <?php echo count($history_order_detail);?> Barang</span>
-                                <div class="date"> <?php echo timeAgo(dF('H:i:s',strtotime($hist_order->createdateORDER))) ?> </div>
+                                <div class="date"> <?php echo timeAgo(dF('H:i:s',strtotime($hist_order->createdateORDER))); ?> </div>
                             </div>
                             <div class="item-list">
                                 <ul>
@@ -523,32 +523,26 @@ if(!empty($data_customer)){
                     <h3>
                         <i class="moon icon"></i> Retur History</h3>
                 </div>
-
                 <div class="ui feed details">
-
+                <?php
+                    if(!empty($return_barang_customer)){
+                        foreach ($return_barang_customer as $return) {
+                ?>
                     <div class="event">
                         <div class="label">
-                            <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
+                            <img src="<?php echo $data_customer->imageCUSTOMER; ?>" alt="<?php echo $data_customer->nameCUSTOMER; ?>">
                         </div>
-
                         <div class="content">
-
                             <div class="summary">
                                 Kamu ngembaliin
-                                <span>2 tas</span> dan
-                                <span>3 sepatu</span>
-                                <div class="date"> 2 hari yang lalu </div>
+                                <?php $return_details = return_detail_barang_customer($return->kodeorderRETURN); ?>
+                                <span>1 Barang</span>
+                                <div class="date"> <?php echo timeAgo(dF('H:i:s',strtotime($return->createdateRETURN))); ?> </div>
                             </div>
                             <div class="item-list">
                                 <ul>
                                     <li>
-                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                                    </li>
-                                    <li>
-                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                                    </li>
-                                    <li>
-                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
+                                        <img src="<?php echo $return->imageRETURNBARANG;?>">
                                     </li>
                                     <a href="#" class="more" data-text-swap="Tutup">Selengkapnya...</a>
                                 </ul>
@@ -566,81 +560,46 @@ if(!empty($data_customer)){
                                         </thead>
 
                                         <tbody>
-
+                                        <?php
+                                            $return_details = return_detail_barang_customer($return->kodeorderRETURN);
+                                        ?>
                                             <tr>
                                                 <td class="single line">
                                                     <div class="ui image header">
-                                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
+                                                        <img src="<?php echo $return->imageRETURNBARANG;?>" alt="<?php echo $return_details->productdetailORDER;?>">
                                                         <div class="content">
-                                                            Pouch Bag Slingshot Cool
+                                                            <?php echo $return_details->productdetailORDER;?>
                                                             <div class="sub header">
-                                                                Kode: PX3459
+                                                                Kode: <?php echo $return_details->codeBARANG;?>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td> 2 x Rp 300.000,00 </td>
+                                                <td> <?php echo $return_details->qtydetailORDER; ?> x Rp. <?php echo number_format($return_details->pricedetailORDER);?></td>
                                                 <td>-</td>
-                                                <td> Rp 600.000,00 </td>
+                                                <td> Rp. <?php echo number_format($return_details->pricedetailORDER*$return_details->qtydetailORDER);?> </td>
                                             </tr>
-
-                                            <tr>
-                                                <td class="single line">
-                                                    <div class="ui image header">
-                                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                                                        <div class="content">
-                                                            Pouch Bag Slingshot Cool
-                                                            <div class="sub header">
-                                                                Kode: PX3459
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td> 2 x Rp 300.000,00 </td>
-                                                <td>-</td>
-                                                <td> Rp 600.000,00 </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td class="single line">
-                                                    <div class="ui image header">
-                                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                                                        <div class="content">
-                                                            Pouch Bag Slingshot Cool
-                                                            <div class="sub header">
-                                                                Kode: PX3459
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td> 1 x Rp 250.000,00 </td>
-                                                <td>-</td>
-                                                <td> Rp 250.000,00 </td>
-                                            </tr>
-
                                         </tbody>
-
                                         <tfoot>
                                             <tr>
                                                 <th></th>
                                                 <th></th>
                                                 <th>Total:</th>
-                                                <th>Rp 1.450.000,00</th>
+                                                <th>Rp. <?php echo number_format($return_details->pricedetailORDER*$return_details->qtydetailORDER);?></th>
                                             </tr>
                                         </tfoot>
-
                                     </table>
 
                                     <div class="footer-detail">
                                         <address>
                                             <strong>Dikirim dari</strong>
-                                            <br> Jalan Kepodang Raya Blok XX #33 Sei Kundur
-                                            <br> Kendari, Sulawesi Tenggara 23590
+                                            <br> <?php echo $return->addressORDER;?>
+                                            <br> <?php echo $name_city;?>, <?php echo $name_province;?> <?php echo $return->zipORDER;?>
                                             <br>
                                             <br>
 
-                                            <strong>Alasan retur</strong>
-                                            <br> Jangan sampe tumpah. Mau dimasak soalnya.
+                                            <strong>Alasan return</strong>
+                                            <br> <?php echo $return->reasonRETURN;?>
                                         </address>
                                     </div>
                                 </div>
@@ -649,138 +608,10 @@ if(!empty($data_customer)){
                             </div>
                             <!-- kelar div Item-List -->
                         </div>
-
                     </div>
                     <!-- kelar div Event satuan -->
-
-                    <div class="event">
-                        <div class="label">
-                            <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                        </div>
-
-                        <div class="content">
-
-                            <div class="summary">
-                                Kamu ngembaliin
-                                <span>4 lingerie</span> dan
-                                <span>1 sepatu</span>
-                                <div class="date"> 13 Oktober 2012 </div>
-                            </div>
-                            <div class="item-list">
-                                <ul>
-                                    <li>
-                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" alt="">
-                                    </li>
-                                    <li>
-                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" alt="">
-                                    </li>
-                                    <li>
-                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/501/700/5820501700_2_1_2.jpg" alt="">
-                                    </li>
-                                    <a href="#" class="more" data-text-swap="Tutup">Selengkapnya...</a>
-                                </ul>
-
-                                <div class="content-detail">
-                                    <table class="ui celled padded table">
-
-                                        <thead>
-                                            <tr>
-                                                <th class="single line">Item</th>
-                                                <th>Harga</th>
-                                                <th>Keterangan</th>
-                                                <th>Subtotal</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-
-                                            <tr>
-                                                <td class="single line">
-                                                    <div class="ui image header">
-                                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                                                        <div class="content">
-                                                            Pouch Bag Slingshot Cool
-                                                            <div class="sub header">
-                                                                Kode: PX3459
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td> 2 x Rp 300.000,00 </td>
-                                                <td>-</td>
-                                                <td> Rp 600.000,00 </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td class="single line">
-                                                    <div class="ui image header">
-                                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                                                        <div class="content">
-                                                            Pouch Bag Slingshot Cool
-                                                            <div class="sub header">
-                                                                Kode: PX3459
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td> 2 x Rp 300.000,00 </td>
-                                                <td>-</td>
-                                                <td> Rp 600.000,00 </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td class="single line">
-                                                    <div class="ui image header">
-                                                        <img src="https://static.pullandbear.net/2/photos/2018/V/0/2/p/5820/503/015/5820503015_2_1_2.jpg" alt="">
-                                                        <div class="content">
-                                                            Pouch Bag Slingshot Cool
-                                                            <div class="sub header">
-                                                                Kode: PX3459
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td> 1 x Rp 250.000,00 </td>
-                                                <td>-</td>
-                                                <td> Rp 250.000,00 </td>
-                                            </tr>
-
-                                        </tbody>
-
-                                        <tfoot>
-                                            <tr>
-                                                <th></th>
-                                                <th></th>
-                                                <th>Total:</th>
-                                                <th>Rp 1.450.000,00</th>
-                                            </tr>
-                                        </tfoot>
-
-                                    </table>
-
-                                    <div class="footer-detail">
-                                        <address>
-                                            <strong>Dikirim dari</strong>
-                                            <br> Jalan Kepodang Raya Blok XX #33 Sei Kundur
-                                            <br> Kendari, Sulawesi Tenggara 23590
-                                            <br>
-                                            <br>
-
-                                            <strong>Alasan retur</strong>
-                                            <br> Jangan sampe tumpah. Mau dimasak soalnya.
-                                        </address>
-                                    </div>
-
-                                </div>
-                                <!-- kelar div Content-Detail -->
-
-                            </div>
-                            <!-- kelar div Item-List -->
-                        </div>
-
-                    </div>
-                    <!-- kelar div Event satuan -->
-
+                        <?php } ?>
+                    <?php } ?>
                 </div>
                 <!-- kelar Ui Feed Details -->
 

@@ -68,4 +68,12 @@ class Order_confirmation_m extends MY_Model{
 		return $this->db->get();
 	}
 
+	public function get_idbarang_from_kode_barang($code) {
+		$this->db->select('idBARANG');
+		$this->db->from('barang');
+		$this->db->where('codeBARANG',$code);
+		$this->db->limit(1);
+		return $this->db->get();
+	}
+
 }

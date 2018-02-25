@@ -25,4 +25,14 @@ class Order_detail_m extends MY_Model{
 		$query = $this->db->query("SELECT idORDER FROM zigzag_order WHERE createdateORDER IN (SELECT MAX(createdateORDER) FROM zigzag_order WHERE customerORDER = ".$id." GROUP BY customerORDER) ORDER BY createdateORDER DESC");
 		return $query->row();
 	}
+
+	public function get_qty_barang_from_id_barang($id_barang, $session_customer) {
+		$this->db->select('SUM(qtydetailORDER) as qty_barang');
+		$this->db->from('detail_orders');
+		$this->db->join('order', 'order.idORDER = detail_orders.idORDER');
+		$this->db->where('idproductdetailORDER',$id_barang);
+		$this->db->where('order.customerORDER',$session_customer);
+		
+		return $this->db->get();
+	}
 }

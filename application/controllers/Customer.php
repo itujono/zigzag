@@ -13,6 +13,7 @@ class Customer extends Frontend_Controller {
 		$this->load->model('Order_confirmation_m');
 		$this->load->model('Order_m');
 		$this->load->model('Return_m');
+		$this->load->model('Order_detail_m');
 	}
 
 	public function register(){
@@ -389,6 +390,24 @@ class Customer extends Frontend_Controller {
 	  }
 	}
 
+	public function load_qty_product_by_kode_barang($code){
+
+	  $get_id_barang = $this->Order_confirmation_m->get_idbarang_from_kode_barang($code)->row();
+	  $qty_product = $this->Order_detail_m->get_qty_barang_from_id_barang($get_id_barang->idBARANG, $this->session->userdata('idCUSTOMER'))->row();
+	  $data = "";
+	  if(!empty($qty_product)){
+        $data .= 
+        	"<label for='qty_barang'>Qty barang</label>
+			<input type='number' name='qty_barang' required='required' value='".$qty_product->qty_barang."'>
+			";
+	    echo $data;
+	  } else {
+	  	$data = "<label for='qty_barang'>Qty barang</label>
+				<input type='number' name='qty_barang' required='required' value=''>";
+      	echo $data;
+	  }
+	}
+
 	public function process_return_barang(){
 		$rules = $this->Return_m->rules_return_barang;
 		$this->form_validation->set_rules($rules);
@@ -396,7 +415,12 @@ class Customer extends Frontend_Controller {
         $this->form_validation->set_message('trim', 'Form %s adalah Trim');
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 		if ($this->form_validation->run() == TRUE) {
-			$data = $this->Return_m->array_from_post(array('kodeorderRETURN','kodebarangRETURN','reasonRETURN','setujuRETURN'));
+			$data = $this->Return_m->array_from_post(array('kodeorderRETURN','kodebarangRETURN','reasonRETURN','setujuRETURN','statusRETURN'));
+			$data['statusRETURN'] = '1';
+			$get_id_barang= get_idbarang_from_kode_barang($data['kodebarangRETURN']);
+			$data['idbarangRETURN'] = $get_id_barang->idBARANG;
+
+			$data['customerRETURN'] = $this->session->userdata('idCUSTOMER');
 			if($data['setujuRETURN'] == 'on')$data['setujuRETURN']=1;
 			else $data['setujuRETURN'] = 0;
 
@@ -475,10 +499,30 @@ class Customer extends Frontend_Controller {
 			$data['history_order'][$key]->status = $status;
 		}
 
+		$data['return_barang_customer'] = $this->Return_m->list_return_customer($this->session->userdata('idCUSTOMER'))->result();
+		
+		foreach ($data['return_barang_customer'] as $key => $val) {
+			if($val->statusRETURN == 1){
+				$status='<i class="check square green icon"></i> Proses verifikasi return barang';
+			} elseif($val->statusRETURN == 2) {
+				$status='<i class="check square green icon"></i> Return barang disetujui';
+			} else {
+				$status='<i class="check square red icon"></i> Return barang ditolak';
+			}
+			$data['return_barang_customer'][$key]->status = $status;
+
+			$map = directory_map('assets/upload/barang/pic-barang-'.folenc($data['return_barang_customer'][$key]->idbarangRETURN), FALSE, TRUE);
+			if(!empty($map)){
+				$data['return_barang_customer'][$key]->imageRETURNBARANG = base_url() . 'assets/upload/barang/pic-barang-'.folenc($data['return_barang_customer'][$key]->idbarangRETURN).'/'.$map[0];
+			} else {
+				$data['return_barang_customer'][$key]->imageRETURNBARANG = base_url() . 'assets/upload/no-image-available.png';
+			}
+		}
+		
 		if(empty($this->session->userdata('idCUSTOMER'))){
 			redirect('customer/logout');
 		}
-
+		
 		$data['subview'] = $this->load->view($this->data['frontendDIR'].'account', $data, TRUE);
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}
