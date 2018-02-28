@@ -14,41 +14,36 @@ class Dashboard extends Admin_Controller {
 
 		$data['orderlist'] = $this->Order_m->selectall_order()->result();
 			foreach ($data['orderlist'] as $key => $value) {
-				if($val->statusORDER == 1){
-					$status='<i class="check square green icon"></i> Order diterima';
-				} elseif($val->statusORDER == 2) {
-					$status='<i class="check square green icon"></i> Menunggu pembayaran';
-				} elseif ($val->statusORDER == 3) {
-					$status='<i class="check square green icon"></i> Proses pembayaran';
-				} else if ($val->statusORDER == 4){
-					$status='<i class="check square green icon"></i> Pembayaran disetujui';
-				} else if ($val->statusORDER == 5){
-					$status='<i class="check square green icon"></i> Proses digudang';
-				} elseif($val->statusORDER == 6){
-					$status='<i class="check square green icon"></i> Barang terkirim';
-				} elseif($val->statusORDER == 7){
-					$status='<i class="check square green icon"></i> Pesanan dibatalkan';
+				if($value->statusORDER == 1){
+					$status='<span class="uk-badge uk-badge-primary"> Order diterima</span>';
+				} elseif($value->statusORDER == 2) {
+					$status='<span class="uk-badge uk-badge-warning"> Menunggu pembayaran</span>';
+				} elseif ($value->statusORDER == 3) {
+					$status='<span class="uk-badge uk-badge-warning"> Proses pembayaran</span>';
+				} else if ($value->statusORDER == 4){
+					$status='<span class="uk-badge uk-badge-primary"> Pembayaran disetujui</span>';
+				} else if ($value->statusORDER == 5){
+					$status='<span class="uk-badge uk-badge-warning"> Proses digudang</span>';
+				} elseif($value->statusORDER == 6){
+					$status='<span class="uk-badge uk-badge-primary"> Barang terkirim</span>';
+				} elseif($value->statusORDER == 7){
+					$status='<span class="uk-badge uk-badge-danger"> Pesanan dibatalkan</span>';
 				} else {
 					$status='<span class="uk-badge uk-badge-danger">Pembayaran ditolak</span>';
 				}
-				$data['history_order'][$key]->status = $status;
+				$data['orderlist'][$key]->status = $status;
 			}
 
-		$data['process'] = $this->Order_m->counts('codewell_orders','statusORDER = 1');
-        $data['wash'] = $this->Order_m->counts('codewell_orders','statusORDER = 2');
-        $data['waitingpayment'] = $this->Order_m->counts('codewell_orders','statusORDER = 3 OR statusORDER = 8');
-        $data['done'] = $this->Order_m->counts('codewell_orders','statusORDER = 5 OR statusORDER = 7');
-
-		$data['totalaspirasi'] = 0;
-        $data['totalmember'] = 0;
-        $data['totalpolling'] = 0;
-        $data['totalvisitor'] = 0;
-
+		$data['order_diterima'] = $this->Order_m->counts('zigzag_order','statusORDER = 1');
+        $data['progress_gudang'] = $this->Order_m->counts('zigzag_order','statusORDER = 5');
+        $data['barang_terkirim'] = $this->Order_m->counts('zigzag_order','statusORDER = 6');
+        $data['order_dibatalkan'] = $this->Order_m->counts('zigzag_order','statusORDER = 7');
 		
 		if(!empty($this->session->flashdata('message'))) {
             $data['message'] = $this->session->flashdata('message');
         }
         record_activity('Mengunjungi halaman dashboard');
+
 		$data['subview'] = $this->load->view($this->data['backendDIR'].'dashboard', $data, TRUE);
 		$this->load->view('templates/_layout_base',$data);
 	}

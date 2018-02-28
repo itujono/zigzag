@@ -1,14 +1,7 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-if($getbarang->hotBARANG == 1){
-    $badge = "<span class='uk-badge uk-badge-danger'>HOT!</span>";
-} else {
-    $badge = "";
-}
-?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 <div id="page_heading" data-uk-sticky="{ top: 48, media: 960 }">
-    <h1><?php echo $getbarang->nameBARANG;?> <?php echo $badge;?></h1>
-    <span class="uk-text-muted uk-text-upper uk-text-small"><?php echo strtoupper($getbarang->codeBARANG);?></span>
+    <h1><?php echo $detail_return_barang->nameCUSTOMER;?></h1>
+    <span class="uk-text-muted uk-text-upper uk-text-small"><?php echo strtoupper($detail_return_barang->kodeorderRETURN);?></span>
 </div>
 
 
@@ -22,33 +15,14 @@ if($getbarang->hotBARANG == 1){
             </div>
             <div class="md-card-content">
                 <div class="uk-margin-bottom uk-text-center">
-                <?php
-                    $map = directory_map('assets/upload/barang/pic-barang-'.folenc($getbarang->idBARANG), FALSE, TRUE);
-                    if(!empty($map)){
-                    $imageBARANG = base_url() . 'assets/upload/barang/pic-barang-'.folenc($getbarang->idBARANG).'/'.$map[0];
-                ?>
-                    <img src="<?php echo $imageBARANG;?>" alt="<?php echo $getbarang->nameBARANG;?>" class="img_medium" />
-                <?php } else { ?> 
-                 Tidak ada gambar yang ditampilkan 
-                <?php } ?> 
+                    <img src="<?php echo $detail_return_barang->imagereturnBARANG;?>" alt="<?php echo $detail_return_barang->nameCUSTOMER;?>" class="img_medium" />
                 </div>
-                <ul class="uk-grid uk-grid-width-small-1-3 uk-text-center" data-uk-grid-margin>
-                <?php
-                if(!empty($getbarang->map)){
-                    foreach ($getbarang->map as $value_img) {
-                ?>
-                    <li>
-                        <img src="<?php echo $value_img;?>" alt="<?php echo $getbarang->nameBARANG;?>" class="img_small"/>
-                    </li>
-                    <?php } ?>
-                <?php } ?>
-                </ul>
             </div>
         </div>
         <div class="md-card">
             <div class="md-card-toolbar">
                 <h3 class="md-card-toolbar-heading-text">
-                    Data
+                    Data Return
                 </h3>
             </div>
             <div class="md-card-content">
@@ -56,19 +30,19 @@ if($getbarang->hotBARANG == 1){
                     <li>
                         <div class="md-list-content">
                             <span class="uk-text-small uk-text-muted uk-display-block">Harga</span>
-                            <span class="md-list-heading uk-text-large uk-text-success">Rp. <?php echo number_format($getbarang->priceBARANG, 0,',','.'); ?></span>
+                            <span class="md-list-heading uk-text-large uk-text-success">Rp. <?php echo number_format($detail_return_barang->priceBARANG, 0,',','.'); ?></span>
                         </div>
                     </li>
                     <li>
                         <div class="md-list-content">
                             <span class="uk-text-small uk-text-muted uk-display-block">Stok</span>
-                            <span class="md-list-heading uk-text-large"><?php echo $getbarang->stockBARANG;?></span>
+                            <span class="md-list-heading uk-text-large"><?php echo $detail_return_barang->stockBARANG;?></span>
                         </div>
                     </li>
                     <li>
                         <div class="md-list-content">
                             <span class="uk-text-small uk-text-muted uk-display-block">Kode</span>
-                            <span class="md-list-heading uk-text-large"><?php echo $getbarang->codeBARANG;?></span>
+                            <span class="md-list-heading uk-text-large"><?php echo $detail_return_barang->codeBARANG;?></span>
                         </div>
                     </li>
                 </ul>
@@ -90,7 +64,7 @@ if($getbarang->hotBARANG == 1){
                                 <span class="uk-text-muted uk-text-small">Nama Barang/Produk</span>
                             </div>
                             <div class="uk-width-large-2-3">
-                                <span class="uk-text-large uk-text-middle"><a href="<?php echo base_url();?>zigzagadmin/barang/add_barang/<?php echo encode(urlencode($getbarang->idBARANG));?>" data-uk-tooltip title="Edit Barang/Produk?"><?php echo $getbarang->nameBARANG;?></a></span>
+                                <span class="uk-text-large uk-text-middle"><a href="<?php echo base_url();?>zigzagadmin/barang/add_barang/<?php echo encode(urlencode($detail_return_barang->idBARANG));?>" data-uk-tooltip title="Edit Barang/Produk?"><?php echo $detail_return_barang->nameBARANG;?></a></span>
                             </div>
                         </div>
                         <hr class="uk-grid-divider">
@@ -99,7 +73,7 @@ if($getbarang->hotBARANG == 1){
                                 <span class="uk-text-muted uk-text-small">Kategori</span>
                             </div>
                             <div class="uk-width-large-2-3">
-                                <span class="uk-text-large uk-text-middle"><?php echo $getbarang->nameCATEGORY;?></span>
+                                <span class="uk-text-large uk-text-middle"><?php echo $detail_return_barang->nameCATEGORY;?></span>
                             </div>
                         </div>
                         <hr class="uk-grid-divider">
@@ -108,7 +82,7 @@ if($getbarang->hotBARANG == 1){
                                 <span class="uk-text-muted uk-text-small">Material</span>
                             </div>
                             <div class="uk-width-large-2-3">
-                                <span class="uk-text-large uk-text-middle"><?php echo $getbarang->materialBARANG;?></span>
+                                <span class="uk-text-large uk-text-middle"><?php echo $detail_return_barang->materialBARANG;?></span>
                             </div>
                         </div>
                         <hr class="uk-grid-divider">
@@ -117,7 +91,7 @@ if($getbarang->hotBARANG == 1){
                                 <span class="uk-text-muted uk-text-small">Dimensi</span>
                             </div>
                             <div class="uk-width-large-2-3">
-                                <?php echo $getbarang->dimensionBARANG;?>
+                                <?php echo $detail_return_barang->dimensionBARANG;?>
                             </div>
                         </div>
                         <hr class="uk-grid-divider">
@@ -126,7 +100,7 @@ if($getbarang->hotBARANG == 1){
                                 <span class="uk-text-muted uk-text-small">Berat</span>
                             </div>
                             <div class="uk-width-large-2-3">
-                                <?php echo $getbarang->weightBARANG;?> KG
+                                <?php echo $detail_return_barang->weightBARANG;?> KG
                             </div>
                         </div>
                         <hr class="uk-grid-divider">
@@ -135,7 +109,7 @@ if($getbarang->hotBARANG == 1){
                                 <span class="uk-text-muted uk-text-small">Warna</span>
                             </div>
                             <div class="uk-width-large-2-3">
-                                <?php echo $getbarang->colorBARANG;?>
+                                <?php echo $detail_return_barang->colorBARANG;?>
                             </div>
                         </div>
                         <hr class="uk-grid-divider uk-hidden-large">
@@ -143,7 +117,7 @@ if($getbarang->hotBARANG == 1){
                     <div class="uk-width-large-1-2">
                         <p>
                             <span class="uk-text-muted uk-text-small uk-display-block uk-margin-small-bottom">Deskripsi Barang</span>
-                            <?php echo $getbarang->descBARANG;?>
+                            <?php echo $detail_return_barang->descBARANG;?>
                         </p>
                     </div>
                 </div>

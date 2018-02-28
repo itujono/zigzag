@@ -14,6 +14,7 @@ class Admin_Controller extends MY_Controller{
 		$this->data['rootDIR'] = 'templates/';
         $this->data['asfront'] = 'assets/frontend/';
         $this->data['emailadmin'] = '';
+        
         if($this->session->userdata('loggedin') != TRUE || $this->session->userdata('is_admin') != 1) {
             $data = array(
                 'title' => 'Warning',
@@ -23,6 +24,7 @@ class Admin_Controller extends MY_Controller{
             $this->session->set_flashdata('message',$data);
             redirect('login');
         }
+
         $url = $this->uri->segment(3);
         $idsession = $this->session->userdata('idADMIN');
 

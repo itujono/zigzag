@@ -16,4 +16,4 @@
     <?php echo $addons; ?>
 
 </head>
-<body class="sidebar_main_open sidebar_main_swipe">
+<body class="disable_transitions sidebar_main_open sidebar_main_swipe">

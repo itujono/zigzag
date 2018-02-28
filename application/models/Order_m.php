@@ -154,8 +154,25 @@ class Order_m extends MY_Model{
 	}
 
 	public function selectall_order($id = NULL) {
-		$this->db->select('*');
+		$this->db->select('order.idORDER, kodeORDER, order.createdateORDER, order.totalekspedisiORDER, statusORDER, addressORDER, nameORDER, zipORDER, ekspedisiORDER, telehomeORDER, teleORDER, ketekspedisiORDER, cityORDER, provinceORDER');
+		$this->db->select('nameCUSTOMER, emailCUSTOMER, teleCUSTOMER, addressCUSTOMER, cityCUSTOMER, provinceCUSTOMER');
+		$this->db->select('SUM(qtydetailORDER * pricedetailORDER) as subtotal');
 		$this->db->from('order');
+		$this->db->join('customer', 'customer.idCUSTOMER = order.customerORDER');
+		$this->db->join('detail_orders', 'detail_orders.idORDER = order.idORDER');
+		if($id != NULL){
+			$this->db->where('order.idORDER', $id);
+		}
+		return $this->db->get();
+	}
+
+	public function selectall_order_for_order_page() {
+		$this->db->select('idORDER, kodeORDER, createdateORDER, statusORDER');
+		$this->db->select('nameCUSTOMER');
+		$this->db->from('order');
+		$this->db->join('customer', 'customer.idCUSTOMER = order.customerORDER');
+		
+		$this->db->order_by('createdateORDER', 'desc');
 		return $this->db->get();
 	}
 
@@ -177,8 +194,8 @@ class Order_m extends MY_Model{
 	}
 
 	public function history_order_customer($id) {
-		$this->db->select('order.idORDER, kodeORDER, order.createdateORDER, order.totalekspedisiORDER, statusORDER, addressORDER, nameORDER, zipORDER, ekspedisiORDER, telehomeORDER, teleORDER');
-		$this->db->select('SUM(qtydetailORDER * pricedetailORDER) as subtotal');
+		$this->db->select('order.idORDER, kodeORDER, order.createdateORDER, order.totalekspedisiORDER, statusORDER, addressORDER, nameORDER, zipORDER, ekspedisiORDER, telehomeORDER, teleORDER, cityORDER, provinceORDER');
+		$this->db->select('SUM(qtydetailORDER * pricedetailORDER) as subtotal, productdetailORDER');
 		$this->db->from('order');
 		$this->db->join('detail_orders', 'detail_orders.idORDER = order.idORDER');
 		$this->db->where('order.customerORDER',$id);
@@ -198,7 +215,7 @@ class Order_m extends MY_Model{
         if($filter != ''){
             $fil="WHERE $filter";
         }
-        $query = $this->db->query("SELECT statusORDER FROM $table $fil $sess");
+        $query = $this->db->query("SELECT statusORDER FROM $table $fil");
         return $query->num_rows();
     }
 
@@ -215,6 +232,15 @@ class Order_m extends MY_Model{
 		$this->db->from('barang');
 		$this->db->join('detail_orders', 'detail_orders.idproductdetailORDER = barang.idBARANG');
 		$this->db->where('detail_orders.idORDER',$id);
+		return $this->db->get();
+	}
+
+	public function get_detail_order_customer_by_idorder($id){
+		$this->db->select('idproductdetailORDER, productdetailORDER, pricedetailORDER, qtydetailORDER');
+		$this->db->select('codeBARANG');
+		$this->db->from('detail_orders');
+		$this->db->join('barang', 'barang.idBARANG = detail_orders.idproductdetailORDER');
+		$this->db->where('idORDER',$id);
 		return $this->db->get();
 	}
 

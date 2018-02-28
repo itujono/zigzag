@@ -464,10 +464,12 @@ if(!empty($data_customer)){
                                     </table>
 
                                     <div class="footer-detail">
+                                        <?php $data_order_destination = selectall_city_by_province($hist_order->cityORDER, $hist_order->provinceORDER);
+                                        ?>
                                         <address>
                                             <strong>Dikirim ke</strong>
                                             <br> <?php echo $hist_order->addressORDER;?>
-                                            <br> <?php echo $name_city;?>, <?php echo $name_province;?> <?php echo $hist_order->zipORDER;?>
+                                            <br> <?php echo $data_order_destination['city_name'];?>, <?php echo $data_order_destination['province'];?> <?php echo $hist_order->zipORDER;?>
                                             <br>
                                             <br>
                                             <?php
