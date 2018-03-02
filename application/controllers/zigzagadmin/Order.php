@@ -208,6 +208,16 @@ class Order extends Admin_Controller {
 			} else {
 				$data['list_return_barang'][$key]->imagereturnBARANG = base_url() . 'assets/upload/no-image-available.png';
 			}
+
+			if($value->statusRETURN == 1){
+				$status='<span class="uk-badge uk-badge-warning">Dalam Proses Verifikasi admin</span>';
+			} elseif($value->statusRETURN == 2) {
+				$status='<span class="uk-badge uk-badge-primary">Barang Return Disetujui</span>';
+			} else {
+				$status='<span class="uk-badge uk-badge-danger">Barang Return Ditolak</span>';
+			}
+			$data['list_return_barang'][$key]->status = $status;
+
 		}
 		if(!empty($this->session->flashdata('message'))) {
             $data['message'] = $this->session->flashdata('message');
@@ -221,7 +231,9 @@ class Order extends Admin_Controller {
 		$id = decode(urldecode($id));
 		$data['addONS'] = '';
 		$data['detail_return_barang'] = $this->Return_m->list_return_customer(NULL, $id)->row();
-		
+		// echo "<pre>";
+		// print_r($data['detail_return_barang']);
+		// exit;
 		$map = directory_map('assets/upload/barang/pic-barang-'.folenc($data['detail_return_barang']->idbarangRETURN), FALSE, TRUE);
 		if(!empty($map)){
 			$data['detail_return_barang']->imagereturnBARANG = base_url() . 'assets/upload/barang/pic-barang-'.folenc($data['detail_return_barang']->idbarangRETURN).'/'.$map[0];
@@ -229,12 +241,41 @@ class Order extends Admin_Controller {
 			$data['detail_return_barang']->imagereturnBARANG = base_url() . 'assets/upload/no-image-available.png';
 		}
 
+		$data['data_customer_province_city'] = selectall_city_by_province($data['detail_return_barang']->cityCUSTOMER, $data['detail_return_barang']->provinceCUSTOMER);
+		
 		if(!empty($this->session->flashdata('message'))) {
             $data['message'] = $this->session->flashdata('message');
         }
         record_activity('Mengunjungi halaman Order detail Return Barang - '.$data['detail_return_barang']->kodeorderRETURN.' - '.$data['detail_return_barang']->nameCUSTOMER);
 		$data['subview'] = $this->load->view($this->data['backendDIR'].'detail_return', $data, TRUE);
 		$this->load->view('templates/_layout_base',$data);
+	}
+
+	public function process_return_admin(){
+		
+		$data = $this->Return_m->array_from_post(array('idRETURN','reasonadminRETURN','statusRETURN'));
+		
+		if($data['statusRETURN'] == 2){
+			$this->load->model('Barang_m');
+			$data_post = $this->Return_m->array_from_post(array('idbarangRETURN','qtybarangRETURN'));
+			$get_stock = $this->Return_m->get_barang_qty_from_id($data_post['idbarangRETURN'])->row();
+			$data_barang['idBARANG'] = $data_post['idbarangRETURN'];
+			$id_barang = $data_barang['idBARANG'];
+			$data_barang['stockBARANG'] = $get_stock->stockBARANG+$data_post['qtybarangRETURN'];
+			$this->Barang_m->save($data_barang, $id_barang);
+		}
+
+		$id = $data['idRETURN'];
+		$save = $this->Return_m->save($data, $id);
+		if($save){	
+			$data = array(
+	            'title' => 'Sukses',
+	            'text' => 'Perubahan Data return berhasil dilakukan',
+	            'type' => 'success'
+	        );
+	        $this->session->set_flashdata('message',$data);
+	        redirect('zigzagadmin/order/index_return_barang');
+	    }
 	}
 
 }

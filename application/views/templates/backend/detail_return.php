@@ -22,11 +22,23 @@
         <div class="md-card">
             <div class="md-card-toolbar">
                 <h3 class="md-card-toolbar-heading-text">
-                    Data Return
+                    Data Barang Return
                 </h3>
             </div>
             <div class="md-card-content">
                 <ul class="md-list">
+                    <li>
+                        <div class="md-list-content">
+                            <span class="uk-text-small uk-text-muted uk-display-block">Nama Barang</span>
+                            <span class="md-list-heading uk-text-large"><?php echo $detail_return_barang->nameBARANG;?></span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="md-list-content">
+                            <span class="uk-text-small uk-text-muted uk-display-block">Quantity Barang</span>
+                            <span class="md-list-heading uk-text-large"><?php echo $detail_return_barang->qtybarangRETURN;?> Barang</span>
+                        </div>
+                    </li>
                     <li>
                         <div class="md-list-content">
                             <span class="uk-text-small uk-text-muted uk-display-block">Harga</span>
@@ -35,14 +47,14 @@
                     </li>
                     <li>
                         <div class="md-list-content">
-                            <span class="uk-text-small uk-text-muted uk-display-block">Stok</span>
-                            <span class="md-list-heading uk-text-large"><?php echo $detail_return_barang->stockBARANG;?></span>
+                            <span class="uk-text-small uk-text-muted uk-display-block">Kode Barang</span>
+                            <span class="md-list-heading uk-text-large"><?php echo $detail_return_barang->kodebarangRETURN;?></span>
                         </div>
                     </li>
                     <li>
                         <div class="md-list-content">
-                            <span class="uk-text-small uk-text-muted uk-display-block">Kode</span>
-                            <span class="md-list-heading uk-text-large"><?php echo $detail_return_barang->codeBARANG;?></span>
+                            <span class="uk-text-small uk-text-muted uk-display-block">Kode Order</span>
+                            <span class="md-list-heading uk-text-large"><?php echo $detail_return_barang->kodeorderRETURN;?></span>
                         </div>
                     </li>
                 </ul>
@@ -53,7 +65,7 @@
         <div class="md-card">
             <div class="md-card-toolbar">
                 <h3 class="md-card-toolbar-heading-text">
-                    Detail
+                    Detail Customer Return
                 </h3>
             </div>
             <div class="md-card-content large-padding">
@@ -61,64 +73,65 @@
                     <div class="uk-width-large-1-2">
                         <div class="uk-grid uk-grid-small">
                             <div class="uk-width-large-1-3">
-                                <span class="uk-text-muted uk-text-small">Nama Barang/Produk</span>
+                                <span class="uk-text-muted uk-text-small">Customer</span>
                             </div>
                             <div class="uk-width-large-2-3">
-                                <span class="uk-text-large uk-text-middle"><a href="<?php echo base_url();?>zigzagadmin/barang/add_barang/<?php echo encode(urlencode($detail_return_barang->idBARANG));?>" data-uk-tooltip title="Edit Barang/Produk?"><?php echo $detail_return_barang->nameBARANG;?></a></span>
+                                <span class="uk-text-large uk-text-middle"><?php echo $detail_return_barang->nameCUSTOMER;?></span>
                             </div>
                         </div>
                         <hr class="uk-grid-divider">
                         <div class="uk-grid uk-grid-small">
                             <div class="uk-width-large-1-3">
-                                <span class="uk-text-muted uk-text-small">Kategori</span>
+                                <span class="uk-text-muted uk-text-small">Dikirim ke</span>
                             </div>
                             <div class="uk-width-large-2-3">
-                                <span class="uk-text-large uk-text-middle"><?php echo $detail_return_barang->nameCATEGORY;?></span>
+                                <span class="uk-text-large uk-text-middle"><?php echo $detail_return_barang->addressCUSTOMER;?><br><?php echo $data_customer_province_city['city_name'].' - '.$data_customer_province_city['province'] ?></span>
                             </div>
                         </div>
                         <hr class="uk-grid-divider">
                         <div class="uk-grid uk-grid-small">
                             <div class="uk-width-large-1-3">
-                                <span class="uk-text-muted uk-text-small">Material</span>
+                                <span class="uk-text-muted uk-text-small">Alasan Return</span>
                             </div>
                             <div class="uk-width-large-2-3">
-                                <span class="uk-text-large uk-text-middle"><?php echo $detail_return_barang->materialBARANG;?></span>
+                                <span class="uk-text-large uk-text-middle"><?php echo $detail_return_barang->reasonRETURN;?></span>
                             </div>
                         </div>
-                        <hr class="uk-grid-divider">
-                        <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-large-1-3">
-                                <span class="uk-text-muted uk-text-small">Dimensi</span>
-                            </div>
-                            <div class="uk-width-large-2-3">
-                                <?php echo $detail_return_barang->dimensionBARANG;?>
-                            </div>
-                        </div>
-                        <hr class="uk-grid-divider">
-                        <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-large-1-3">
-                                <span class="uk-text-muted uk-text-small">Berat</span>
-                            </div>
-                            <div class="uk-width-large-2-3">
-                                <?php echo $detail_return_barang->weightBARANG;?> KG
-                            </div>
-                        </div>
-                        <hr class="uk-grid-divider">
-                        <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-large-1-3">
-                                <span class="uk-text-muted uk-text-small">Warna</span>
-                            </div>
-                            <div class="uk-width-large-2-3">
-                                <?php echo $detail_return_barang->colorBARANG;?>
-                            </div>
-                        </div>
-                        <hr class="uk-grid-divider uk-hidden-large">
                     </div>
                     <div class="uk-width-large-1-2">
+                    <?php if($detail_return_barang->statusRETURN == 1){ ?>
+                        <form action="<?php echo base_url();?>zigzagadmin/order/process_return_admin" method="POST">
+                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
+                            <input type="hidden" name="idRETURN" value="<?php echo $detail_return_barang->idRETURN;?>" required/>
+                            <input type="hidden" name="idbarangRETURN" value="<?php echo $detail_return_barang->idbarangRETURN;?>" required/>
+                            <input type="hidden" name="qtybarangRETURN" value="<?php echo $detail_return_barang->qtybarangRETURN;?>" required/>
+                            <span class="uk-text-muted uk-text-small uk-display-block uk-margin-small-bottom">Alasan Admin</span>
+                            <textarea class="md-input label-fixed uk-margin-bottom" name="reasonadminRETURN"><?php echo $detail_return_barang->reasonadminRETURN;?></textarea>
+                            <select class="uk-margin-bottom" data-md-selectize data-md-selectize-bottom data-uk-tooltip="{pos:'top'}" title="Pilih status return" name="statusRETURN">
+                                <option value="" disabled="disabled" selected="selected">Select...</option>
+                                <option value="2">Barang Return Disetujui</option>
+                                <option value="3">Barang Return Ditolak</option>
+                            </select>
+                            <span class="uk-input-group-addon"><?php echo form_submit('submit', 'SAVE', 'class="md-btn md-btn-primary" id="show_preloader_md"'); ?></span>
+                        </form>
+                    <?php } else { 
+                        if($detail_return_barang->statusRETURN == 1){
+                            $status='<span class="uk-badge uk-badge-warning">Dalam Proses Verifikasi admin</span>';
+                        } elseif($detail_return_barang->statusRETURN == 2) {
+                            $status='<span class="uk-badge uk-badge-primary">Barang Return Disetujui</span>';
+                        } else {
+                            $status='<span class="uk-badge uk-badge-danger">Barang Return Ditolak</span>';
+                        }
+                    ?>
                         <p>
-                            <span class="uk-text-muted uk-text-small uk-display-block uk-margin-small-bottom">Deskripsi Barang</span>
-                            <?php echo $detail_return_barang->descBARANG;?>
+                            <span class="uk-text-muted uk-text-small uk-display-block uk-margin-small-bottom">Status return</span>
+                            <?php echo $status;?>
                         </p>
+                        <p>
+                            <span class="uk-text-muted uk-text-small uk-display-block uk-margin-small-bottom">Alasan admin return</span>
+                            <?php echo $detail_return_barang->reasonadminRETURN;?>
+                        </p>
+                    <?php } ?>
                     </div>
                 </div>
             </div>

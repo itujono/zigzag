@@ -40,12 +40,14 @@ class Return_m extends MY_Model{
 	}
 
 	public function list_return_customer($id=NULL, $idreturn=NULL){
-		$this->db->select('idRETURN, kodeorderRETURN, reasonRETURN, statusRETURN, reasonadminRETURN, createdateRETURN, idbarangRETURN, customerRETURN, qtybarangRETURN');
+		$this->db->select('idRETURN, kodeorderRETURN, reasonRETURN, statusRETURN, reasonadminRETURN, createdateRETURN, idbarangRETURN, customerRETURN, qtybarangRETURN, kodebarangRETURN');
 		$this->db->select('addressORDER, zipORDER');
-		$this->db->select('nameCUSTOMER');
+		$this->db->select('nameCUSTOMER, addressCUSTOMER, cityCUSTOMER, provinceCUSTOMER');
+		$this->db->select('priceBARANG, nameBARANG');
 	    $this->db->from('return_barang');
 	    $this->db->join('order', 'order.kodeORDER = return_barang.kodeorderRETURN');
 	    $this->db->join('customer', 'customer.idCUSTOMER = return_barang.customerRETURN');
+	    $this->db->join('barang', 'barang.idBARANG = return_barang.idbarangRETURN');
 	    if($id != NULL){
 	    	$this->db->where('customerRETURN', $id);
 	    }
@@ -69,6 +71,13 @@ class Return_m extends MY_Model{
 		$this->db->from('barang');
 		$this->db->join('detail_orders', 'detail_orders.idproductdetailORDER = barang.idBARANG');
 		$this->db->where('detail_orders.idORDER',$id);
+		return $this->db->get();
+	}
+
+	public function get_barang_qty_from_id($id){
+		$this->db->select('stockBARANG');
+		$this->db->from('barang');
+		$this->db->where('idBARANG',$id);
 		return $this->db->get();
 	}
 

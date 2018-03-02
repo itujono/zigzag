@@ -504,11 +504,11 @@ class Customer extends Frontend_Controller {
 		
 		foreach ($data['return_barang_customer'] as $key => $val) {
 			if($val->statusRETURN == 1){
-				$status='<i class="check square green icon"></i> Proses verifikasi return barang';
+				$status='<i class="check square blue icon"></i> Proses verifikasi return barang';
 			} elseif($val->statusRETURN == 2) {
 				$status='<i class="check square green icon"></i> Return barang disetujui';
 			} else {
-				$status='<i class="check square red icon"></i> Return barang ditolak';
+				$status='<i class="minus square red icon"></i> Return barang ditolak';
 			}
 			$data['return_barang_customer'][$key]->status = $status;
 

@@ -538,7 +538,7 @@ if(!empty($data_customer)){
                             <div class="summary">
                                 Kamu ngembaliin
                                 <span><?php echo $return->qtybarangRETURN;?> pcs Barang</span>
-                                <div class="date"> <?php echo timeAgo(dF('H:i:s',strtotime($return->createdateRETURN))); ?> </div>
+                                <div class="date"> <?php echo timeAgo(dF('H:i:s',strtotime($return->createdateRETURN))); ?></div>
                             </div>
                             <div class="item-list">
                                 <ul>
@@ -578,7 +578,7 @@ if(!empty($data_customer)){
                                                     </div>
                                                 </td>
                                                 <td> <?php echo $return_det->qtybarangRETURN; ?> x Rp. <?php echo number_format($return_det->pricedetailORDER);?></td>
-                                                <td>-</td>
+                                                <td><?php echo $return->status;?> </td>
                                                 <td> Rp. <?php echo number_format($return_det->pricedetailORDER*$return_det->qtybarangRETURN);?> </td>
                                             </tr>
                                             <?php } ?>
@@ -608,6 +608,14 @@ if(!empty($data_customer)){
 
                                             <strong>Alasan return</strong>
                                             <br> <?php echo $return->reasonRETURN;?>
+                                            <br>
+                                            <br>
+                                            <strong>Alasan admin return</strong>
+                                            <?php if(empty($return->reasonadminRETURN)){ ?>
+                                            <br> -
+                                            <?php } else { ?>
+                                            <br> <?php echo $return->reasonadminRETURN;?>
+                                            <?php } ?>
                                         </address>
                                     </div>
                                 </div>

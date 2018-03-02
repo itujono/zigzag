@@ -26,6 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <th>Thumbnail</th>
                 <th>Customer</th>
                 <th>Kode Order</th>
+                <th>Status Return</th>
                 <th>Created</th>
                 <th>Action</th>
               </tr>
@@ -36,6 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <th>Thumbnail</th>
                 <th>Customer</th>
                 <th>Kode Order</th>
+                <th>Status Return</th>
                 <th>Created</th>
                 <th>Action</th>
               </tr>
@@ -51,6 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <td><img class="img_thumb" src="<?php echo $return->imagereturnBARANG;?>" alt="<?php echo $return->nameCUSTOMER;?>"/></td>
                   <td><?php echo $return->nameCUSTOMER; ?></td>
                   <td><?php echo $return->kodeorderRETURN; ?></td>
+                  <td><?php echo $return->status; ?></td>
                   <td><?php echo date('d F Y', strtotime($return->createdateRETURN));?></td>
                   <td><a href="<?php echo base_url();?>zigzagadmin/order/detail_return_barang/<?php echo $id;?>">Lihat detail</a></td>
                 </tr>
