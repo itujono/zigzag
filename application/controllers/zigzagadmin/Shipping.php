@@ -148,4 +148,26 @@ class Shipping extends Admin_Controller {
 		        redirect('zigzagadmin/shipping/index_shipping');
 		}
 	}
+
+	public function deleteimgshipping($id1=NULL){
+		if($id1 != NULL){
+			$id = decode(urldecode($id1));
+			$map = directory_map('assets/upload/shipping/pic-shipping-'.folenc($id), FALSE, TRUE);
+			$path = 'assets/upload/shipping/pic-shipping-'.folenc($id);
+			foreach ($map as $value) {
+				unlink('assets/upload/shipping/pic-shipping-'.folenc($id).'/'.$value);
+			}
+			if(is_dir($path)){
+				rmdir($path);
+			}
+		}
+		record_activity('Penghapusan data gambar shipping berhasil');
+		$data = array(
+            'title' => 'Sukses',
+            'text' => 'Penghapusan Gambar berhasil dilakukan',
+            'type' => 'success'
+        );
+        $this->session->set_flashdata('message',$data);
+		redirect('zigzagadmin/shipping/index_shipping/'.$id1);
+	}
 }

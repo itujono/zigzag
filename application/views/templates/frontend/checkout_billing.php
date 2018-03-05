@@ -57,6 +57,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
             <form class="ui form" action="<?php echo base_url();?>product/process_checkout_billing" method="POST">
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
+                <?php
+                    $val = '';
+                    if($data_filled != ''){
+                        $val = $data_filled->idORDER;
+                    }
+                ?>
+                <input type="hidden" name="idORDER" value="<?php echo $val; ?>">
                 <div class="ui styled accordion payment-option">
                     <div class="title active">
                         <i class="dropdown icon"></i>
@@ -69,32 +76,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                         </div>
                         <div class="ui form">
                             <div class="three required fields transfer">
+                            <?php
+                                if(!empty($list_payment)){
+                                    foreach ($list_payment as $pay) {
+                                        $selected = '';
+                                        if(!empty($data_filled)){
+                                            if($data_filled->paymentORDER == strtoupper($pay->namePAYMENT)) {
+                                                $selected = 'checked';
+                                            }
+                                        }
+                            ?>
                                 <div class="field">
                                     <div class="ui segment">
                                         <div class="ui radio checkbox">
-                                            <input type="radio" name="paymentORDER" tabindex="0" class="hidden" required="required" value="BCA">
-                                            <label>BCA</label>
+                                            <input type="radio" name="paymentORDER" tabindex="0" class="hidden" required="required" <?php echo $selected;?> value="<?php echo strtoupper($pay->namePAYMENT);?>">
+                                            <label><?php echo $pay->namePAYMENT;?></label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="paymentORDER" tabindex="0" class="hidden" required="required" value="Mandiri">
-                                            <label>Mandiri</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="ui segment">
-                                        <div class="ui radio checkbox">
-                                            <input type="radio" name="paymentORDER" tabindex="0" class="hidden" required="required" value="BNI">
-                                            <label>BNI</label>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <?php } ?>
+                                <?php } ?>
                             </div>
-                            <p><?php echo form_error('paymentORDER'); ?></p>
+                            <?php echo form_error('paymentORDER'); ?>
                         </div>
                         <!-- kelar Ui Form -->
 
@@ -142,7 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <input type="submit" class="ui fluid teal button" value="Lanjut">
             </form>
 
-            <a href="#" class="back-to-previous">
+            <a href="<?php echo base_url();?>product/checkout_shipping/filled" class="back-to-previous">
                 <i class="chevron left icon"></i> Kembali
             </a>
         </div>

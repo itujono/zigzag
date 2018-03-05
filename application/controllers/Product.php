@@ -12,6 +12,7 @@ class Product extends Frontend_Controller {
 		$this->load->model('Customer_m');
 		$this->load->model('Order_m');
 		$this->load->model('Order_detail_m');
+		$this->load->model('Payment_m');
 	}
 
 	public function detail($slug){
@@ -193,10 +194,17 @@ class Product extends Frontend_Controller {
 	    }
 	}
 
-	public function checkout_shipping(){
+	public function checkout_shipping($filled=NULL){
 		$data['addONS'] = 'checkout-customer';
 		$data['class'] = 'checkout';
 		$data['title'] = 'Checkout - '.$this->session->userdata('Name');
+
+		if($filled != NULL){
+			$data['data_filled'] = $this->Order_m->check_latest_data_order_for_shipping($this->session->userdata('idCUSTOMER'));
+		} else {
+			$data['data_filled'] = '';
+		}
+
 		if(empty($this->session->userdata('idCUSTOMER')) || empty($this->cart->contents())){
 			redirect('customer/logout');
 		}
@@ -271,8 +279,10 @@ class Product extends Frontend_Controller {
 					$data['dropshipperORDER'] = '-';
 					$data['dropshippercompanyORDER'] = '-';
 				}
+				$id = $this->input->post('idORDER');
+				if(empty($id))$id=NULL;
 	   			$data = $this->security->xss_clean($data);
-				$saveid = $this->Order_m->save($data);
+				$saveid = $this->Order_m->save($data, $id);
 					if ($saveid) {
 		            	redirect('product/checkout_billing');
 					} else {
@@ -346,8 +356,10 @@ class Product extends Frontend_Controller {
 				$data['dropshipperORDER'] = '-';
 				$data['dropshippercompanyORDER'] = '-';
 			}
+			$id = $this->input->post('idORDER');
+			if(empty($id))$id=NULL;
    			$data = $this->security->xss_clean($data);
-			$saveid = $this->Order_m->save($data);
+			$saveid = $this->Order_m->save($data, $id);
 			if ($saveid) {
             	redirect('product/checkout_billing');
 			} else {
@@ -421,12 +433,28 @@ class Product extends Frontend_Controller {
 	    }
 	}
 
-	public function checkout_billing(){
+	public function checkout_billing($filled=NULL){
 		$data['addONS'] = 'checkout-customer';
 		$data['class'] = 'checkout';
 		$data['title'] = 'Checkout Billing - '.$this->session->userdata('Name');
+
+		if($filled != NULL){
+			$data['data_filled'] = $this->Order_m->check_latest_data_order_for_billing($this->session->userdata('idCUSTOMER'));
+		} else {
+			$data['data_filled'] = '';
+		}
+
 		if(empty($this->session->userdata('idCUSTOMER')) || empty($this->cart->contents())){
 			redirect('customer/logout');
+		}
+		$data['list_payment'] = $this->Payment_m->select_all_payment_for_frontend()->result();
+		foreach ($data['list_payment'] as $key => $value) {
+			$map = directory_map('assets/upload/payment/pic-payment-'.folenc($data['list_payment'][$key]->idPAYMENT), FALSE, TRUE);
+			if(!empty($map)){
+				$data['list_payment'][$key]->imagePAYMENT = base_url() . 'assets/upload/payment/pic-payment-'.folenc($data['list_payment'][$key]->idPAYMENT).'/'.$map[0];
+			} else {
+				$data['list_payment'][$key]->imagePAYMENT = base_url() . 'assets/upload/no-image-available.png';
+			}
 		}
 		$data['checkshipping_notactive'] = $this->Shipping_m->checkshipping(0)->result();
 
@@ -442,11 +470,14 @@ class Product extends Frontend_Controller {
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 		if ($this->form_validation->run() == TRUE) {
 				$data = $this->Order_m->array_from_post(array('paymentORDER'));
-				$id = $this->session->userdata('idCUSTOMER');
-				$check_latest_data_order = $this->Order_m->check_latest_data_order($id);
+
+				$id = $this->input->post('idORDER');
+				if(empty($id)){
+					redirect('product/checkout_billing/filled');
+				}
 
 	   			$data = $this->security->xss_clean($data);
-				$saveid = $this->Order_m->save($data, $check_latest_data_order->idORDER);
+				$saveid = $this->Order_m->save($data, $id);
 
 				if ($saveid) {
 
@@ -512,11 +543,11 @@ class Product extends Frontend_Controller {
 	        }
 	    }
         $this->cart->destroy();
-        redirect('home','refresh');
+        redirect('product/checkout_success');
 	}
 
 	public function checkout_success(){
-		$data['addONS'] = 'checkout-customer';
+		$data['addONS'] = '';
 		$data['class'] = 'order-done';
 		$data['title'] = 'Checkout Sukses - '.$this->session->userdata('Name');
 		$id = $this->session->userdata('idCUSTOMER');
@@ -526,7 +557,7 @@ class Product extends Frontend_Controller {
 		$data['order_success'] = $this->Order_m->success_order($id);
 
 		$data['data_customer'] = $this->Customer_m->selectall_customer($id)->row();
-		$data['data_customer_province_city'] = selectall_city_by_province($data['data_customer']->cityCUSTOMER, $data['data_customer']->provinceCUSTOMER);
+		$data['data_customer_province_city'] = selectall_city_by_province($data['order_success']->cityORDER, $data['order_success']->provinceORDER);
 		
 		$data['subview'] = $this->load->view($this->data['frontendDIR'].'checkout_success', $data, TRUE);
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);

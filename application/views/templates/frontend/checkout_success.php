@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 </div>
                 <a href="/" class="ui zz button mb2em">Kembali ke Home</a>
                 <div class="done-payment-link">
-                    Sudah melakukan pembayaran? <a href="confirmation.html">Klik di sini</a>
+                    Sudah melakukan pembayaran? <a href="<?php echo base_url();?>order/confirmation">Klik di sini</a>
                 </div>
 
             </div>

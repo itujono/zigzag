@@ -54,15 +54,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 Isi detail kamu
                 <div class="sub header">Isi detail info dan detail pengiriman</div>
             </h3>
-            <!-- <div class="ui info icon message password-not-same" style="display: none">
-                <i class="checkmark icon"></i>
-                <div class="content">
-                    <div class="header"> Maaf! </div>
-                    Silakan Ulangi alamat pengiriman anda 
-                </div>
-            </div> -->
             <form class="ui form" id="shipping-address" action="<?php echo base_url();?>product/process_checkout" method="POST">
                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
+                <?php
+                    $val = '';
+                    if($data_filled != ''){
+                        $val = $data_filled->idORDER;
+                    }
+                ?>
+                <input type="hidden" name="idORDER" value="<?php echo $val; ?>">
                 <div class="inline field mb2em">
                     <div class="ui segment seamless">
                         <div class="ui slider checkbox" id="default-address">
@@ -76,24 +76,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                 <div class="two fields will-hidden">
                     <div class="required field">
                         <label for="nama">Nama lengkap penerima</label>
-                        <input type="text" name="nameORDER" placeholder="John Doe" value="<?php echo set_value('nameORDER'); ?>">
+                        <?php
+                            $val = set_value('nameORDER');
+                            if($data_filled != ''){
+                                $val = $data_filled->nameORDER;
+                            }
+                        ?>
+                        <input type="text" name="nameORDER" placeholder="John Doe" value="<?php echo $val; ?>">
                         <?php echo form_error('nameORDER'); ?>
                     </div>
                     <div class="required field">
                         <label for="email">Email penerima</label>
-                        <input type="email" name="emailORDER" placeholder="emailku@email.com" value="<?php echo set_value('emailORDER'); ?>">
+                        <?php
+                            $val = set_value('emailORDER');
+                            if($data_filled != ''){
+                                $val = $data_filled->emailORDER;
+                            }
+                        ?>
+                        <input type="email" name="emailORDER" placeholder="emailku@email.com" value="<?php echo $val; ?>">
                         <?php echo form_error('emailORDER'); ?>
                     </div>
                 </div>
                 <div class="two fields mb2em will-hidden">
                     <div class="required field">
                         <label for="handphone">Nomor handphone</label>
-                        <input type="tel" name="teleORDER" placeholder="0812 34567890" value="<?php echo set_value('teleORDER'); ?>">
+                        <?php
+                            $val = set_value('teleORDER');
+                            if($data_filled != ''){
+                                $val = $data_filled->teleORDER;
+                            }
+                        ?>
+                        <input type="tel" name="teleORDER" placeholder="0812 34567890" value="<?php echo $val; ?>">
                         <?php echo form_error('teleORDER'); ?>
                     </div>
                     <div class="field">
                         <label for="telepon">Nomor telepon rumah/kantor</label>
-                        <input type="tel" name="telehomeORDER" placeholder="021 2345678" value="<?php echo set_value('telehomeORDER'); ?>">
+                        <?php
+                            $val = set_value('telehomeORDER');
+                            if($data_filled != ''){
+                                $val = $data_filled->telehomeORDER;
+                            }
+                        ?>
+                        <input type="tel" name="telehomeORDER" placeholder="021 2345678" value="<?php echo $val; ?>">
                         <?php echo form_error('telehomeORDER'); ?>
                     </div>
                 </div>
@@ -110,23 +134,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                                 }
                             }
                         ?>
-                        <?php echo form_dropdown('provinsi-checkout', $options, $this->input->post('provinsi-checkout'),'required="required" id="provinsi_checkout" class="ui search dropdown"'); ?>
+                        <?php echo form_dropdown('provinsi-checkout', $options, $this->input->post('provinsi-checkout'),'id="provinsi_checkout" class="ui search dropdown"'); ?>
                         <?php echo form_error('provinsi-checkout'); ?>
                     </div>
                     <div class="required field">
                         <label for="kota-checkout">Kota/Kabupaten</label>
-                        <select class="ui search dropdown" id="city_checkout" name="city-checkout" required="required">
+                        <select class="ui search dropdown" id="city_checkout" name="city-checkout">
                             <option value="">Pilih kota kamu</option>
                         </select>
                         <?php echo form_error('city-checkout'); ?>
                     </div>
                     <div class="required field">
                         <label for="kodepos">Kode Pos</label>
-                        <input type="number" name="zipORDER" placeholder="Misal: 29433" value="<?php echo set_value('zipORDER'); ?>">
+                        <?php
+                            $val = set_value('zipORDER');
+                            if($data_filled != ''){
+                                $val = $data_filled->zipORDER;
+                            }
+                        ?>
+                        <input type="number" name="zipORDER" placeholder="Misal: 29433" value="<?php echo $val; ?>">
                         <?php echo form_error('zipORDER'); ?>
                     </div>
                 </div>
-
 
                 <!-- Ini section form kalo pilih sesuai data dari Profile -->
                  <div class="two fields will-show hide mb2em">
@@ -178,7 +207,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
                 <div class="required field mb2em will-hidden">
                     <label for="alamat">Alamat pengiriman</label>
-                    <textarea name="addressORDER" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"><?php echo set_value('addressORDER'); ?></textarea>
+                    <?php
+                        $val = set_value('addressORDER');
+                        if($data_filled != ''){
+                            $val = $data_filled->addressORDER;
+                        }
+                    ?>
+                    <textarea name="addressORDER" rows="6" placeholder="Jalan Kesturi Blok B No. 14, Sei Panas"><?php echo $val; ?></textarea>
                     <?php echo form_error('addressORDER'); ?>
                 </div>
                 <div class="inline three fields ekspedisi">
@@ -221,27 +256,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
                 <div class="ui segment seamless">
                     <div class="field">
-                        <div class="ui slider checkbox dropshipper">
-                            <?php
-                                $selected= 'selected';
+                        <?php
+                            if(!empty($data_filled)){
+                                $class= 'hidden';
+                                if($data_filled->dropshipperORDER == '-'){
+                                    $selected= '';
+                                    $class= 'hidden';
+                                } elseif($data_filled->dropshipperORDER == '') {
+                                    $selected= '';
+                                    $class= 'hidden';
+                                } elseif($data_filled->dropshipperORDER != '') {
+                                    $selected= 'checked';
+                                    $class= 'visible';
+                                }
+                            } else {
+                                $selected= 'checked';
+                                $class= 'visible';
                                 if($this->input->post('dropshipper_check') == ''){
                                     $selected= '';
+                                    $class= 'hidden';
                                 }
-                            ?>
-                            <input type="checkbox" <?php echo $selected;?> name="dropshipper_check" tabindex="0" class="hidden">
+                            }
+                        ?>
+                        <div class="ui slider checkbox dropshipper <?php echo $selected;?>">
+                            <input type="checkbox" name="dropshipper_check" tabindex="0" class="hidden">
                             <label>Saya mengirim barang ini kepada orang lain atas nama saya</label>
                         </div>
                     </div>
                 </div>
-                <div class="two fields" id="dropshipper-field">
+                <div class="two fields transition <?php echo $class;?>" id="dropshipper-field">
                     <div class="field">
                         <label for="">Nama saya sebagai dropshipper</label>
-                        <input type="text" name="dropshipperORDER" placeholder="John Doe" value="<?php echo set_value('dropshipperORDER'); ?>">
+                        <?php
+                            $val = set_value('dropshipperORDER');
+                            if($data_filled != ''){
+                                $val = $data_filled->dropshipperORDER;
+                            }
+                        ?>
+                        <input type="text" name="dropshipperORDER" placeholder="John Doe" value="<?php echo $val; ?>">
                         <?php echo form_error('dropshipperORDER'); ?>
                     </div>
                     <div class="field">
                         <label for="">Institusi/organisasi saya sebagai dropshipper</label>
-                        <input type="text" name="dropshippercompanyORDER" placeholder="CV Megah Jaya" value="<?php echo set_value('dropshippercompanyORDER'); ?>">
+                        <?php
+                            $val = set_value('dropshippercompanyORDER');
+                            if($data_filled != ''){
+                                $val = $data_filled->dropshippercompanyORDER;
+                            }
+                        ?>
+                        <input type="text" name="dropshippercompanyORDER" placeholder="CV Megah Jaya" value="<?php echo $val; ?>">
                         <?php echo form_error('dropshippercompanyORDER'); ?>
                     </div>
                 </div>

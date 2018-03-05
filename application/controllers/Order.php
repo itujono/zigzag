@@ -55,7 +55,7 @@ class Order extends Frontend_Controller {
         $this->form_validation->set_message('is_numeric', 'Hanya masukkan angka saja');
         $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
 		if ($this->form_validation->run() == TRUE) {
-				$data = $this->Order_confirmation_m->array_from_post(array('kodeCONFIRM','bankCONFIRM','namaCONFIRM','rekeningCONFIRM','nominalCONFIRM','setujuCONFIRM'));
+				$data = $this->Order_confirmation_m->array_from_post(array('kodeCONFIRM','bankCONFIRM','nameCONFIRM','rekeningCONFIRM','nominalCONFIRM','setujuCONFIRM'));
 				if($data['setujuCONFIRM'] == 'on')$data['setujuCONFIRM']=1;
 				else $data['setujuCONFIRM'] = 0;
 
@@ -64,10 +64,18 @@ class Order extends Frontend_Controller {
 				$check_nominal = $this->Order_confirmation_m->get_total_price_order($kode_confirm)->row();
 				$total_nominal = $check_nominal->totalekspedisiORDER+$check_nominal->subtotal;
 
-				if($nominal > $total_nominal || $nominal < $total_nominal){
+				if($nominal > $total_nominal){
 					$data = array(
 						'title' => 'Gagal,',
-						'text' => 'Maaf, silakan ulangi pengisian form nominal transfer anda.',
+						'text' => 'Maaf, silakan ulangi pengisian form nominal transfer anda berlebih.',
+						'type' => 'error'
+						);
+					$this->session->set_flashdata('message_confirmation',$data);
+					redirect('order/confirmation');
+				} elseif ($nominal < $total_nominal) {
+					$data = array(
+						'title' => 'Gagal,',
+						'text' => 'Maaf, silakan ulangi pengisian form nominal transfer anda kurang.',
 						'type' => 'error'
 						);
 					$this->session->set_flashdata('message_confirmation',$data);
@@ -119,4 +127,5 @@ class Order extends Frontend_Controller {
 			$this->confirmation();
 		}
 	}
+
 }

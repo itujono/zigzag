@@ -43,8 +43,8 @@
                     </div>
                     <div class="ten wide required field">
                         <label for="namaRekeningPengirim">Atas nama pengirim</label>
-                        <input type="text" name="namaCONFIRM" placeholder="Misal: Joni Sudrajat" required="required" value="<?php echo set_value('namaCONFIRM'); ?>">
-                        <?php echo form_error('namaCONFIRM'); ?>
+                        <input type="text" name="nameCONFIRM" placeholder="Misal: Joni Sudrajat" required="required" value="<?php echo set_value('nameCONFIRM'); ?>">
+                        <?php echo form_error('nameCONFIRM'); ?>
                     </div>
                 </div>
                 <div class="required field">

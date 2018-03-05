@@ -10,15 +10,17 @@ class Customer extends Admin_Controller {
 
 	public function index_customer() {
 		$data['addONS'] = 'plugins_user';
-        $data['listusers'] = $this->Customer_m->selectall_customer()->result();
-        foreach ($data['listusers'] as $key => $value) {
-			$map = directory_map('assets/upload/users/pic-users-'.folenc($data['listusers'][$key]->idUSER), FALSE, TRUE);
+        $data['list_customer'] = $this->Customer_m->selectall_customer()->result();
+        foreach ($data['list_customer'] as $key => $value) {
+			$map = directory_map('assets/upload/customer/pic-customer-'.seo_url($data['list_customer'][$key]->nameCUSTOMER.'-'.folenc($data['list_customer'][$key]->idCUSTOMER)), FALSE, TRUE);
+
 			if(!empty($map)){
-				$data['listusers'][$key]->imageUSERS = base_url() . 'assets/upload/users/pic-users-'.folenc($data['listusers'][$key]->idUSER).'/'.$map[0];
+				$data['list_customer'][$key]->imageCUSTOMER = base_url() . 'assets/upload/customer/pic-customer-'.seo_url($data['list_customer'][$key]->nameCUSTOMER.'-'.folenc($data['list_customer'][$key]->idCUSTOMER)).'/'.$map[0];
 			} else {
-				$data['listusers'][$key]->imageUSERS = base_url() . 'assets/upload/no-image-available.png';
+				$data['list_customer'][$key]->imageCUSTOMER = base_url() . 'assets/upload/no-image-available.png';
 			}
 		}
+
 		if(!empty($this->session->flashdata('message'))) {
             $data['message'] = $this->session->flashdata('message');
         }

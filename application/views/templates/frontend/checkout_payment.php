@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
                             <a href="<?php echo base_url();?>product/process_checkout_payment" class="ui zz checkout right floated button">Bayar sekarang
                                 <i class="angle right icon"></i>
                             </a>
-                            <a href="checkout.html" class="ui black button">
+                            <a href="<?php echo base_url();?>product/checkout_billing/filled" class="ui black button">
                                 <i class="angle left icon"></i> Nanti dulu
                             </a>
                         </th>

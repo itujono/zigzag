@@ -18,8 +18,8 @@ class Order_confirmation_m extends MY_Model{
 			'label' => 'Bank Pengirim', 
 			'rules' => 'trim|required'
 		),
-		'namaCONFIRM' => array(
-			'field' => 'namaCONFIRM', 
+		'nameCONFIRM' => array(
+			'field' => 'nameCONFIRM', 
 			'label' => 'Nama Pengirim', 
 			'rules' => 'trim|required'
 		),
@@ -42,6 +42,18 @@ class Order_confirmation_m extends MY_Model{
 
 	function __construct (){
 		parent::__construct();
+	}
+
+	public function list_confirm_order_customer($kode=NULL){
+		$this->db->select('idCONFIRM, nameCONFIRM, nominalCONFIRM, kodeCONFIRM, createdateCONFIRM, bankCONFIRM');
+		$this->db->select('statusORDER');
+		$this->db->from('confirm_order');
+		$this->db->join('order', 'order.kodeORDER = confirm_order.kodeCONFIRM');
+		if($kode != NULL){
+			$this->db->where('kodeCONFIRM', $kode);
+			$this->db->order_by('idCONFIRM', 'desc');
+		}
+		return $this->db->get();
 	}
 
     public function listkodeorder() {
