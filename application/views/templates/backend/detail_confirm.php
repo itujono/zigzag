@@ -35,13 +35,13 @@
  					<li>
  						<div class="md-list-content">
  							<span class="uk-text-small uk-text-muted uk-display-block">Kode Order</span>
- 							<span class="md-list-heading uk-text-medium uk-text-success"><?php echo $detail_confirm->kodeCONFIRM;?></span>
+ 							<span class="md-list-heading uk-text-medium uk-text-success"><?php echo $detail_confirm->kodeCONFIRM;?> - (<?php echo $detail_confirm_order->nameORDER; ?>)</span>
  						</div>
  					</li>
  					<li>
                         <div class="md-list-content">
                             <span class="uk-text-small uk-text-muted uk-display-block">BANK Pengirim</span>
-                            <span class="md-list-heading uk-text-medium uk-text-success"><?php echo $detail_confirm->bankCONFIRM;?></span>
+                            <span class="md-list-heading uk-text-medium uk-text-success"><?php echo $detail_confirm->bankCONFIRM;?> a/n <?php echo $detail_confirm->nameCONFIRM;?></span>
                         </div>
                     </li>
                     <li>
@@ -78,7 +78,7 @@
  					<div class="uk-width-large-1-2">
  						<div class="uk-grid uk-grid-small">
  							<div class="uk-width-large-1-3">
- 								<span class="uk-text-muted uk-text-small">Nama</span>
+ 								<span class="uk-text-muted uk-text-small">Nama Pengirim</span>
  							</div>
  							<div class="uk-width-large-2-3">
  								<span class="uk-text-large uk-text-middle"><a href="#"><?php echo $detail_confirm->nameCONFIRM;?></a></span>
@@ -90,7 +90,7 @@
  								<span class="uk-text-muted uk-text-small">Waktu Konfirmasi</span>
  							</div>
  							<div class="uk-width-large-2-3">
- 								<span class="uk-text-large uk-text-middle"><?php echo date('d F Y', strtotime($detail_confirm->createdateCONFIRM));?></span>
+ 								<span class="uk-text-large uk-text-middle"><?php echo dF($detail_confirm->createdateCONFIRM, 'd F Y H:i');?></span>
  							</div>
  						</div>
  						<hr class="uk-grid-divider uk-hidden-large">
@@ -99,6 +99,7 @@
  			</div>
  		</div>
     </div>
+<?php if($detail_confirm_order->statusORDER != 4){ ?>
 <div class="md-fab-wrapper">
 	<div class="md-fab md-fab-accent md-fab-sheet">
 	   <div class="md-fab-wrapper md-fab-speed-dial-horizontal">
@@ -110,3 +111,4 @@
         </div>
 	</div>
 </div>
+<?php } ?>

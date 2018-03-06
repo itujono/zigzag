@@ -255,7 +255,7 @@ class Order_m extends MY_Model{
 	}
 
 	public function get_order_customer_by_kodeorder($kode){
-		$this->db->select('paymentORDER, totalekspedisiORDER, order.idORDER, statusORDER');
+		$this->db->select('paymentORDER, totalekspedisiORDER, order.idORDER, statusORDER, nameORDER');
 		$this->db->select('SUM(qtydetailORDER * pricedetailORDER) as subtotal');
 		$this->db->from('order');
 		$this->db->join('detail_orders', 'detail_orders.idORDER = order.idORDER');
