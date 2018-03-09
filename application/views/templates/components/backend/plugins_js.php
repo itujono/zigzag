@@ -61,6 +61,10 @@ altair_wysiwyg = {
 <script src="<?php echo base_url().$this->data['asbackbower']; ?>countUp.js/dist/countUp.min.js"></script>
 
 <script src="<?php echo base_url().$this->data['asback']; ?>js/pages/dashboard.min.js"></script>
+<?php
+} elseif($plugins == 'plugins_deposit') {
+?>
+<?php echo $datatables;?>
 
 <?php
 } elseif($plugins == 'plugins_user') {

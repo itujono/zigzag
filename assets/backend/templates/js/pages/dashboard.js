@@ -29,7 +29,7 @@ altair_dashboard = {
     // metrics-graphics
     metrics_charts: function () {
         var mGraph_sale = '#mGraph_sale';
-
+        var MG;
         if ($(mGraph_sale).length) {
 
             var $thisEl_height = 0;
@@ -42,7 +42,7 @@ altair_dashboard = {
 
                 var $thisEl_width = $(mGraph_sale).width();
 
-                d3.json("data/mg_dashboard_chart.min.json", function (data) {
+                d3.json("mg_dashboard_chart.min.json", function (data) {
                     data = [data];
                     for (var i = 0; i < data.length; i++) {
                         data[i] = MG.convert.date(data[i], 'date');

@@ -5,6 +5,13 @@ if ($plugins == 'plugins_dashboard') { ?>
 <link rel="stylesheet" href="<?php echo base_url().$this->data['asbackbower']; ?>metrics-graphics/dist/metricsgraphics.css">
 <!-- chartist -->
 <link rel="stylesheet" href="<?php echo base_url().$this->data['asbackbower']; ?>chartist/dist/chartist.min.css">
+<?php
+} elseif($plugins == 'plugins_deposit') {
+?>
+<!-- metrics graphics (charts) -->
+<link rel="stylesheet" href="<?php echo base_url().$this->data['asbackbower']; ?>metrics-graphics/dist/metricsgraphics.css">
+<!-- chartist -->
+<link rel="stylesheet" href="<?php echo base_url().$this->data['asbackbower']; ?>chartist/dist/chartist.css">
 
 <?php } ?>
 

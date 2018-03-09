@@ -14,6 +14,7 @@ class Customer extends Frontend_Controller {
 		$this->load->model('Order_m');
 		$this->load->model('Return_m');
 		$this->load->model('Order_detail_m');
+		$this->load->model('Deposit_m');
 	}
 
 	public function register(){
@@ -528,6 +529,57 @@ class Customer extends Frontend_Controller {
 		$this->load->view($this->data['rootDIR'].'_layout_base_frontend',$data);
 	}
 
+	public function process_deposit() {
+
+		if(empty($this->session->userdata('idCUSTOMER'))){
+			$response['status'] = 'not_login';
+            echo json_encode($response);
+		}
+		$rules_deposit = $this->Deposit_m->rules_deposit;
+    	$this->form_validation->set_rules($rules_deposit);
+		$this->form_validation->set_message('required', 'Form %s tidak boleh kosong');
+        $this->form_validation->set_message('trim', 'Form %s adalah Trim');
+        $this->form_validation->set_message('is_numeric', 'Silakan masukkan angka saja');
+        $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
+
+		if ($this->form_validation->run() == TRUE) {
+			
+			$data['amountDEPOSIT'] = $this->input->post('amountDEPOSIT');
+			
+			$data['customerDEPOSIT'] = $this->session->userdata('idCUSTOMER');
+			$data['statusDEPOSIT'] = '1';
+
+			//START GENERATE KODE ORDER DEPOSIT //
+			$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			$res = "";
+			for ($i = 0; $i < 4; $i++) {
+			    $res .= $chars[mt_rand(0, strlen($chars)-1)];
+			}
+			$kodeorder = "DEPO-ZG-" . date('Ymd') . $res .'-'.$data['customerDEPOSIT'];
+			//END GENERATE KODE ORDER DEPOSIT //
+			$data['orderDEPOSIT'] = $kodeorder;
+			$data['kodeorderDEPOSIT'] = '-';
+
+   			$data = $this->security->xss_clean($data);
+			$saveid = $this->Deposit_m->save($data);
+			
+			if($saveid){
+				$response['status'] = 'success';
+	  			$response['message'] = '';
+				echo json_encode($response);
+			} else {
+				$response['status'] = 'notsave';
+	  			$response['message'] = '';
+				echo json_encode($response);
+			}
+
+		} else {
+			$response['status'] = 'error_validation';
+			$response['message'] = validation_errors();
+            echo json_encode($response);
+		}
+	}
+
 	public function save_profile_picture_customer() {
 		
 		$subject = seo_url($this->session->userdata('Name'));
@@ -819,4 +871,4 @@ class Customer extends Frontend_Controller {
 			}
 		}
 	}
-}	
+}

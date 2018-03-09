@@ -45,14 +45,36 @@
                 <div class="description">
                     Dan dapatkan berbagai macam benefit menarik.
                 </div>
-                <form class="ui form">
+                <div class="ui compact teal message print-success-msg-deposit" style="display:none">
+                    <i class="close icon"></i>
+                    <h5 class="header">Berhasil!</h5>
+                    Deposit anda telah berhasil diajukan, silakan membayar pada nomor rekening yang tertera
+                </div>
+                <div class="ui compact red message print-error-msg-deposit" style="display:none">
+                    <i class="close icon"></i>
+                    <h5 class="header">Oops!</h5>
+                    
+                </div>
+                <div class="ui compact red message print-notsave-msg-deposit" style="display:none">
+                    <i class="close icon"></i>
+                    <h5 class="header">Oops!</h5>
+                    Kami tidak dapat menyimpan data anda, coba lagi nanti.
+                </div>
+                <div class="ui compact teal message print-notlogin-msg-deposit" style="display:none">
+                    <i class="close icon"></i>
+                    <h5 class="header">Maaf!</h5>
+                    Anda diwajibkan untuk login terlebih dahulu
+                </div>
+                <form class="ui form deposit" action="<?php echo base_url();?>customer/process_deposit" method="POST">
+                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>" />
                     <div class="grouped fields">
                         <div class="field">
                             <div class="ui radio checkbox">
                                 <input type="radio" name="nominal" class="hidden" tabindex="0" checked=""/>
                                 <label>Pilih nominal: </label>
                                 <div class="field">
-                                    <select class="ui dropdown">
+                                    <select class="ui dropdown" name="amount_deposit_option" id="amount_deposit_option">
+                                        <option value="" selected="selected">Pilih Nominal</option>
                                         <option value="50000">Rp 50.000,00</option>
                                         <option value="100000">Rp 100.000,00</option>
                                         <option value="150000">Rp 150.000,00</option>
@@ -66,17 +88,18 @@
                                 <input type="radio" name="nominal" class="hidden" tabindex="0" />
                                 <label for="">Input nominal: </label>
                                 <div class="field">
-                                    <input type="number" id="nominalSelect" name="nominalSelect" value="" placeholder="Masukkan angka...">
+                                    <input type="number" name="amount_deposit_number" value="" placeholder="Masukkan angka..." id="amount_deposit_number">
                                 </div>
                             </div>
                         </div>
+                        <button type="submit" class="ui bottom attached right labeled icon black button submit">
+                            <i class="right arrow icon"></i> Deposit
+                        </button>
                     </div>
                 </form> <!-- kelar UI Form -->
             </div> <!-- kelar class Content di Deposit -->
 
-            <button class="ui bottom attached right labeled icon black button">
-                <i class="right arrow icon"></i> Deposit
-            </button>
+            
 
         </div>
     </div> <!-- kelar Deposit -->

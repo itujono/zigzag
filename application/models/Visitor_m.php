@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Visitor_m extends MY_Model{
 	
-	protected $_table_name = 'nyat_visitor';
+	protected $_table_name = 'zigzag_visitor';
 	protected $_order_by = 'idVISITOR';
 	protected $_primary_key = 'idVISITOR';
 

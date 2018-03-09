@@ -12,16 +12,16 @@ class Frontend_Controller extends MY_Controller{
         $this->data['rootDIR'] = 'templates/';
     	$this->data['emailadmin'] = '';
 
-        //$this->load->model('Visitor_m');
+        $this->load->model('Visitor_m');
         //UNIQUE VISITOR START HERE
-        // $ip = $this->input->ip_address();
-        // $time = date("Y-m-d");
-        // $visitor = $this->Visitor_m->checkvisitor($ip,$time);
-        // if($visitor == 0){
-        //     $data['ipVISITOR'] = $ip;
-        //     $data['dateVISITOR'] = $time;
-        //     $this->Visitor_m->save($data);
-        // }
+        $ip = $this->input->ip_address();
+        $time = date("Y-m-d");
+        $visitor = $this->Visitor_m->checkvisitor($ip,$time);
+        if($visitor == 0){
+            $data['ipVISITOR'] = $ip;
+            $data['dateVISITOR'] = $time;
+            $this->Visitor_m->save($data);
+        }
         //UNIQUE VISITOR END HERE
 	}
 

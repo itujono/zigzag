@@ -90,7 +90,7 @@
  								<span class="uk-text-muted uk-text-small">Waktu Konfirmasi</span>
  							</div>
  							<div class="uk-width-large-2-3">
- 								<span class="uk-text-large uk-text-middle"><?php echo dF($detail_confirm->createdateCONFIRM, 'd F Y H:i');?></span>
+ 								<span class="uk-text-large uk-text-middle"><?php echo dF($detail_confirm->createdateCONFIRM , 'd F Y H:i');?></span>
  							</div>
  						</div>
  						<hr class="uk-grid-divider uk-hidden-large">

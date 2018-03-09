@@ -44,6 +44,12 @@ if(!empty($list_customer)){
                 <ul class="md-list">
                     <li>
                         <div class="md-list-content">
+                            <span class="md-list-heading">Deposit</span>
+                            <span class="uk-text-small uk-text-muted uk-text-truncate">Rp. <?php echo number_format($customer->depositCUSTOMER, 0,',','.'); ?></span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="md-list-content">
                             <span class="md-list-heading">Nama</span>
                             <span class="uk-text-small uk-text-muted uk-text-truncate"><?php echo $customer->nameCUSTOMER;?></span>
                         </div>

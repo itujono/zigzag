@@ -11,8 +11,6 @@ if ($plugins == 'home') { ?>
     <script src="<?php echo base_url().$this->data['asfront'];?>js/owl.js"></script>
 
 	<script type="text/javascript">
-
-
 		$(".add-to-wishlist").on("click", function(e) {
 
 		<?php if(empty($this->session->userdata('idCUSTOMER'))){ ?>
@@ -59,6 +57,66 @@ if ($plugins == 'home') { ?>
 		})
 
 		
+		$("form.deposit").form({
+			inline: true,
+			on: "submit",
+			onSuccess: function(e) {
+				const amount_deposit_option = $("#amount_deposit_option").val()
+				
+				if(amount_deposit_option != ''){
+					amountDEPOSIT = $("#amount_deposit_option").val()
+				} else {
+					amountDEPOSIT = $("#amount_deposit_number").val()
+				}
+
+				const formData = {'<?php echo $this->security->get_csrf_token_name(); ?>' : '<?php echo $this->security->get_csrf_hash(); ?>', amountDEPOSIT }
+				console.log(formData);
+				$(this).find("button.submit").addClass("loading")
+				$.ajax({
+					url: "<?php echo base_url();?>customer/process_deposit",
+					type:'POST',
+					dataType: "json",
+					data: formData,
+					success: response => {
+						$(this).find("button.submit").removeClass("loading")
+						$(this).siblings(".print-notlogin-msg-deposit").css("display", "none")
+						$(this).siblings(".print-success-msg-deposit").css("display", "block")
+						$(this).siblings(".print-error-msg-deposit").css('display','none')
+						$(this).siblings(".print-notsave-msg-deposit").css('display','none')
+	
+						if (response.status == "error_validation") {
+							$(this).find("button.submit").removeClass("loading")
+							$(this).siblings(".print-notlogin-msg-deposit").css("display", "none")
+							$(this).siblings(".print-notsave-msg-deposit").css('display','none')
+							$(this).siblings(".print-success-msg-deposit").css('display','none')
+							$(this).siblings(".print-error-msg-deposit").css('display','block')
+							$(this).siblings(".print-error-msg-deposit").html(response.message)
+							return false
+						}
+	
+						if (response.status == "notsave") {
+							$(this).find("button.submit").removeClass("loading")
+							$(this).siblings(".print-notlogin-msg-deposit").css("display", "none")
+							$(this).siblings(".print-success-msg-deposit").css("display", "none")
+							$(this).siblings(".print-error-msg-deposit").css('display','none')
+							$(this).siblings(".print-notsave-msg-deposit").css('display','block')
+							return false
+						}
+						if (response.status == "not_login") {
+							$(this).find("button.submit").removeClass("loading")
+							console.log('kampret');
+							$(this).siblings(".print-notlogin-msg-deposit").css("display", "block")
+							$(this).siblings(".print-success-msg-deposit").css("display", "none")
+							$(this).siblings(".print-error-msg-deposit").css('display','none')
+							$(this).siblings(".print-notsave-msg-deposit").css('display','none')
+							return false
+						}
+					}
+				})
+				e.preventDefault()				
+			}
+	    })
+
 		$('.add_cart').on("click", function(e){
 			const idBARANG    = $(this).data("barangid");
 			const nameBARANG  = $(this).data("barangnama");

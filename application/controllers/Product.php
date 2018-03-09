@@ -257,22 +257,9 @@ class Product extends Frontend_Controller {
 				for ($i = 0; $i < 4; $i++) {
 				    $res .= $chars[mt_rand(0, strlen($chars)-1)];
 				}
-				$kodeorder = "ZG" . date('Ymd') . $res;
+				$kodeorder = "ORDER-ZG-" . date('Ymd') . $res.'-'.$data['customerORDER'];
 				//END GENERATE KODE ORDER //
 				$data['kodeORDER'] = $kodeorder;
-
-				$checkkodeorder = $this->Order_m->checkkodeorder($data['kodeORDER'])->row();
-				if($checkkodeorder != NULL){
-					//START GENERATE KODE ORDER //
-					$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-					$res = "";
-					for ($i = 0; $i < 4; $i++) {
-					    $res .= $chars[mt_rand(0, strlen($chars)-1)];
-					}
-					$kodeorder = "ZG" . date('Ymd') . $res;
-					//END GENERATE KODE ORDER //
-					$data['kodeORDER'] = $kodeorder;
-				}
 
 				$data['statusORDER'] = 1;
 				if($this->input->post('dropshipper_check') == ''){
@@ -334,22 +321,9 @@ class Product extends Frontend_Controller {
 			for ($i = 0; $i < 4; $i++) {
 			    $res .= $chars[mt_rand(0, strlen($chars)-1)];
 			}
-			$kodeorder = "ZG" . date('Ymd') . $res;
+			$kodeorder = "ORDER-ZG-" . date('Ymd') . $res.'-'.$data['customerORDER'];
 			//END GENERATE KODE ORDER //
 			$data['kodeORDER'] = $kodeorder;
-
-			$checkkodeorder = $this->Order_m->checkkodeorder($data['kodeORDER'])->row();
-			if($checkkodeorder != NULL){
-				//START GENERATE KODE ORDER //
-				$chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-				$res = "";
-				for ($i = 0; $i < 4; $i++) {
-				    $res .= $chars[mt_rand(0, strlen($chars)-1)];
-				}
-				$kodeorder = "ZG" . date('Ymd') . $res;
-				//END GENERATE KODE ORDER //
-				$data['kodeORDER'] = $kodeorder;
-			}
 
 			$data['statusORDER'] = 1;
 			if($this->input->post('dropshipper_check') == ''){
