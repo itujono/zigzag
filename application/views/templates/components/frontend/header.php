@@ -89,7 +89,7 @@
                                     Profil
                                 </a>
                                 <a class="divider"></a>
-                                <a class="item logout-trigger" href="#">Logout</a>
+                                <a class="item" href="<?php echo base_url();?>customer/logout">Logout</a>
                             <?php } else { ?>
                             <a class="item login-trigger" href="#">Login</a>
                             <?php } ?>
@@ -108,13 +108,13 @@
                                         <button type="submit" name="button" class="ui fluid login button">Login</button>
                                     </form>
                                     <div class="forgot">
-                                        Lupa password? <a href="forgot.html" class="item">Klik di sini</a>
+                                        Lupa password? <a href="<?php echo base_url();?>customer/forgot_password" class="item">Klik di sini</a>
                                     </div>
                                     <div class="ui horizontal divider">
                                         Males isi form?
                                     </div>
                                     <div class="login-buttons">
-                                        <a href="<?php //echo $this->facebook->login_url();?>" class="ui facebook button">
+                                        <a href="<?php echo $this->facebook->login_url();?>" class="ui facebook button">
                                             <i class="facebook icon"></i>
                                             Login via Facebook
                                         </a>
@@ -191,16 +191,6 @@
                                         </div>
                                         <button type="submit" class="ui fluid login button check-submit">Register</button>
                                     </form>
-
-                                    <div class="ui horizontal divider">
-                                        Males isi form?
-                                    </div>
-                                    <div class="login-buttons">
-                                        <button class="ui facebook button">
-                                            <i class="facebook icon"></i>
-                                            Login via Facebook
-                                        </button>
-                                    </div>
                                     <div class="login-link">
                                         Sudah punya akun? <a href="#">Silakan login di sini</a>
                                     </div>
