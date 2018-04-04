@@ -284,3 +284,16 @@ Superadmin ZIGZAG - Berhasil login - Pada waktu Senin, 12 Maret 2018 | 09:25
 Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Senin, 12 Maret 2018 | 09:25 
 Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Senin, 12 Maret 2018 | 09:25 
 Superadmin ZIGZAG - Berhasil Keluar - Pada waktu Senin, 12 Maret 2018 | 09:25 
+Superadmin ZIGZAG - Berhasil login - Pada waktu Rabu, 4 April 2018 | 20:15 
+Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Rabu, 4 April 2018 | 20:15 
+Superadmin ZIGZAG - Mengunjungi halaman Confirmation Order Admin - Pada waktu Rabu, 4 April 2018 | 20:15 
+Superadmin ZIGZAG - Mengunjungi halaman Order Return Barang - Pada waktu Rabu, 4 April 2018 | 20:16 
+Superadmin ZIGZAG - Mengunjungi halaman deposit customer - Pada waktu Rabu, 4 April 2018 | 20:16 
+Superadmin ZIGZAG - Mengunjungi halaman customer - Pada waktu Rabu, 4 April 2018 | 20:21 
+Superadmin ZIGZAG - Mengunjungi halaman Tambah Barang/Product - Pada waktu Rabu, 4 April 2018 | 20:22 
+Superadmin ZIGZAG - Mengunjungi halaman Barang/Product - Pada waktu Rabu, 4 April 2018 | 20:22 
+Superadmin ZIGZAG - Mengunjungi halaman Shipping - Pada waktu Rabu, 4 April 2018 | 20:22 
+Superadmin ZIGZAG - Mengunjungi halaman dashboard - Pada waktu Rabu, 4 April 2018 | 20:23 
+Superadmin ZIGZAG - Mengunjungi halaman Activity - Pada waktu Rabu, 4 April 2018 | 20:23 
+Superadmin ZIGZAG - Mengunjungi halaman menu admin - Pada waktu Rabu, 4 April 2018 | 20:41 
+Superadmin ZIGZAG - Mengunjungi halaman deposit customer - Pada waktu Rabu, 4 April 2018 | 20:45 
